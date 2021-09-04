@@ -60,10 +60,10 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.bunifuMetroTextbox1 = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.Salestxt = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.bunifuMetroTextbox2 = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.TransactionCounttxt = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuDatepicker1 = new Bunifu.Framework.UI.BunifuDatepicker();
@@ -495,24 +495,24 @@
             this.dataGridView1.TabIndex = 196;
             this.dataGridView1.Visible = false;
             // 
-            // bunifuMetroTextbox1
+            // Salestxt
             // 
-            this.bunifuMetroTextbox1.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.bunifuMetroTextbox1.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuMetroTextbox1.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.bunifuMetroTextbox1.BorderThickness = 1;
-            this.bunifuMetroTextbox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuMetroTextbox1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuMetroTextbox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.bunifuMetroTextbox1.isPassword = false;
-            this.bunifuMetroTextbox1.Location = new System.Drawing.Point(640, 258);
-            this.bunifuMetroTextbox1.Margin = new System.Windows.Forms.Padding(9);
-            this.bunifuMetroTextbox1.Name = "bunifuMetroTextbox1";
-            this.bunifuMetroTextbox1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.bunifuMetroTextbox1.Size = new System.Drawing.Size(229, 53);
-            this.bunifuMetroTextbox1.TabIndex = 202;
-            this.bunifuMetroTextbox1.Text = "01";
-            this.bunifuMetroTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.Salestxt.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.Salestxt.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Salestxt.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.Salestxt.BorderThickness = 1;
+            this.Salestxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Salestxt.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Salestxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
+            this.Salestxt.isPassword = false;
+            this.Salestxt.Location = new System.Drawing.Point(640, 258);
+            this.Salestxt.Margin = new System.Windows.Forms.Padding(9);
+            this.Salestxt.Name = "Salestxt";
+            this.Salestxt.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.Salestxt.Size = new System.Drawing.Size(229, 53);
+            this.Salestxt.TabIndex = 202;
+            this.Salestxt.Text = "01";
+            this.Salestxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // label5
             // 
@@ -534,24 +534,24 @@
             this.label4.TabIndex = 315;
             this.label4.Text = "Total Daily Sales:";
             // 
-            // bunifuMetroTextbox2
+            // TransactionCounttxt
             // 
-            this.bunifuMetroTextbox2.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.bunifuMetroTextbox2.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuMetroTextbox2.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.bunifuMetroTextbox2.BorderThickness = 1;
-            this.bunifuMetroTextbox2.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuMetroTextbox2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuMetroTextbox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.bunifuMetroTextbox2.isPassword = false;
-            this.bunifuMetroTextbox2.Location = new System.Drawing.Point(386, 258);
-            this.bunifuMetroTextbox2.Margin = new System.Windows.Forms.Padding(9);
-            this.bunifuMetroTextbox2.Name = "bunifuMetroTextbox2";
-            this.bunifuMetroTextbox2.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.bunifuMetroTextbox2.Size = new System.Drawing.Size(229, 53);
-            this.bunifuMetroTextbox2.TabIndex = 314;
-            this.bunifuMetroTextbox2.Text = "01";
-            this.bunifuMetroTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TransactionCounttxt.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.TransactionCounttxt.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TransactionCounttxt.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.TransactionCounttxt.BorderThickness = 1;
+            this.TransactionCounttxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TransactionCounttxt.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TransactionCounttxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
+            this.TransactionCounttxt.isPassword = false;
+            this.TransactionCounttxt.Location = new System.Drawing.Point(386, 258);
+            this.TransactionCounttxt.Margin = new System.Windows.Forms.Padding(9);
+            this.TransactionCounttxt.Name = "TransactionCounttxt";
+            this.TransactionCounttxt.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.TransactionCounttxt.Size = new System.Drawing.Size(229, 53);
+            this.TransactionCounttxt.TabIndex = 314;
+            this.TransactionCounttxt.Text = "01";
+            this.TransactionCounttxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // bunifuFlatButton2
             // 
@@ -692,9 +692,9 @@
             this.Controls.Add(this.bunifuFlatButton1);
             this.Controls.Add(this.bunifuFlatButton2);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.bunifuMetroTextbox2);
+            this.Controls.Add(this.TransactionCounttxt);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.bunifuMetroTextbox1);
+            this.Controls.Add(this.Salestxt);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listBox1);
@@ -764,9 +764,9 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ListBox listBox1;
-        private Bunifu.Framework.UI.BunifuMetroTextbox bunifuMetroTextbox1;
+        private Bunifu.Framework.UI.BunifuMetroTextbox Salestxt;
         private System.Windows.Forms.Label label4;
-        private Bunifu.Framework.UI.BunifuMetroTextbox bunifuMetroTextbox2;
+        private Bunifu.Framework.UI.BunifuMetroTextbox TransactionCounttxt;
         private System.Windows.Forms.Label label5;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton2;

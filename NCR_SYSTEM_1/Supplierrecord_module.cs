@@ -105,7 +105,35 @@ namespace NCR_SYSTEM_1
 
             DataViewAll();
 
+         
         }
+
+        public void getsales()
+        {
+            decimal totalsales = 0;
+
+
+            for (int a = 0; a < Supplier_Datagrid.Rows.Count; a++)
+            {
+                totalsales += Convert.ToDecimal(Supplier_Datagrid.Rows[a].Cells[3].Value);
+            }
+
+            Salestxt.Text = totalsales.ToString();
+
+        
+
+        }
+
+        public void gettransactioncount()
+        {
+            int transactioncount = 0;
+            transactioncount = Supplier_Datagrid.Rows.Count;
+
+            TransactionCounttxt.Text = transactioncount.ToString();
+
+
+        }
+
 
         public async void DataViewAll()
         {
@@ -154,6 +182,8 @@ namespace NCR_SYSTEM_1
 
                 }
             }
+            gettransactioncount();
+            getsales();
         }
 
         private void Supplier_Datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -252,7 +282,8 @@ namespace NCR_SYSTEM_1
                 
             }
 
-           
+            
+
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
@@ -448,6 +479,9 @@ namespace NCR_SYSTEM_1
             View.Name = "View";
             View.ImageLayout = DataGridViewImageCellLayout.Zoom;
             View.Image = Properties.Resources.view;
+
+            gettransactioncount();
+            getsales();
         }
     }
 }

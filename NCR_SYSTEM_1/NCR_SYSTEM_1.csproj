@@ -171,7 +171,6 @@
     <Compile Include="Addsupplier_popup.Designer.cs">
       <DependentUpon>Addsupplier_popup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Testclass.cs" />
     <Compile Include="Updateaccountuseraccess.cs">
       <SubType>Form</SubType>
     </Compile>
