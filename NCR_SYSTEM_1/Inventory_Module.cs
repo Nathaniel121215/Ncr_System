@@ -1,0 +1,907 @@
+﻿using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace NCR_SYSTEM_1
+{
+    public partial class Inventory_Module : Form
+    {
+        int supressor = 1;
+        private Image[] StatusImgs;
+
+        public static string name = "";
+        public static string category = "";
+        public static string desc = "";
+        public static string brand = "";
+        public static string unit = "";
+        public static string id = "";
+        public static string low = "";
+        public static string high = "";
+        public static decimal price = 0;
+
+        DataTable dt = new DataTable();
+
+        IFirebaseConfig config = new FirebaseConfig
+        {
+            AuthSecret = "flovfXDWmVoWaFqDWNv7aVwSkVY89OkcXH9Rmj2A",
+            BasePath = "https://fir-test-6c417-default-rtdb.firebaseio.com/"
+        };
+
+        IFirebaseClient client;
+
+        public static Inventory_Module _instance;
+
+        public Inventory_Module()
+        {
+           
+            InitializeComponent();
+            _instance = this;
+        }
+
+        private void bunifuImageButton15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuImageButton1_Click(object sender, EventArgs e)
+        {
+            Dashboard_Module a = new Dashboard_Module();
+            this.Hide();
+            a.Show();
+        }
+
+        private void Inventory_Module_Load(object sender, EventArgs e)
+        {
+            datedisplay.Text = DateTime.Now.ToString("dddd, dd MMMM yyyy");
+
+
+            client = new FireSharp.FirebaseClient(config);
+            this.Inventory_Datagrid.AllowUserToAddRows = false;
+
+            dt.Columns.Add("Product ID");
+            dt.Columns.Add("Product Name");
+            dt.Columns.Add("Unit");
+            dt.Columns.Add("Brand");
+            dt.Columns.Add("Product Description");
+            dt.Columns.Add("Category");
+            dt.Columns.Add("Price");
+            dt.Columns.Add("Items Sold");
+            dt.Columns.Add("Stock");
+            dt.Columns.Add("Low");
+            dt.Columns.Add("High");
+            dt.Columns.Add("String Indicator");
+
+            Inventory_Datagrid.DataSource = dt;
+
+            //DataGridViewButtonColumn update = new DataGridViewButtonColumn();
+            //Inventory_Datagrid.Columns.Add(update);
+            //update.HeaderText = "Update";
+            //update.Text = "Update";
+            //update.Name = "upd";
+            //update.UseColumnTextForButtonValue = true;
+
+            //DataGridViewButtonColumn Archive = new DataGridViewButtonColumn();
+            //Inventory_Datagrid.Columns.Add(Archive);
+            //Archive.HeaderText = "Archive";
+            //Archive.Text = "Archive";
+            //Archive.Name = "Archive";
+            //Archive.UseColumnTextForButtonValue = true;
+
+
+            DataGridViewImageColumn update = new DataGridViewImageColumn();
+            Inventory_Datagrid.Columns.Add(update);
+            update.HeaderText = "";
+            update.Name = "update";
+            update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            update.Image = Properties.Resources.Update_Icon;
+
+
+            DataGridViewImageColumn Archive = new DataGridViewImageColumn();
+            Inventory_Datagrid.Columns.Add(Archive);
+            Archive.HeaderText = "";
+            Archive.Name = "Archive";
+            Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Archive.Image = Properties.Resources.Archive_Icon;
+
+
+            DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
+            Inventory_Datagrid.Columns.Add(Indicator);
+            Indicator.HeaderText = "Indicator";
+            Indicator.Name = "Indicator";
+            Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Indicator.Image = Properties.Resources.loading;
+
+
+          
+
+            DataViewAll();
+
+
+       
+
+        }
+        public async void DataViewAll()
+        {
+            foreach (DataGridViewColumn column in Inventory_Datagrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
+
+            //Display settings for inventory
+
+            DataGridViewColumn column0 = Inventory_Datagrid.Columns[0];
+            column0.Width = 80;
+
+            DataGridViewColumn column1 = Inventory_Datagrid.Columns[1];
+            column1.Width = 220;
+
+            DataGridViewColumn column2 = Inventory_Datagrid.Columns[2];
+            column2.Width = 80;
+
+            DataGridViewColumn column3 = Inventory_Datagrid.Columns[3];
+            column3.Width = 100;
+
+            DataGridViewColumn column4 = Inventory_Datagrid.Columns[4];
+            column4.Width = 220;
+
+            DataGridViewColumn column14 = Inventory_Datagrid.Columns[14];
+            column14.Width = 100;
+
+
+            Inventory_Datagrid.Columns[14].DisplayIndex = 8;
+            Inventory_Datagrid.Columns[9].Visible = false;
+            Inventory_Datagrid.Columns[10].Visible = false;
+            Inventory_Datagrid.Columns[11].Visible = false;
+
+            dt.Rows.Clear();
+
+            int i = 0;
+            FirebaseResponse resp = await client.GetTaskAsync("Counter2/node");
+            Counter_class obj = resp.ResultAs<Counter_class>();
+            int cnt = Convert.ToInt32(obj.cnt);
+
+            while (true)
+            {
+                if (i == cnt)
+                {
+                    break;
+                }
+
+                i++;
+                try
+                {
+               
+                    FirebaseResponse resp1 = await client.GetTaskAsync("Inventory/" + i);
+                    Product_class obj1 = resp1.ResultAs<Product_class>();
+
+                    DataRow r = dt.NewRow();
+                    r["Product ID"] = obj1.ID;
+                    r["Product Name"] = obj1.Product_Name;
+                    r["Unit"] = obj1.Unit;
+                    r["Brand"] = obj1.Brand;
+                    r["Product Description"] = obj1.Description;
+                    r["Category"] = obj1.Category;
+                    r["Price"] = obj1.Price;
+                    r["Items Sold"] = obj1.Items_Sold;
+                    r["Stock"] = obj1.Stock;
+                    r["Low"] = obj1.Low;
+                    r["High"] = obj1.High;
+                   
+         
+
+
+                    dt.Rows.Add(r);
+
+                 
+
+                }
+
+                catch
+                {
+
+                }
+            }
+
+         
+
+
+
+
+            try
+            {
+
+               
+
+
+
+                foreach (DataGridViewRow row in Inventory_Datagrid.Rows)
+                {
+
+                    try
+                    {
+                      
+
+                        StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.new_low_on_stock, NCR_SYSTEM_1.Properties.Resources.new_in_stock, NCR_SYSTEM_1.Properties.Resources.new_high_on_stock, NCR_SYSTEM_1.Properties.Resources.new_out_of_stock };
+
+                     
+
+
+
+                        if (Convert.ToInt32(row.Cells[8].Value) < Convert.ToInt32(row.Cells[9].Value) && Convert.ToInt32(row.Cells[8].Value) !=0) //Low on stock
+                        {
+
+                      
+
+                            row.Cells[14].Value = StatusImgs[0];
+                            row.Cells[11].Value = "low on stock";
+
+                      
+                        }
+                       
+                        if (Convert.ToInt32(row.Cells[8].Value) >= Convert.ToInt32(row.Cells[9].Value) && Convert.ToInt32(row.Cells[8].Value) < Convert.ToInt32(row.Cells[10].Value))
+                        {
+                            row.Cells[14].Value = StatusImgs[1];
+                            row.Cells[11].Value = "in stock";
+                        }
+
+                        if (Convert.ToInt32(row.Cells[8].Value) > Convert.ToInt32(row.Cells[10].Value))
+                        {
+                            row.Cells[14].Value = StatusImgs[2];
+                            row.Cells[11].Value = "high on stock";
+                        }
+
+                        if (Convert.ToInt32(row.Cells[8].Value).Equals(0)) //out of stock
+                        {
+                            row.Cells[14].Value = StatusImgs[3];
+                            row.Cells[11].Value = "out of stock";
+                        }
+
+
+                    }
+                    catch
+                    {
+
+                    }
+
+
+
+
+                }
+            }
+            catch
+            {
+
+            }
+
+
+        }
+
+ 
+
+    private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            Addnewproduct_popup a = new Addnewproduct_popup();
+            a.Show();
+        }
+
+        private void Inventory_Datagrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string columnindex = "";
+
+            try
+            {
+
+                
+                    //delete
+                    if (e.ColumnIndex == Inventory_Datagrid.Columns[13].Index)
+                    {
+
+                        if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                    {
+                        columnindex = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+                        FirebaseResponse response = client.Delete("Inventory/" + columnindex);
+
+
+
+                        //Minus existing
+                        FirebaseResponse resp3 = client.Get("inventoryCounterExisting/node");
+                        Counter_class gett = resp3.ResultAs<Counter_class>();
+                        int exist = (Convert.ToInt32(gett.cnt) - 1);
+
+                        var obj2 = new Counter_class
+                        {
+                            cnt = exist.ToString()
+                        };
+                        SetResponse response2 = client.Set("inventoryCounterExisting/node", obj2);
+
+
+
+
+
+
+                        DataViewAll();
+                    }
+
+                    else
+
+                    {
+                        //do something if NO
+                    }
+                    
+                    }
+
+           
+
+
+
+               
+                
+
+                //update
+                if (e.ColumnIndex == Inventory_Datagrid.Columns[12].Index)
+                {
+                    columnindex = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+
+                    Inventory_Datagrid.Rows[e.RowIndex].Selected = true;
+
+                    id = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    name = Inventory_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    unit = Inventory_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    brand = Inventory_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    desc = Inventory_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    category = Inventory_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString();
+                    price = Convert.ToDecimal(Inventory_Datagrid.Rows[e.RowIndex].Cells[6].Value);
+
+                    low = Inventory_Datagrid.Rows[e.RowIndex].Cells[9].Value.ToString();
+                    high =Inventory_Datagrid.Rows[e.RowIndex].Cells[10].Value.ToString();
+
+                    Updateproduct_popup c = new Updateproduct_popup();
+                    c.Show();
+
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void bunifuImageButton12_Click(object sender, EventArgs e)
+        {
+            stockpurchase_Module a = new stockpurchase_Module();
+            this.Hide();
+            a.Show();
+        }
+
+        private void bunifuImageButton7_Click(object sender, EventArgs e)
+        {
+
+            Accountmanagement_Module a = new Accountmanagement_Module();
+            this.Hide();
+            a.Show();
+        }
+
+        private void bunifuImageButton3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuImageButton6_Click(object sender, EventArgs e)
+        {
+            Supplierrecord_module a = new Supplierrecord_module();
+            this.Hide();
+            a.Show();
+        }
+
+        private void bunifuImageButton13_Click(object sender, EventArgs e)
+        {
+            Addunit_module a = new Addunit_module();
+            this.Hide();
+            a.Show();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuImageButton11_Click(object sender, EventArgs e)
+        {
+            Addcategory_module a = new Addcategory_module();
+            this.Hide();
+            a.Show();
+        }
+
+        private void bunifuMetroTextbox2_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (searchtxt.Text == "" && supressor == 1)
+            {
+                supressor = 0;
+
+                Inventory_Datagrid.DataSource = null;
+                Inventory_Datagrid.Rows.Clear();
+                Inventory_Datagrid.Columns.Clear();
+                Inventory_Datagrid.DataSource = dt;
+
+
+
+
+                DataGridViewButtonColumn update = new DataGridViewButtonColumn();
+                Inventory_Datagrid.Columns.Add(update);
+                update.HeaderText = "Update";
+                update.Text = "Update";
+                update.Name = "upd";
+                update.UseColumnTextForButtonValue = true;
+
+
+                DataGridViewButtonColumn Archive = new DataGridViewButtonColumn();
+                Inventory_Datagrid.Columns.Add(Archive);
+                Archive.HeaderText = "Archive";
+                Archive.Text = "Archive";
+                Archive.Name = "Archive";
+                Archive.UseColumnTextForButtonValue = true;
+
+                DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(Indicator);
+                Indicator.HeaderText = "Indicator";
+                Indicator.Name = "Indicator";
+                Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Indicator.Image = Properties.Resources.loading;
+
+                DataViewAll();
+
+                //if (e.KeyCode == Keys.Back && supressor == 0)
+                //{
+                //    return;
+                //}
+
+
+            }
+
+            if (searchtxt.Text != "")
+            {
+                supressor = 1;
+                
+            }
+        }
+
+        private void searchbutton_Click(object sender, EventArgs e)
+        {
+
+            
+
+            DataView dv = new DataView(dt);
+            dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
+
+            Inventory_Datagrid.DataSource = null;
+            Inventory_Datagrid.Rows.Clear();
+            Inventory_Datagrid.Columns.Clear();
+            Inventory_Datagrid.DataSource = dv;
+
+
+
+            DataGridViewImageColumn update = new DataGridViewImageColumn();
+            Inventory_Datagrid.Columns.Add(update);
+            update.HeaderText = "";
+            update.Name = "update";
+            update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            update.Image = Properties.Resources.Update_Icon;
+
+
+            DataGridViewImageColumn Archive = new DataGridViewImageColumn();
+            Inventory_Datagrid.Columns.Add(Archive);
+            Archive.HeaderText = "";
+            Archive.Name = "Archive";
+            Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Archive.Image = Properties.Resources.Archive_Icon;
+
+            DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
+            Inventory_Datagrid.Columns.Add(Indicator);
+            Indicator.HeaderText = "Indicator";
+            Indicator.Name = "Indicator";
+            Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Indicator.Image = Properties.Resources.loading;
+
+
+
+            searchupdate();
+
+        }
+
+        public void searchupdate()
+        {
+            foreach (DataGridViewColumn column in Inventory_Datagrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
+
+            try
+            {
+
+
+                DataGridViewColumn column0 = Inventory_Datagrid.Columns[0];
+                column0.Width = 80;
+
+                DataGridViewColumn column1 = Inventory_Datagrid.Columns[1];
+                column1.Width = 220;
+
+                DataGridViewColumn column2 = Inventory_Datagrid.Columns[2];
+                column2.Width = 80;
+
+                DataGridViewColumn column3 = Inventory_Datagrid.Columns[3];
+                column3.Width = 100;
+
+                DataGridViewColumn column4 = Inventory_Datagrid.Columns[4];
+                column4.Width = 220;
+
+                DataGridViewColumn column14 = Inventory_Datagrid.Columns[14];
+                column14.Width = 100;
+
+
+                Inventory_Datagrid.Columns[14].DisplayIndex = 8;
+                Inventory_Datagrid.Columns[9].Visible = false;
+                Inventory_Datagrid.Columns[10].Visible = false;
+                Inventory_Datagrid.Columns[11].Visible = false;
+
+
+
+                foreach (DataGridViewRow row in Inventory_Datagrid.Rows)
+                {
+
+                    try
+                    {
+
+
+                        StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.new_low_on_stock, NCR_SYSTEM_1.Properties.Resources.new_in_stock, NCR_SYSTEM_1.Properties.Resources.new_high_on_stock, NCR_SYSTEM_1.Properties.Resources.new_out_of_stock };
+
+
+
+
+
+                        if (Convert.ToInt32(row.Cells[8].Value) < Convert.ToInt32(row.Cells[9].Value)  && Convert.ToInt32(row.Cells[8].Value) != 0 ) //Low on stock
+                        {
+
+                           
+
+                            row.Cells[14].Value = StatusImgs[0];
+                            row.Cells[11].Value = "low on stock";
+
+
+                        }
+
+                        else if (Convert.ToInt32(row.Cells[8].Value) >= Convert.ToInt32(row.Cells[9].Value) && Convert.ToInt32(row.Cells[8].Value) < Convert.ToInt32(row.Cells[10].Value))
+                        {
+                            row.Cells[14].Value = StatusImgs[1];
+                            row.Cells[11].Value = "in stock";
+                        }
+
+                        else if (Convert.ToInt32(row.Cells[8].Value) > Convert.ToInt32(row.Cells[10].Value))
+                        {
+                            row.Cells[14].Value = StatusImgs[2];
+                            row.Cells[11].Value = "high on stock";
+                        }
+
+                        if (Convert.ToInt32(row.Cells[8].Value).Equals(0)) 
+                        {
+                            row.Cells[14].Value = StatusImgs[3];
+                            row.Cells[11].Value = "out of stock";
+                        }
+
+
+                    }
+                    catch
+                    {
+
+                    }
+
+
+
+
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void bunifuImageButton9_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                System.Windows.Forms.Application.Exit();
+            }
+
+            else
+
+            {
+                //do something if NO
+            }
+        }
+
+        private void bunifuImageButton5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuImageButton8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuImageButton9_Click_1(object sender, EventArgs e)
+        {
+            Accountmanagement_Module a = new Accountmanagement_Module();
+            this.Hide();
+            a.Show();
+        }
+
+        private void bunifuImageButton5_Click_1(object sender, EventArgs e)
+        {
+            Suppliermanagement_module a = new Suppliermanagement_module();
+            this.Hide();
+            a.Show();
+        }
+
+        private void bunifuImageButton6_Click_1(object sender, EventArgs e)
+        {
+            Supplierrecord_module a = new Supplierrecord_module();
+            this.Hide();
+            a.Show();
+           
+        }
+
+        private void bunifuImageButton2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void bunifuFlatButton5_Click(object sender, EventArgs e)
+        {
+            //instock button
+
+            showall.Normalcolor = Color.FromArgb(116, 170, 255);
+            instock.Normalcolor = Color.FromArgb(49, 129, 255);
+            highonstock.Normalcolor = Color.FromArgb(116, 170, 255);
+            lowonstock.Normalcolor = Color.FromArgb(116, 170, 255);
+            outofstock.Normalcolor = Color.FromArgb(116, 170, 255);
+
+            DataView dv = new DataView(dt);
+            dv.RowFilter = "[" + "String Indicator" + "]" + "LIKE '%" + "in stock" + "%'";
+
+            Inventory_Datagrid.DataSource = null;
+            Inventory_Datagrid.Rows.Clear();
+            Inventory_Datagrid.Columns.Clear();
+            Inventory_Datagrid.DataSource = dv;
+
+
+
+            DataGridViewButtonColumn update = new DataGridViewButtonColumn();
+            Inventory_Datagrid.Columns.Add(update);
+            update.HeaderText = "Update";
+            update.Text = "Update";
+            update.Name = "upd";
+            update.UseColumnTextForButtonValue = true;
+
+
+            DataGridViewButtonColumn Archive = new DataGridViewButtonColumn();
+            Inventory_Datagrid.Columns.Add(Archive);
+            Archive.HeaderText = "Archive";
+            Archive.Text = "Archive";
+            Archive.Name = "Archive";
+            Archive.UseColumnTextForButtonValue = true;
+
+            DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
+            Inventory_Datagrid.Columns.Add(Indicator);
+            Indicator.HeaderText = "Indicator";
+            Indicator.Name = "Indicator";
+            Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Indicator.Image = Properties.Resources.loading;
+
+            searchupdate();
+
+
+        }
+
+        private void bunifuFlatButton1_Click(object sender, EventArgs e)
+        {
+            //view all
+
+            showall.Normalcolor = Color.FromArgb(49, 129, 255);
+            instock.Normalcolor = Color.FromArgb(116, 170, 255);
+            highonstock.Normalcolor = Color.FromArgb(116, 170, 255);
+            lowonstock.Normalcolor = Color.FromArgb(116, 170, 255);
+            outofstock.Normalcolor = Color.FromArgb(116, 170, 255);
+
+
+            Inventory_Datagrid.DataSource = null;
+            Inventory_Datagrid.Rows.Clear();
+            Inventory_Datagrid.Columns.Clear();
+            Inventory_Datagrid.DataSource = dt;
+
+
+
+
+            DataGridViewButtonColumn update = new DataGridViewButtonColumn();
+            Inventory_Datagrid.Columns.Add(update);
+            update.HeaderText = "Update";
+            update.Text = "Update";
+            update.Name = "upd";
+            update.UseColumnTextForButtonValue = true;
+
+
+            DataGridViewButtonColumn Archive = new DataGridViewButtonColumn();
+            Inventory_Datagrid.Columns.Add(Archive);
+            Archive.HeaderText = "Archive";
+            Archive.Text = "Archive";
+            Archive.Name = "Archive";
+            Archive.UseColumnTextForButtonValue = true;
+
+            DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
+            Inventory_Datagrid.Columns.Add(Indicator);
+            Indicator.HeaderText = "Indicator";
+            Indicator.Name = "Indicator";
+            Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Indicator.Image = Properties.Resources.loading;
+
+            DataViewAll();
+           
+        }
+
+        private void outofstock_Click(object sender, EventArgs e)
+        {
+            //out of stock button
+
+            showall.Normalcolor = Color.FromArgb(116, 170, 255);
+            instock.Normalcolor = Color.FromArgb(116, 170, 255);
+            highonstock.Normalcolor = Color.FromArgb(116, 170, 255);
+            lowonstock.Normalcolor = Color.FromArgb(116, 170, 255);
+            outofstock.Normalcolor = Color.FromArgb(49, 129, 255);
+
+            DataView dv = new DataView(dt);
+            dv.RowFilter = "[" + "String Indicator" + "]" + "LIKE '%" + "out of stock" + "%'";
+
+            Inventory_Datagrid.DataSource = null;
+            Inventory_Datagrid.Rows.Clear();
+            Inventory_Datagrid.Columns.Clear();
+            Inventory_Datagrid.DataSource = dv;
+
+
+
+            DataGridViewButtonColumn update = new DataGridViewButtonColumn();
+            Inventory_Datagrid.Columns.Add(update);
+            update.HeaderText = "Update";
+            update.Text = "Update";
+            update.Name = "upd";
+            update.UseColumnTextForButtonValue = true;
+
+
+            DataGridViewButtonColumn Archive = new DataGridViewButtonColumn();
+            Inventory_Datagrid.Columns.Add(Archive);
+            Archive.HeaderText = "Archive";
+            Archive.Text = "Archive";
+            Archive.Name = "Archive";
+            Archive.UseColumnTextForButtonValue = true;
+
+            DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
+            Inventory_Datagrid.Columns.Add(Indicator);
+            Indicator.HeaderText = "Indicator";
+            Indicator.Name = "Indicator";
+            Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Indicator.Image = Properties.Resources.loading;
+
+            searchupdate();
+        }
+
+    
+
+     
+
+        private void lowonstock_Click(object sender, EventArgs e)
+        {
+            //low on stock button
+
+            showall.Normalcolor = Color.FromArgb(116, 170, 255);
+            instock.Normalcolor = Color.FromArgb(116, 170, 255);
+            highonstock.Normalcolor = Color.FromArgb(116, 170, 255);
+            lowonstock.Normalcolor = Color.FromArgb(49, 129, 255);
+            outofstock.Normalcolor = Color.FromArgb(116, 170, 255);
+
+            DataView dv = new DataView(dt);
+            dv.RowFilter = "[" + "String Indicator" + "]" + "LIKE '%" + "low on stock" + "%'";
+
+            Inventory_Datagrid.DataSource = null;
+            Inventory_Datagrid.Rows.Clear();
+            Inventory_Datagrid.Columns.Clear();
+            Inventory_Datagrid.DataSource = dv;
+
+
+
+            DataGridViewButtonColumn update = new DataGridViewButtonColumn();
+            Inventory_Datagrid.Columns.Add(update);
+            update.HeaderText = "Update";
+            update.Text = "Update";
+            update.Name = "upd";
+            update.UseColumnTextForButtonValue = true;
+
+
+            DataGridViewButtonColumn Archive = new DataGridViewButtonColumn();
+            Inventory_Datagrid.Columns.Add(Archive);
+            Archive.HeaderText = "Archive";
+            Archive.Text = "Archive";
+            Archive.Name = "Archive";
+            Archive.UseColumnTextForButtonValue = true;
+
+            DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
+            Inventory_Datagrid.Columns.Add(Indicator);
+            Indicator.HeaderText = "Indicator";
+            Indicator.Name = "Indicator";
+            Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Indicator.Image = Properties.Resources.loading;
+
+            searchupdate();
+        }
+
+        private void highonstock_Click(object sender, EventArgs e)
+        {
+            //high on stock button
+
+            showall.Normalcolor = Color.FromArgb(116, 170, 255);
+            instock.Normalcolor = Color.FromArgb(116, 170, 255);
+            highonstock.Normalcolor = Color.FromArgb(49, 129, 255);
+            lowonstock.Normalcolor = Color.FromArgb(116, 170, 255);
+            outofstock.Normalcolor = Color.FromArgb(116, 170, 255);
+
+            DataView dv = new DataView(dt);
+            dv.RowFilter = "[" + "String Indicator" + "]" + "LIKE '%" + "high on stock" + "%'";
+
+            Inventory_Datagrid.DataSource = null;
+            Inventory_Datagrid.Rows.Clear();
+            Inventory_Datagrid.Columns.Clear();
+            Inventory_Datagrid.DataSource = dv;
+
+
+
+            DataGridViewButtonColumn update = new DataGridViewButtonColumn();
+            Inventory_Datagrid.Columns.Add(update);
+            update.HeaderText = "Update";
+            update.Text = "Update";
+            update.Name = "upd";
+            update.UseColumnTextForButtonValue = true;
+
+
+            DataGridViewButtonColumn Archive = new DataGridViewButtonColumn();
+            Inventory_Datagrid.Columns.Add(Archive);
+            Archive.HeaderText = "Archive";
+            Archive.Text = "Archive";
+            Archive.Name = "Archive";
+            Archive.UseColumnTextForButtonValue = true;
+
+            DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
+            Inventory_Datagrid.Columns.Add(Indicator);
+            Indicator.HeaderText = "Indicator";
+            Indicator.Name = "Indicator";
+            Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Indicator.Image = Properties.Resources.loading;
+
+            searchupdate();
+        }
+    }
+}

@@ -1,0 +1,345 @@
+﻿using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace NCR_SYSTEM_1
+{
+    public partial class Addunit_module : Form
+    {
+        int supressor = 1;
+
+        public static string Unit_ID = "";
+        public static string Unit_Name = "";
+        public static string Date_Added = "";
+
+
+        IFirebaseConfig config = new FirebaseConfig
+        {
+            AuthSecret = "flovfXDWmVoWaFqDWNv7aVwSkVY89OkcXH9Rmj2A",
+            BasePath = "https://fir-test-6c417-default-rtdb.firebaseio.com/"
+        };
+
+        IFirebaseClient client;
+
+        DataTable dt = new DataTable();
+        public static Addunit_module _instance;
+        public Addunit_module()
+        {
+            InitializeComponent();
+            _instance = this;
+        }
+
+        private void Addunit_module_Load(object sender, EventArgs e)
+        {
+            datedisplay.Text = DateTime.Now.ToString("dddd, dd MMMM yyyy");
+            client = new FireSharp.FirebaseClient(config);
+            this.Unit_datagrid_stocks.AllowUserToAddRows = false;
+            dt.Columns.Add("Unit ID");
+            dt.Columns.Add("Unit Name");
+            dt.Columns.Add("Date Added");
+
+        
+
+            Unit_datagrid_stocks.DataSource = dt;
+
+            DataGridViewImageColumn update = new DataGridViewImageColumn();
+            Unit_datagrid_stocks.Columns.Add(update);
+            update.HeaderText = "";
+            update.Name = "update";
+            update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            update.Image = Properties.Resources.Update_Icon;
+
+
+            DataGridViewImageColumn Archive = new DataGridViewImageColumn();
+            Unit_datagrid_stocks.Columns.Add(Archive);
+            Archive.HeaderText = "";
+            Archive.Name = "Archive";
+            Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Archive.Image = Properties.Resources.Archive_Icon;
+
+            DataViewAll();
+        }
+        public async void DataViewAll()
+        {
+            //visual
+            DataGridViewColumn column2 = Unit_datagrid_stocks.Columns[2];
+            column2.Width = 600;
+
+
+            foreach (DataGridViewColumn column in Unit_datagrid_stocks.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
+
+            dt.Rows.Clear();
+
+            int i = 0;
+            FirebaseResponse resp = await client.GetTaskAsync("UnitCounter/node");
+            Counter_class obj = resp.ResultAs<Counter_class>();
+            int cnt = Convert.ToInt32(obj.cnt);
+
+            while (true)
+            {
+                if (i == cnt)
+                {
+                    break;
+                }
+
+                i++;
+                try
+                {
+
+                    FirebaseResponse resp1 = await client.GetTaskAsync("Unit/" + i);
+                    Unit_Class obj1 = resp1.ResultAs<Unit_Class>();
+
+                    DataRow r = dt.NewRow();
+                    r["Unit ID"] = obj1.Unit_ID;
+                    r["Unit Name"] = obj1.Unit_Name;
+                    r["Date Added"] = obj1.Date_Added;
+                    
+
+                    dt.Rows.Add(r);
+                }
+
+                catch
+                {
+
+                }
+            }
+        }
+
+        private void bunifuFlatButton3_Click(object sender, EventArgs e)
+        {
+            Addunit_popup a = new Addunit_popup();
+          
+            a.Show();
+        }
+
+        private void bunifuImageButton1_Click(object sender, EventArgs e)
+        {
+            Dashboard_Module a = new Dashboard_Module();
+            this.Hide();
+            a.Show();
+        }
+
+        private void bunifuImageButton14_Click(object sender, EventArgs e)
+        {
+            Inventory_Module a = new Inventory_Module();
+            this.Hide();
+            a.Show();
+        }
+
+        private void bunifuImageButton4_Click(object sender, EventArgs e)
+        {
+            Inventory_Module a = new Inventory_Module();
+            this.Hide();
+            a.Show();
+        }
+
+        private void bunifuImageButton6_Click(object sender, EventArgs e)
+        {
+            Supplierrecord_module a = new Supplierrecord_module();
+            this.Hide();
+            a.Show();
+        }
+
+        private void bunifuImageButton7_Click(object sender, EventArgs e)
+        {
+            Accountmanagement_Module a = new Accountmanagement_Module();
+            this.Hide();
+            a.Show();
+        }
+
+        private void Unit_datagrid_stocks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string columnindex = "";
+
+            try
+            {
+                
+
+                if (e.ColumnIndex == Unit_datagrid_stocks.Columns[3].Index)
+                {
+                    columnindex = Unit_datagrid_stocks.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+
+                    Unit_datagrid_stocks.Rows[e.RowIndex].Selected = true;
+
+                    Unit_ID = Unit_datagrid_stocks.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Unit_Name = Unit_datagrid_stocks.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    Date_Added = Unit_datagrid_stocks.Rows[e.RowIndex].Cells[2].Value.ToString();
+              
+
+
+                    Updateunit_popup a = new Updateunit_popup();
+
+                    a.Show();
+
+
+                }
+
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void bunifuFlatButton1_Click(object sender, EventArgs e)
+        {
+           
+
+
+
+            DataView dv = new DataView(dt);
+            dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
+
+            Unit_datagrid_stocks.DataSource = null;
+            Unit_datagrid_stocks.Rows.Clear();
+            Unit_datagrid_stocks.Columns.Clear();
+            Unit_datagrid_stocks.DataSource = dv;
+
+            DataGridViewImageColumn update = new DataGridViewImageColumn();
+            Unit_datagrid_stocks.Columns.Add(update);
+            update.HeaderText = "";
+            update.Name = "update";
+            update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            update.Image = Properties.Resources.Update_Icon;
+
+
+            DataGridViewImageColumn Archive = new DataGridViewImageColumn();
+            Unit_datagrid_stocks.Columns.Add(Archive);
+            Archive.HeaderText = "";
+            Archive.Name = "Archive";
+            Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Archive.Image = Properties.Resources.Archive_Icon;
+
+
+            //visual
+            DataGridViewColumn column2 = Unit_datagrid_stocks.Columns[2];
+            column2.Width = 600;
+
+
+            foreach (DataGridViewColumn column in Unit_datagrid_stocks.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
+
+        }
+
+        private void searchtxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (searchtxt.Text == "" && supressor == 1)
+            {
+                supressor = 0;
+
+                Unit_datagrid_stocks.DataSource = null;
+                Unit_datagrid_stocks.Rows.Clear();
+                Unit_datagrid_stocks.Columns.Clear();
+                Unit_datagrid_stocks.DataSource = dt;
+
+
+
+
+                DataGridViewImageColumn update = new DataGridViewImageColumn();
+                Unit_datagrid_stocks.Columns.Add(update);
+                update.HeaderText = "";
+                update.Name = "update";
+                update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                update.Image = Properties.Resources.Update_Icon;
+
+
+                DataGridViewImageColumn Archive = new DataGridViewImageColumn();
+                Unit_datagrid_stocks.Columns.Add(Archive);
+                Archive.HeaderText = "";
+                Archive.Name = "Archive";
+                Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Archive.Image = Properties.Resources.Archive_Icon;
+
+                DataViewAll();
+
+             
+
+
+            }
+
+            if (searchtxt.Text != "")
+            {
+                supressor = 1;
+
+            }
+        }
+
+        private void bunifuImageButton12_Click(object sender, EventArgs e)
+        {
+            stockpurchase_Module a = new stockpurchase_Module();
+            this.Hide();
+            a.Show();
+        }
+
+        private void bunifuImageButton15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuImageButton11_Click(object sender, EventArgs e)
+        {
+            Addcategory_module a = new Addcategory_module();
+            this.Hide();
+            a.Show();
+        }
+
+        private void bunifuImageButton9_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                System.Windows.Forms.Application.Exit();
+            }
+
+            else
+
+            {
+                //do something if NO
+            }
+        }
+
+        private void bunifuImageButton9_Click_1(object sender, EventArgs e)
+        {
+            Accountmanagement_Module a = new Accountmanagement_Module();
+            this.Hide();
+            a.Show();
+        }
+
+        private void bunifuImageButton5_Click(object sender, EventArgs e)
+        {
+            Suppliermanagement_module a = new Suppliermanagement_module();
+            this.Hide();
+            a.Show();
+        }
+
+        private void bunifuImageButton6_Click_1(object sender, EventArgs e)
+        {
+            Supplierrecord_module a = new Supplierrecord_module();
+            this.Hide();
+            a.Show();
+        }
+
+        private void bunifuImageButton2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+    }
+}

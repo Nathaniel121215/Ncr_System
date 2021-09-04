@@ -1,0 +1,599 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9B461AC6-08F2-4100-8297-E867BD943F52}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>NCR_SYSTEM_1</RootNamespace>
+    <AssemblyName>NCR_SYSTEM_1</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.52">
+      <HintPath>..\..\..\..\Desktop\Bunifu_UI_v1.52.dll</HintPath>
+    </Reference>
+    <Reference Include="FireSharp, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FireSharp.1.1.0\lib\net45\FireSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="FireSharp.Serialization.JsonNet, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FireSharp.Serialization.JsonNet.1.1.0\lib\net45\FireSharp.Serialization.JsonNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=104.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Accountmanagement_Module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accountmanagement_Module.Designer.cs">
+      <DependentUpon>Accountmanagement_Module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Addcategory_module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Addcategory_module.Designer.cs">
+      <DependentUpon>Addcategory_module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Addcategory_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Addcategory_popup.Designer.cs">
+      <DependentUpon>Addcategory_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Addnewaccountuseraccess_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Addnewaccountuseraccess_popup.Designer.cs">
+      <DependentUpon>Addnewaccountuseraccess_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Addnewaccount_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Addnewaccount_popup.Designer.cs">
+      <DependentUpon>Addnewaccount_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Addnewproduct_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Addnewproduct_popup.Designer.cs">
+      <DependentUpon>Addnewproduct_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Addproductstockindicator_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Addproductstockindicator_popup.Designer.cs">
+      <DependentUpon>Addproductstockindicator_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Addstock_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Addstock_popup.Designer.cs">
+      <DependentUpon>Addstock_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Addunit_module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Addunit_module.Designer.cs">
+      <DependentUpon>Addunit_module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Addunit_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Addunit_popup.Designer.cs">
+      <DependentUpon>Addunit_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Category_Class.cs" />
+    <Compile Include="Confirmcustomerreceipt_module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Confirmcustomerreceipt_module.Designer.cs">
+      <DependentUpon>Confirmcustomerreceipt_module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Confirmreceipt_Module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Confirmreceipt_Module.Designer.cs">
+      <DependentUpon>Confirmreceipt_Module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Counter_class.cs" />
+    <Compile Include="Customertransactionreceipt_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customertransactionreceipt_popup.Designer.cs">
+      <DependentUpon>Customertransactionreceipt_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Finalizestock_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finalizestock_popup.Designer.cs">
+      <DependentUpon>Finalizestock_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Addsupplier_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Addsupplier_popup.Designer.cs">
+      <DependentUpon>Addsupplier_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Updateaccountuseraccess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Updateaccountuseraccess.Designer.cs">
+      <DependentUpon>Updateaccountuseraccess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory_Module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory_Module.Designer.cs">
+      <DependentUpon>Inventory_Module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard_Module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dashboard_Module.Designer.cs">
+      <DependentUpon>Dashboard_Module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="nav.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nav.Designer.cs">
+      <DependentUpon>nav.cs</DependentUpon>
+    </Compile>
+    <Compile Include="POS_module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="POS_module.Designer.cs">
+      <DependentUpon>POS_module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Processcustomerorder_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Processcustomerorder_popup.Designer.cs">
+      <DependentUpon>Processcustomerorder_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProcessOrder_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProcessOrder_popup.Designer.cs">
+      <DependentUpon>ProcessOrder_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product_class.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Purchase_Class.cs" />
+    <Compile Include="Salesrecord_module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Salesrecord_module.Designer.cs">
+      <DependentUpon>Salesrecord_module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stockpurchasing_Module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stockpurchasing_Module.Designer.cs">
+      <DependentUpon>Stockpurchasing_Module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stock_class.cs" />
+    <Compile Include="Supplierdetails_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplierdetails_popup.Designer.cs">
+      <DependentUpon>Supplierdetails_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Suppliermanagement_module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Suppliermanagement_module.Designer.cs">
+      <DependentUpon>Suppliermanagement_module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplierrecord_module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplierrecord_module.Designer.cs">
+      <DependentUpon>Supplierrecord_module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Suppliertransactionreceipt_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Suppliertransactionreceipt_popup.Designer.cs">
+      <DependentUpon>Suppliertransactionreceipt_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier_Class.cs" />
+    <Compile Include="stockpurchase_Module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="stockpurchase_Module.Designer.cs">
+      <DependentUpon>stockpurchase_Module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Unit_Class.cs" />
+    <Compile Include="Updateaccount_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Updateaccount_popup.Designer.cs">
+      <DependentUpon>Updateaccount_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Updatecategory_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Updatecategory_popup.Designer.cs">
+      <DependentUpon>Updatecategory_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Updateproductstockindicator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Updateproductstockindicator.Designer.cs">
+      <DependentUpon>Updateproductstockindicator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Updateproduct_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Updateproduct_popup.Designer.cs">
+      <DependentUpon>Updateproduct_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Updatesupplier_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Updatesupplier_popup.Designer.cs">
+      <DependentUpon>Updatesupplier_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Updateunit_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Updateunit_popup.Designer.cs">
+      <DependentUpon>Updateunit_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User_class.cs" />
+    <EmbeddedResource Include="Accountmanagement_Module.resx">
+      <DependentUpon>Accountmanagement_Module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Addcategory_module.resx">
+      <DependentUpon>Addcategory_module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Addcategory_popup.resx">
+      <DependentUpon>Addcategory_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Addnewaccountuseraccess_popup.resx">
+      <DependentUpon>Addnewaccountuseraccess_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Addnewaccount_popup.resx">
+      <DependentUpon>Addnewaccount_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Addnewproduct_popup.resx">
+      <DependentUpon>Addnewproduct_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Addproductstockindicator_popup.resx">
+      <DependentUpon>Addproductstockindicator_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Addstock_popup.resx">
+      <DependentUpon>Addstock_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Addsupplier_popup.resx">
+      <DependentUpon>Addsupplier_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Addunit_module.resx">
+      <DependentUpon>Addunit_module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Addunit_popup.resx">
+      <DependentUpon>Addunit_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Confirmcustomerreceipt_module.resx">
+      <DependentUpon>Confirmcustomerreceipt_module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Confirmreceipt_Module.resx">
+      <DependentUpon>Confirmreceipt_Module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customertransactionreceipt_popup.resx">
+      <DependentUpon>Customertransactionreceipt_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finalizestock_popup.resx">
+      <DependentUpon>Finalizestock_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Updateaccountuseraccess.resx">
+      <DependentUpon>Updateaccountuseraccess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory_Module.resx">
+      <DependentUpon>Inventory_Module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dashboard_Module.resx">
+      <DependentUpon>Dashboard_Module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nav.resx">
+      <DependentUpon>nav.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="POS_module.resx">
+      <DependentUpon>POS_module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Processcustomerorder_popup.resx">
+      <DependentUpon>Processcustomerorder_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProcessOrder_popup.resx">
+      <DependentUpon>ProcessOrder_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Salesrecord_module.resx">
+      <DependentUpon>Salesrecord_module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stockpurchasing_Module.resx">
+      <DependentUpon>Stockpurchasing_Module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplierdetails_popup.resx">
+      <DependentUpon>Supplierdetails_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Suppliermanagement_module.resx">
+      <DependentUpon>Suppliermanagement_module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplierrecord_module.resx">
+      <DependentUpon>Supplierrecord_module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="stockpurchase_Module.resx">
+      <DependentUpon>stockpurchase_Module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Suppliertransactionreceipt_popup.resx">
+      <DependentUpon>Suppliertransactionreceipt_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Updateaccount_popup.resx">
+      <DependentUpon>Updateaccount_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Updatecategory_popup.resx">
+      <DependentUpon>Updatecategory_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Updateproductstockindicator.resx">
+      <DependentUpon>Updateproductstockindicator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Updateproduct_popup.resx">
+      <DependentUpon>Updateproduct_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Updatesupplier_popup.resx">
+      <DependentUpon>Updatesupplier_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Updateunit_popup.resx">
+      <DependentUpon>Updateunit_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pos_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inventory button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sales_record_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\supplier_record_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\account_management_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inventorylog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\userlog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inventory management.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add unit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_category.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_left_96px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fadepos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fadeinventory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fadeaccountmanagement.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fadeinventorylog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fadeuserlogrecord.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fadedashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fadeaddunit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fadestockcorrection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fadestockpurchasing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fadeinventorymanagement.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fadeaddcategory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fadelogout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\high.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\low.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fade supplier management.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fade record.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fade activity logs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fade archive data.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\supplier management.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sale record.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fade stock purchasing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stock purchasing record.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\records.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fade sale record.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stock adjustment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fade stock adjustment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Group 179.png" />
+    <None Include="Resources\Group 181.png" />
+    <None Include="Resources\Group 177.png" />
+    <None Include="Resources\Group 175.png" />
+    <None Include="Resources\icons8_gift_96px.png" />
+    <None Include="Resources\x.png" />
+    <None Include="Resources\view.png" />
+    <None Include="Resources\Update Icon.png" />
+    <None Include="Resources\Remove Icon.png" />
+    <None Include="Resources\cancel Icon.png" />
+    <None Include="Resources\cart Icon.png" />
+    <None Include="Resources\Add Icon.png" />
+    <None Include="Resources\Add Icon 2.png" />
+    <None Include="Resources\Archive Icon.png" />
+    <Content Include="Resources\Bitmap1.bmp" />
+    <None Include="Resources\new out of stock.png" />
+    <None Include="Resources\new low on stock.png" />
+    <None Include="Resources\new high on stock.png" />
+    <None Include="Resources\new in stock.png" />
+    <None Include="Resources\Group 159.png" />
+    <None Include="Resources\Group 157.png" />
+    <None Include="Resources\outofstock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
