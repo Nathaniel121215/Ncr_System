@@ -60,7 +60,7 @@ namespace NCR_SYSTEM_1
         private void Salesrecord_module_Load(object sender, EventArgs e)
         {
 
-            datedisplay.Text = DateTime.Now.ToString("dddd, dd MMMM yyyy");
+            datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
             client = new FireSharp.FirebaseClient(config);
 
             this.Sales_Datagrid.AllowUserToAddRows = false;

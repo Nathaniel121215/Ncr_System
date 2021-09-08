@@ -45,7 +45,7 @@ namespace NCR_SYSTEM_1
         private void Dashboard_Module_Load(object sender, EventArgs e)
         {
 
-            datedisplay.Text = DateTime.Now.ToString("dddd, dd MMMM yyyy");
+            datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
 
             client = new FireSharp.FirebaseClient(config);
 

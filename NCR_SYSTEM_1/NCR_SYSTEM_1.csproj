@@ -171,6 +171,12 @@
     <Compile Include="Addsupplier_popup.Designer.cs">
       <DependentUpon>Addsupplier_popup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Supplierrecord_Filter_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplierrecord_Filter_popup.Designer.cs">
+      <DependentUpon>Supplierrecord_Filter_popup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Updateaccountuseraccess.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -354,6 +360,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Finalizestock_popup.resx">
       <DependentUpon>Finalizestock_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplierrecord_Filter_popup.resx">
+      <DependentUpon>Supplierrecord_Filter_popup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Updateaccountuseraccess.resx">
       <DependentUpon>Updateaccountuseraccess.cs</DependentUpon>

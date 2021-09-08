@@ -39,7 +39,7 @@ namespace NCR_SYSTEM_1
 
         private void Addcategory_module_Load(object sender, EventArgs e)
         {
-            datedisplay.Text = DateTime.Now.ToString("dddd, dd MMMM yyyy");
+            datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
             client = new FireSharp.FirebaseClient(config);
 
             this.Category_datagrid_stocks.AllowUserToAddRows = false;

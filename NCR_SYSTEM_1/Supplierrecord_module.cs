@@ -51,26 +51,28 @@ namespace NCR_SYSTEM_1
 
         DataTable dt = new DataTable();
 
+        public static Supplierrecord_module _instance;
 
         public Supplierrecord_module()
         {
             InitializeComponent();
+            _instance = this;
         }
 
         private void Supplierrecord_module_Load(object sender, EventArgs e)
         {
-            datedisplay.Text = DateTime.Now.ToString("dddd, dd MMMM yyyy");
+            datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
             client = new FireSharp.FirebaseClient(config);
-            //sdasdas
+        
             this.Supplier_Datagrid.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToAddRows = false;
 
 
-            dt.Columns.Add("Restock ID");
-            dt.Columns.Add("Reference Number");
-            dt.Columns.Add("Supplier Name");
-            dt.Columns.Add("Transaction Payment");
-            dt.Columns.Add("Assisted By");
+            dt.Columns.Add("Restock_ID");
+            dt.Columns.Add("Reference_Number");
+            dt.Columns.Add("Supplier_Name");
+            dt.Columns.Add("Transaction_Payment");
+            dt.Columns.Add("Assisted_By");
             dt.Columns.Add("Transaction_Date");
 
 
@@ -166,13 +168,13 @@ namespace NCR_SYSTEM_1
                     Stock_class obj1 = resp1.ResultAs<Stock_class>();
 
                     DataRow r = dt.NewRow();
-                    r["Restock ID"] = obj1.Restock_ID;
-                    r["Reference Number"] = obj1.Reference_Number;
-                    r["Supplier Name"] = obj1.Supplier_Name;
-                    r["Transaction Payment"] = obj1.Order_Total;
-                    r["Assisted By"] = obj1.Assisted_By;
+                    r["Restock_ID"] = obj1.Restock_ID;
+                    r["Reference_Number"] = obj1.Reference_Number;
+                    r["Supplier_Name"] = obj1.Supplier_Name;
+                    r["Transaction_Payment"] = obj1.Order_Total;
+                    r["Assisted_By"] = obj1.Assisted_By;
                     r["Transaction_Date"] = obj1.Date_Of_Transaction;
-
+                  
 
                     dt.Rows.Add(r);
                 }
@@ -322,12 +324,12 @@ namespace NCR_SYSTEM_1
             Supplier_Datagrid.DataSource = dv;
 
 
-            DataGridViewButtonColumn View = new DataGridViewButtonColumn();
+            DataGridViewImageColumn View = new DataGridViewImageColumn();
             Supplier_Datagrid.Columns.Add(View);
-            View.HeaderText = "View Detail";
-            View.Text = "View Detail";
-            View.Name = "view";
-            View.UseColumnTextForButtonValue = true;
+            View.HeaderText = "";
+            View.Name = "View";
+            View.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            View.Image = Properties.Resources.view;
 
             foreach (DataGridViewColumn column in Supplier_Datagrid.Columns)
             {
@@ -349,12 +351,12 @@ namespace NCR_SYSTEM_1
                 Supplier_Datagrid.DataSource = dt;
 
 
-                DataGridViewButtonColumn View = new DataGridViewButtonColumn();
+                DataGridViewImageColumn View = new DataGridViewImageColumn();
                 Supplier_Datagrid.Columns.Add(View);
-                View.HeaderText = "View Detail";
-                View.Text = "View Detail";
-                View.Name = "view";
-                View.UseColumnTextForButtonValue = true;
+                View.HeaderText = "";
+                View.Name = "View";
+                View.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                View.Image = Properties.Resources.view;
 
 
 
@@ -450,7 +452,7 @@ namespace NCR_SYSTEM_1
             //Supplier_Datagrid.Columns.Clear();
             //Supplier_Datagrid.DataSource = dv;
 
-            DataView dv = new DataView(dt);
+
             //dv.RowFilter = "[" + test + "]" + "LIKE'%" + searchtxt.Text + "%'" + "AND'%" + searchtxt.Text + "%'";
 
             //dv.RowFilter = "[Transaction_Date]" + "LIKE'" + searchtxt.Text + "'";
@@ -460,18 +462,122 @@ namespace NCR_SYSTEM_1
 
             //dv.RowFilter = "[Transaction_Date]" + ">='" + searchtxt.Text + "%'" +"'AND <='" + searchtxt.Text + "'";
 
-
-            string date1 = bunifuDatepicker1.Value.ToString("MM/dd/yyyy");
-            string date2 = bunifuDatepicker2.Value.ToString("MM/dd/yyyy");
-
-            dv.RowFilter = "[Transaction_Date]  >='" + date1 + "'AND [Transaction_Date] <='" + date2 + "'";
-
             /*   dv.RowFilter = "Transaction_Date >='" + searchtxt.Text + "' AND Transaction_Date <= '" + searchtxt.Text + "'*/
 
-            Supplier_Datagrid.DataSource = null;
-            Supplier_Datagrid.Rows.Clear();
-            Supplier_Datagrid.Columns.Clear();
-            Supplier_Datagrid.DataSource = dv;
+
+
+
+
+
+            //dv.RowFilter = "[Transaction_Date]  >='" + date1 + "'AND [Transaction_Date] <='" + date2 + "'";
+
+            ////dv.RowFilter = "[Assisted_By] LIKE '%" + bunifuMetroTextbox1.Text + "'" + "OR [Transaction_Date]  >='" + date1 + "'AND [Transaction_Date] <='" + date2 + "'";
+            ////dv.RowFilter = "[Supplier_Name] LIKE '%" + bunifuMetroTextbox2.Text + "%'";
+
+            //Supplier_Datagrid.DataSource = null;
+            //Supplier_Datagrid.Rows.Clear();
+            //Supplier_Datagrid.Columns.Clear();
+            //Supplier_Datagrid.DataSource = dv;
+
+
+            //DataView dv = new DataView(dt);
+            //string date1 = bunifuDatepicker1.Value.ToString("MM/dd/yyyy");
+            //string date2 = bunifuDatepicker2.Value.ToString("MM/dd/yyyy");
+
+            //if (bunifuMetroTextbox1.Text == "")
+            //{
+
+            //    dv.RowFilter = "[Transaction_Date]  >='" + date1 + "'AND [Transaction_Date] <='" + date2 + "'";
+
+            //    Supplier_Datagrid.DataSource = null;
+            //    Supplier_Datagrid.Rows.Clear();
+            //    Supplier_Datagrid.Columns.Clear();
+            //    Supplier_Datagrid.DataSource = dv;
+
+            //}
+            //else
+            //{
+            //    dv.RowFilter = "[Transaction_Date]  >='" + date1 + "'AND [Transaction_Date] <='" + date2 + "' " + " AND [Assisted_By] LIKE '%" + bunifuMetroTextbox1.Text + "%'";
+
+            //    //dv.RowFilter = "[Assisted_By] LIKE '" + bunifuMetroTextbox1.Text + "' OR [Assisted_By] LIKE '%" + bunifuMetroTextbox1.Text + "%'";
+            //    Supplier_Datagrid.DataSource = null;
+            //    Supplier_Datagrid.Rows.Clear();
+            //    Supplier_Datagrid.Columns.Clear();
+            //    Supplier_Datagrid.DataSource = dv;
+
+            //}
+
+            //dt.DefaultView.RowFilter = "[Transaction_Date]  >='" + date1 + "'AND [Transaction_Date] <='" + date2 + "'";
+
+            //string test = "Nathaniel";
+            //dt.DefaultView.RowFilter = "[Assisted_By] LIKE '%" + test + "%'";
+
+
+
+            //DataGridViewImageColumn View = new DataGridViewImageColumn();
+            //Supplier_Datagrid.Columns.Add(View);
+            //View.HeaderText = "";
+            //View.Name = "View";
+            //View.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            //View.Image = Properties.Resources.view;
+
+           
+
+
+            Supplierrecord_Filter_popup a = new Supplierrecord_Filter_popup();
+            a.Show();
+
+        }
+        public void filter()
+        {
+
+            DataView dv = new DataView(dt);
+            string date1 = Supplierrecord_Filter_popup.startdate;
+            string date2 = Supplierrecord_Filter_popup.enddate;
+            string assist = Supplierrecord_Filter_popup.assistedby;
+            string supplier = Supplierrecord_Filter_popup.supplier;
+
+            if (Supplierrecord_Filter_popup.supplier == "" && Supplierrecord_Filter_popup.assistedby == "")
+            {
+
+                dv.RowFilter = "[Transaction_Date]  >='" + date1 + "'AND [Transaction_Date] <='" + date2 + "'";
+
+                Supplier_Datagrid.DataSource = null;
+                Supplier_Datagrid.Rows.Clear();
+                Supplier_Datagrid.Columns.Clear();
+                Supplier_Datagrid.DataSource = dv;
+
+            }
+            else if(Supplierrecord_Filter_popup.supplier == "" && Supplierrecord_Filter_popup.assistedby != "")
+            {
+          
+                dv.RowFilter = "[Transaction_Date]  >='" + date1 + "'AND [Transaction_Date] <='" + date2 + "' " + " AND [Assisted_By] LIKE '%" + assist + "%'";
+
+
+                Supplier_Datagrid.DataSource = null;
+                Supplier_Datagrid.Rows.Clear();
+                Supplier_Datagrid.Columns.Clear();
+                Supplier_Datagrid.DataSource = dv;
+            }
+            else if (Supplierrecord_Filter_popup.supplier != "" && Supplierrecord_Filter_popup.assistedby == "")
+            {
+                dv.RowFilter = "[Transaction_Date]  >='" + date1 + "'AND [Transaction_Date] <='" + date2 + "' " + " AND [Supplier_Name] LIKE '%" + supplier + "%'";
+
+                Supplier_Datagrid.DataSource = null;
+                Supplier_Datagrid.Rows.Clear();
+                Supplier_Datagrid.Columns.Clear();
+                Supplier_Datagrid.DataSource = dv;
+            }
+            else
+            {
+
+                dv.RowFilter = "[Transaction_Date]  >='" + date1 + "'AND [Transaction_Date] <='" + date2 + "' " + " AND [Supplier_Name] LIKE '%" + supplier + "%'" + " AND [Assisted_By] LIKE '%" + assist + "%'";
+
+                Supplier_Datagrid.DataSource = null;
+                Supplier_Datagrid.Rows.Clear();
+                Supplier_Datagrid.Columns.Clear();
+                Supplier_Datagrid.DataSource = dv;
+            }
 
             DataGridViewImageColumn View = new DataGridViewImageColumn();
             Supplier_Datagrid.Columns.Add(View);
@@ -479,9 +585,6 @@ namespace NCR_SYSTEM_1
             View.Name = "View";
             View.ImageLayout = DataGridViewImageCellLayout.Zoom;
             View.Image = Properties.Resources.view;
-
-            gettransactioncount();
-            getsales();
         }
     }
 }
