@@ -601,6 +601,12 @@ namespace NCR_SYSTEM_1
                 Cart_Datagridview.Rows[e.RowIndex].Cells[4].Value = uprice.ToString(fmt);
                 Cart_Datagridview.Rows[e.RowIndex].Cells[5].Value = product.ToString(fmt);
 
+                if (Cart_Datagridview.Rows[e.RowIndex].Cells[5].Value.Equals(".00"))
+                {
+                    Cart_Datagridview.Rows[e.RowIndex].Cells[5].Value = "0.00";
+                }
+
+
                 // line total
                 try
                 {

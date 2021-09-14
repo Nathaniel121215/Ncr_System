@@ -37,7 +37,7 @@ namespace NCR_SYSTEM_1
 
 
         string temfee;
-        string temchange;
+        
 
 
         public static ProcessOrder_popup _instance;

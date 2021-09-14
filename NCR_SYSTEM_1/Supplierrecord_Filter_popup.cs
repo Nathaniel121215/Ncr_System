@@ -44,6 +44,8 @@ namespace NCR_SYSTEM_1
 
 
             Supplierrecord_module._instance.filter();
+            Supplierrecord_module.checker = "allow";
+            this.Hide();
         }
 
         private void Supplierrecord_Filter_popup_Load(object sender, EventArgs e)
@@ -88,6 +90,17 @@ namespace NCR_SYSTEM_1
             catch
             {
             }
+        }
+
+        private void bunifuImageButton1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Supplierrecord_module.checker = "allow";
+        }
+
+        private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

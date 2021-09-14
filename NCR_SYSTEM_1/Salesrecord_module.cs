@@ -15,6 +15,10 @@ namespace NCR_SYSTEM_1
 {
     public partial class Salesrecord_module : Form
     {
+        public static string checker = "";
+
+        private Image[] StatusImgs;
+
         int supressor = 1;
 
         public static string ID;
@@ -51,10 +55,12 @@ namespace NCR_SYSTEM_1
         DataTable dt = new DataTable();
 
 
+        public static Salesrecord_module _instance;
 
         public Salesrecord_module()
         {
             InitializeComponent();
+            _instance = this;
         }
 
         private void Salesrecord_module_Load(object sender, EventArgs e)
@@ -72,7 +78,9 @@ namespace NCR_SYSTEM_1
             dt.Columns.Add("Customer Name");
             dt.Columns.Add("Transaction Payment");
             dt.Columns.Add("Assisted By");
+            dt.Columns.Add("Transaction Type txt");
             dt.Columns.Add("Transaction Date");
+           
 
 
             Sales_Datagrid.DataSource = dt;
@@ -91,6 +99,15 @@ namespace NCR_SYSTEM_1
             View.ImageLayout = DataGridViewImageCellLayout.Zoom;
             View.Image = Properties.Resources.view;
 
+            // Transaction type
+
+            DataGridViewImageColumn TransactionType = new DataGridViewImageColumn();
+            Sales_Datagrid.Columns.Add(TransactionType);
+            TransactionType.HeaderText = "Transaction Type";
+            TransactionType.Name = "Transaction Type";
+            TransactionType.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            TransactionType.Image = Properties.Resources.loading;
+
 
             dataGridView1.Columns.Add("Q", "Quantity");
             dataGridView1.Columns.Add("U", "Unit");
@@ -108,6 +125,9 @@ namespace NCR_SYSTEM_1
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
+
+            Sales_Datagrid.Columns[8].DisplayIndex = 5;
+            Sales_Datagrid.Columns[5].Visible = false;
 
 
 
@@ -139,7 +159,7 @@ namespace NCR_SYSTEM_1
                     r["Transaction Payment"] = obj1.Order_Total;
                     r["Assisted By"] = obj1.Assisted_By;
                     r["Transaction Date"] = obj1.Date_Of_Transaction;
-
+                    r["Transaction Type txt"] = obj1.Transaction_Type;
 
                     dt.Rows.Add(r);
                 }
@@ -149,6 +169,45 @@ namespace NCR_SYSTEM_1
 
                 }
             }
+
+           
+                foreach (DataGridViewRow row in Sales_Datagrid.Rows)
+                {
+
+                    try
+                    {
+
+
+                        StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.onsite_icon, NCR_SYSTEM_1.Properties.Resources.delivery_icon };
+
+
+
+                        if (row.Cells[5].Value.Equals("On-site")) 
+                        {
+                            row.Cells[8].Value = StatusImgs[0];
+           
+                        }
+
+                        if (row.Cells[5].Value.Equals("Delivery"))
+                        {
+                            row.Cells[8].Value = StatusImgs[1];
+                            
+                        }
+
+
+
+                    }
+                    catch
+                    {
+
+                    }
+
+           
+            }
+
+            getsales();
+            gettransactioncount();
+            checker = "allow";
         }
 
         private void bunifuImageButton2_Click(object sender, EventArgs e)
@@ -164,7 +223,7 @@ namespace NCR_SYSTEM_1
 
             try
             {
-                if (e.ColumnIndex == Sales_Datagrid.Columns[6].Index)
+                if (e.ColumnIndex == Sales_Datagrid.Columns[7].Index)
                 {
                     columnindex = Sales_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
@@ -266,18 +325,75 @@ namespace NCR_SYSTEM_1
             Sales_Datagrid.DataSource = dv;
 
 
-            DataGridViewButtonColumn View = new DataGridViewButtonColumn();
+            DataGridViewImageColumn View = new DataGridViewImageColumn();
             Sales_Datagrid.Columns.Add(View);
-            View.HeaderText = "View Detail";
-            View.Text = "View Detail";
-            View.Name = "view";
-            View.UseColumnTextForButtonValue = true;
+            View.HeaderText = "";
+            View.Name = "View";
+            View.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            View.Image = Properties.Resources.view;
 
+            DataGridViewImageColumn TransactionType = new DataGridViewImageColumn();
+            Sales_Datagrid.Columns.Add(TransactionType);
+            TransactionType.HeaderText = "Transaction Type";
+            TransactionType.Name = "Transaction Type";
+            TransactionType.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            TransactionType.Image = Properties.Resources.loading;
+
+
+
+            getsales();
+            gettransactioncount();
+
+            filterlabeltxt.Text = "";
+
+            searchupdate();
+
+        }
+
+        public void searchupdate()
+        {
             foreach (DataGridViewColumn column in Sales_Datagrid.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
 
+            Sales_Datagrid.Columns[8].DisplayIndex = 5;
+            Sales_Datagrid.Columns[5].Visible = false;
+
+
+            foreach (DataGridViewRow row in Sales_Datagrid.Rows)
+            {
+
+                try
+                {
+
+
+                    StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.onsite_icon, NCR_SYSTEM_1.Properties.Resources.delivery_icon };
+
+
+
+                    if (row.Cells[5].Value.Equals("On-site"))
+                    {
+                        row.Cells[8].Value = StatusImgs[0];
+
+                    }
+
+                    if (row.Cells[5].Value.Equals("Delivery"))
+                    {
+                        row.Cells[8].Value = StatusImgs[1];
+
+                    }
+
+
+
+                }
+                catch
+                {
+
+                }
+
+
+            }
 
         }
 
@@ -293,19 +409,26 @@ namespace NCR_SYSTEM_1
                 Sales_Datagrid.DataSource = dt;
 
 
-                DataGridViewButtonColumn View = new DataGridViewButtonColumn();
+                DataGridViewImageColumn View = new DataGridViewImageColumn();
                 Sales_Datagrid.Columns.Add(View);
-                View.HeaderText = "View Detail";
-                View.Text = "View Detail";
-                View.Name = "view";
-                View.UseColumnTextForButtonValue = true;
+                View.HeaderText = "";
+                View.Name = "View";
+                View.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                View.Image = Properties.Resources.view;
+
+                DataGridViewImageColumn TransactionType = new DataGridViewImageColumn();
+                Sales_Datagrid.Columns.Add(TransactionType);
+                TransactionType.HeaderText = "Transaction Type";
+                TransactionType.Name = "Transaction Type";
+                TransactionType.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                TransactionType.Image = Properties.Resources.loading;
 
 
 
                 DataViewAll();
 
 
-
+                filterlabeltxt.Text = "";
             }
 
             if (searchtxt.Text != "")
@@ -313,6 +436,131 @@ namespace NCR_SYSTEM_1
                 supressor = 1;
 
             }
+        }
+
+        private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            if (checker.Equals("allow"))
+            {
+                Salesrecord_Filter_popup a = new Salesrecord_Filter_popup();
+                a.Show();
+
+                checker = "dontallow";
+            }
+            else
+            {
+                MessageBox.Show("The tab is currently already open.");
+            }
+
+        }
+
+        public void filter()
+        {
+            DataView dv = new DataView(dt);
+            string date1 = Salesrecord_Filter_popup.startdate;
+            string date2 = Salesrecord_Filter_popup.enddate;
+            string assist = Salesrecord_Filter_popup.assistedby;
+            string transactiontype = Salesrecord_Filter_popup.transactiontype;
+
+            if (Salesrecord_Filter_popup.transactiontype == "" && Salesrecord_Filter_popup.assistedby == "")
+            {
+
+                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "'";
+
+                Sales_Datagrid.DataSource = null;
+                Sales_Datagrid.Rows.Clear();
+                Sales_Datagrid.Columns.Clear();
+                Sales_Datagrid.DataSource = dv;
+
+
+            }
+
+            else if (Salesrecord_Filter_popup.transactiontype == "" && Salesrecord_Filter_popup.assistedby != "")
+            {
+
+                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "' " + " AND [Assisted By] LIKE '%" + assist + "%'";
+
+
+                Sales_Datagrid.DataSource = null;
+                Sales_Datagrid.Rows.Clear();
+                Sales_Datagrid.Columns.Clear();
+                Sales_Datagrid.DataSource = dv;
+            }
+            else if (Salesrecord_Filter_popup.transactiontype != "" && Salesrecord_Filter_popup.assistedby == "")
+            {
+                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "' " + " AND [Transaction Type txt] LIKE '%" + transactiontype + "%'";
+
+                Sales_Datagrid.DataSource = null;
+                Sales_Datagrid.Rows.Clear();
+                Sales_Datagrid.Columns.Clear();
+                Sales_Datagrid.DataSource = dv;
+            }
+            else
+            {
+
+                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "' " + " AND [Transaction Type txt] LIKE '%" + transactiontype + "%'" + " AND [Assisted By] LIKE '%" + assist + "%'";
+
+                Sales_Datagrid.DataSource = null;
+                Sales_Datagrid.Rows.Clear();
+                Sales_Datagrid.Columns.Clear();
+                Sales_Datagrid.DataSource = dv;
+            }
+
+
+
+            filterlabeltxt.Text = date1 + " to " + date2;
+
+            DataGridViewImageColumn View = new DataGridViewImageColumn();
+            Sales_Datagrid.Columns.Add(View);
+            View.HeaderText = "";
+            View.Name = "View";
+            View.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            View.Image = Properties.Resources.view;
+
+            DataGridViewImageColumn TransactionType = new DataGridViewImageColumn();
+            Sales_Datagrid.Columns.Add(TransactionType);
+            TransactionType.HeaderText = "Transaction Type";
+            TransactionType.Name = "Transaction Type";
+            TransactionType.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            TransactionType.Image = Properties.Resources.loading;
+
+            getsales();
+            gettransactioncount();
+            searchupdate();
+
+        }
+
+        public void getsales()
+        {
+            decimal totalsales = 0;
+
+
+            for (int a = 0; a < Sales_Datagrid.Rows.Count; a++)
+            {
+                totalsales += Convert.ToDecimal(Sales_Datagrid.Rows[a].Cells[3].Value);
+            }
+
+            Salestxt.Text = totalsales.ToString();
+
+
+
+        }
+
+        public void gettransactioncount()
+        {
+            int transactioncount = 0;
+            transactioncount = Sales_Datagrid.Rows.Count;
+
+            TransactionCounttxt.Text = transactioncount.ToString();
+
+
+        }
+
+        private void bunifuImageButton10_Click(object sender, EventArgs e)
+        {
+            Supplierrecord_module a = new Supplierrecord_module();
+            this.Hide();
+            a.Show();
         }
     }
 }

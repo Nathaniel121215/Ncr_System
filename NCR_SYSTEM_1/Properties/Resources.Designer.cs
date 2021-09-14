@@ -163,6 +163,16 @@ namespace NCR_SYSTEM_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap delivery_icon {
+            get {
+                object obj = ResourceManager.GetObject("delivery-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fade_activity_logs {
             get {
                 object obj = ResourceManager.GetObject("fade activity logs", resourceCulture);
@@ -526,6 +536,16 @@ namespace NCR_SYSTEM_1.Properties {
         internal static System.Drawing.Bitmap new_out_of_stock {
             get {
                 object obj = ResourceManager.GetObject("new out of stock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap onsite_icon {
+            get {
+                object obj = ResourceManager.GetObject("onsite-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

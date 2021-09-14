@@ -15,6 +15,7 @@ namespace NCR_SYSTEM_1
 {
     public partial class Supplierrecord_module : Form
     {
+        public static string checker = "";
 
         public static int cartcount;
 
@@ -68,12 +69,12 @@ namespace NCR_SYSTEM_1
             this.dataGridView1.AllowUserToAddRows = false;
 
 
-            dt.Columns.Add("Restock_ID");
-            dt.Columns.Add("Reference_Number");
-            dt.Columns.Add("Supplier_Name");
-            dt.Columns.Add("Transaction_Payment");
-            dt.Columns.Add("Assisted_By");
-            dt.Columns.Add("Transaction_Date");
+            dt.Columns.Add("Restock ID");
+            dt.Columns.Add("Reference Number");
+            dt.Columns.Add("Supplier Name");
+            dt.Columns.Add("Transaction Payment");
+            dt.Columns.Add("Assisted By");
+            dt.Columns.Add("Transaction Date");
 
 
             Supplier_Datagrid.DataSource = dt;
@@ -92,6 +93,8 @@ namespace NCR_SYSTEM_1
             View.ImageLayout = DataGridViewImageCellLayout.Zoom;
             View.Image = Properties.Resources.view;
 
+           
+
 
             dataGridView1.Columns.Add("Q", "Quantity");
             dataGridView1.Columns.Add("U", "Unit");
@@ -102,6 +105,8 @@ namespace NCR_SYSTEM_1
             //dataGridView1.Columns.Add("U", "Unit");
             //dataGridView1.Columns.Add("T", "Item");
             //dataGridView1.Columns.Add("P", "Price");
+
+
 
 
 
@@ -168,12 +173,12 @@ namespace NCR_SYSTEM_1
                     Stock_class obj1 = resp1.ResultAs<Stock_class>();
 
                     DataRow r = dt.NewRow();
-                    r["Restock_ID"] = obj1.Restock_ID;
-                    r["Reference_Number"] = obj1.Reference_Number;
-                    r["Supplier_Name"] = obj1.Supplier_Name;
-                    r["Transaction_Payment"] = obj1.Order_Total;
-                    r["Assisted_By"] = obj1.Assisted_By;
-                    r["Transaction_Date"] = obj1.Date_Of_Transaction;
+                    r["Restock ID"] = obj1.Restock_ID;
+                    r["Reference Number"] = obj1.Reference_Number;
+                    r["Supplier Name"] = obj1.Supplier_Name;
+                    r["Transaction Payment"] = obj1.Order_Total;
+                    r["Assisted By"] = obj1.Assisted_By;
+                    r["Transaction Date"] = obj1.Date_Of_Transaction;
                   
 
                     dt.Rows.Add(r);
@@ -186,6 +191,7 @@ namespace NCR_SYSTEM_1
             }
             gettransactioncount();
             getsales();
+            checker = "allow";
         }
 
         private void Supplier_Datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -336,7 +342,10 @@ namespace NCR_SYSTEM_1
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
 
+            getsales();
+            gettransactioncount();
 
+            filterlabeltxt.Text = "";
         }
 
         private void bunifuMetroTextbox2_KeyUp(object sender, KeyEventArgs e)
@@ -362,7 +371,7 @@ namespace NCR_SYSTEM_1
 
                 DataViewAll();
 
-              
+                filterlabeltxt.Text = "";
 
             }
 
@@ -522,10 +531,20 @@ namespace NCR_SYSTEM_1
             //View.Image = Properties.Resources.view;
 
            
+          
 
 
-            Supplierrecord_Filter_popup a = new Supplierrecord_Filter_popup();
-            a.Show();
+            if (checker.Equals("allow"))
+            {
+                Supplierrecord_Filter_popup a = new Supplierrecord_Filter_popup();
+                a.Show();
+
+                checker = "dontallow";
+            }
+            else
+            {
+                MessageBox.Show("The tab is currently already open.");
+            }
 
         }
         public void filter()
@@ -540,7 +559,7 @@ namespace NCR_SYSTEM_1
             if (Supplierrecord_Filter_popup.supplier == "" && Supplierrecord_Filter_popup.assistedby == "")
             {
 
-                dv.RowFilter = "[Transaction_Date]  >='" + date1 + "'AND [Transaction_Date] <='" + date2 + "'";
+                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "'";
 
                 Supplier_Datagrid.DataSource = null;
                 Supplier_Datagrid.Rows.Clear();
@@ -551,7 +570,7 @@ namespace NCR_SYSTEM_1
             else if(Supplierrecord_Filter_popup.supplier == "" && Supplierrecord_Filter_popup.assistedby != "")
             {
           
-                dv.RowFilter = "[Transaction_Date]  >='" + date1 + "'AND [Transaction_Date] <='" + date2 + "' " + " AND [Assisted_By] LIKE '%" + assist + "%'";
+                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "' " + " AND [Assisted By] LIKE '%" + assist + "%'";
 
 
                 Supplier_Datagrid.DataSource = null;
@@ -561,7 +580,7 @@ namespace NCR_SYSTEM_1
             }
             else if (Supplierrecord_Filter_popup.supplier != "" && Supplierrecord_Filter_popup.assistedby == "")
             {
-                dv.RowFilter = "[Transaction_Date]  >='" + date1 + "'AND [Transaction_Date] <='" + date2 + "' " + " AND [Supplier_Name] LIKE '%" + supplier + "%'";
+                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "' " + " AND [Supplier Name] LIKE '%" + supplier + "%'";
 
                 Supplier_Datagrid.DataSource = null;
                 Supplier_Datagrid.Rows.Clear();
@@ -571,7 +590,7 @@ namespace NCR_SYSTEM_1
             else
             {
 
-                dv.RowFilter = "[Transaction_Date]  >='" + date1 + "'AND [Transaction_Date] <='" + date2 + "' " + " AND [Supplier_Name] LIKE '%" + supplier + "%'" + " AND [Assisted_By] LIKE '%" + assist + "%'";
+                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "' " + " AND [Supplier Name] LIKE '%" + supplier + "%'" + " AND [Assisted By] LIKE '%" + assist + "%'";
 
                 Supplier_Datagrid.DataSource = null;
                 Supplier_Datagrid.Rows.Clear();
@@ -579,12 +598,22 @@ namespace NCR_SYSTEM_1
                 Supplier_Datagrid.DataSource = dv;
             }
 
+            filterlabeltxt.Text = date1 + " to " + date2;
+
             DataGridViewImageColumn View = new DataGridViewImageColumn();
             Supplier_Datagrid.Columns.Add(View);
             View.HeaderText = "";
             View.Name = "View";
             View.ImageLayout = DataGridViewImageCellLayout.Zoom;
             View.Image = Properties.Resources.view;
+
+            getsales();
+            gettransactioncount();
+        }
+
+        private void bunifuFlatButton1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
