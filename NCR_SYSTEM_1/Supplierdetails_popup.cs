@@ -14,15 +14,7 @@ namespace NCR_SYSTEM_1
 {
     public partial class Supplierdetails_popup : Form
     {
-     
-        IFirebaseClient client;
-
-        IFirebaseConfig config = new FirebaseConfig
-        {
-            AuthSecret = "flovfXDWmVoWaFqDWNv7aVwSkVY89OkcXH9Rmj2A",
-            BasePath = "https://fir-test-6c417-default-rtdb.firebaseio.com/"
-        };
-
+    
         public Supplierdetails_popup()
         {
             InitializeComponent();

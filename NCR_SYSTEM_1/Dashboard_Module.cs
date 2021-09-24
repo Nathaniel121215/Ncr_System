@@ -148,8 +148,9 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton17_Click(object sender, EventArgs e)
         {
-            Inventory_Module a = new Inventory_Module();
             this.Hide();
+            Inventory_Module a = new Inventory_Module();
+        
             a.Show();
         }
 
@@ -190,6 +191,22 @@ namespace NCR_SYSTEM_1
             Stockpurchasing_Module a = new Stockpurchasing_Module();
             this.Hide();
             a.Show();
+        }
+
+        private void bunifuImageButton8_Click(object sender, EventArgs e)
+        {
+
+            if (Form1.levelac.Equals("Admin"))
+            {
+                InventoryArchive_Module a = new InventoryArchive_Module();
+                this.Hide();
+                a.Show();
+            }
+          
+            else
+            {
+                MessageBox.Show("Your account do not have access on this Module.");
+            }
         }
     }
 }

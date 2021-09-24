@@ -141,9 +141,9 @@
             this.items.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.items.FormattingEnabled = true;
             this.items.ItemHeight = 17;
-            this.items.Location = new System.Drawing.Point(630, 56);
+            this.items.Location = new System.Drawing.Point(630, 36);
             this.items.Name = "items";
-            this.items.Size = new System.Drawing.Size(81, 21);
+            this.items.Size = new System.Drawing.Size(81, 38);
             this.items.TabIndex = 213;
             this.items.Visible = false;
             // 

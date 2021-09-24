@@ -37,8 +37,7 @@ namespace NCR_SYSTEM_1
         string brand = "";
         string productdescription = "";
         string category = "";
-        decimal price = 0;
-        decimal linetotal = 0;
+      
 
 
         public static int itemCount;
@@ -179,10 +178,12 @@ namespace NCR_SYSTEM_1
                     Price = Linetotallist[i]
                 };
             }
+       
 
             foreach (Item item in concat)
             {
                 listBox.Items.Add(item.ToString());
+               
             }
 
             listitems = new string[listBox.Items.Count];

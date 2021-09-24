@@ -432,7 +432,7 @@
             this.Supplier_Datagrid.Name = "Supplier_Datagrid";
             this.Supplier_Datagrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.Supplier_Datagrid.RowHeadersWidth = 40;
-            this.Supplier_Datagrid.RowTemplate.Height = 30;
+            this.Supplier_Datagrid.RowTemplate.Height = 35;
             this.Supplier_Datagrid.RowTemplate.ReadOnly = true;
             this.Supplier_Datagrid.Size = new System.Drawing.Size(1479, 710);
             this.Supplier_Datagrid.TabIndex = 185;

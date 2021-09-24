@@ -113,6 +113,16 @@ namespace NCR_SYSTEM_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap archive {
+            get {
+                object obj = ResourceManager.GetObject("archive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Archive_Icon {
             get {
                 object obj = ResourceManager.GetObject("Archive Icon", resourceCulture);
@@ -173,6 +183,16 @@ namespace NCR_SYSTEM_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fade_account_archive {
+            get {
+                object obj = ResourceManager.GetObject("fade account archive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fade_activity_logs {
             get {
                 object obj = ResourceManager.GetObject("fade activity logs", resourceCulture);
@@ -186,6 +206,16 @@ namespace NCR_SYSTEM_1.Properties {
         internal static System.Drawing.Bitmap fade_archive_data {
             get {
                 object obj = ResourceManager.GetObject("fade archive data", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fade_inventory_archive {
+            get {
+                object obj = ResourceManager.GetObject("fade inventory archive", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -226,6 +256,16 @@ namespace NCR_SYSTEM_1.Properties {
         internal static System.Drawing.Bitmap fade_stock_purchasing {
             get {
                 object obj = ResourceManager.GetObject("fade stock purchasing", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fade_supplier_archive {
+            get {
+                object obj = ResourceManager.GetObject("fade supplier archive", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -453,6 +493,16 @@ namespace NCR_SYSTEM_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap inventory_archive {
+            get {
+                object obj = ResourceManager.GetObject("inventory archive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap inventory_button {
             get {
                 object obj = ResourceManager.GetObject("inventory button", resourceCulture);
@@ -593,6 +643,16 @@ namespace NCR_SYSTEM_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Restore_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Restore_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sale_record {
             get {
                 object obj = ResourceManager.GetObject("sale record", resourceCulture);
@@ -676,6 +736,16 @@ namespace NCR_SYSTEM_1.Properties {
         internal static System.Drawing.Bitmap view {
             get {
                 object obj = ResourceManager.GetObject("view", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap View_Icon {
+            get {
+                object obj = ResourceManager.GetObject("View_Icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -176,8 +176,8 @@ namespace NCR_SYSTEM_1
                         Description = pdescription.Text,
                         Category = pcategory.Text,
                         Price = pprice.Text,
-                        Items_Sold = 0,
-                        Stock = 0,
+                        Items_Sold = "0",
+                        Stock = "0",
                         Low = Addproductstockindicator_popup.lowtxt,
                         High = Addproductstockindicator_popup.hightxt,
                     };

@@ -266,6 +266,7 @@
             this.bunifuImageButton9.TabIndex = 35;
             this.bunifuImageButton9.TabStop = false;
             this.bunifuImageButton9.Zoom = 10;
+            this.bunifuImageButton9.Click += new System.EventHandler(this.bunifuImageButton9_Click);
             // 
             // panel2
             // 
@@ -307,7 +308,7 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(1189, 28);
+            this.listBox1.Location = new System.Drawing.Point(1167, 31);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(120, 30);
             this.listBox1.TabIndex = 206;

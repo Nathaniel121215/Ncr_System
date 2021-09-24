@@ -56,8 +56,8 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            Dashboard_Module a = new Dashboard_Module();
             this.Hide();
+            Dashboard_Module a = new Dashboard_Module();
             a.Show();
         }
 
@@ -304,7 +304,7 @@ namespace NCR_SYSTEM_1
             {
 
                 
-                    //delete
+                    //Archive
                     if (e.ColumnIndex == Inventory_Datagrid.Columns[13].Index)
                     {
 
@@ -313,7 +313,52 @@ namespace NCR_SYSTEM_1
                     {
                         columnindex = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
+                       
+
+                        //new archive code
+
+                        var data = new InventoryArchive_Class
+                        {
+                            ID = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString(),
+                            Product_Name = Inventory_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                            Unit = Inventory_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString(),
+                            Brand = Inventory_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                            Description = Inventory_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString(),
+                            Category = Inventory_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString(),
+                            Price = Inventory_Datagrid.Rows[e.RowIndex].Cells[6].Value.ToString(),
+                            Items_Sold = Inventory_Datagrid.Rows[e.RowIndex].Cells[7].Value.ToString(),
+                            Stock = Inventory_Datagrid.Rows[e.RowIndex].Cells[8].Value.ToString(),
+                            Low = Inventory_Datagrid.Rows[e.RowIndex].Cells[9].Value.ToString(),
+                            High = Inventory_Datagrid.Rows[e.RowIndex].Cells[10].Value.ToString(),
+
+                            Date_Archived = DateTime.Now.ToString("MM/dd/yyyy"),
+                            User = Form1.username,
+
+                    };
+
+
+                        //add to archive 
+                        FirebaseResponse response3 = client.Set("InventoryArchive/" + data.ID, data);
+                        Product_class result = response3.ResultAs<Product_class>();
+
+                        //get archive counter
+                        FirebaseResponse resp = client.Get("InventoryArchiveCounter/node");
+                        Counter_class get = resp.ResultAs<Counter_class>();
+
+                        //update archive counter
+                        var obj = new Counter_class
+                        {
+                            cnt = (Convert.ToInt32(get.cnt) + 1).ToString(),
+                        };
+
+                        SetResponse response4 = client.Set("InventoryArchiveCounter/node", obj);
+
+
+
+                        //delete from current table
+
                         FirebaseResponse response = client.Delete("Inventory/" + columnindex);
+
 
 
 
@@ -384,8 +429,9 @@ namespace NCR_SYSTEM_1
         private void bunifuImageButton12_Click(object sender, EventArgs e)
         {
             stockpurchase_Module a = new stockpurchase_Module();
-            this.Hide();
             a.Show();
+            this.Hide();
+            
         }
 
         private void bunifuImageButton7_Click(object sender, EventArgs e)
@@ -902,6 +948,11 @@ namespace NCR_SYSTEM_1
             Indicator.Image = Properties.Resources.loading;
 
             searchupdate();
+        }
+
+        private void Inventory_Datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

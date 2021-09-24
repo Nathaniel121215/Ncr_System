@@ -171,6 +171,19 @@
     <Compile Include="Addsupplier_popup.Designer.cs">
       <DependentUpon>Addsupplier_popup.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryArchive_Class.cs" />
+    <Compile Include="InventoryArchive_Filter_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryArchive_Filter_popup.Designer.cs">
+      <DependentUpon>InventoryArchive_Filter_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryArchive_Module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryArchive_Module.Designer.cs">
+      <DependentUpon>InventoryArchive_Module.cs</DependentUpon>
+    </Compile>
     <Compile Include="Salesrecord_Filter_popup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -366,6 +379,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Finalizestock_popup.resx">
       <DependentUpon>Finalizestock_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryArchive_Filter_popup.resx">
+      <DependentUpon>InventoryArchive_Filter_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryArchive_Module.resx">
+      <DependentUpon>InventoryArchive_Module.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Salesrecord_Filter_popup.resx">
       <DependentUpon>Salesrecord_Filter_popup.cs</DependentUpon>
@@ -578,6 +597,12 @@
     <None Include="Resources\fade stock adjustment.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\inventory archive.png" />
+    <None Include="Resources\fade supplier archive.png" />
+    <None Include="Resources\fade account archive.png" />
+    <None Include="Resources\fade inventory archive.png" />
+    <None Include="Resources\Restore_Icon.png" />
+    <None Include="Resources\View_Icon.png" />
     <None Include="Resources\delivery-icon.png" />
     <None Include="Resources\onsite-icon.png" />
     <None Include="Resources\Group 179.png" />
@@ -594,6 +619,7 @@
     <None Include="Resources\Add Icon.png" />
     <None Include="Resources\Add Icon 2.png" />
     <None Include="Resources\Archive Icon.png" />
+    <None Include="Resources\archive.png" />
     <Content Include="Resources\Bitmap1.bmp" />
     <None Include="Resources\new out of stock.png" />
     <None Include="Resources\new low on stock.png" />

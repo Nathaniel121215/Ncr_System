@@ -1,6 +1,12 @@
-﻿namespace NCR_SYSTEM_1
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace NCR_SYSTEM_1
 {
-    internal class Product_class
+    class InventoryArchive_Class
     {
         public string ID { get; set; }
         public string Product_Name { get; set; }
@@ -14,5 +20,8 @@
         public string Low { get; set; }
         public string High { get; set; }
 
+
+        public string Date_Archived { get; set; }
+        public string User { get; set; }
     }
 }

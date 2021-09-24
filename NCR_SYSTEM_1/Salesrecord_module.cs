@@ -562,5 +562,12 @@ namespace NCR_SYSTEM_1
             this.Hide();
             a.Show();
         }
+
+        private void bunifuImageButton9_Click(object sender, EventArgs e)
+        {
+            Dashboard_Module a = new Dashboard_Module();
+            this.Hide();
+            a.Show();
+        }
     }
 }

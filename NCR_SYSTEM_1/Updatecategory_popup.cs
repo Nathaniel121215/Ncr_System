@@ -64,7 +64,7 @@ namespace NCR_SYSTEM_1
 
                 }
 
-                catch (Exception b)
+                catch 
                 {
 
                 }
