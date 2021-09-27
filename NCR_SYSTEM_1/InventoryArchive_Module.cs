@@ -173,6 +173,7 @@ namespace NCR_SYSTEM_1
             }
             gettransactioncount();
             checker = "allow";
+            filterlabeltxt.Text = "";
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
@@ -392,6 +393,100 @@ namespace NCR_SYSTEM_1
                 supressor = 1;
 
             }
+
+
+        }
+
+        private void Inventory_Datagrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            //restore
+            string columnindex = "";
+
+            try
+            {
+                if (e.ColumnIndex == Inventory_Datagrid.Columns[10].Index)
+                {
+                    columnindex = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+
+
+
+                    FirebaseResponse resp1 = client.Get("InventoryArchive/" + columnindex);
+                    Product_class obj1 = resp1.ResultAs<Product_class>();
+
+                    var data = new Product_class
+                    {
+                        ID = obj1.ID,
+                        Product_Name = obj1.Product_Name,
+                        Unit = obj1.Unit,
+                        Brand = obj1.Brand,
+                        Description = obj1.Description,
+                        Category = obj1.Category,
+                        Price = obj1.Price,
+                        Items_Sold = obj1.Items_Sold,
+                        Stock = "0",
+
+                        Low = obj1.Low,
+                        High = obj1.High,
+
+
+
+
+                    };
+
+                    FirebaseResponse response = client.Set("Inventory/" + data.ID, data);
+                    Product_class result = response.ResultAs<Product_class>();
+               
+
+
+
+                    FirebaseResponse resp3 = client.Get("inventoryCounterExisting/node");
+                    Counter_class gett = resp3.ResultAs<Counter_class>();
+                    int exist = (Convert.ToInt32(gett.cnt) + 1);
+                    var obj2 = new Counter_class
+                    {
+                        cnt = exist.ToString()
+                    };
+
+
+                    SetResponse response2 = client.Set("inventoryCounterExisting/node", obj2);
+
+
+
+                    //get archive counter
+                    FirebaseResponse resp = client.Get("InventoryArchiveCounter/node");
+                    Counter_class get = resp.ResultAs<Counter_class>();
+
+                    //update archive counter
+                    var obj = new Counter_class
+                    {
+                        cnt = (Convert.ToInt32(get.cnt) - 1).ToString(),
+                    };
+
+                    SetResponse response4 = client.Set("InventoryArchiveCounter/node", obj);
+
+
+
+                    //delete from current table
+
+                    FirebaseResponse response5 = client.Delete("InventoryArchive/" + columnindex);
+
+
+                    DataViewAll();
+
+
+                }
+
+
+
+                   
+            }
+            catch
+            {
+
+            }
+
 
 
         }

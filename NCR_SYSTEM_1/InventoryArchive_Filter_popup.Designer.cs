@@ -199,9 +199,9 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(32, 65);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 23);
+            this.label1.Size = new System.Drawing.Size(190, 23);
             this.label1.TabIndex = 349;
-            this.label1.Text = "Sales Record Filter";
+            this.label1.Text = "Inventory Archive Filter";
             // 
             // label5
             // 

@@ -420,6 +420,7 @@
             this.Inventory_Datagrid.RowTemplate.ReadOnly = true;
             this.Inventory_Datagrid.Size = new System.Drawing.Size(1479, 710);
             this.Inventory_Datagrid.TabIndex = 198;
+            this.Inventory_Datagrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Inventory_Datagrid_CellClick);
             // 
             // panel3
             // 
@@ -540,7 +541,7 @@
             this.TransactionCounttxt.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.TransactionCounttxt.Size = new System.Drawing.Size(229, 53);
             this.TransactionCounttxt.TabIndex = 332;
-            this.TransactionCounttxt.Text = "01";
+            this.TransactionCounttxt.Text = "00";
             this.TransactionCounttxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // label5

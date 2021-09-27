@@ -500,7 +500,7 @@
             this.Salestxt.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.Salestxt.Size = new System.Drawing.Size(229, 53);
             this.Salestxt.TabIndex = 202;
-            this.Salestxt.Text = "01";
+            this.Salestxt.Text = "00";
             this.Salestxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // label5
@@ -539,7 +539,7 @@
             this.TransactionCounttxt.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.TransactionCounttxt.Size = new System.Drawing.Size(229, 53);
             this.TransactionCounttxt.TabIndex = 314;
-            this.TransactionCounttxt.Text = "01";
+            this.TransactionCounttxt.Text = "00";
             this.TransactionCounttxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // bunifuFlatButton2
