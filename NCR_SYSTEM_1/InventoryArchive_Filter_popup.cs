@@ -49,6 +49,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
+            InventoryArchive_Module.checker = "allow";
             this.Hide();
         }
     }

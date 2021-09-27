@@ -15,6 +15,20 @@ namespace NCR_SYSTEM_1
 {
     public partial class InventoryArchive_Module : Form
     {
+        public static string ID;
+        public static string Product_Name;
+        public static string Unit;
+        public static string Brand;
+        public static string Description;
+        public static string Category;
+
+        public static string Price;
+        public static string Items_Sold;
+
+        public static string Low;
+        public static string High;
+
+
         int supressor = 1;
 
         public static string checker = "";
@@ -162,8 +176,8 @@ namespace NCR_SYSTEM_1
 
                     dt.Rows.Add(r);
 
-                  
 
+                    gettransactioncount();
                 }
 
                 catch
@@ -431,8 +445,6 @@ namespace NCR_SYSTEM_1
                         High = obj1.High,
 
 
-
-
                     };
 
                     FirebaseResponse response = client.Set("Inventory/" + data.ID, data);
@@ -472,15 +484,47 @@ namespace NCR_SYSTEM_1
 
                     FirebaseResponse response5 = client.Delete("InventoryArchive/" + columnindex);
 
-
+                    gettransactioncount();
+                    filterlabeltxt.Text = "";
                     DataViewAll();
+
+
+                }
+
+                //view
+                if (e.ColumnIndex == Inventory_Datagrid.Columns[9].Index)
+                {
+                    columnindex = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+                    FirebaseResponse resp1 = client.Get("InventoryArchive/" + columnindex);
+                    Product_class obj1 = resp1.ResultAs<Product_class>();
+
+
+                    ID = obj1.ID;
+                    Product_Name = obj1.Product_Name;
+                    Unit = obj1.Unit;
+                    Brand = obj1.Brand;
+                    Description = obj1.Description;
+                    Category = obj1.Category;
+                    Price = obj1.Price;
+                    Items_Sold = obj1.Items_Sold;
+                    Low = obj1.Low;
+                    High = obj1.High;
+
+
+
+                    InventoryArchiveView c = new InventoryArchiveView();
+                    c.Show();
+              
+
 
 
                 }
 
 
 
-                   
+
+
             }
             catch
             {
