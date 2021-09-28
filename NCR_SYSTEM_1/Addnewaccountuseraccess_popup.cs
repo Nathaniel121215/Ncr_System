@@ -121,6 +121,7 @@ namespace NCR_SYSTEM_1
 
                 this.Hide();
                 Accountmanagement_Module._instance.dataview();
+                Accountmanagement_Module.checker = "allow";
             }
 
             else
@@ -131,6 +132,11 @@ namespace NCR_SYSTEM_1
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
             this.Hide();
         }

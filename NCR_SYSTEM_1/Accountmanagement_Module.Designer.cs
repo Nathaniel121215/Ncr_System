@@ -175,9 +175,10 @@
             this.searchtxt.Location = new System.Drawing.Point(386, 178);
             this.searchtxt.Margin = new System.Windows.Forms.Padding(4);
             this.searchtxt.Name = "searchtxt";
+            this.searchtxt.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.searchtxt.Size = new System.Drawing.Size(430, 40);
             this.searchtxt.TabIndex = 172;
-            this.searchtxt.Text = "   Type here to filter Account Management Content";
+            this.searchtxt.Text = "Type here to filter Account Management Content";
             this.searchtxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.searchtxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchtxt_KeyUp);
             // 

@@ -15,6 +15,8 @@ namespace NCR_SYSTEM_1
 {
     public partial class Accountmanagement_Module : Form
     {
+        public static string checker = "";
+
         private Image[] StatusImgs;
 
         int supressor = 1;
@@ -55,6 +57,7 @@ namespace NCR_SYSTEM_1
         private void Accountmanagement_Module_Load(object sender, EventArgs e)
         {
             datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
+            datedisplay.Select();
             this.Account_Datagrid.AllowUserToAddRows = false;
 
 
@@ -139,8 +142,6 @@ namespace NCR_SYSTEM_1
             AccountLvl.Name = "Account Level";
             AccountLvl.ImageLayout = DataGridViewImageCellLayout.Zoom;
             AccountLvl.Image = Properties.Resources.loading;
-
-          
 
 
             dataview();
@@ -311,7 +312,7 @@ namespace NCR_SYSTEM_1
 
             }
 
-            ///////////////////////////////////////////////////////////
+            checker = "allow";
 
         }
 
@@ -414,9 +415,19 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            Addnewaccount_popup create = new Addnewaccount_popup();
+            
 
-            create.Show();
+            if (checker.Equals("allow"))
+            {
+                Addnewaccount_popup create = new Addnewaccount_popup();
+                create.Show();
+
+                checker = "dontallow";
+            }
+            else
+            {
+                MessageBox.Show("The tab is currently already open.");
+            }
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
