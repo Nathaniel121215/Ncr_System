@@ -155,6 +155,7 @@ namespace NCR_SYSTEM_1
         {
             Addproductstockindicator_popup a = new Addproductstockindicator_popup();
             a.Show();
+            this.Hide();
 
 
         }

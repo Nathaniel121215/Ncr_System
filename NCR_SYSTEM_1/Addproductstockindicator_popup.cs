@@ -33,8 +33,9 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            this.Hide();
             Inventory_Module.checker = "allow";
+            this.Hide();
+          
         }
 
         private void Addproductstockindicator_popup_Load(object sender, EventArgs e)
@@ -44,8 +45,9 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            this.Hide();
             Inventory_Module.checker = "allow";
+            this.Hide();
+          
         }
     }
 }
