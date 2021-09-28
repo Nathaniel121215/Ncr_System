@@ -91,6 +91,7 @@ namespace NCR_SYSTEM_1
                 try
                 {
                     Suppliermanagement_module._instance.dataview();
+                    Suppliermanagement_module.checker = "allow";
                 }
                 catch
                 {
@@ -126,6 +127,14 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
+            Suppliermanagement_module.checker = "allow";
+            this.Hide();
+        }
+
+        private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            Suppliermanagement_module.checker = "allow";
+
             this.Hide();
         }
     }

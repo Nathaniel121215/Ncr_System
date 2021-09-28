@@ -15,6 +15,8 @@ namespace NCR_SYSTEM_1
 {
     public partial class Suppliermanagement_module : Form
     {
+        public static string checker = "";
+
         int supressor = 1;
 
         public static string Supplier_ID = "";
@@ -46,15 +48,26 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            Addsupplier_popup a = new Addsupplier_popup();
+          
 
-            a.Show();
+            if (checker.Equals("allow"))
+            {
+                Addsupplier_popup a = new Addsupplier_popup();
+                a.Show();
+
+                checker = "dontallow";
+            }
+            else
+            {
+                MessageBox.Show("The tab is currently already open.");
+            }
         }
 
         private void Suppliermanagement_module_Load(object sender, EventArgs e)
         {
             this.Supplier_Datagrid.AllowUserToAddRows = false;
-
+            datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
+            datedisplay.Select();
             client = new FireSharp.FirebaseClient(config);
 
             dt.Columns.Add("Supplier ID");
@@ -114,6 +127,13 @@ namespace NCR_SYSTEM_1
             column5.Width = 170;
 
 
+            DataGridViewColumn column6 = Supplier_Datagrid.Columns[6];
+            column6.Width = 80;
+
+            DataGridViewColumn column7 = Supplier_Datagrid.Columns[7];
+            column7.Width = 80;
+
+
 
 
             dt.Rows.Clear();
@@ -164,7 +184,7 @@ namespace NCR_SYSTEM_1
 
             }
 
-
+            checker = "allow";
         }
 
         private void Supplier_Datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -339,6 +359,12 @@ namespace NCR_SYSTEM_1
 
             DataGridViewColumn column5 = Supplier_Datagrid.Columns[5];
             column5.Width = 170;
+
+            DataGridViewColumn column6 = Supplier_Datagrid.Columns[6];
+            column6.Width = 80;
+
+            DataGridViewColumn column7 = Supplier_Datagrid.Columns[7];
+            column7.Width = 80;
 
 
         }

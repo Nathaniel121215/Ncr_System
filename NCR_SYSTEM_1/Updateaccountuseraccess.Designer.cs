@@ -43,6 +43,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.inventorycb = new System.Windows.Forms.ComboBox();
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -248,12 +252,48 @@
             this.bunifuImageButton1.TabStop = false;
             this.bunifuImageButton1.Zoom = 10;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.panel2.Location = new System.Drawing.Point(354, -4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(34, 480);
+            this.panel2.TabIndex = 315;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.panel1.Location = new System.Drawing.Point(-32, -4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(34, 480);
+            this.panel1.TabIndex = 316;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.panel3.Location = new System.Drawing.Point(-2, -12);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(377, 14);
+            this.panel3.TabIndex = 317;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.panel4.Location = new System.Drawing.Point(-3, 446);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(377, 14);
+            this.panel4.TabIndex = 318;
+            // 
             // Updateaccountuseraccess
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(357, 449);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.recordcb);
             this.Controls.Add(this.label4);
@@ -294,5 +334,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox inventorycb;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }
