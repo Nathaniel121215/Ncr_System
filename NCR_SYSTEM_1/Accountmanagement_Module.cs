@@ -521,113 +521,7 @@ namespace NCR_SYSTEM_1
             AccountLvl.ImageLayout = DataGridViewImageCellLayout.Zoom;
             AccountLvl.Image = Properties.Resources.loading;
 
-            foreach (DataGridViewColumn column in Account_Datagrid.Columns)
-            {
-                column.SortMode = DataGridViewColumnSortMode.NotSortable;
-            }
-
-            //visual
-
-            Account_Datagrid.Columns[5].Visible = false;
-            Account_Datagrid.Columns[6].Visible = false;
-
-            Account_Datagrid.Columns[7].Visible = false;
-            Account_Datagrid.Columns[8].Visible = false;
-            Account_Datagrid.Columns[9].Visible = false;
-            Account_Datagrid.Columns[10].Visible = false;
-
-
-            Account_Datagrid.Columns[17].DisplayIndex = 5;
-            Account_Datagrid.Columns[13].DisplayIndex = 7;
-            Account_Datagrid.Columns[14].DisplayIndex = 8;
-            Account_Datagrid.Columns[15].DisplayIndex = 9;
-            Account_Datagrid.Columns[16].DisplayIndex = 10;
-
-
-            ///////////////////////////////////////////////////////
-
-            try
-            {
-
-
-                foreach (DataGridViewRow row in Account_Datagrid.Rows)
-                {
-
-                    try
-                    {
-
-
-                        StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.Group_175, NCR_SYSTEM_1.Properties.Resources.Group_177, NCR_SYSTEM_1.Properties.Resources.Group_179, NCR_SYSTEM_1.Properties.Resources.Group_181 };
-
-
-
-
-
-                        if (row.Cells[7].Value.Equals("Authorized")) //Authorize inventory
-                        {
-                            row.Cells[13].Value = StatusImgs[0];
-                        }
-                        else
-                        {
-                            row.Cells[13].Value = StatusImgs[1];
-                        }
-
-                        if (row.Cells[8].Value.Equals("Authorized")) //Authorize PoS
-                        {
-                            row.Cells[14].Value = StatusImgs[0];
-                        }
-                        else
-                        {
-                            row.Cells[14].Value = StatusImgs[1];
-                        }
-
-                        if (row.Cells[9].Value.Equals("Authorized")) //Authorize Supplier
-                        {
-                            row.Cells[15].Value = StatusImgs[0];
-                        }
-                        else
-                        {
-                            row.Cells[15].Value = StatusImgs[1];
-                        }
-
-
-                        if (row.Cells[10].Value.Equals("Authorized")) //Authorize Records
-                        {
-                            row.Cells[16].Value = StatusImgs[0];
-                        }
-                        else
-                        {
-                            row.Cells[16].Value = StatusImgs[1];
-                        }
-
-                        ////////////////////Level ///////////////
-
-
-
-                        if (row.Cells[5].Value.Equals("Admin")) //Authorize Records
-                        {
-                            row.Cells[17].Value = StatusImgs[3];
-                        }
-                        else
-                        {
-                            row.Cells[17].Value = StatusImgs[2];
-                        }
-
-
-
-
-                    }
-                    catch
-                    {
-
-                    }
-
-                }
-            }
-            catch
-            {
-
-            }
+            searchupdate();
 
 
         }
@@ -767,6 +661,119 @@ namespace NCR_SYSTEM_1
         private void bunifuImageButton9_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+        public void searchupdate()
+        {
+            //visual
+
+            Account_Datagrid.Columns[5].Visible = false;
+            Account_Datagrid.Columns[6].Visible = false;
+
+            Account_Datagrid.Columns[7].Visible = false;
+            Account_Datagrid.Columns[8].Visible = false;
+            Account_Datagrid.Columns[9].Visible = false;
+            Account_Datagrid.Columns[10].Visible = false;
+
+
+            Account_Datagrid.Columns[17].DisplayIndex = 5;
+            Account_Datagrid.Columns[13].DisplayIndex = 7;
+            Account_Datagrid.Columns[14].DisplayIndex = 8;
+            Account_Datagrid.Columns[15].DisplayIndex = 9;
+            Account_Datagrid.Columns[16].DisplayIndex = 10;
+
+            DataGridViewColumn column11 = Account_Datagrid.Columns[11];
+            column11.Width = 80;
+            DataGridViewColumn column12 = Account_Datagrid.Columns[12];
+            column12.Width = 80;
+
+            foreach (DataGridViewColumn column in Account_Datagrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
+
+            try
+            {
+
+
+                foreach (DataGridViewRow row in Account_Datagrid.Rows)
+                {
+
+                    try
+                    {
+
+
+                        StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.Group_175, NCR_SYSTEM_1.Properties.Resources.Group_177, NCR_SYSTEM_1.Properties.Resources.Group_179, NCR_SYSTEM_1.Properties.Resources.Group_181 };
+
+
+
+
+
+                        if (row.Cells[7].Value.Equals("Authorized")) //Authorize inventory
+                        {
+                            row.Cells[13].Value = StatusImgs[0];
+                        }
+                        else
+                        {
+                            row.Cells[13].Value = StatusImgs[1];
+                        }
+
+                        if (row.Cells[8].Value.Equals("Authorized")) //Authorize PoS
+                        {
+                            row.Cells[14].Value = StatusImgs[0];
+                        }
+                        else
+                        {
+                            row.Cells[14].Value = StatusImgs[1];
+                        }
+
+                        if (row.Cells[9].Value.Equals("Authorized")) //Authorize Supplier
+                        {
+                            row.Cells[15].Value = StatusImgs[0];
+                        }
+                        else
+                        {
+                            row.Cells[15].Value = StatusImgs[1];
+                        }
+
+
+                        if (row.Cells[10].Value.Equals("Authorized")) //Authorize Records
+                        {
+                            row.Cells[16].Value = StatusImgs[0];
+                        }
+                        else
+                        {
+                            row.Cells[16].Value = StatusImgs[1];
+                        }
+
+                        ////////////////////Level ///////////////
+
+
+
+                        if (row.Cells[5].Value.Equals("Admin")) //Authorize Records
+                        {
+                            row.Cells[17].Value = StatusImgs[3];
+                        }
+                        else
+                        {
+                            row.Cells[17].Value = StatusImgs[2];
+                        }
+
+
+
+
+                    }
+                    catch
+                    {
+
+                    }
+
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }

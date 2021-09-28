@@ -43,6 +43,13 @@ namespace NCR_SYSTEM_1
                 poscb.Text = "Authorized";
                 recordcb.Text = "Authorized";
                 supcb.Text = "Authorized";
+
+                inventorycb.Enabled = false;
+                poscb.Enabled = false;
+                recordcb.Enabled = false;
+                supcb.Enabled = false;
+
+
             }
             else
             {

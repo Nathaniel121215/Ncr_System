@@ -35,14 +35,31 @@ namespace NCR_SYSTEM_1
         {
             client = new FireSharp.FirebaseClient(config);
 
-            inventorycb.Text = Accountmanagement_Module.inventory;
-            poscb.Text = Accountmanagement_Module.Pos;
-            supcb.Text = Accountmanagement_Module.Supplier;
-            recordcb.Text = Accountmanagement_Module.Records;
+           
+
+            if (Updateaccount_popup.accountlvl.Equals("Admin"))
+            {
+                inventorycb.Text = "Authorized";
+                poscb.Text = "Authorized";
+                recordcb.Text = "Authorized";
+                supcb.Text = "Authorized";
+
+                inventorycb.Enabled = false;
+                poscb.Enabled = false;
+                recordcb.Enabled = false;
+                supcb.Enabled = false;
 
 
+            }
+            else
+            {
+                inventorycb.Text = Accountmanagement_Module.inventory;
+                poscb.Text = Accountmanagement_Module.Pos;
+                supcb.Text = Accountmanagement_Module.Supplier;
+                recordcb.Text = Accountmanagement_Module.Records;
+            }
 
-            
+
 
         }
 
