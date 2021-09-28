@@ -56,6 +56,8 @@ namespace NCR_SYSTEM_1
         {
             datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
             this.Account_Datagrid.AllowUserToAddRows = false;
+
+
             client = new FireSharp.FirebaseClient(config);
 
             dt.Columns.Add("User ID");

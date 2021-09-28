@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.bunifuImageButton8 = new Bunifu.Framework.UI.BunifuImageButton();
@@ -401,9 +401,10 @@
             this.searchtxt.Location = new System.Drawing.Point(386, 178);
             this.searchtxt.Margin = new System.Windows.Forms.Padding(4);
             this.searchtxt.Name = "searchtxt";
+            this.searchtxt.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.searchtxt.Size = new System.Drawing.Size(430, 40);
             this.searchtxt.TabIndex = 180;
-            this.searchtxt.Text = "   Type here to filter Unit Table Content";
+            this.searchtxt.Text = "Type here to filter Unit Table Content";
             this.searchtxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.searchtxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchtxt_KeyUp);
             // 
@@ -438,31 +439,31 @@
             // 
             // Unit_datagrid_stocks
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.Unit_datagrid_stocks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.Unit_datagrid_stocks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Unit_datagrid_stocks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Unit_datagrid_stocks.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.Unit_datagrid_stocks.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Unit_datagrid_stocks.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.Unit_datagrid_stocks.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Unit_datagrid_stocks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Unit_datagrid_stocks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.Unit_datagrid_stocks.ColumnHeadersHeight = 40;
             this.Unit_datagrid_stocks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Unit_datagrid_stocks.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Unit_datagrid_stocks.DefaultCellStyle = dataGridViewCellStyle3;
             this.Unit_datagrid_stocks.DoubleBuffered = true;
             this.Unit_datagrid_stocks.EnableHeadersVisualStyles = false;
             this.Unit_datagrid_stocks.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
@@ -472,7 +473,7 @@
             this.Unit_datagrid_stocks.Name = "Unit_datagrid_stocks";
             this.Unit_datagrid_stocks.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.Unit_datagrid_stocks.RowHeadersWidth = 40;
-            this.Unit_datagrid_stocks.RowTemplate.Height = 30;
+            this.Unit_datagrid_stocks.RowTemplate.Height = 35;
             this.Unit_datagrid_stocks.RowTemplate.ReadOnly = true;
             this.Unit_datagrid_stocks.Size = new System.Drawing.Size(1479, 760);
             this.Unit_datagrid_stocks.TabIndex = 184;

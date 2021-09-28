@@ -248,6 +248,7 @@ namespace NCR_SYSTEM_1
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
             this.Hide();
+            Inventory_Module.checker = "allow";
         }
 
         public void refreshcategory()
@@ -349,6 +350,12 @@ namespace NCR_SYSTEM_1
         {
             Addunit_popup a = new Addunit_popup();
             a.Show();
+        }
+
+        private void bunifuFlatButton2_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            Inventory_Module.checker = "allow";
         }
     }
 }

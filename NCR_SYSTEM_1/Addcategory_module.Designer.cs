@@ -166,7 +166,7 @@
             this.Category_datagrid_stocks.Name = "Category_datagrid_stocks";
             this.Category_datagrid_stocks.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.Category_datagrid_stocks.RowHeadersWidth = 40;
-            this.Category_datagrid_stocks.RowTemplate.Height = 30;
+            this.Category_datagrid_stocks.RowTemplate.Height = 35;
             this.Category_datagrid_stocks.RowTemplate.ReadOnly = true;
             this.Category_datagrid_stocks.Size = new System.Drawing.Size(1479, 760);
             this.Category_datagrid_stocks.TabIndex = 194;
@@ -508,9 +508,10 @@
             this.searchtxt.Location = new System.Drawing.Point(386, 178);
             this.searchtxt.Margin = new System.Windows.Forms.Padding(4);
             this.searchtxt.Name = "searchtxt";
+            this.searchtxt.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.searchtxt.Size = new System.Drawing.Size(430, 40);
             this.searchtxt.TabIndex = 190;
-            this.searchtxt.Text = "   Type here to filter Category Table Content";
+            this.searchtxt.Text = "Type here to filter Category Table Content";
             this.searchtxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.searchtxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchtxt_KeyUp);
             // 

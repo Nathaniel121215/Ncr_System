@@ -15,6 +15,8 @@ namespace NCR_SYSTEM_1
 {
     public partial class Addcategory_module : Form
     {
+        public static string checker = "";
+
         int supressor = 1;
 
         public static string Category_ID = "";
@@ -40,6 +42,7 @@ namespace NCR_SYSTEM_1
         private void Addcategory_module_Load(object sender, EventArgs e)
         {
             datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
+            datedisplay.Select();
             client = new FireSharp.FirebaseClient(config);
 
             this.Category_datagrid_stocks.AllowUserToAddRows = false;
@@ -71,15 +74,31 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton3_Click(object sender, EventArgs e)
         {
-            Addcategory_popup a = new Addcategory_popup();
+           
 
-            a.Show();
+            if (checker.Equals("allow"))
+            {
+                Addcategory_popup a = new Addcategory_popup();
+                a.Show();
+
+                checker = "dontallow";
+            }
+            else
+            {
+                MessageBox.Show("The tab is currently already open.");
+            }
         }
         public async void DataViewAll()
         {
             //visual
             DataGridViewColumn column2 = Category_datagrid_stocks.Columns[2];
             column2.Width = 600;
+
+            DataGridViewColumn column3 = Category_datagrid_stocks.Columns[3];
+            column3.Width = 80;
+
+            DataGridViewColumn column4 = Category_datagrid_stocks.Columns[4];
+            column4.Width = 80;
 
 
             foreach (DataGridViewColumn column in Category_datagrid_stocks.Columns)
@@ -123,6 +142,7 @@ namespace NCR_SYSTEM_1
 
                 }
             }
+            checker = "allow";
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
@@ -202,6 +222,12 @@ namespace NCR_SYSTEM_1
             //visual
             DataGridViewColumn column2 = Category_datagrid_stocks.Columns[2];
             column2.Width = 600;
+
+            DataGridViewColumn column3 = Category_datagrid_stocks.Columns[3];
+            column3.Width = 80;
+
+            DataGridViewColumn column4 = Category_datagrid_stocks.Columns[4];
+            column4.Width = 80;
 
 
             foreach (DataGridViewColumn column in Category_datagrid_stocks.Columns)

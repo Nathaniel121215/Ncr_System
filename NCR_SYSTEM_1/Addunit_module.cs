@@ -15,6 +15,8 @@ namespace NCR_SYSTEM_1
 {
     public partial class Addunit_module : Form
     {
+        public static string checker = "";
+
         int supressor = 1;
 
         public static string Unit_ID = "";
@@ -40,7 +42,9 @@ namespace NCR_SYSTEM_1
 
         private void Addunit_module_Load(object sender, EventArgs e)
         {
-            datedisplay.Text = DateTime.Now.ToString("dddd, dd MMMM yyyy");
+           
+            datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
+            datedisplay.Select();
             client = new FireSharp.FirebaseClient(config);
             this.Unit_datagrid_stocks.AllowUserToAddRows = false;
             dt.Columns.Add("Unit ID");
@@ -70,15 +74,23 @@ namespace NCR_SYSTEM_1
         }
         public async void DataViewAll()
         {
+            
             //visual
             DataGridViewColumn column2 = Unit_datagrid_stocks.Columns[2];
             column2.Width = 600;
+
+            DataGridViewColumn column3 = Unit_datagrid_stocks.Columns[3];
+            column3.Width = 80;
+
+            DataGridViewColumn column4 = Unit_datagrid_stocks.Columns[4];
+            column4.Width = 80;
 
 
             foreach (DataGridViewColumn column in Unit_datagrid_stocks.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
+
 
 
             dt.Rows.Clear();
@@ -115,14 +127,27 @@ namespace NCR_SYSTEM_1
                 {
 
                 }
+
             }
+
+            checker = "allow";
         }
 
         private void bunifuFlatButton3_Click(object sender, EventArgs e)
         {
-            Addunit_popup a = new Addunit_popup();
-          
-            a.Show();
+            
+
+            if (checker.Equals("allow"))
+            {
+                checker = "dontallow";
+
+                Addunit_popup a = new Addunit_popup();
+                a.Show();
+            }
+            else
+            {
+                MessageBox.Show("The tab is currently already open.");
+            }
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
@@ -229,6 +254,12 @@ namespace NCR_SYSTEM_1
             //visual
             DataGridViewColumn column2 = Unit_datagrid_stocks.Columns[2];
             column2.Width = 600;
+
+            DataGridViewColumn column3 = Unit_datagrid_stocks.Columns[3];
+            column3.Width = 80;
+
+            DataGridViewColumn column4 = Unit_datagrid_stocks.Columns[4];
+            column4.Width = 80;
 
 
             foreach (DataGridViewColumn column in Unit_datagrid_stocks.Columns)

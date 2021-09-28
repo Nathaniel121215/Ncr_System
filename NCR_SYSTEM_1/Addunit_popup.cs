@@ -89,6 +89,7 @@ namespace NCR_SYSTEM_1
                 try
                 {
                     Addunit_module._instance.DataViewAll();
+                    Addunit_module.checker = "allow";
                 }
                 catch
                 {
@@ -147,6 +148,13 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
+            Addunit_module.checker = "allow";
+            this.Hide();
+        }
+
+        private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            Addunit_module.checker = "allow";
             this.Hide();
         }
     }

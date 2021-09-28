@@ -315,6 +315,11 @@ namespace NCR_SYSTEM_1
             }
 
         }
+
+        private void bunifuFlatButton2_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }
 

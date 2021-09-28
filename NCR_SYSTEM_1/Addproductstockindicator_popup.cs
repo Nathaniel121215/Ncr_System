@@ -26,6 +26,7 @@ namespace NCR_SYSTEM_1
             lowtxt = low.Text;
             hightxt = high.Text;
             this.Hide();
+            Inventory_Module.checker = "allow";
             Addnewproduct_popup._instance.save();
 
         }
@@ -33,11 +34,18 @@ namespace NCR_SYSTEM_1
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
             this.Hide();
+            Inventory_Module.checker = "allow";
         }
 
         private void Addproductstockindicator_popup_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Inventory_Module.checker = "allow";
         }
     }
 }

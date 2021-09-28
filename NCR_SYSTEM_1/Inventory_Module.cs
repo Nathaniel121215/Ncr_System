@@ -17,7 +17,10 @@ namespace NCR_SYSTEM_1
 {
     public partial class Inventory_Module : Form
     {
+        public static string checker = "";
+
         int supressor = 1;
+
         private Image[] StatusImgs;
 
         public static string name = "";
@@ -157,8 +160,13 @@ namespace NCR_SYSTEM_1
             column4.Width = 220;
 
             DataGridViewColumn column14 = Inventory_Datagrid.Columns[14];
-            column14.Width = 100;
+            column14.Width = 120;
 
+            DataGridViewColumn column12 = Inventory_Datagrid.Columns[12];
+            column12.Width = 80;
+
+            DataGridViewColumn column13 = Inventory_Datagrid.Columns[13];
+            column13.Width = 80;
 
             Inventory_Datagrid.Columns[14].DisplayIndex = 8;
             Inventory_Datagrid.Columns[9].Visible = false;
@@ -285,6 +293,7 @@ namespace NCR_SYSTEM_1
 
             }
 
+            checker = "allow";
 
         }
 
@@ -292,8 +301,19 @@ namespace NCR_SYSTEM_1
 
     private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            Addnewproduct_popup a = new Addnewproduct_popup();
-            a.Show();
+            
+
+            if (checker.Equals("allow"))
+            {
+                Addnewproduct_popup a = new Addnewproduct_popup();
+                a.Show();
+
+                checker = "dontallow";
+            }
+            else
+            {
+                MessageBox.Show("The tab is currently already open.");
+            }
         }
 
         private void Inventory_Datagrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -487,20 +507,21 @@ namespace NCR_SYSTEM_1
 
 
 
-                DataGridViewButtonColumn update = new DataGridViewButtonColumn();
+                DataGridViewImageColumn update = new DataGridViewImageColumn();
                 Inventory_Datagrid.Columns.Add(update);
-                update.HeaderText = "Update";
-                update.Text = "Update";
-                update.Name = "upd";
-                update.UseColumnTextForButtonValue = true;
+                update.HeaderText = "";
+                update.Name = "update";
+                update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                update.Image = Properties.Resources.Update_Icon;
 
 
-                DataGridViewButtonColumn Archive = new DataGridViewButtonColumn();
+                DataGridViewImageColumn Archive = new DataGridViewImageColumn();
                 Inventory_Datagrid.Columns.Add(Archive);
-                Archive.HeaderText = "Archive";
-                Archive.Text = "Archive";
+                Archive.HeaderText = "";
                 Archive.Name = "Archive";
-                Archive.UseColumnTextForButtonValue = true;
+                Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Archive.Image = Properties.Resources.Archive_Icon;
+
 
                 DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
                 Inventory_Datagrid.Columns.Add(Indicator);
@@ -510,12 +531,6 @@ namespace NCR_SYSTEM_1
                 Indicator.Image = Properties.Resources.loading;
 
                 DataViewAll();
-
-                //if (e.KeyCode == Keys.Back && supressor == 0)
-                //{
-                //    return;
-                //}
-
 
             }
 
@@ -597,7 +612,13 @@ namespace NCR_SYSTEM_1
                 column4.Width = 220;
 
                 DataGridViewColumn column14 = Inventory_Datagrid.Columns[14];
-                column14.Width = 100;
+                column14.Width = 120;
+
+                DataGridViewColumn column12 = Inventory_Datagrid.Columns[12];
+                column12.Width = 80;
+
+                DataGridViewColumn column13 = Inventory_Datagrid.Columns[13];
+                column13.Width = 80;
 
 
                 Inventory_Datagrid.Columns[14].DisplayIndex = 8;
