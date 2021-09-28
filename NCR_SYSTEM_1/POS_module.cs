@@ -76,6 +76,9 @@ namespace NCR_SYSTEM_1
 
         private void POS_module_Load(object sender, EventArgs e)
         {
+            datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
+            datedisplay.Select();
+
             //open connection
             client = new FireSharp.FirebaseClient(config);
 
