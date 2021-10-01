@@ -39,6 +39,10 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
+
+
+        
+
             //Testing
             int i = 0;
             FirebaseResponse resp = client.Get("AccountCounter/node");
@@ -50,6 +54,12 @@ namespace NCR_SYSTEM_1
             {
                 if (i == cnt)
                 {
+                    
+                  
+                    panel3.Visible = true;
+                    errormessage.Visible = true;
+                    panel2.Visible = true;
+                    bunifuCustomLabel1.Select();
                     MessageBox.Show("Invalid login");
                     break;
                 }
@@ -87,7 +97,14 @@ namespace NCR_SYSTEM_1
                         }
                         else
                         {
+                           
+                            
+                            panel3.Visible = true;
+                            errormessage.Visible = true;
+                            panel2.Visible = true;
+                            bunifuCustomLabel1.Select();
                             MessageBox.Show("Invalid login");
+                            
                             break;
                         }
                     }
@@ -110,12 +127,85 @@ namespace NCR_SYSTEM_1
         private void Form1_Load(object sender, EventArgs e)
         {
             client = new FireSharp.FirebaseClient(config);
+            bunifuCustomLabel1.Select();
+         
 
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void usertxt_MouseEnter(object sender, EventArgs e)
+        {
+        
+        }
+
+        private void usertxt_MouseClick(object sender, MouseEventArgs e)
+        {
+        
+        }
+
+        private void usertxt_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void usertxt_Enter(object sender, EventArgs e)
+        {
+            errormessage.Visible = false;
+            panel2.Visible = false;
+            panel3.Visible = false;
+            if (usertxt.Text == "Username")
+            {
+                usertxt.Text = "";
+
+
+                usertxt.ForeColor = Color.Black;
+
+            }
+        }
+
+        private void usertxt_Leave(object sender, EventArgs e)
+        {
+            if (usertxt.Text == "")
+            {
+                usertxt.Text = "Username";
+                usertxt.ForeColor = Color.Gray;
+
+
+            }
+        }
+
+        private void passtxt_Enter(object sender, EventArgs e)
+        {
+            errormessage.Visible = false;
+            panel2.Visible = false;
+            panel3.Visible = false;
+            if (passtxt.Text == "Password")
+            {
+                passtxt.Text = "";
+
+                passtxt.ForeColor = Color.Black;
+
+            }
+        }
+
+        private void passtxt_Leave(object sender, EventArgs e)
+        {
+            if (passtxt.Text == "")
+            {
+                passtxt.Text = "Password";
+                passtxt.ForeColor = Color.Gray;
+
+
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -37,8 +37,12 @@
             this.usertxt = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.passtxt = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.errormessage = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -51,15 +55,18 @@
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.passtxt);
             this.panel1.Controls.Add(this.bunifuImageButton1);
             this.panel1.Controls.Add(this.bunifuCustomLabel1);
             this.panel1.Controls.Add(this.usertxt);
             this.panel1.Controls.Add(this.bunifuFlatButton1);
-            this.panel1.Controls.Add(this.passtxt);
             this.panel1.Location = new System.Drawing.Point(-5, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1022, 515);
             this.panel1.TabIndex = 15;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // bunifuImageButton1
             // 
@@ -80,7 +87,7 @@
             this.bunifuCustomLabel1.AutoSize = true;
             this.bunifuCustomLabel1.Font = new System.Drawing.Font("Helvetica Neue", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(755, 68);
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(769, 67);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
             this.bunifuCustomLabel1.Size = new System.Drawing.Size(92, 25);
             this.bunifuCustomLabel1.TabIndex = 14;
@@ -90,9 +97,9 @@
             // 
             this.usertxt.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.usertxt.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usertxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.usertxt.ForeColor = System.Drawing.Color.Gray;
             this.usertxt.HintForeColor = System.Drawing.Color.Empty;
-            this.usertxt.HintText = "Username";
+            this.usertxt.HintText = "";
             this.usertxt.isPassword = false;
             this.usertxt.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
             this.usertxt.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
@@ -103,7 +110,13 @@
             this.usertxt.Name = "usertxt";
             this.usertxt.Size = new System.Drawing.Size(263, 41);
             this.usertxt.TabIndex = 13;
+            this.usertxt.Text = "Username";
             this.usertxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.usertxt.Click += new System.EventHandler(this.usertxt_Click);
+            this.usertxt.Enter += new System.EventHandler(this.usertxt_Enter);
+            this.usertxt.Leave += new System.EventHandler(this.usertxt_Leave);
+            this.usertxt.MouseClick += new System.Windows.Forms.MouseEventHandler(this.usertxt_MouseClick);
+            this.usertxt.MouseEnter += new System.EventHandler(this.usertxt_MouseEnter);
             // 
             // bunifuFlatButton1
             // 
@@ -146,7 +159,7 @@
             // 
             this.passtxt.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.passtxt.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.passtxt.ForeColor = System.Drawing.Color.Gray;
             this.passtxt.HintForeColor = System.Drawing.Color.Empty;
             this.passtxt.HintText = "";
             this.passtxt.isPassword = true;
@@ -154,13 +167,46 @@
             this.passtxt.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
             this.passtxt.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
             this.passtxt.LineThickness = 3;
-            this.passtxt.Location = new System.Drawing.Point(682, 216);
+            this.passtxt.Location = new System.Drawing.Point(682, 225);
             this.passtxt.Margin = new System.Windows.Forms.Padding(4);
             this.passtxt.Name = "passtxt";
             this.passtxt.Size = new System.Drawing.Size(263, 41);
-            this.passtxt.TabIndex = 12;
-            this.passtxt.Text = "●●●●●●●●●";
+            this.passtxt.TabIndex = 16;
+            this.passtxt.Text = "Password";
             this.passtxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.passtxt.Enter += new System.EventHandler(this.passtxt_Enter);
+            this.passtxt.Leave += new System.EventHandler(this.passtxt_Leave);
+            // 
+            // errormessage
+            // 
+            this.errormessage.AutoSize = true;
+            this.errormessage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errormessage.ForeColor = System.Drawing.Color.Maroon;
+            this.errormessage.Location = new System.Drawing.Point(11, 9);
+            this.errormessage.Name = "errormessage";
+            this.errormessage.Size = new System.Drawing.Size(239, 30);
+            this.errormessage.TabIndex = 19;
+            this.errormessage.Text = "The username or password you entered isn\'t\r\nconnected to an account.";
+            this.errormessage.Visible = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(207)))), ((int)(((byte)(210)))));
+            this.panel2.Location = new System.Drawing.Point(682, 97);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(263, 50);
+            this.panel2.TabIndex = 20;
+            this.panel2.Visible = false;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(220)))), ((int)(((byte)(224)))));
+            this.panel3.Controls.Add(this.errormessage);
+            this.panel3.Location = new System.Drawing.Point(683, 98);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(261, 48);
+            this.panel3.TabIndex = 20;
+            this.panel3.Visible = false;
             // 
             // Form1
             // 
@@ -177,6 +223,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -186,10 +234,13 @@
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
         private Bunifu.Framework.UI.BunifuMaterialTextbox usertxt;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox passtxt;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
         private System.Windows.Forms.Panel panel1;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton1;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox passtxt;
+        private System.Windows.Forms.Label errormessage;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 
