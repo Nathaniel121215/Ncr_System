@@ -67,11 +67,14 @@ namespace NCR_SYSTEM_1
                 i++;
                 try
                 {
-
+                    //normal account
                     FirebaseResponse resp1 = client.Get("Accounts/" + i);
                     User_class obj2 = resp1.ResultAs<User_class>();
 
 
+                    //Perma account
+                    FirebaseResponse resp2 = client.Get("PermanentAccount/" + 1);
+                    User_class obj3 = resp2.ResultAs<User_class>();
 
 
                     if (usertxt.Text == obj2.Username)
@@ -95,22 +98,53 @@ namespace NCR_SYSTEM_1
                             break;
                             
                         }
+
                         else
                         {
                            
                             
-                            panel3.Visible = true;
-                            errormessage.Visible = true;
-                            panel2.Visible = true;
-                            bunifuCustomLabel1.Select();
-                            MessageBox.Show("Invalid login");
-                            
+                           
+                        }
+                    }
+                    else if(usertxt.Text == obj3.Username )
+                    {
+                        if (passtxt.Text == obj3.Password)
+                        {
+
+                            inventoryac = obj3.Inventoryaccess;
+                            posac = obj3.Posaccess;
+                            supplierac = obj3.Supplieraccess;
+                            recordsac = obj3.Recordaccess;
+
+                            levelac = obj3.Account_Level;
+
+
+                            MessageBox.Show("Logged in successfully");
+                            username = obj3.Firstname + " " + obj3.Lastname;
+                            Dashboard_Module a = new Dashboard_Module();
+                            this.Hide();
+                            a.Show();
                             break;
+
+                        }
+
+                        else
+                        {
+
+
+                        
                         }
                     }
                     else
                     {
+                        panel3.Visible = true;
+                        errormessage.Visible = true;
+                        panel2.Visible = true;
+                        bunifuCustomLabel1.Select();
+                        MessageBox.Show("Invalid login");
 
+
+                        break;
                     }
 
 
