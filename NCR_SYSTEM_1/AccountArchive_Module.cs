@@ -271,5 +271,101 @@ namespace NCR_SYSTEM_1
 
             }
         }
+
+        private void Account_Datagrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //restore
+            string columnindex="";
+
+            try
+            {
+                if (e.ColumnIndex == Account_Datagrid.Columns[12].Index)
+                {
+                    columnindex = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+                    FirebaseResponse resp1 = client.Get("AccountArchive/" + columnindex);
+                    User_class obj1 = resp1.ResultAs<User_class>();
+
+                    var data = new User_class
+                    {
+                        User_ID = obj1.User_ID,
+                        Username = obj1.Username,
+                        Password = obj1.Password,
+                        Firstname = obj1.Firstname,
+                        Lastname = obj1.Lastname,
+                        Account_Level = obj1.Account_Level,
+                        Date_Added = obj1.Date_Added,
+                        Inventoryaccess = obj1.Inventoryaccess,
+                        Posaccess = obj1.Posaccess,
+                        Recordaccess = obj1.Recordaccess,
+                        Supplieraccess = obj1.Supplieraccess,
+
+
+                    };
+
+                    FirebaseResponse response = client.Set("Accounts/" + data.User_ID, data);
+                    User_class result = response.ResultAs<User_class>();
+
+
+                    //existing employee
+
+                    if(data.Account_Level== "Employee")
+                    {
+                        FirebaseResponse resp3 = client.Get("employeeCounterExisting/node");
+                        Counter_class gett = resp3.ResultAs<Counter_class>();
+                        int exist = (Convert.ToInt32(gett.cnt) + 1);
+                        var obj2 = new Counter_class
+                        {
+                            cnt = exist.ToString()
+                        };
+
+
+                        SetResponse response2 = client.Set("employeeCounterExisting/node", obj2);
+                    }
+                 
+
+
+
+                    //get archive counter
+                    FirebaseResponse resp = client.Get("AccountArchiveCounter/node");
+                    Counter_class get = resp.ResultAs<Counter_class>();
+
+                    //update archive counter
+                    var obj = new Counter_class
+                    {
+                        cnt = (Convert.ToInt32(get.cnt) - 1).ToString(),
+                    };
+
+                    SetResponse response4 = client.Set("AccountArchiveCounter/node", obj);
+
+
+
+                    //delete from current table
+
+                    FirebaseResponse response5 = client.Delete("AccountArchive/" + columnindex);
+
+                    Dataviewall();
+                }
+
+                //view
+                if (e.ColumnIndex == Account_Datagrid.Columns[9].Index)
+                {
+                   
+
+
+
+
+                }
+
+
+
+
+
+            }
+            catch
+            {
+
+            }
+        }
     }
 }
