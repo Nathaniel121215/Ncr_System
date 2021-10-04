@@ -137,6 +137,7 @@
             // 
             // pdescription
             // 
+            this.pdescription.BackColor = System.Drawing.SystemColors.Window;
             this.pdescription.BorderColor = System.Drawing.Color.SeaGreen;
             this.pdescription.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.pdescription.Location = new System.Drawing.Point(38, 311);

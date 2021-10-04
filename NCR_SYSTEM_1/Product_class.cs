@@ -14,5 +14,7 @@
         public string Low { get; set; }
         public string High { get; set; }
 
+
+
     }
 }

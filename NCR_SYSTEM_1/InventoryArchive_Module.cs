@@ -41,6 +41,7 @@ namespace NCR_SYSTEM_1
         };
 
         IFirebaseClient client;
+
         public static InventoryArchive_Module _instance;
 
 
@@ -533,6 +534,13 @@ namespace NCR_SYSTEM_1
 
 
 
+        }
+
+        private void bunifuImageButton2_Click(object sender, EventArgs e)
+        {
+            AccountArchive_Module a = new AccountArchive_Module();
+            this.Hide();
+            a.Show();
         }
     }
 }

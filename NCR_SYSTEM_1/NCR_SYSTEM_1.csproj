@@ -79,6 +79,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountArchive_Class.cs" />
+    <Compile Include="AccountArchive_Module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountArchive_Module.Designer.cs">
+      <DependentUpon>AccountArchive_Module.cs</DependentUpon>
+    </Compile>
     <Compile Include="Accountmanagement_Module.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +202,12 @@
     </Compile>
     <Compile Include="InventoryArchive_Module.Designer.cs">
       <DependentUpon>InventoryArchive_Module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginTest.Designer.cs">
+      <DependentUpon>LoginTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Salesrecord_Filter_popup.cs">
       <SubType>Form</SubType>
@@ -347,6 +360,9 @@
       <DependentUpon>Updateunit_popup.cs</DependentUpon>
     </Compile>
     <Compile Include="User_class.cs" />
+    <EmbeddedResource Include="AccountArchive_Module.resx">
+      <DependentUpon>AccountArchive_Module.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Accountmanagement_Module.resx">
       <DependentUpon>Accountmanagement_Module.cs</DependentUpon>
     </EmbeddedResource>
@@ -403,6 +419,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryArchive_Module.resx">
       <DependentUpon>InventoryArchive_Module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginTest.resx">
+      <DependentUpon>LoginTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Salesrecord_Filter_popup.resx">
       <DependentUpon>Salesrecord_Filter_popup.cs</DependentUpon>
@@ -615,6 +634,7 @@
     <None Include="Resources\fade stock adjustment.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\view2.png" />
     <None Include="Resources\inventory archive.png" />
     <None Include="Resources\fade supplier archive.png" />
     <None Include="Resources\fade account archive.png" />
@@ -638,6 +658,7 @@
     <None Include="Resources\Add Icon 2.png" />
     <None Include="Resources\Archive Icon.png" />
     <None Include="Resources\archive.png" />
+    <None Include="Resources\account archive.png" />
     <Content Include="Resources\Bitmap1.bmp" />
     <None Include="Resources\new out of stock.png" />
     <None Include="Resources\new low on stock.png" />

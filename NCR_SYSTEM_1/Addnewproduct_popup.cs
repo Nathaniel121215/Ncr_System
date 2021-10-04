@@ -153,9 +153,19 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            Addproductstockindicator_popup a = new Addproductstockindicator_popup();
-            a.Show();
-            this.Hide();
+            if (pname.Text == "")
+            {
+                pname.BorderColorIdle = Color.Red;
+            }
+            else
+            {
+                Addproductstockindicator_popup a = new Addproductstockindicator_popup();
+                a.Show();
+                this.Hide();
+            }
+
+
+        
 
 
         }
@@ -357,6 +367,11 @@ namespace NCR_SYSTEM_1
         {
             this.Hide();
             Inventory_Module.checker = "allow";
+        }
+
+        private void errormessage_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

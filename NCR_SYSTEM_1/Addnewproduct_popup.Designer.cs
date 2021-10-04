@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.label10 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label9 = new System.Windows.Forms.Label();
@@ -56,6 +55,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.errormessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,16 +63,6 @@
             // 
             this.bunifuElipse1.ElipseRadius = 5;
             this.bunifuElipse1.TargetControl = this;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(458, 67);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(161, 17);
-            this.label10.TabIndex = 201;
-            this.label10.Text = "Wednesday, 22 April 2021";
             // 
             // panel6
             // 
@@ -158,7 +148,6 @@
             this.pdescription.Name = "pdescription";
             this.pdescription.Size = new System.Drawing.Size(281, 158);
             this.pdescription.TabIndex = 195;
-            this.pdescription.Text = "Product Description here";
             // 
             // label6
             // 
@@ -195,7 +184,6 @@
             this.pbrand.Name = "pbrand";
             this.pbrand.Size = new System.Drawing.Size(281, 36);
             this.pbrand.TabIndex = 192;
-            this.pbrand.Text = "Example Brand";
             this.pbrand.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // label4
@@ -251,7 +239,6 @@
             this.pname.Name = "pname";
             this.pname.Size = new System.Drawing.Size(281, 36);
             this.pname.TabIndex = 188;
-            this.pname.Text = "Product Name Here";
             this.pname.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // label2
@@ -407,12 +394,25 @@
             this.bunifuImageButton1.Zoom = 10;
             this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click);
             // 
+            // errormessage
+            // 
+            this.errormessage.AutoSize = true;
+            this.errormessage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errormessage.ForeColor = System.Drawing.Color.Red;
+            this.errormessage.Location = new System.Drawing.Point(509, 116);
+            this.errormessage.Name = "errormessage";
+            this.errormessage.Size = new System.Drawing.Size(110, 15);
+            this.errormessage.TabIndex = 19;
+            this.errormessage.Text = "Please enter a value";
+            this.errormessage.Click += new System.EventHandler(this.errormessage_Click);
+            // 
             // Addnewproduct_popup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(658, 507);
+            this.Controls.Add(this.errormessage);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bunifuFlatButton2);
@@ -421,7 +421,6 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.bunifuImageButton1);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.bunifuFlatButton1);
             this.Controls.Add(this.label9);
@@ -453,7 +452,6 @@
         #endregion
 
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel6;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
         private System.Windows.Forms.Label label9;
@@ -479,5 +477,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label errormessage;
     }
 }

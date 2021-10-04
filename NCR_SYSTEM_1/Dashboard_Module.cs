@@ -127,7 +127,7 @@ namespace NCR_SYSTEM_1
         private void bunifuImageButton18_Click(object sender, EventArgs e)
         {
            
-            if(Form1.levelac.Equals("Admin") && Form1.posac.Equals("Authorized"))
+            if(Form1.levelac.Equals("Admin"))
             {
                 POS_module a = new POS_module();
                 this.Hide();

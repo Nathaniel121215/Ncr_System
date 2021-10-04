@@ -97,7 +97,7 @@ namespace NCR_SYSTEM_1
             View.HeaderText = "";
             View.Name = "View";
             View.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            View.Image = Properties.Resources.view;
+            View.Image = Properties.Resources.view2;
 
             // Transaction type
 
@@ -330,7 +330,7 @@ namespace NCR_SYSTEM_1
             View.HeaderText = "";
             View.Name = "View";
             View.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            View.Image = Properties.Resources.view;
+            View.Image = Properties.Resources.view2;
 
             DataGridViewImageColumn TransactionType = new DataGridViewImageColumn();
             Sales_Datagrid.Columns.Add(TransactionType);
@@ -414,7 +414,7 @@ namespace NCR_SYSTEM_1
                 View.HeaderText = "";
                 View.Name = "View";
                 View.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                View.Image = Properties.Resources.view;
+                View.Image = Properties.Resources.view2;
 
                 DataGridViewImageColumn TransactionType = new DataGridViewImageColumn();
                 Sales_Datagrid.Columns.Add(TransactionType);
@@ -515,7 +515,7 @@ namespace NCR_SYSTEM_1
             View.HeaderText = "";
             View.Name = "View";
             View.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            View.Image = Properties.Resources.view;
+            View.Image = Properties.Resources.view2;
 
             DataGridViewImageColumn TransactionType = new DataGridViewImageColumn();
             Sales_Datagrid.Columns.Add(TransactionType);

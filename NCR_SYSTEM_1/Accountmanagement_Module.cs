@@ -336,8 +336,52 @@ namespace NCR_SYSTEM_1
 
                         columnindex = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-                        FirebaseResponse response = client.Delete("Accounts/" + columnindex);
+                        //new archive code
 
+
+
+                        var data = new AccountArchive_Class
+                        {
+
+                            User_ID = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString(),
+                            Username = Account_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                            Password = Account_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString(),
+                            Firstname = Account_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                            Lastname = Account_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString(),
+                            Account_Level = Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString(),
+                            Date_Added = Account_Datagrid.Rows[e.RowIndex].Cells[6].Value.ToString(),
+                            Inventoryaccess = Account_Datagrid.Rows[e.RowIndex].Cells[7].Value.ToString(),
+                            Posaccess = Account_Datagrid.Rows[e.RowIndex].Cells[8].Value.ToString(),
+                            Supplieraccess = Account_Datagrid.Rows[e.RowIndex].Cells[9].Value.ToString(),
+                            Recordaccess = Account_Datagrid.Rows[e.RowIndex].Cells[10].Value.ToString(),
+
+                            Date_Archive = DateTime.Now.ToString("MM/dd/yyyy"),
+                            User = Form1.username,
+
+                        };
+
+
+                        //add to archive 
+                        FirebaseResponse response3 = client.Set("AccountArchive/" + data.User_ID, data);
+                        Product_class result = response3.ResultAs<Product_class>();
+
+                        //get archive counter
+                        FirebaseResponse resp = client.Get("AccountArchiveCounter/node");
+                        Counter_class get = resp.ResultAs<Counter_class>();
+
+                        //update archive counter
+                        var obj = new Counter_class
+                        {
+                            cnt = (Convert.ToInt32(get.cnt) + 1).ToString(),
+                        };
+
+                        SetResponse response4 = client.Set("AccountArchiveCounter/node", obj);
+
+
+
+                        //delete from current table
+
+                        FirebaseResponse response = client.Delete("Accounts/" + columnindex);
 
                         if (Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString().Equals("Employee"))
                         {
@@ -353,27 +397,15 @@ namespace NCR_SYSTEM_1
                             SetResponse response2 = client.Set("employeeCounterExisting/node", obj2);
                         }
 
-
-
-
-
-
                         dataview();
-
                     }
+                }
 
-                    else
-
-                    {
-                        
-
-
-
-                    }
+                
 
 
                   
-                }
+                
                 //update
                 if (e.ColumnIndex == Account_Datagrid.Columns[11].Index)
                 {

@@ -63,6 +63,16 @@ namespace NCR_SYSTEM_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap account_archive {
+            get {
+                object obj = ResourceManager.GetObject("account archive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap account_management_button {
             get {
                 object obj = ResourceManager.GetObject("account_management_button", resourceCulture);
@@ -746,6 +756,16 @@ namespace NCR_SYSTEM_1.Properties {
         internal static System.Drawing.Bitmap View_Icon {
             get {
                 object obj = ResourceManager.GetObject("View_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap view2 {
+            get {
+                object obj = ResourceManager.GetObject("view2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

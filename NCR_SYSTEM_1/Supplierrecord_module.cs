@@ -91,7 +91,7 @@ namespace NCR_SYSTEM_1
             View.HeaderText = "";
             View.Name = "View";
             View.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            View.Image = Properties.Resources.view;
+            View.Image = Properties.Resources.view2;
 
            
 
@@ -335,7 +335,7 @@ namespace NCR_SYSTEM_1
             View.HeaderText = "";
             View.Name = "View";
             View.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            View.Image = Properties.Resources.view;
+            View.Image = Properties.Resources.view2;
 
             foreach (DataGridViewColumn column in Supplier_Datagrid.Columns)
             {
@@ -605,7 +605,7 @@ namespace NCR_SYSTEM_1
             View.HeaderText = "";
             View.Name = "View";
             View.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            View.Image = Properties.Resources.view;
+            View.Image = Properties.Resources.view2;
 
             getsales();
             gettransactioncount();

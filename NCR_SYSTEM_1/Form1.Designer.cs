@@ -32,17 +32,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.errormessage = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.passtxt = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.usertxt = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.passtxt = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.errormessage = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -67,6 +67,59 @@
             this.panel1.Size = new System.Drawing.Size(1022, 515);
             this.panel1.TabIndex = 15;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(220)))), ((int)(((byte)(224)))));
+            this.panel3.Controls.Add(this.errormessage);
+            this.panel3.Location = new System.Drawing.Point(683, 98);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(261, 48);
+            this.panel3.TabIndex = 20;
+            this.panel3.Visible = false;
+            // 
+            // errormessage
+            // 
+            this.errormessage.AutoSize = true;
+            this.errormessage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errormessage.ForeColor = System.Drawing.Color.Maroon;
+            this.errormessage.Location = new System.Drawing.Point(11, 9);
+            this.errormessage.Name = "errormessage";
+            this.errormessage.Size = new System.Drawing.Size(239, 30);
+            this.errormessage.TabIndex = 19;
+            this.errormessage.Text = "The username or password you entered isn\'t\r\nconnected to an account.";
+            this.errormessage.Visible = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(207)))), ((int)(((byte)(210)))));
+            this.panel2.Location = new System.Drawing.Point(682, 97);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(263, 50);
+            this.panel2.TabIndex = 20;
+            this.panel2.Visible = false;
+            // 
+            // passtxt
+            // 
+            this.passtxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.passtxt.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passtxt.ForeColor = System.Drawing.Color.Gray;
+            this.passtxt.HintForeColor = System.Drawing.Color.Empty;
+            this.passtxt.HintText = "";
+            this.passtxt.isPassword = true;
+            this.passtxt.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.passtxt.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.passtxt.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.passtxt.LineThickness = 3;
+            this.passtxt.Location = new System.Drawing.Point(682, 225);
+            this.passtxt.Margin = new System.Windows.Forms.Padding(4);
+            this.passtxt.Name = "passtxt";
+            this.passtxt.Size = new System.Drawing.Size(263, 41);
+            this.passtxt.TabIndex = 16;
+            this.passtxt.Text = "Password";
+            this.passtxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.passtxt.Enter += new System.EventHandler(this.passtxt_Enter);
+            this.passtxt.Leave += new System.EventHandler(this.passtxt_Leave);
             // 
             // bunifuImageButton1
             // 
@@ -155,59 +208,6 @@
             this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuFlatButton1.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
             // 
-            // passtxt
-            // 
-            this.passtxt.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.passtxt.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passtxt.ForeColor = System.Drawing.Color.Gray;
-            this.passtxt.HintForeColor = System.Drawing.Color.Empty;
-            this.passtxt.HintText = "";
-            this.passtxt.isPassword = true;
-            this.passtxt.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.passtxt.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.passtxt.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.passtxt.LineThickness = 3;
-            this.passtxt.Location = new System.Drawing.Point(682, 225);
-            this.passtxt.Margin = new System.Windows.Forms.Padding(4);
-            this.passtxt.Name = "passtxt";
-            this.passtxt.Size = new System.Drawing.Size(263, 41);
-            this.passtxt.TabIndex = 16;
-            this.passtxt.Text = "Password";
-            this.passtxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.passtxt.Enter += new System.EventHandler(this.passtxt_Enter);
-            this.passtxt.Leave += new System.EventHandler(this.passtxt_Leave);
-            // 
-            // errormessage
-            // 
-            this.errormessage.AutoSize = true;
-            this.errormessage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errormessage.ForeColor = System.Drawing.Color.Maroon;
-            this.errormessage.Location = new System.Drawing.Point(11, 9);
-            this.errormessage.Name = "errormessage";
-            this.errormessage.Size = new System.Drawing.Size(239, 30);
-            this.errormessage.TabIndex = 19;
-            this.errormessage.Text = "The username or password you entered isn\'t\r\nconnected to an account.";
-            this.errormessage.Visible = false;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(207)))), ((int)(((byte)(210)))));
-            this.panel2.Location = new System.Drawing.Point(682, 97);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(263, 50);
-            this.panel2.TabIndex = 20;
-            this.panel2.Visible = false;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(220)))), ((int)(((byte)(224)))));
-            this.panel3.Controls.Add(this.errormessage);
-            this.panel3.Location = new System.Drawing.Point(683, 98);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(261, 48);
-            this.panel3.TabIndex = 20;
-            this.panel3.Visible = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,6 +215,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1018, 514);
             this.Controls.Add(this.panel1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -222,9 +223,9 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.ResumeLayout(false);
 
         }
