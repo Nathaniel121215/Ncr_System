@@ -22,9 +22,10 @@ namespace NCR_SYSTEM_1
             BasePath = "https://fir-test-6c417-default-rtdb.firebaseio.com/"
         };
 
-
+      
         IFirebaseClient client;
 
+        bool a = true;
         public static string username;
         public static string inventoryac;
         public static string posac;
@@ -60,7 +61,11 @@ namespace NCR_SYSTEM_1
                     errormessage.Visible = true;
                     panel2.Visible = true;
                     bunifuCustomLabel1.Select();
-                    MessageBox.Show("Invalid login");
+                   
+
+                    usertxt.LineIdleColor = Color.Red;
+                    passtxt.LineIdleColor = Color.Red;
+
                     break;
                 }
 
@@ -141,9 +146,10 @@ namespace NCR_SYSTEM_1
                         errormessage.Visible = true;
                         panel2.Visible = true;
                         bunifuCustomLabel1.Select();
-                        MessageBox.Show("Invalid login");
+                        
 
-
+                        usertxt.LineIdleColor = Color.Red;
+                        passtxt.LineIdleColor = Color.Red;
                         break;
                     }
 
@@ -188,6 +194,10 @@ namespace NCR_SYSTEM_1
 
         private void usertxt_Enter(object sender, EventArgs e)
         {
+            usertxt.LineIdleColor = Color.FromArgb(49, 129, 255);
+            passtxt.LineIdleColor = Color.FromArgb(49, 129, 255);
+
+
             errormessage.Visible = false;
             panel2.Visible = false;
             panel3.Visible = false;
@@ -214,6 +224,9 @@ namespace NCR_SYSTEM_1
 
         private void passtxt_Enter(object sender, EventArgs e)
         {
+            usertxt.LineIdleColor = Color.FromArgb(49, 129, 255);
+            passtxt.LineIdleColor = Color.FromArgb(49, 129, 255);
+
             errormessage.Visible = false;
             panel2.Visible = false;
             panel3.Visible = false;
@@ -242,6 +255,24 @@ namespace NCR_SYSTEM_1
 
         }
 
-       
+        private void bunifuImageButton2_Click(object sender, EventArgs e)
+        {
+           if( a ==true)
+            {
+                bunifuImageButton2.Image = Properties.Resources.eye_3;
+                a = false;
+                passtxt.isPassword = false;
+            }
+            else
+            {
+                bunifuImageButton2.Image = Properties.Resources.eye_1;
+                a = true;
+                passtxt.isPassword = true;
+            }
+
+           
+
+
+        }
     }
 }

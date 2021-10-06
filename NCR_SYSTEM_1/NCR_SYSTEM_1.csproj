@@ -634,6 +634,9 @@
     <None Include="Resources\fade stock adjustment.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\blue login.png" />
+    <None Include="Resources\eye 3.png" />
+    <None Include="Resources\eye 1.png" />
     <None Include="Resources\view2.png" />
     <None Include="Resources\inventory archive.png" />
     <None Include="Resources\fade supplier archive.png" />

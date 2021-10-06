@@ -153,6 +153,16 @@ namespace NCR_SYSTEM_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap blue_login {
+            get {
+                object obj = ResourceManager.GetObject("blue login", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cancel_Icon {
             get {
                 object obj = ResourceManager.GetObject("cancel Icon", resourceCulture);
@@ -186,6 +196,26 @@ namespace NCR_SYSTEM_1.Properties {
         internal static System.Drawing.Bitmap delivery_icon {
             get {
                 object obj = ResourceManager.GetObject("delivery-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eye_1 {
+            get {
+                object obj = ResourceManager.GetObject("eye 1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap eye_3 {
+            get {
+                object obj = ResourceManager.GetObject("eye 3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

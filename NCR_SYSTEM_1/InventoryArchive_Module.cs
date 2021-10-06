@@ -55,6 +55,7 @@ namespace NCR_SYSTEM_1
         {
             client = new FireSharp.FirebaseClient(config);
             this.Inventory_Datagrid.AllowUserToAddRows = false;
+            label2.Select();
 
             dt.Columns.Add("Product ID");
             dt.Columns.Add("Product Name");
