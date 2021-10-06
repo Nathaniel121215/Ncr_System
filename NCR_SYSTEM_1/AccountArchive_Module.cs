@@ -15,6 +15,15 @@ namespace NCR_SYSTEM_1
 {
     public partial class AccountArchive_Module : Form
     {
+        public static string User_ID = "";
+        public static string Username = "";
+        public static string Password = "";
+        public static string Firstname = "";
+        public static string Lastname = "";
+        public static string Account_Level = "";
+        public static string Date_Added = "";
+
+
         private Image[] StatusImgs;
 
         DataTable dt = new DataTable();
@@ -36,9 +45,12 @@ namespace NCR_SYSTEM_1
 
         private void AccountArchive_Module_Load(object sender, EventArgs e)
         {
+            datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
+            datedisplay.Select();
+
             this.Account_Datagrid.AllowUserToAddRows = false;
             client = new FireSharp.FirebaseClient(config);
-            label2.Select();
+            
 
             dt.Columns.Add("User ID");
             dt.Columns.Add("Username");
@@ -275,11 +287,29 @@ namespace NCR_SYSTEM_1
                 }
 
                 //view
+
                 if (e.ColumnIndex == Account_Datagrid.Columns[8].Index)
                 {
+
+                    columnindex = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+                    FirebaseResponse resp1 = client.Get("AccountArchive/" + columnindex);
+                    User_class obj1 = resp1.ResultAs<User_class>();
+
+
+
+                    User_ID = obj1.User_ID;
+                    Username = obj1.Username;
+                    Password = obj1.Password;
+                    Firstname = obj1.Firstname;
+                    Lastname = obj1.Lastname;
+                    Account_Level = obj1.Account_Level;
+          
                    
 
 
+                    AccountArchiveView_popup c = new AccountArchiveView_popup();
+                    c.Show();
 
 
                 }

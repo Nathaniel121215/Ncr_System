@@ -53,9 +53,12 @@ namespace NCR_SYSTEM_1
 
         private void InventoryArchive_Module_Load(object sender, EventArgs e)
         {
+            datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
+            datedisplay.Select();
+
             client = new FireSharp.FirebaseClient(config);
             this.Inventory_Datagrid.AllowUserToAddRows = false;
-            label2.Select();
+           
 
             dt.Columns.Add("Product ID");
             dt.Columns.Add("Product Name");

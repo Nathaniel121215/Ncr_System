@@ -79,6 +79,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountArchiveView_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountArchiveView_popup.Designer.cs">
+      <DependentUpon>AccountArchiveView_popup.cs</DependentUpon>
+    </Compile>
     <Compile Include="AccountArchive_Class.cs" />
     <Compile Include="AccountArchive_Module.cs">
       <SubType>Form</SubType>
@@ -360,6 +366,9 @@
       <DependentUpon>Updateunit_popup.cs</DependentUpon>
     </Compile>
     <Compile Include="User_class.cs" />
+    <EmbeddedResource Include="AccountArchiveView_popup.resx">
+      <DependentUpon>AccountArchiveView_popup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AccountArchive_Module.resx">
       <DependentUpon>AccountArchive_Module.cs</DependentUpon>
     </EmbeddedResource>
