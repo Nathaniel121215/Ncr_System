@@ -49,6 +49,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Account_Datagrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.combofilter = new Bunifu.Framework.UI.BunifuDropdown();
+            this.datedisplay = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bunifuImageButton3 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton2 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
@@ -61,11 +64,9 @@
             this.bunifuImageButton5 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton16 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton9 = new Bunifu.Framework.UI.BunifuImageButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.combofilter = new Bunifu.Framework.UI.BunifuDropdown();
-            this.datedisplay = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Account_Datagrid)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
@@ -78,7 +79,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -121,6 +121,7 @@
             this.bunifuFlatButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton2.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton2.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuFlatButton2.Click += new System.EventHandler(this.bunifuFlatButton2_Click);
             // 
             // panel3
             // 
@@ -385,6 +386,47 @@
             this.panel1.Size = new System.Drawing.Size(335, 1085);
             this.panel1.TabIndex = 337;
             // 
+            // combofilter
+            // 
+            this.combofilter.BackColor = System.Drawing.Color.Transparent;
+            this.combofilter.BorderRadius = 0;
+            this.combofilter.ForeColor = System.Drawing.Color.White;
+            this.combofilter.Items = new string[] {
+        "User ID",
+        "Username",
+        "Password",
+        "Firstname",
+        "Lastname",
+        "Account Level",
+        "Date Added"};
+            this.combofilter.Location = new System.Drawing.Point(913, 179);
+            this.combofilter.Name = "combofilter";
+            this.combofilter.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.combofilter.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.combofilter.selectedIndex = 0;
+            this.combofilter.Size = new System.Drawing.Size(147, 40);
+            this.combofilter.TabIndex = 353;
+            // 
+            // datedisplay
+            // 
+            this.datedisplay.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datedisplay.Location = new System.Drawing.Point(1704, 44);
+            this.datedisplay.Name = "datedisplay";
+            this.datedisplay.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.datedisplay.Size = new System.Drawing.Size(161, 17);
+            this.datedisplay.TabIndex = 354;
+            this.datedisplay.Text = "Tuesday, 22 April 2021";
+            this.datedisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Location = new System.Drawing.Point(386, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(55, 55);
+            this.pictureBox1.TabIndex = 343;
+            this.pictureBox1.TabStop = false;
+            // 
             // bunifuImageButton3
             // 
             this.bunifuImageButton3.BackColor = System.Drawing.Color.SeaGreen;
@@ -426,6 +468,7 @@
             this.bunifuImageButton1.TabIndex = 44;
             this.bunifuImageButton1.TabStop = false;
             this.bunifuImageButton1.Zoom = 10;
+            this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click);
             // 
             // bunifuImageButton8
             // 
@@ -468,6 +511,7 @@
             this.bunifuImageButton19.TabIndex = 35;
             this.bunifuImageButton19.TabStop = false;
             this.bunifuImageButton19.Zoom = 10;
+            this.bunifuImageButton19.Click += new System.EventHandler(this.bunifuImageButton19_Click);
             // 
             // bunifuImageButton6
             // 
@@ -553,47 +597,6 @@
             this.bunifuImageButton9.TabStop = false;
             this.bunifuImageButton9.Zoom = 10;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(386, 28);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(55, 55);
-            this.pictureBox1.TabIndex = 343;
-            this.pictureBox1.TabStop = false;
-            // 
-            // combofilter
-            // 
-            this.combofilter.BackColor = System.Drawing.Color.Transparent;
-            this.combofilter.BorderRadius = 0;
-            this.combofilter.ForeColor = System.Drawing.Color.White;
-            this.combofilter.Items = new string[] {
-        "User ID",
-        "Username",
-        "Password",
-        "Firstname",
-        "Lastname",
-        "Account Level",
-        "Date Added"};
-            this.combofilter.Location = new System.Drawing.Point(913, 179);
-            this.combofilter.Name = "combofilter";
-            this.combofilter.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.combofilter.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.combofilter.selectedIndex = 0;
-            this.combofilter.Size = new System.Drawing.Size(147, 40);
-            this.combofilter.TabIndex = 353;
-            // 
-            // datedisplay
-            // 
-            this.datedisplay.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.datedisplay.Location = new System.Drawing.Point(1704, 44);
-            this.datedisplay.Name = "datedisplay";
-            this.datedisplay.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.datedisplay.Size = new System.Drawing.Size(161, 17);
-            this.datedisplay.TabIndex = 354;
-            this.datedisplay.Text = "Tuesday, 22 April 2021";
-            this.datedisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // AccountArchive_Module
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -624,6 +627,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Account_Datagrid)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
@@ -636,7 +640,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

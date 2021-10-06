@@ -15,6 +15,8 @@ namespace NCR_SYSTEM_1
 {
     public partial class AccountArchive_Module : Form
     {
+        public static string checker = "";
+
         int supressor = 1;
 
         public static string User_ID = "";
@@ -39,10 +41,12 @@ namespace NCR_SYSTEM_1
         IFirebaseClient client;
 
 
+        public static AccountArchive_Module _instance;
 
         public AccountArchive_Module()
         {
             InitializeComponent();
+            _instance = this;
         }
 
         private void AccountArchive_Module_Load(object sender, EventArgs e)
@@ -170,6 +174,7 @@ namespace NCR_SYSTEM_1
                 }
 
                 gettransactioncount();
+                checker = "allow";
             }
 
 
@@ -484,6 +489,103 @@ namespace NCR_SYSTEM_1
             }
 
 
+        }
+        public void filter()
+        {
+            DataView dv = new DataView(dt);
+            string date1 = AccountArchive_Filter_popup.startdate;
+            string date2 = AccountArchive_Filter_popup.enddate;
+            string user = AccountArchive_Filter_popup.user;
+
+            if (InventoryArchive_Filter_popup.user == "")
+            {
+
+                dv.RowFilter = "[Date Archived]  >='" + date1 + "'AND [Date Archived] <='" + date2 + "'";
+
+                Account_Datagrid.DataSource = null;
+                Account_Datagrid.Rows.Clear();
+                Account_Datagrid.Columns.Clear();
+                Account_Datagrid.DataSource = dv;
+
+                
+
+            }
+
+
+            else
+            {
+                dv.RowFilter = "[Date Archived]  >='" + date1 + "'AND [Date Archived] <='" + date2 + "'" + " AND [User] LIKE '%" + user + "%'";
+
+                Account_Datagrid.DataSource = null;
+                Account_Datagrid.Rows.Clear();
+                Account_Datagrid.Columns.Clear();
+                Account_Datagrid.DataSource = dv;
+
+
+            }
+
+            DataGridViewImageColumn View = new DataGridViewImageColumn();
+            Account_Datagrid.Columns.Add(View);
+            View.HeaderText = "";
+            View.Name = "";
+            View.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            View.Image = Properties.Resources.View_Icon;
+
+            DataGridViewImageColumn Restore = new DataGridViewImageColumn();
+            Account_Datagrid.Columns.Add(Restore);
+            Restore.HeaderText = "";
+            Restore.Name = "";
+            Restore.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Restore.Image = Properties.Resources.Restore_Icon;
+
+
+
+            ///////////////////////// Level /////////////////////////
+
+
+            DataGridViewImageColumn AccountLvl = new DataGridViewImageColumn();
+            Account_Datagrid.Columns.Add(AccountLvl);
+            AccountLvl.HeaderText = "Account Level";
+            AccountLvl.Name = "Account Level";
+            AccountLvl.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            AccountLvl.Image = Properties.Resources.loading;
+
+            filterlabeltxt.Text = date1 + " to " + date2;
+
+            searchupdate();
+            gettransactioncount();
+
+        }
+
+        private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            
+
+
+            if (checker.Equals("allow"))
+            {
+                AccountArchive_Filter_popup c = new AccountArchive_Filter_popup();
+                c.Show();
+
+                checker = "dontallow";
+            }
+            else
+            {
+                MessageBox.Show("The tab is currently already open.");
+            }
+        }
+
+        private void bunifuImageButton19_Click(object sender, EventArgs e)
+        {
+            Dashboard_Module c = new Dashboard_Module();
+            c.Show();
+
+        }
+
+        private void bunifuImageButton1_Click(object sender, EventArgs e)
+        {
+            InventoryArchive_Module c = new InventoryArchive_Module();
+            c.Show();
         }
     }
 }

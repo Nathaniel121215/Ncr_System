@@ -46,5 +46,11 @@ namespace NCR_SYSTEM_1
         {
             this.Hide();
         }
+
+        private void Salesrecord_Filter_popup_Load(object sender, EventArgs e)
+        {
+            endtxt.Value = DateTime.Today;
+            starttxt.Value = DateTime.Today;
+        }
     }
 }

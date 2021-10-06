@@ -317,6 +317,7 @@
             this.Name = "Salesrecord_Filter_popup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Salesrecord_Filter_popup";
+            this.Load += new System.EventHandler(this.Salesrecord_Filter_popup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

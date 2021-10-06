@@ -50,6 +50,8 @@ namespace NCR_SYSTEM_1
 
         private void Supplierrecord_Filter_popup_Load(object sender, EventArgs e)
         {
+            endtxt.Value = DateTime.Today;
+            starttxt.Value = DateTime.Today;
 
             client = new FireSharp.FirebaseClient(config);
 

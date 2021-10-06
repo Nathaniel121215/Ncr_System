@@ -39,6 +39,8 @@ namespace NCR_SYSTEM_1
         private void InventoryArchive_Filter_popup_Load(object sender, EventArgs e)
         {
 
+            endtxt.Value = DateTime.Today;
+            starttxt.Value = DateTime.Today;
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
