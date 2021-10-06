@@ -1,6 +1,6 @@
 ﻿namespace NCR_SYSTEM_1
 {
-    partial class InventoryArchive_Filter_popup
+    partial class AccountArchive_Filter_popup
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.label7 = new System.Windows.Forms.Label();
             this.endtxt = new Bunifu.Framework.UI.BunifuDatepicker();
             this.starttxt = new Bunifu.Framework.UI.BunifuDatepicker();
@@ -39,14 +40,18 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 5;
+            this.bunifuElipse1.TargetControl = this;
             // 
             // label7
             // 
@@ -55,7 +60,7 @@
             this.label7.Location = new System.Drawing.Point(33, 273);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(33, 15);
-            this.label7.TabIndex = 359;
+            this.label7.TabIndex = 374;
             this.label7.Text = "User:";
             // 
             // endtxt
@@ -68,7 +73,7 @@
             this.endtxt.Location = new System.Drawing.Point(36, 216);
             this.endtxt.Name = "endtxt";
             this.endtxt.Size = new System.Drawing.Size(281, 42);
-            this.endtxt.TabIndex = 356;
+            this.endtxt.TabIndex = 373;
             this.endtxt.Value = new System.DateTime(2021, 9, 24, 0, 0, 0, 0);
             // 
             // starttxt
@@ -81,7 +86,7 @@
             this.starttxt.Location = new System.Drawing.Point(36, 137);
             this.starttxt.Name = "starttxt";
             this.starttxt.Size = new System.Drawing.Size(281, 42);
-            this.starttxt.TabIndex = 355;
+            this.starttxt.TabIndex = 372;
             this.starttxt.Value = new System.DateTime(2021, 9, 24, 0, 0, 0, 0);
             // 
             // bunifuFlatButton2
@@ -114,12 +119,11 @@
             this.bunifuFlatButton2.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton2.selected = false;
             this.bunifuFlatButton2.Size = new System.Drawing.Size(135, 35);
-            this.bunifuFlatButton2.TabIndex = 354;
+            this.bunifuFlatButton2.TabIndex = 371;
             this.bunifuFlatButton2.Text = "Cancel";
             this.bunifuFlatButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton2.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton2.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuFlatButton2.Click += new System.EventHandler(this.bunifuFlatButton2_Click);
             // 
             // bunifuFlatButton1
             // 
@@ -151,12 +155,11 @@
             this.bunifuFlatButton1.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButton1.selected = false;
             this.bunifuFlatButton1.Size = new System.Drawing.Size(135, 35);
-            this.bunifuFlatButton1.TabIndex = 353;
+            this.bunifuFlatButton1.TabIndex = 370;
             this.bunifuFlatButton1.Text = "Update";
             this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton1.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuFlatButton1.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
             // 
             // label2
             // 
@@ -165,7 +168,7 @@
             this.label2.Location = new System.Drawing.Point(33, 189);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 15);
-            this.label2.TabIndex = 352;
+            this.label2.TabIndex = 369;
             this.label2.Text = "End Date:";
             // 
             // usertxt
@@ -182,7 +185,7 @@
             this.usertxt.Margin = new System.Windows.Forms.Padding(4);
             this.usertxt.Name = "usertxt";
             this.usertxt.Size = new System.Drawing.Size(281, 36);
-            this.usertxt.TabIndex = 351;
+            this.usertxt.TabIndex = 368;
             this.usertxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // panel6
@@ -191,7 +194,7 @@
             this.panel6.Location = new System.Drawing.Point(36, 93);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(281, 1);
-            this.panel6.TabIndex = 350;
+            this.panel6.TabIndex = 367;
             // 
             // label1
             // 
@@ -200,7 +203,7 @@
             this.label1.Location = new System.Drawing.Point(32, 65);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(190, 23);
-            this.label1.TabIndex = 349;
+            this.label1.TabIndex = 366;
             this.label1.Text = "Inventory Archive Filter";
             // 
             // label5
@@ -210,45 +213,8 @@
             this.label5.Location = new System.Drawing.Point(33, 110);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 15);
-            this.label5.TabIndex = 348;
+            this.label5.TabIndex = 365;
             this.label5.Text = "Starting Date:";
-            // 
-            // bunifuElipse1
-            // 
-            this.bunifuElipse1.ElipseRadius = 5;
-            this.bunifuElipse1.TargetControl = this;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.panel2.Location = new System.Drawing.Point(-4, -12);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(369, 14);
-            this.panel2.TabIndex = 360;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.panel1.Location = new System.Drawing.Point(-6, 418);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(369, 14);
-            this.panel1.TabIndex = 361;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.panel3.Location = new System.Drawing.Point(354, 1);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(10, 428);
-            this.panel3.TabIndex = 362;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.panel4.Location = new System.Drawing.Point(-8, -6);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(10, 428);
-            this.panel4.TabIndex = 363;
             // 
             // bunifuImageButton1
             // 
@@ -260,21 +226,48 @@
             this.bunifuImageButton1.Name = "bunifuImageButton1";
             this.bunifuImageButton1.Size = new System.Drawing.Size(32, 32);
             this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.bunifuImageButton1.TabIndex = 347;
+            this.bunifuImageButton1.TabIndex = 364;
             this.bunifuImageButton1.TabStop = false;
             this.bunifuImageButton1.Zoom = 10;
-            this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click);
             // 
-            // InventoryArchive_Filter_popup
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.panel4.Location = new System.Drawing.Point(-8, -6);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(10, 428);
+            this.panel4.TabIndex = 378;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.panel3.Location = new System.Drawing.Point(354, 1);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(10, 428);
+            this.panel3.TabIndex = 377;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.panel1.Location = new System.Drawing.Point(-6, 418);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(369, 14);
+            this.panel1.TabIndex = 376;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.panel2.Location = new System.Drawing.Point(-4, -12);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(369, 14);
+            this.panel2.TabIndex = 375;
+            // 
+            // AccountArchive_Filter_popup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(357, 421);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.endtxt);
             this.Controls.Add(this.starttxt);
@@ -286,11 +279,14 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.bunifuImageButton1);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "InventoryArchive_Filter_popup";
+            this.Name = "AccountArchive_Filter_popup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "InventoryArchive_Filter_popup";
-            this.Load += new System.EventHandler(this.InventoryArchive_Filter_popup_Load);
+            this.Text = "AccountArchive_Filter_popup";
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -299,6 +295,7 @@
 
         #endregion
 
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private System.Windows.Forms.Label label7;
         private Bunifu.Framework.UI.BunifuDatepicker endtxt;
         private Bunifu.Framework.UI.BunifuDatepicker starttxt;
@@ -310,10 +307,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton1;
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

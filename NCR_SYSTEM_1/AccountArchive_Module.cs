@@ -15,6 +15,8 @@ namespace NCR_SYSTEM_1
 {
     public partial class AccountArchive_Module : Form
     {
+        int supressor = 1;
+
         public static string User_ID = "";
         public static string Username = "";
         public static string Password = "";
@@ -323,6 +325,165 @@ namespace NCR_SYSTEM_1
             {
 
             }
+        }
+
+        private void searchtxt_KeyUp(object sender, KeyEventArgs e)
+        {
+
+            if (searchtxt.Text == "" && supressor == 1)
+            {
+                supressor = 0;
+
+
+                Account_Datagrid.DataSource = null;
+                Account_Datagrid.Rows.Clear();
+                Account_Datagrid.Columns.Clear();
+                Account_Datagrid.DataSource = dt;
+
+
+                DataGridViewImageColumn View = new DataGridViewImageColumn();
+                Account_Datagrid.Columns.Add(View);
+                View.HeaderText = "";
+                View.Name = "";
+                View.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                View.Image = Properties.Resources.View_Icon;
+
+                DataGridViewImageColumn Restore = new DataGridViewImageColumn();
+                Account_Datagrid.Columns.Add(Restore);
+                Restore.HeaderText = "";
+                Restore.Name = "";
+                Restore.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Restore.Image = Properties.Resources.Restore_Icon;
+
+
+
+                ///////////////////////// Level /////////////////////////
+
+
+                DataGridViewImageColumn AccountLvl = new DataGridViewImageColumn();
+                Account_Datagrid.Columns.Add(AccountLvl);
+                AccountLvl.HeaderText = "Account Level";
+                AccountLvl.Name = "Account Level";
+                AccountLvl.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                AccountLvl.Image = Properties.Resources.loading;
+
+
+
+                Dataviewall();
+
+                filterlabeltxt.Text = "";
+
+
+
+            }
+
+            if (searchtxt.Text != "")
+            {
+                supressor = 1;
+
+            }
+
+
+        }
+
+        private void searchbutton_Click(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
+
+            Account_Datagrid.DataSource = null;
+            Account_Datagrid.Rows.Clear();
+            Account_Datagrid.Columns.Clear();
+            Account_Datagrid.DataSource = dv;
+
+
+
+            DataGridViewImageColumn View = new DataGridViewImageColumn();
+            Account_Datagrid.Columns.Add(View);
+            View.HeaderText = "";
+            View.Name = "";
+            View.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            View.Image = Properties.Resources.View_Icon;
+
+            DataGridViewImageColumn Restore = new DataGridViewImageColumn();
+            Account_Datagrid.Columns.Add(Restore);
+            Restore.HeaderText = "";
+            Restore.Name = "";
+            Restore.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Restore.Image = Properties.Resources.Restore_Icon;
+
+
+
+            ///////////////////////// Level /////////////////////////
+
+
+            DataGridViewImageColumn AccountLvl = new DataGridViewImageColumn();
+            Account_Datagrid.Columns.Add(AccountLvl);
+            AccountLvl.HeaderText = "Account Level";
+            AccountLvl.Name = "Account Level";
+            AccountLvl.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            AccountLvl.Image = Properties.Resources.loading;
+
+
+            gettransactioncount();
+
+            filterlabeltxt.Text = "";
+
+            searchupdate();
+
+
+        }
+        public void searchupdate()
+        {
+            //visual
+
+
+
+            Account_Datagrid.Columns[5].Visible = false;
+            Account_Datagrid.Columns[10].DisplayIndex = 5;
+
+            DataGridViewColumn column10 = Account_Datagrid.Columns[10];
+            column10.Width = 110;
+
+            DataGridViewColumn column8 = Account_Datagrid.Columns[8];
+            column8.Width = 90;
+            DataGridViewColumn column9 = Account_Datagrid.Columns[9];
+            column9.Width = 90;
+
+            foreach (DataGridViewColumn column in Account_Datagrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
+
+            foreach (DataGridViewRow row in Account_Datagrid.Rows)
+            {
+
+                try
+                {
+
+                    StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.Group_179, NCR_SYSTEM_1.Properties.Resources.Group_181 };
+
+
+                    if (row.Cells[5].Value.Equals("Admin")) //Authorize Records
+                    {
+                        row.Cells[10].Value = StatusImgs[1];
+                    }
+                    else
+                    {
+                        row.Cells[10].Value = StatusImgs[0];
+                    }
+
+
+                }
+                catch
+                {
+
+                }
+
+            }
+
+
         }
     }
 }
