@@ -39,7 +39,7 @@ namespace NCR_SYSTEM_1
             enddate = endtxt.Value.ToString("MM/dd/yyyy");
             user = usertxt.Text;
 
-
+            AccountArchive_Module.checker = "allow";
             AccountArchive_Module._instance.filter(); 
             this.Hide();
         }
