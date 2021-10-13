@@ -579,6 +579,7 @@ namespace NCR_SYSTEM_1
         {
             Dashboard_Module c = new Dashboard_Module();
             c.Show();
+            this.Hide();
 
         }
 
@@ -586,6 +587,7 @@ namespace NCR_SYSTEM_1
         {
             InventoryArchive_Module c = new InventoryArchive_Module();
             c.Show();
+            this.Hide();
         }
     }
 }
