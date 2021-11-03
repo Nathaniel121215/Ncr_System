@@ -72,8 +72,8 @@ namespace NCR_SYSTEM_1
         {
             //open connection
             client = new FireSharp.FirebaseClient(config);
-
-
+            datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
+            datedisplay.Select();
 
 
 

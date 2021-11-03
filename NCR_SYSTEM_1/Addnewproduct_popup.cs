@@ -153,16 +153,11 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            if (pname.Text == "")
-            {
-                pname.BorderColorIdle = Color.Red;
-            }
-            else
-            {
+            
                 Addproductstockindicator_popup a = new Addproductstockindicator_popup();
                 a.Show();
                 this.Hide();
-            }
+         
 
 
         

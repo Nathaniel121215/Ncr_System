@@ -25,8 +25,12 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
+     
+
             startdate = starttxt.Value.ToString("MM/dd/yyyy");
             enddate = endtxt.Value.ToString("MM/dd/yyyy");
+           
+
             user = usertxt.Text;
 
 
@@ -38,9 +42,12 @@ namespace NCR_SYSTEM_1
 
         private void InventoryArchive_Filter_popup_Load(object sender, EventArgs e)
         {
+            
 
             endtxt.Value = DateTime.Today;
             starttxt.Value = DateTime.Today;
+
+            
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)

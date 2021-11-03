@@ -55,7 +55,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
-            this.errormessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -394,25 +393,12 @@
             this.bunifuImageButton1.Zoom = 10;
             this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click);
             // 
-            // errormessage
-            // 
-            this.errormessage.AutoSize = true;
-            this.errormessage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errormessage.ForeColor = System.Drawing.Color.Red;
-            this.errormessage.Location = new System.Drawing.Point(509, 116);
-            this.errormessage.Name = "errormessage";
-            this.errormessage.Size = new System.Drawing.Size(110, 15);
-            this.errormessage.TabIndex = 19;
-            this.errormessage.Text = "Please enter a value";
-            this.errormessage.Click += new System.EventHandler(this.errormessage_Click);
-            // 
             // Addnewproduct_popup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(658, 507);
-            this.Controls.Add(this.errormessage);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bunifuFlatButton2);
@@ -477,6 +463,5 @@
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label errormessage;
     }
 }
