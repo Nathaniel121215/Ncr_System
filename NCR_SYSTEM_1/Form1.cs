@@ -142,15 +142,7 @@ namespace NCR_SYSTEM_1
                     }
                     else
                     {
-                        panel3.Visible = true;
-                        errormessage.Visible = true;
-                        panel2.Visible = true;
-                        bunifuCustomLabel1.Select();
-                        
-
-                        usertxt.LineIdleColor = Color.Red;
-                        passtxt.LineIdleColor = Color.Red;
-                        break;
+                    
                     }
 
 
