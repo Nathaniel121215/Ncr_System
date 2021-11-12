@@ -351,7 +351,7 @@ namespace NCR_SYSTEM_1
                             Low = Inventory_Datagrid.Rows[e.RowIndex].Cells[9].Value.ToString(),
                             High = Inventory_Datagrid.Rows[e.RowIndex].Cells[10].Value.ToString(),
 
-                            Date_Archived = DateTime.Now.ToString("MM/dd/yyyy"),
+                            Date_Archived = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
                             User = Form1.username,
 
                     };

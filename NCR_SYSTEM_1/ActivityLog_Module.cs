@@ -16,5 +16,10 @@ namespace NCR_SYSTEM_1
         {
             InitializeComponent();
         }
+
+        private void ActivityLog_Module_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

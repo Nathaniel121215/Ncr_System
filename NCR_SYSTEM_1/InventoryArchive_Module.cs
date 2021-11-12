@@ -74,6 +74,8 @@ namespace NCR_SYSTEM_1
             dt.Columns.Add("Date Archived");
             dt.Columns.Add("User");
 
+            dt.Columns.Add("Date Archived Searcher");
+
 
             Inventory_Datagrid.DataSource = dt;
 
@@ -112,7 +114,7 @@ namespace NCR_SYSTEM_1
             column0.Width = 90;
 
             DataGridViewColumn column1 = Inventory_Datagrid.Columns[1];
-            column1.Width = 220;
+            column1.Width = 200;
 
             DataGridViewColumn column2 = Inventory_Datagrid.Columns[2];
             column2.Width = 80;
@@ -121,23 +123,23 @@ namespace NCR_SYSTEM_1
             column3.Width = 100;
 
             DataGridViewColumn column4 = Inventory_Datagrid.Columns[4];
-            column4.Width = 190;
+            column4.Width = 170;
 
 
             DataGridViewColumn column6 = Inventory_Datagrid.Columns[6];
-            column6.Width = 85;
+            column6.Width = 65;
 
 
             DataGridViewColumn column7 = Inventory_Datagrid.Columns[7];
-            column7.Width = 95;
+            column7.Width = 120;
 
-
-
-            DataGridViewColumn column9 = Inventory_Datagrid.Columns[9];
-            column9.Width = 80;
+            Inventory_Datagrid.Columns[9].Visible = false;
 
             DataGridViewColumn column10 = Inventory_Datagrid.Columns[10];
             column10.Width = 80;
+
+            DataGridViewColumn column11 = Inventory_Datagrid.Columns[11];
+            column11.Width = 80;
 
 
             dt.Rows.Clear();
@@ -174,6 +176,19 @@ namespace NCR_SYSTEM_1
 
                     r["Date Archived"] = obj1.Date_Archived;
                     r["User"] = obj1.User;
+
+                
+                    DateTime date = Convert.ToDateTime(obj1.Date_Archived);
+                    
+                   
+
+
+                    r["Date Archived Searcher"] = date.ToString("MM/dd/yyyy");
+
+
+
+
+
 
 
 
@@ -223,7 +238,7 @@ namespace NCR_SYSTEM_1
             if (InventoryArchive_Filter_popup.user == "")
             {
 
-                dv.RowFilter = "[Date Archived]  >='" + date1 + "'AND [Date Archived] <='" + date2 + "'";
+                dv.RowFilter = "[Date Archived Searcher]  >='" + date1 + "'AND [Date Archived Searcher] <='" + date2 + "'";
 
                 Inventory_Datagrid.DataSource = null;
                 Inventory_Datagrid.Rows.Clear();
@@ -237,7 +252,7 @@ namespace NCR_SYSTEM_1
         
             else
             {
-                dv.RowFilter = "[Date Archived]  >='" + date1 + "'AND [Date Archived] <='" + date2 + "'" + " AND [User] LIKE '%" + user + "%'";
+                dv.RowFilter = "[Date Archived Searcher]  >='" + date1 + "'AND [Date Archived Searcher] <='" + date2 + "'" + " AND [User] LIKE '%" + user + "%'";
 
                 Inventory_Datagrid.DataSource = null;
                 Inventory_Datagrid.Rows.Clear();
@@ -282,7 +297,7 @@ namespace NCR_SYSTEM_1
             column0.Width = 90;
 
             DataGridViewColumn column1 = Inventory_Datagrid.Columns[1];
-            column1.Width = 220;
+            column1.Width = 200;
 
             DataGridViewColumn column2 = Inventory_Datagrid.Columns[2];
             column2.Width = 80;
@@ -291,25 +306,23 @@ namespace NCR_SYSTEM_1
             column3.Width = 100;
 
             DataGridViewColumn column4 = Inventory_Datagrid.Columns[4];
-            column4.Width = 190;
+            column4.Width = 170;
 
 
             DataGridViewColumn column6 = Inventory_Datagrid.Columns[6];
-            column6.Width = 85;
+            column6.Width = 65;
 
 
             DataGridViewColumn column7 = Inventory_Datagrid.Columns[7];
-            column7.Width = 95;
+            column7.Width = 120;
 
-
-
-
-
-            DataGridViewColumn column9 = Inventory_Datagrid.Columns[9];
-            column9.Width = 80;
+            Inventory_Datagrid.Columns[9].Visible = false;
 
             DataGridViewColumn column10 = Inventory_Datagrid.Columns[10];
             column10.Width = 80;
+
+            DataGridViewColumn column11 = Inventory_Datagrid.Columns[11];
+            column11.Width = 80;
 
             gettransactioncount();
         }
@@ -424,7 +437,7 @@ namespace NCR_SYSTEM_1
 
             try
             {
-                if (e.ColumnIndex == Inventory_Datagrid.Columns[10].Index)
+                if (e.ColumnIndex == Inventory_Datagrid.Columns[11].Index)
                 {
                     columnindex = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
@@ -497,7 +510,7 @@ namespace NCR_SYSTEM_1
                 }
 
                 //view
-                if (e.ColumnIndex == Inventory_Datagrid.Columns[9].Index)
+                if (e.ColumnIndex == Inventory_Datagrid.Columns[10].Index)
                 {
                     columnindex = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
