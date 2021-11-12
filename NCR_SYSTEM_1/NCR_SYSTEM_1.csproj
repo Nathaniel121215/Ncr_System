@@ -105,6 +105,12 @@
     <Compile Include="Accountmanagement_Module.Designer.cs">
       <DependentUpon>Accountmanagement_Module.cs</DependentUpon>
     </Compile>
+    <Compile Include="ActivityLog_Module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActivityLog_Module.Designer.cs">
+      <DependentUpon>ActivityLog_Module.cs</DependentUpon>
+    </Compile>
     <Compile Include="Addcategory_module.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -384,6 +390,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Accountmanagement_Module.resx">
       <DependentUpon>Accountmanagement_Module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActivityLog_Module.resx">
+      <DependentUpon>ActivityLog_Module.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Addcategory_module.resx">
       <DependentUpon>Addcategory_module.cs</DependentUpon>
@@ -679,6 +688,7 @@
     <None Include="Resources\Archive Icon.png" />
     <None Include="Resources\archive.png" />
     <None Include="Resources\account archive.png" />
+    <None Include="Resources\activity logs.png" />
     <Content Include="Resources\Bitmap1.bmp" />
     <None Include="Resources\new out of stock.png" />
     <None Include="Resources\new low on stock.png" />

@@ -208,5 +208,20 @@ namespace NCR_SYSTEM_1
                 MessageBox.Show("Your account do not have access on this Module.");
             }
         }
+
+        private void bunifuImageButton7_Click(object sender, EventArgs e)
+        {
+            if (Form1.levelac.Equals("Admin"))
+            {
+                ActivityLog_Module a = new ActivityLog_Module();
+                this.Hide();
+                a.Show();
+            }
+         
+            else
+            {
+                MessageBox.Show("Your account do not have access on this Module.");
+            }
+        }
     }
 }
