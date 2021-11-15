@@ -97,6 +97,11 @@ namespace NCR_SYSTEM_1
 
                             MessageBox.Show("Logged in successfully");
                             username = obj2.Firstname + " " + obj2.Lastname;
+
+    
+
+
+
                             Dashboard_Module a = new Dashboard_Module();
                             this.Hide();
                             a.Show();
