@@ -502,6 +502,58 @@ namespace NCR_SYSTEM_1
 
                     FirebaseResponse response5 = client.Delete("InventoryArchive/" + columnindex);
 
+
+
+
+
+                    //INVENTORY ARCHIVE RESTORE EVENT
+
+                    FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
+                    Counter_class get4 = resp4.ResultAs<Counter_class>();
+                    int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
+
+
+
+                    var data3 = new ActivityLog_Class
+                    {
+                        Event_ID = cnt4.ToString(),
+                        Module = "Inventory Archive Module",
+                        Action = "Product-ID: " + data.ID + "   Item Restored to Inventory",
+                        Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                        User = Form1.username,
+                        Accountlvl = Form1.levelac,
+
+                    };
+
+
+
+                    FirebaseResponse response6 = client.Set("ActivityLog/" + data3.Event_ID, data3);
+
+
+
+                    var obj4 = new Counter_class
+                    {
+                        cnt = data3.Event_ID
+
+                    };
+
+                    SetResponse response7 = client.Set("ActivityLogCounter/node", obj4);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     gettransactioncount();
                     filterlabeltxt.Text = "";
                     DataViewAll();
