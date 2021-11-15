@@ -55,7 +55,7 @@ namespace NCR_SYSTEM_1
             Random rnd = new Random();
             referencenumber = rnd.Next(1000000, 9999999);
 
-            string date = DateTime.Now.ToString("MM/dd/yyyy");
+            string date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
 
 
 
