@@ -63,6 +63,7 @@ namespace NCR_SYSTEM_1
         private void Supplierrecord_module_Load(object sender, EventArgs e)
         {
             datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
+            datedisplay.Select();
             client = new FireSharp.FirebaseClient(config);
         
             this.Supplier_Datagrid.AllowUserToAddRows = false;
@@ -75,6 +76,8 @@ namespace NCR_SYSTEM_1
             dt.Columns.Add("Transaction Payment");
             dt.Columns.Add("Assisted By");
             dt.Columns.Add("Transaction Date");
+
+            dt.Columns.Add("Transaction Date Searcher");
 
 
             Supplier_Datagrid.DataSource = dt;
@@ -149,6 +152,7 @@ namespace NCR_SYSTEM_1
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
 
+            Supplier_Datagrid.Columns[6].Visible = false;
 
 
             dt.Rows.Clear();
@@ -179,7 +183,13 @@ namespace NCR_SYSTEM_1
                     r["Transaction Payment"] = obj1.Order_Total;
                     r["Assisted By"] = obj1.Assisted_By;
                     r["Transaction Date"] = obj1.Date_Of_Transaction;
-                  
+
+                    DateTime date = Convert.ToDateTime(obj1.Date_Of_Transaction);
+
+
+
+                    r["Transaction Date Searcher"] = date.ToString("MM/dd/yyyy");
+
 
                     dt.Rows.Add(r);
                 }
@@ -200,7 +210,7 @@ namespace NCR_SYSTEM_1
 
             try
             {
-                if (e.ColumnIndex == Supplier_Datagrid.Columns[6].Index)
+                if (e.ColumnIndex == Supplier_Datagrid.Columns[7].Index)
                 {
                     columnindex = Supplier_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
@@ -341,6 +351,8 @@ namespace NCR_SYSTEM_1
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
+
+            Supplier_Datagrid.Columns[6].Visible = false;
 
             getsales();
             gettransactioncount();
@@ -559,7 +571,7 @@ namespace NCR_SYSTEM_1
             if (Supplierrecord_Filter_popup.supplier == "" && Supplierrecord_Filter_popup.assistedby == "")
             {
 
-                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "'";
+                dv.RowFilter = "[Transaction Date Searcher]  >='" + date1 + "'AND [Transaction Date Searcher] <='" + date2 + "'";
 
                 Supplier_Datagrid.DataSource = null;
                 Supplier_Datagrid.Rows.Clear();
@@ -570,7 +582,7 @@ namespace NCR_SYSTEM_1
             else if(Supplierrecord_Filter_popup.supplier == "" && Supplierrecord_Filter_popup.assistedby != "")
             {
           
-                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "' " + " AND [Assisted By] LIKE '%" + assist + "%'";
+                dv.RowFilter = "[Transaction Date Searcher]  >='" + date1 + "'AND [Transaction Date Searcher] <='" + date2 + "' " + " AND [Assisted By] LIKE '%" + assist + "%'";
 
 
                 Supplier_Datagrid.DataSource = null;
@@ -580,7 +592,7 @@ namespace NCR_SYSTEM_1
             }
             else if (Supplierrecord_Filter_popup.supplier != "" && Supplierrecord_Filter_popup.assistedby == "")
             {
-                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "' " + " AND [Supplier Name] LIKE '%" + supplier + "%'";
+                dv.RowFilter = "[Transaction Date Searcher]  >='" + date1 + "'AND [Transaction Date Searcher] <='" + date2 + "' " + " AND [Supplier Name] LIKE '%" + supplier + "%'";
 
                 Supplier_Datagrid.DataSource = null;
                 Supplier_Datagrid.Rows.Clear();
@@ -590,7 +602,7 @@ namespace NCR_SYSTEM_1
             else
             {
 
-                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "' " + " AND [Supplier Name] LIKE '%" + supplier + "%'" + " AND [Assisted By] LIKE '%" + assist + "%'";
+                dv.RowFilter = "[Transaction Date Searcher]  >='" + date1 + "'AND [Transaction Date Searcher] <='" + date2 + "' " + " AND [Supplier Name] LIKE '%" + supplier + "%'" + " AND [Assisted By] LIKE '%" + assist + "%'";
 
                 Supplier_Datagrid.DataSource = null;
                 Supplier_Datagrid.Rows.Clear();
@@ -606,6 +618,8 @@ namespace NCR_SYSTEM_1
             View.Name = "View";
             View.ImageLayout = DataGridViewImageCellLayout.Zoom;
             View.Image = Properties.Resources.view2;
+
+            Supplier_Datagrid.Columns[6].Visible = false;
 
             getsales();
             gettransactioncount();
