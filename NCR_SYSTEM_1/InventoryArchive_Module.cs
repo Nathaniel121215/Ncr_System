@@ -518,7 +518,7 @@ namespace NCR_SYSTEM_1
                     {
                         Event_ID = cnt4.ToString(),
                         Module = "Inventory Archive Module",
-                        Action = "Product-ID: " + data.ID + "   Item Restored to Inventory",
+                        Action = "Product-ID: " + data.ID + "   Item Restored",
                         Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
                         User = Form1.username,
                         Accountlvl = Form1.levelac,
