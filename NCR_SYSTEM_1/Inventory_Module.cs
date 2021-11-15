@@ -407,7 +407,7 @@ namespace NCR_SYSTEM_1
                         var data2 = new ActivityLog_Class
                         {
                             Event_ID = cnt4.ToString(),
-                            Module = "Inventory Module",
+                            Module = "Inventory Management Module",
                             Action = "Product-ID: " + data.ID + "   Moved to Archive Module",
                             Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
                             User = Form1.username,
