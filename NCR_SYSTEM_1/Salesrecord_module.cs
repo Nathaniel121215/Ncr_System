@@ -67,6 +67,8 @@ namespace NCR_SYSTEM_1
         {
 
             datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
+            datedisplay.Select();
+
             client = new FireSharp.FirebaseClient(config);
 
             this.Sales_Datagrid.AllowUserToAddRows = false;
@@ -80,7 +82,10 @@ namespace NCR_SYSTEM_1
             dt.Columns.Add("Assisted By");
             dt.Columns.Add("Transaction Type txt");
             dt.Columns.Add("Transaction Date");
-           
+
+            dt.Columns.Add("Transaction Date Searcher");
+
+
 
 
             Sales_Datagrid.DataSource = dt;
@@ -126,8 +131,9 @@ namespace NCR_SYSTEM_1
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
 
-            Sales_Datagrid.Columns[8].DisplayIndex = 5;
+            Sales_Datagrid.Columns[9].DisplayIndex = 5;
             Sales_Datagrid.Columns[5].Visible = false;
+            Sales_Datagrid.Columns[7].Visible = false;
 
 
 
@@ -161,6 +167,12 @@ namespace NCR_SYSTEM_1
                     r["Transaction Date"] = obj1.Date_Of_Transaction;
                     r["Transaction Type txt"] = obj1.Transaction_Type;
 
+                    DateTime date = Convert.ToDateTime(obj1.Date_Of_Transaction);
+
+
+
+                    r["Transaction Date Searcher"] = date.ToString("MM/dd/yyyy");
+
                     dt.Rows.Add(r);
                 }
 
@@ -184,13 +196,13 @@ namespace NCR_SYSTEM_1
 
                         if (row.Cells[5].Value.Equals("On-site")) 
                         {
-                            row.Cells[8].Value = StatusImgs[0];
+                            row.Cells[9].Value = StatusImgs[0];
            
                         }
 
                         if (row.Cells[5].Value.Equals("Delivery"))
                         {
-                            row.Cells[8].Value = StatusImgs[1];
+                            row.Cells[9].Value = StatusImgs[1];
                             
                         }
 
@@ -223,7 +235,7 @@ namespace NCR_SYSTEM_1
 
             try
             {
-                if (e.ColumnIndex == Sales_Datagrid.Columns[7].Index)
+                if (e.ColumnIndex == Sales_Datagrid.Columns[8].Index)
                 {
                     columnindex = Sales_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
@@ -357,8 +369,9 @@ namespace NCR_SYSTEM_1
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
 
-            Sales_Datagrid.Columns[8].DisplayIndex = 5;
+            Sales_Datagrid.Columns[9].DisplayIndex = 5;
             Sales_Datagrid.Columns[5].Visible = false;
+            Sales_Datagrid.Columns[7].Visible = false;
 
 
             foreach (DataGridViewRow row in Sales_Datagrid.Rows)
@@ -374,13 +387,13 @@ namespace NCR_SYSTEM_1
 
                     if (row.Cells[5].Value.Equals("On-site"))
                     {
-                        row.Cells[8].Value = StatusImgs[0];
+                        row.Cells[9].Value = StatusImgs[0];
 
                     }
 
                     if (row.Cells[5].Value.Equals("Delivery"))
                     {
-                        row.Cells[8].Value = StatusImgs[1];
+                        row.Cells[9].Value = StatusImgs[1];
 
                     }
 
@@ -465,7 +478,7 @@ namespace NCR_SYSTEM_1
             if (Salesrecord_Filter_popup.transactiontype == "" && Salesrecord_Filter_popup.assistedby == "")
             {
 
-                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "'";
+                dv.RowFilter = "[Transaction Date Searcher]  >='" + date1 + "'AND [Transaction Date Searcher] <='" + date2 + "'";
 
                 Sales_Datagrid.DataSource = null;
                 Sales_Datagrid.Rows.Clear();
@@ -478,7 +491,7 @@ namespace NCR_SYSTEM_1
             else if (Salesrecord_Filter_popup.transactiontype == "" && Salesrecord_Filter_popup.assistedby != "")
             {
 
-                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "' " + " AND [Assisted By] LIKE '%" + assist + "%'";
+                dv.RowFilter = "[Transaction Date Searcher]  >='" + date1 + "'AND [Transaction Date Searcher] <='" + date2 + "' " + " AND [Assisted By] LIKE '%" + assist + "%'";
 
 
                 Sales_Datagrid.DataSource = null;
@@ -488,7 +501,7 @@ namespace NCR_SYSTEM_1
             }
             else if (Salesrecord_Filter_popup.transactiontype != "" && Salesrecord_Filter_popup.assistedby == "")
             {
-                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "' " + " AND [Transaction Type txt] LIKE '%" + transactiontype + "%'";
+                dv.RowFilter = "[Transaction Date Searcher]  >='" + date1 + "'AND [Transaction Date Searcher] <='" + date2 + "' " + " AND [Transaction Type txt] LIKE '%" + transactiontype + "%'";
 
                 Sales_Datagrid.DataSource = null;
                 Sales_Datagrid.Rows.Clear();
@@ -498,7 +511,7 @@ namespace NCR_SYSTEM_1
             else
             {
 
-                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "' " + " AND [Transaction Type txt] LIKE '%" + transactiontype + "%'" + " AND [Assisted By] LIKE '%" + assist + "%'";
+                dv.RowFilter = "[Transaction Date Searcher]  >='" + date1 + "'AND [Transaction Date Searcher] <='" + date2 + "' " + " AND [Transaction Type txt] LIKE '%" + transactiontype + "%'" + " AND [Assisted By] LIKE '%" + assist + "%'";
 
                 Sales_Datagrid.DataSource = null;
                 Sales_Datagrid.Rows.Clear();
