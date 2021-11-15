@@ -221,6 +221,39 @@ namespace NCR_SYSTEM_1
                     }
                 }
 
+                //Activity Log STOCK PURCHASE EVENT
+
+                FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
+                Counter_class get4 = resp4.ResultAs<Counter_class>();
+                int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
+
+
+
+                var data3 = new ActivityLog_Class
+                {
+                    Event_ID = cnt4.ToString(),
+                    Module = "Stock Purchasing Module",
+                    Action = "Restock-ID: " + data.Restock_ID + "   Item Restocked",
+                    Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                    User = Form1.username,
+                    Accountlvl = Form1.levelac,
+
+                };
+
+
+
+                FirebaseResponse response5 = client.Set("ActivityLog/" + data3.Event_ID, data3);
+
+
+
+                var obj4 = new Counter_class
+                {
+                    cnt = data3.Event_ID
+
+                };
+
+                SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
+
 
 
 
