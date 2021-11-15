@@ -55,8 +55,12 @@ namespace NCR_SYSTEM_1
 
             upperY = upperY + 15;
 
-            string info = "Reference Number:" + Salesrecord_module.refnumber.PadRight(13) + "Date:" + Salesrecord_module.date;
+            string info = "Reference Number:" + Salesrecord_module.refnumber.PadRight(13);
             g.DrawString(info, font, new SolidBrush(Color.Black), 40, upperY);
+
+            upperY = upperY + 15;
+
+            g.DrawString("Date: " + Salesrecord_module.date, font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
@@ -172,8 +176,12 @@ namespace NCR_SYSTEM_1
 
             upperY = upperY + 15;
 
-            string info = "Reference Number:" + Salesrecord_module.refnumber.PadRight(13) + "Date:" + Salesrecord_module.date;
+            string info = "Reference Number:" + Salesrecord_module.refnumber.PadRight(13);
             g.DrawString(info, font, new SolidBrush(Color.Black), 40, upperY);
+
+            upperY = upperY + 15;
+
+            g.DrawString("Date: " + Salesrecord_module.date, font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
