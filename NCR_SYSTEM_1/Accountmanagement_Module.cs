@@ -355,7 +355,7 @@ namespace NCR_SYSTEM_1
                             Supplieraccess = Account_Datagrid.Rows[e.RowIndex].Cells[9].Value.ToString(),
                             Recordaccess = Account_Datagrid.Rows[e.RowIndex].Cells[10].Value.ToString(),
 
-                            Date_Archive = DateTime.Now.ToString("MM/dd/yyyy"),
+                            Date_Archive = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
                             User = Form1.username,
 
                         };

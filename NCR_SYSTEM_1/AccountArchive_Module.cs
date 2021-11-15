@@ -68,7 +68,7 @@ namespace NCR_SYSTEM_1
             dt.Columns.Add("Date Archived");
             dt.Columns.Add("User");
 
-
+            dt.Columns.Add("Date Archived Searcher");
 
 
 
@@ -110,9 +110,9 @@ namespace NCR_SYSTEM_1
             //visual
 
 
-
+            Account_Datagrid.Columns[8].Visible = false;
             Account_Datagrid.Columns[5].Visible = false;
-            Account_Datagrid.Columns[10].DisplayIndex = 5;
+            Account_Datagrid.Columns[11].DisplayIndex = 5;
 
             DataGridViewColumn column10 = Account_Datagrid.Columns[10];
             column10.Width = 110;
@@ -160,7 +160,12 @@ namespace NCR_SYSTEM_1
                     r["Date Archived"] = user.Date_Archive;
                     r["User"] = user.User;
 
+                    DateTime date = Convert.ToDateTime(user.Date_Archive);
 
+
+
+  
+                    r["Date Archived Searcher"] = date.ToString("MM/dd/yyyy");
 
 
 
@@ -189,11 +194,11 @@ namespace NCR_SYSTEM_1
 
                     if (row.Cells[5].Value.Equals("Admin")) //Authorize Records
                     {
-                        row.Cells[10].Value = StatusImgs[1];
+                        row.Cells[11].Value = StatusImgs[1];
                     }
                     else
                     {
-                        row.Cells[10].Value = StatusImgs[0];
+                        row.Cells[11].Value = StatusImgs[0];
                     }
 
 
@@ -225,7 +230,7 @@ namespace NCR_SYSTEM_1
 
             try
             {
-                if (e.ColumnIndex == Account_Datagrid.Columns[9].Index)
+                if (e.ColumnIndex == Account_Datagrid.Columns[10].Index)
                 {
                     columnindex = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
@@ -295,7 +300,7 @@ namespace NCR_SYSTEM_1
 
                 //view
 
-                if (e.ColumnIndex == Account_Datagrid.Columns[8].Index)
+                if (e.ColumnIndex == Account_Datagrid.Columns[9].Index)
                 {
 
                     columnindex = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
@@ -444,8 +449,9 @@ namespace NCR_SYSTEM_1
 
 
 
+            Account_Datagrid.Columns[8].Visible = false;
             Account_Datagrid.Columns[5].Visible = false;
-            Account_Datagrid.Columns[10].DisplayIndex = 5;
+            Account_Datagrid.Columns[11].DisplayIndex = 5;
 
             DataGridViewColumn column10 = Account_Datagrid.Columns[10];
             column10.Width = 110;
@@ -472,11 +478,11 @@ namespace NCR_SYSTEM_1
 
                     if (row.Cells[5].Value.Equals("Admin")) //Authorize Records
                     {
-                        row.Cells[10].Value = StatusImgs[1];
+                        row.Cells[11].Value = StatusImgs[1];
                     }
                     else
                     {
-                        row.Cells[10].Value = StatusImgs[0];
+                        row.Cells[11].Value = StatusImgs[0];
                     }
 
 
@@ -500,7 +506,7 @@ namespace NCR_SYSTEM_1
             if (InventoryArchive_Filter_popup.user == "")
             {
 
-                dv.RowFilter = "[Date Archived]  >='" + date1 + "'AND [Date Archived] <='" + date2 + "'";
+                dv.RowFilter = "[Date Archived Searcher]  >='" + date1 + "'AND [Date Archived Searcher] <='" + date2 + "'";
 
                 Account_Datagrid.DataSource = null;
                 Account_Datagrid.Rows.Clear();
@@ -514,7 +520,7 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                dv.RowFilter = "[Date Archived]  >='" + date1 + "'AND [Date Archived] <='" + date2 + "'" + " AND [User] LIKE '%" + user + "%'";
+                dv.RowFilter = "[Date Archived Searcher]  >='" + date1 + "'AND [Date Archived Searcher] <='" + date2 + "'" + " AND [User] LIKE '%" + user + "%'";
 
                 Account_Datagrid.DataSource = null;
                 Account_Datagrid.Rows.Clear();
