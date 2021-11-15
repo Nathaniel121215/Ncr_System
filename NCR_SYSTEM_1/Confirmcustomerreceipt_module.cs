@@ -79,8 +79,11 @@ namespace NCR_SYSTEM_1
 
             upperY = upperY + 15;
 
-            string info = "Reference Number:" + Processcustomerorder_popup.refferencenum.PadRight(13) + "Date:" + Processcustomerorder_popup.date;
+            string info = "Reference Number:" + Processcustomerorder_popup.refferencenum.PadRight(13);
             g.DrawString(info, font, new SolidBrush(Color.Black), 40, upperY);
+            upperY = upperY + 15;
+
+            g.DrawString("Date:" + Processcustomerorder_popup.date, font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
@@ -206,8 +209,11 @@ namespace NCR_SYSTEM_1
 
             upperY = upperY + 15;
 
-            string info = "Reference Number:" + Processcustomerorder_popup.refferencenum.PadRight(13) + "Date:" + Processcustomerorder_popup.date;
+            string info = "Reference Number:" + Processcustomerorder_popup.refferencenum.PadRight(13);
             g.DrawString(info, font, new SolidBrush(Color.Black), 40, upperY);
+            upperY = upperY + 15;
+
+            g.DrawString("Date:" + Processcustomerorder_popup.date, font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
@@ -216,6 +222,7 @@ namespace NCR_SYSTEM_1
             upperY = upperY + 15;
 
             g.DrawString("Customer Address:" + Processcustomerorder_popup.customeraddress, font, new SolidBrush(Color.Black), 40, upperY);
+
 
             upperY = upperY + 15;
 
