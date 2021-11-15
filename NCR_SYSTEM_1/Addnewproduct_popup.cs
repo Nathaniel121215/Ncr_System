@@ -228,7 +228,7 @@ namespace NCR_SYSTEM_1
                     {
                         Event_ID = cnt4.ToString(),
                         Module ="Inventory Module",
-                        Action ="Product-ID: "+pid.Text+" New Product Added",
+                        Action ="Product-ID: "+pid.Text+"   New Product Added",
                         Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
                         User = Form1.username,
                         Accountlvl = Form1.levelac,

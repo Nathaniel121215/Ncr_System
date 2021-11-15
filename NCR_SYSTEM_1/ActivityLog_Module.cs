@@ -89,7 +89,10 @@ namespace NCR_SYSTEM_1
             DataGridViewColumn column1 = ActivityLog_Datagrid.Columns[1];
             column1.Width = 210;
 
-            ActivityLog_Datagrid.Columns[7].DefaultCellStyle.Padding = new Padding(0, 0, 190, 0);
+            DataGridViewColumn column2 = ActivityLog_Datagrid.Columns[2];
+            column2.Width = 340;
+
+            ActivityLog_Datagrid.Columns[7].DefaultCellStyle.Padding = new Padding(0, 0, 150, 0);
 
             dt.Rows.Clear();
 
@@ -180,8 +183,19 @@ namespace NCR_SYSTEM_1
 
 
             }
+            gettotalcount();
         }
+
+        public void gettotalcount()
+        {
+            int totalcount = 0;
+            totalcount = ActivityLog_Datagrid.Rows.Count;
+
+            TransactionCounttxt.Text = totalcount.ToString();
 
 
         }
+
+
+    }
 }
