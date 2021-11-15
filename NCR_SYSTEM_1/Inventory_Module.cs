@@ -408,7 +408,7 @@ namespace NCR_SYSTEM_1
                         {
                             Event_ID = cnt4.ToString(),
                             Module = "Inventory Module",
-                            Action = "Product-ID: " + data.ID + " Moved to Archive Module",
+                            Action = "Product-ID: " + data.ID + "   Moved to Archive Module",
                             Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
                             User = Form1.username,
                             Accountlvl = Form1.levelac,
@@ -428,14 +428,6 @@ namespace NCR_SYSTEM_1
                         };
 
                         SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
-
-
-
-
-
-
-
-
 
 
 
