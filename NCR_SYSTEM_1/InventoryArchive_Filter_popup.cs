@@ -14,7 +14,6 @@ namespace NCR_SYSTEM_1
     {
         public static string startdate;
         public static string enddate;
-        public static string transactiontype;
         public static string user;
 
 

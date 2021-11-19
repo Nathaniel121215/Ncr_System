@@ -17,9 +17,11 @@ namespace NCR_SYSTEM_1
         {
             InitializeComponent();
         }
+        
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
+  
             System.Drawing.Graphics g;
             g = e.Graphics;
 
@@ -258,6 +260,11 @@ namespace NCR_SYSTEM_1
             upperY = upperY + 15;
 
             g.DrawString("Thank you for purchasing", font, new SolidBrush(Color.Black), 120, upperY);
+
+
+
+
+
         }
 
         private void Print_Button_Click(object sender, EventArgs e)
@@ -284,6 +291,11 @@ namespace NCR_SYSTEM_1
         private void Customertransactionreceipt_popup_Load(object sender, EventArgs e)
         {
 
+    
+
+            
+
+
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
@@ -294,6 +306,11 @@ namespace NCR_SYSTEM_1
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+
         }
     }
 }

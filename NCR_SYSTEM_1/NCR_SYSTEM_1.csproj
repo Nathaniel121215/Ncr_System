@@ -106,6 +106,12 @@
       <DependentUpon>Accountmanagement_Module.cs</DependentUpon>
     </Compile>
     <Compile Include="ActivityLog_Class.cs" />
+    <Compile Include="ActivityLog_Filter_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActivityLog_Filter_popup.Designer.cs">
+      <DependentUpon>ActivityLog_Filter_popup.cs</DependentUpon>
+    </Compile>
     <Compile Include="ActivityLog_Module.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -391,6 +397,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Accountmanagement_Module.resx">
       <DependentUpon>Accountmanagement_Module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ActivityLog_Filter_popup.resx">
+      <DependentUpon>ActivityLog_Filter_popup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ActivityLog_Module.resx">
       <DependentUpon>ActivityLog_Module.cs</DependentUpon>

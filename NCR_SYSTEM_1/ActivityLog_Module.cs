@@ -28,11 +28,16 @@ namespace NCR_SYSTEM_1
 
         DataTable dt = new DataTable();
 
+        int supressor = 1;
+
         private Image[] StatusImgs;
+
+        public static ActivityLog_Module _instance;
 
         public ActivityLog_Module()
         {
             InitializeComponent();
+            _instance = this;
         }
 
         private void ActivityLog_Module_Load(object sender, EventArgs e)
@@ -49,7 +54,7 @@ namespace NCR_SYSTEM_1
             dt.Columns.Add("Action/Activity");
             dt.Columns.Add("Date");
             dt.Columns.Add("User");
-            dt.Columns.Add("Account lvl txt");
+            dt.Columns.Add("Account Level");
 
             dt.Columns.Add("Date Searcher");
 
@@ -87,7 +92,7 @@ namespace NCR_SYSTEM_1
             column0.Width = 110;
 
             DataGridViewColumn column1 = ActivityLog_Datagrid.Columns[1];
-            column1.Width = 210;
+            column1.Width = 270;
 
             DataGridViewColumn column2 = ActivityLog_Datagrid.Columns[2];
             column2.Width = 340;
@@ -121,7 +126,7 @@ namespace NCR_SYSTEM_1
                     r["Action/Activity"] = act.Action;
                     r["Date"] = act.Date;
                     r["User"] = act.User;
-                    r["Account lvl txt"] = act.Accountlvl;
+                    r["Account Level"] = act.Accountlvl;
 
 
                  
@@ -196,6 +201,199 @@ namespace NCR_SYSTEM_1
 
         }
 
+        private void searchtxt_KeyUp(object sender, KeyEventArgs e)
+        {
 
+            if (searchtxt.Text == "" && supressor == 1)
+            {
+                supressor = 0;
+
+
+                ActivityLog_Datagrid.DataSource = null;
+                ActivityLog_Datagrid.Rows.Clear();
+                ActivityLog_Datagrid.Columns.Clear();
+                ActivityLog_Datagrid.DataSource = dt;
+
+                DataGridViewImageColumn AccountLvl = new DataGridViewImageColumn();
+                ActivityLog_Datagrid.Columns.Add(AccountLvl);
+                AccountLvl.HeaderText = "Account Level";
+                AccountLvl.Name = "Account Level";
+                AccountLvl.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                AccountLvl.Image = Properties.Resources.loading;
+
+
+
+                dataview();
+
+                filterlabeltxt.Text = "";
+
+
+
+            }
+
+            if (searchtxt.Text != "")
+            {
+                supressor = 1;
+
+            }
+        }
+
+        private void searchbutton_Click(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
+
+            ActivityLog_Datagrid.DataSource = null;
+            ActivityLog_Datagrid.Rows.Clear();
+            ActivityLog_Datagrid.Columns.Clear();
+            ActivityLog_Datagrid.DataSource = dv;
+
+            DataGridViewImageColumn AccountLvl = new DataGridViewImageColumn();
+            ActivityLog_Datagrid.Columns.Add(AccountLvl);
+            AccountLvl.HeaderText = "Account Level";
+            AccountLvl.Name = "Account Level";
+            AccountLvl.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            AccountLvl.Image = Properties.Resources.loading;
+
+
+
+
+            gettotalcount();
+
+            filterlabeltxt.Text = "";
+
+            searchupdate();
+        }
+
+        public void searchupdate()
+        {
+            foreach (DataGridViewColumn column in ActivityLog_Datagrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
+            ActivityLog_Datagrid.Columns[6].Visible = false;
+            ActivityLog_Datagrid.Columns[5].Visible = false;
+
+            DataGridViewColumn column0 = ActivityLog_Datagrid.Columns[0];
+            column0.Width = 110;
+
+            DataGridViewColumn column1 = ActivityLog_Datagrid.Columns[1];
+            column1.Width = 270;
+
+            DataGridViewColumn column2 = ActivityLog_Datagrid.Columns[2];
+            column2.Width = 340;
+
+            ActivityLog_Datagrid.Columns[7].DefaultCellStyle.Padding = new Padding(0, 0, 150, 0);
+
+            try
+            {
+
+
+                foreach (DataGridViewRow row in ActivityLog_Datagrid.Rows)
+                {
+
+                    try
+                    {
+
+
+                        StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.Group_179, NCR_SYSTEM_1.Properties.Resources.Group_181 };
+
+                        if (row.Cells[5].Value.Equals("Admin")) //Authorize Records
+                        {
+                            row.Cells[7].Value = StatusImgs[1];
+                        }
+                        else
+                        {
+                            row.Cells[7].Value = StatusImgs[0];
+                        }
+
+
+
+                    }
+                    catch
+                    {
+
+                    }
+
+                }
+            }
+            catch
+            {
+
+            }
+
+
+
+        }
+
+        private void bunifuImageButton19_Click(object sender, EventArgs e)
+        {
+            Dashboard_Module c = new Dashboard_Module();
+            c.Show();
+            this.Hide();
+        }
+
+
+
+        public void filter()
+        {
+
+            DataView dv = new DataView(dt);
+            string date1 = ActivityLog_Filter_popup.startdate;
+            string date2 = ActivityLog_Filter_popup.enddate;
+            string user = ActivityLog_Filter_popup.user;
+
+
+            if (InventoryArchive_Filter_popup.user == "")
+            {
+
+                dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "'";
+
+                ActivityLog_Datagrid.DataSource = null;
+                ActivityLog_Datagrid.Rows.Clear();
+                ActivityLog_Datagrid.Columns.Clear();
+                ActivityLog_Datagrid.DataSource = dv;
+
+
+
+            }
+
+
+            else
+            {
+                dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "'" + " AND [User] LIKE '%" + user + "%'";
+
+                ActivityLog_Datagrid.DataSource = null;
+                ActivityLog_Datagrid.Rows.Clear();
+                ActivityLog_Datagrid.Columns.Clear();
+                ActivityLog_Datagrid.DataSource = dv;
+
+
+            }
+
+
+
+            
+
+            DataGridViewImageColumn AccountLvl = new DataGridViewImageColumn();
+            ActivityLog_Datagrid.Columns.Add(AccountLvl);
+            AccountLvl.HeaderText = "Account Level";
+            AccountLvl.Name = "Account Level";
+            AccountLvl.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            AccountLvl.Image = Properties.Resources.loading;
+
+            filterlabeltxt.Text = date1 + " to " + date2;
+
+            searchupdate();
+            gettotalcount();
+
+        }
+
+        private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            ActivityLog_Filter_popup a = new ActivityLog_Filter_popup();
+            a.Show();
+        }
     }
 }
