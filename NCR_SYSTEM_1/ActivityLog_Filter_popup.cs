@@ -38,6 +38,20 @@ namespace NCR_SYSTEM_1
 
 
             ActivityLog_Module._instance.filter();
+            ActivityLog_Module.checker = "allow";
+            this.Hide();
+            
+        }
+
+        private void bunifuImageButton1_Click(object sender, EventArgs e)
+        {
+            ActivityLog_Module.checker = "allow";
+            this.Hide();
+        }
+
+        private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            ActivityLog_Module.checker = "allow";
             this.Hide();
         }
     }

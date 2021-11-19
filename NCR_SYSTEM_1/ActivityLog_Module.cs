@@ -34,6 +34,8 @@ namespace NCR_SYSTEM_1
 
         public static ActivityLog_Module _instance;
 
+        public static string checker = "";
+
         public ActivityLog_Module()
         {
             InitializeComponent();
@@ -189,6 +191,7 @@ namespace NCR_SYSTEM_1
 
             }
             gettotalcount();
+            checker = "allow";
         }
 
         public void gettotalcount()
@@ -392,8 +395,20 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            ActivityLog_Filter_popup a = new ActivityLog_Filter_popup();
-            a.Show();
+            
+
+
+            if (checker.Equals("allow"))
+            {
+                ActivityLog_Filter_popup a = new ActivityLog_Filter_popup();
+                a.Show();
+
+                checker = "dontallow";
+            }
+            else
+            {
+                MessageBox.Show("The tab is currently already open.");
+            }
         }
     }
 }
