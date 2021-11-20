@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.combofilter = new Bunifu.Framework.UI.BunifuDropdown();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.datedisplay = new System.Windows.Forms.Label();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -61,6 +60,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.bunifuImageButton5 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.combofilter = new Bunifu.Framework.UI.BunifuDropdown();
             ((System.ComponentModel.ISupportInitialize)(this.UserLoginLog_Datagrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -74,26 +74,6 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton5)).BeginInit();
             this.SuspendLayout();
-            // 
-            // combofilter
-            // 
-            this.combofilter.BackColor = System.Drawing.Color.Transparent;
-            this.combofilter.BorderRadius = 0;
-            this.combofilter.ForeColor = System.Drawing.Color.White;
-            this.combofilter.Items = new string[] {
-        "Event ID",
-        "Area/Module",
-        "Action/Activity",
-        "Date",
-        "User",
-        "Account Level"};
-            this.combofilter.Location = new System.Drawing.Point(917, 179);
-            this.combofilter.Name = "combofilter";
-            this.combofilter.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.combofilter.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.combofilter.selectedIndex = 0;
-            this.combofilter.Size = new System.Drawing.Size(148, 40);
-            this.combofilter.TabIndex = 376;
             // 
             // datedisplay
             // 
@@ -228,31 +208,31 @@
             // 
             // UserLoginLog_Datagrid
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.UserLoginLog_Datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            this.UserLoginLog_Datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             this.UserLoginLog_Datagrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.UserLoginLog_Datagrid.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.UserLoginLog_Datagrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.UserLoginLog_Datagrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.UserLoginLog_Datagrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.UserLoginLog_Datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.UserLoginLog_Datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.UserLoginLog_Datagrid.ColumnHeadersHeight = 40;
             this.UserLoginLog_Datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.UserLoginLog_Datagrid.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.UserLoginLog_Datagrid.DefaultCellStyle = dataGridViewCellStyle18;
             this.UserLoginLog_Datagrid.DoubleBuffered = true;
             this.UserLoginLog_Datagrid.EnableHeadersVisualStyles = false;
             this.UserLoginLog_Datagrid.GridColor = System.Drawing.Color.Black;
@@ -377,6 +357,7 @@
             this.searchbutton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.searchbutton.Textcolor = System.Drawing.Color.White;
             this.searchbutton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchbutton.Click += new System.EventHandler(this.searchbutton_Click);
             // 
             // bunifuImageButton7
             // 
@@ -410,6 +391,7 @@
             this.searchtxt.TabIndex = 364;
             this.searchtxt.Text = "Type here to filter User Login Log Content";
             this.searchtxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.searchtxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchtxt_KeyUp);
             // 
             // bunifuImageButton19
             // 
@@ -540,6 +522,26 @@
             this.bunifuImageButton5.TabStop = false;
             this.bunifuImageButton5.Zoom = 10;
             // 
+            // combofilter
+            // 
+            this.combofilter.BackColor = System.Drawing.Color.Transparent;
+            this.combofilter.BorderRadius = 0;
+            this.combofilter.ForeColor = System.Drawing.Color.White;
+            this.combofilter.Items = new string[] {
+        "Event ID",
+        "Date",
+        "Time in",
+        "Time out",
+        "User",
+        "Account Level"};
+            this.combofilter.Location = new System.Drawing.Point(918, 179);
+            this.combofilter.Name = "combofilter";
+            this.combofilter.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.combofilter.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.combofilter.selectedIndex = 0;
+            this.combofilter.Size = new System.Drawing.Size(148, 40);
+            this.combofilter.TabIndex = 377;
+            // 
             // UserLoginLog_Module
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -586,8 +588,6 @@
         }
 
         #endregion
-
-        private Bunifu.Framework.UI.BunifuDropdown combofilter;
         private System.Windows.Forms.Label datedisplay;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton2;
@@ -616,5 +616,6 @@
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton17;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton5;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton16;
+        private Bunifu.Framework.UI.BunifuDropdown combofilter;
     }
 }

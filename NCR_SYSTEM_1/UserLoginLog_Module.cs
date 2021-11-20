@@ -218,5 +218,121 @@ namespace NCR_SYSTEM_1
 
             Application.Exit();
         }
-    }
+
+        private void searchtxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (searchtxt.Text == "" && supressor == 1)
+            {
+                supressor = 0;
+
+
+                UserLoginLog_Datagrid.DataSource = null;
+                UserLoginLog_Datagrid.Rows.Clear();
+                UserLoginLog_Datagrid.Columns.Clear();
+                UserLoginLog_Datagrid.DataSource = dt;
+
+                DataGridViewImageColumn AccountLvl = new DataGridViewImageColumn();
+                UserLoginLog_Datagrid.Columns.Add(AccountLvl);
+                AccountLvl.HeaderText = "Account Level";
+                AccountLvl.Name = "Account Level";
+                AccountLvl.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                AccountLvl.Image = Properties.Resources.loading;
+
+
+
+                dataview();
+
+                filterlabeltxt.Text = "";
+
+
+
+            }
+
+            if (searchtxt.Text != "")
+            {
+                supressor = 1;
+
+            }
+        }
+
+        private void searchbutton_Click(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
+
+            UserLoginLog_Datagrid.DataSource = null;
+            UserLoginLog_Datagrid.Rows.Clear();
+            UserLoginLog_Datagrid.Columns.Clear();
+            UserLoginLog_Datagrid.DataSource = dv;
+
+            DataGridViewImageColumn AccountLvl = new DataGridViewImageColumn();
+            UserLoginLog_Datagrid.Columns.Add(AccountLvl);
+            AccountLvl.HeaderText = "Account Level";
+            AccountLvl.Name = "Account Level";
+            AccountLvl.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            AccountLvl.Image = Properties.Resources.loading;
+
+
+
+
+            gettotalcount();
+
+            filterlabeltxt.Text = "";
+
+            searchupdate();
+        }
+
+        public void searchupdate()
+        {
+            foreach (DataGridViewColumn column in UserLoginLog_Datagrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
+            UserLoginLog_Datagrid.Columns[5].Visible = false;
+
+            UserLoginLog_Datagrid.Columns[6].DefaultCellStyle.Padding = new Padding(0, 0, 150, 0);
+
+
+
+            try
+            {
+
+
+                foreach (DataGridViewRow row in UserLoginLog_Datagrid.Rows)
+                {
+
+                    try
+                    {
+
+
+                        StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.Group_179, NCR_SYSTEM_1.Properties.Resources.Group_181 };
+
+                        if (row.Cells[5].Value.Equals("Admin")) //Authorize Records
+                        {
+                            row.Cells[6].Value = StatusImgs[1];
+                        }
+                        else
+                        {
+                            row.Cells[6].Value = StatusImgs[0];
+                        }
+
+
+
+                    }
+                    catch
+                    {
+
+                    }
+
+                }
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        }
 }
