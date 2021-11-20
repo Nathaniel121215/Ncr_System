@@ -214,7 +214,7 @@ namespace NCR_SYSTEM_1
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            Stockpurchasing_Module a = new Stockpurchasing_Module();
+            UserLoginLog_Module a = new UserLoginLog_Module();
             this.Hide();
             a.Show();
         }

@@ -387,6 +387,12 @@
     <Compile Include="Updateunit_popup.Designer.cs">
       <DependentUpon>Updateunit_popup.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserLoginLog_Module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserLoginLog_Module.Designer.cs">
+      <DependentUpon>UserLoginLog_Module.cs</DependentUpon>
+    </Compile>
     <Compile Include="User_class.cs" />
     <EmbeddedResource Include="AccountArchiveView_popup.resx">
       <DependentUpon>AccountArchiveView_popup.cs</DependentUpon>
@@ -536,6 +542,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Updateunit_popup.resx">
       <DependentUpon>Updateunit_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserLoginLog_Module.resx">
+      <DependentUpon>UserLoginLog_Module.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
