@@ -334,5 +334,69 @@ namespace NCR_SYSTEM_1
 
         }
 
+        public void filter()
+        {
+            DataView dv = new DataView(dt);
+            string date1 = UserLoginLogFilter_popup.startdate;
+            string date2 = UserLoginLogFilter_popup.enddate;
+            string user = UserLoginLogFilter_popup.user;
+
+            if (InventoryArchive_Filter_popup.user == "")
+            {
+
+                dv.RowFilter = "[Date]  >='" + date1 + "'AND [Date] <='" + date2 + "'";
+
+                UserLoginLog_Datagrid.DataSource = null;
+                UserLoginLog_Datagrid.Rows.Clear();
+                UserLoginLog_Datagrid.Columns.Clear();
+                UserLoginLog_Datagrid.DataSource = dv;
+
+
+
+            }
+
+
+            else
+            {
+                dv.RowFilter = "[Date]  >='" + date1 + "'AND [Date] <='" + date2 + "'" + " AND [User] LIKE '%" + user + "%'";
+
+                UserLoginLog_Datagrid.DataSource = null;
+                UserLoginLog_Datagrid.Rows.Clear();
+                UserLoginLog_Datagrid.Columns.Clear();
+                UserLoginLog_Datagrid.DataSource = dv;
+
+
+            }
+            
+
+            DataGridViewImageColumn AccountLvl = new DataGridViewImageColumn();
+            UserLoginLog_Datagrid.Columns.Add(AccountLvl);
+            AccountLvl.HeaderText = "Account Level";
+            AccountLvl.Name = "Account Level";
+            AccountLvl.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            AccountLvl.Image = Properties.Resources.loading;
+
+
+            filterlabeltxt.Text = date1 + " to " + date2;
+
+            searchupdate();
+            gettotalcount();
+
         }
+
+        private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            if (checker.Equals("allow"))
+            {
+                UserLoginLogFilter_popup a = new UserLoginLogFilter_popup();
+                a.Show();
+
+                checker = "dontallow";
+            }
+            else
+            {
+                MessageBox.Show("The tab is currently already open.");
+            }
+        }
+    }
 }
