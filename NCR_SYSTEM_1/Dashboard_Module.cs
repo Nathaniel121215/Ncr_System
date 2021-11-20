@@ -177,7 +177,33 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton9_Click(object sender, EventArgs e)
         {
-            
+            //TIMEOUT LOG
+
+            try
+            {
+
+                FirebaseResponse resp10 = client.Get("UserLoginLogCounter/node");
+                Counter_class get10 = resp10.ResultAs<Counter_class>();
+                int cnt10 = (Convert.ToInt32(get10.cnt));
+
+
+                var data10 = new Timeout_Class
+                {
+                    Event_ID = cnt10.ToString(),
+                    Timeout = DateTime.Now.ToString("hh:mm tt"),
+                };
+
+                FirebaseResponse response10 = client.Update("UserLoginLog/" + data10.Event_ID, data10);
+                
+
+            }
+
+            catch (Exception b)
+            {
+                MessageBox.Show(b.ToString());
+            }
+
+
             Application.Exit();
         }
 

@@ -229,6 +229,7 @@
     <Compile Include="InventoryArchive_Module.Designer.cs">
       <DependentUpon>InventoryArchive_Module.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginLog_Class.cs" />
     <Compile Include="LoginTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,6 +248,7 @@
     <Compile Include="Supplierrecord_Filter_popup.Designer.cs">
       <DependentUpon>Supplierrecord_Filter_popup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Timeout_Class.cs" />
     <Compile Include="Updateaccountuseraccess.cs">
       <SubType>Form</SubType>
     </Compile>

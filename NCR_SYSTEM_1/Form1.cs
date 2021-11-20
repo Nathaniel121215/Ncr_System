@@ -98,7 +98,41 @@ namespace NCR_SYSTEM_1
                             MessageBox.Show("Logged in successfully");
                             username = obj2.Firstname + " " + obj2.Lastname;
 
-    
+
+                            //LOGIN LOG
+
+                            FirebaseResponse resp7 = client.Get("UserLoginLogCounter/node");
+                            Counter_class get7 = resp7.ResultAs<Counter_class>();
+                            int cnt7 = (Convert.ToInt32(get7.cnt) + 1);
+
+
+
+                            var data7 = new LoginLog_Class
+                            {
+                                Event_ID = cnt7.ToString(),
+                                Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                                Timein = DateTime.Now.ToString("hh:mm tt"),
+                                Timeout = "None",
+                                User = Form1.username,
+                                Accountlvl = Form1.levelac,
+
+                            };
+
+
+
+                            FirebaseResponse response7 = client.Set("UserLoginLog/" + data7.Event_ID, data7);
+
+
+
+                            var obj7 = new Counter_class
+                            {
+                                cnt = data7.Event_ID
+
+                            };
+
+                            SetResponse response8 = client.Set("UserLoginLogCounter/node", obj7);
+
+
 
 
 
