@@ -262,7 +262,7 @@ namespace NCR_SYSTEM_1
 
             if (Form1.levelac.Equals("Admin") && Form1.status == "true")
             {
-                Supplierrecord_module a = new Supplierrecord_module();
+                Salesrecord_module a = new Salesrecord_module();
                 this.Hide();
                 a.Show();
 
@@ -273,7 +273,7 @@ namespace NCR_SYSTEM_1
             }
             else if (Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized") && Form1.status == "true")
             {
-                Supplierrecord_module a = new Supplierrecord_module();
+                Salesrecord_module a = new Salesrecord_module();
                 this.Hide();
                 a.Show();
 

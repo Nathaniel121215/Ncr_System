@@ -91,6 +91,7 @@ namespace NCR_SYSTEM_1
 
         private void Inventory_Module_Load(object sender, EventArgs e)
         {
+           
             datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
 
 
@@ -941,7 +942,7 @@ namespace NCR_SYSTEM_1
 
             if (Form1.levelac.Equals("Admin") && Form1.status == "true")
             {
-                Supplierrecord_module a = new Supplierrecord_module();
+                Salesrecord_module a = new Salesrecord_module();
                 this.Hide();
                 a.Show();
 

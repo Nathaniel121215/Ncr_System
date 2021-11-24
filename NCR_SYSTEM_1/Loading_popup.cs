@@ -19,16 +19,19 @@ namespace NCR_SYSTEM_1
 
         private void Loading_popup_Load(object sender, EventArgs e)
         {
+            Form1.status = "false";
             this.TopMost = true;
             timer1.Interval = Form1.loadingtime;
             timer1.Tick += new EventHandler(timer1_Tick);
             timer1.Start();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private async void timer1_Tick(object sender, EventArgs e)
         {
-            this.Hide();
+            await Task.Delay(3500);
+            this.Close();
             Form1.status = "true";
+          
         }
     }
 }
