@@ -229,12 +229,24 @@
     <Compile Include="InventoryArchive_Module.Designer.cs">
       <DependentUpon>InventoryArchive_Module.cs</DependentUpon>
     </Compile>
+    <Compile Include="Loading_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loading_popup.Designer.cs">
+      <DependentUpon>Loading_popup.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginLog_Class.cs" />
     <Compile Include="LoginTest.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginTest.Designer.cs">
       <DependentUpon>LoginTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Preloader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Preloader.Designer.cs">
+      <DependentUpon>Preloader.cs</DependentUpon>
     </Compile>
     <Compile Include="Salesrecord_Filter_popup.cs">
       <SubType>Form</SubType>
@@ -472,8 +484,14 @@
     <EmbeddedResource Include="InventoryArchive_Module.resx">
       <DependentUpon>InventoryArchive_Module.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Loading_popup.resx">
+      <DependentUpon>Loading_popup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginTest.resx">
       <DependentUpon>LoginTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preloader.resx">
+      <DependentUpon>Preloader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Salesrecord_Filter_popup.resx">
       <DependentUpon>Salesrecord_Filter_popup.cs</DependentUpon>

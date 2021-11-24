@@ -33,6 +33,9 @@ namespace NCR_SYSTEM_1
         public static string recordsac;
         public static string levelac;
 
+
+        public static int loadingtime = 5000;
+
         public Form1()
         {
             InitializeComponent();
@@ -139,6 +142,10 @@ namespace NCR_SYSTEM_1
                             Dashboard_Module a = new Dashboard_Module();
                             this.Hide();
                             a.Show();
+
+                            Loading_popup b = new Loading_popup();
+                            b.Show();
+
                             break;
                             
                         }
@@ -306,7 +313,7 @@ namespace NCR_SYSTEM_1
 
         }
 
-    
-
+      
+     
     }
 }
