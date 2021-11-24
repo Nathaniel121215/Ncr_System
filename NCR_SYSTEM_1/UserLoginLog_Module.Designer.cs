@@ -42,16 +42,17 @@
             this.UserLoginLog_Datagrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.panel3 = new System.Windows.Forms.Panel();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
             this.searchbutton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.searchtxt = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.combofilter = new Bunifu.Framework.UI.BunifuDropdown();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.bunifuImageButton14 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton8 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton7 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton19 = new Bunifu.Framework.UI.BunifuImageButton();
@@ -61,9 +62,11 @@
             this.bunifuImageButton5 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton16 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton9 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.UserLoginLog_Datagrid)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton19)).BeginInit();
@@ -73,6 +76,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // datedisplay
@@ -263,14 +267,6 @@
             this.bunifuElipse1.ElipseRadius = 5;
             this.bunifuElipse1.TargetControl = this;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Location = new System.Drawing.Point(-2, 487);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(10, 38);
-            this.panel2.TabIndex = 13;
-            // 
             // searchbutton
             // 
             this.searchbutton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
@@ -357,36 +353,6 @@
             this.label2.TabIndex = 361;
             this.label2.Text = "User Login Log";
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.panel1.Controls.Add(this.bunifuImageButton8);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.bunifuImageButton7);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.bunifuImageButton19);
-            this.panel1.Controls.Add(this.bunifuImageButton6);
-            this.panel1.Controls.Add(this.bunifuImageButton18);
-            this.panel1.Controls.Add(this.bunifuImageButton17);
-            this.panel1.Controls.Add(this.bunifuImageButton5);
-            this.panel1.Controls.Add(this.bunifuImageButton16);
-            this.panel1.Controls.Add(this.bunifuImageButton9);
-            this.panel1.Location = new System.Drawing.Point(-3, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(335, 1085);
-            this.panel1.TabIndex = 360;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(77, 54);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "NCR LOGO HERE";
-            // 
             // combofilter
             // 
             this.combofilter.BackColor = System.Drawing.Color.Transparent;
@@ -407,14 +373,73 @@
             this.combofilter.Size = new System.Drawing.Size(148, 40);
             this.combofilter.TabIndex = 377;
             // 
-            // pictureBox1
+            // panel1
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(386, 28);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(55, 55);
-            this.pictureBox1.TabIndex = 366;
-            this.pictureBox1.TabStop = false;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this.bunifuImageButton1);
+            this.panel1.Controls.Add(this.bunifuImageButton14);
+            this.panel1.Controls.Add(this.bunifuImageButton8);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.bunifuImageButton7);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.bunifuImageButton19);
+            this.panel1.Controls.Add(this.bunifuImageButton6);
+            this.panel1.Controls.Add(this.bunifuImageButton18);
+            this.panel1.Controls.Add(this.bunifuImageButton17);
+            this.panel1.Controls.Add(this.bunifuImageButton5);
+            this.panel1.Controls.Add(this.bunifuImageButton16);
+            this.panel1.Controls.Add(this.bunifuImageButton9);
+            this.panel1.Location = new System.Drawing.Point(-3, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(335, 1085);
+            this.panel1.TabIndex = 378;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Location = new System.Drawing.Point(-2, 487);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(10, 38);
+            this.panel2.TabIndex = 13;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(77, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 23);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "NCR LOGO HERE";
+            // 
+            // bunifuImageButton1
+            // 
+            this.bunifuImageButton1.BackColor = System.Drawing.Color.SeaGreen;
+            this.bunifuImageButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.bunifuImageButton1.Image = global::NCR_SYSTEM_1.Properties.Resources.userloginlog;
+            this.bunifuImageButton1.ImageActive = null;
+            this.bunifuImageButton1.Location = new System.Drawing.Point(38, 586);
+            this.bunifuImageButton1.Name = "bunifuImageButton1";
+            this.bunifuImageButton1.Size = new System.Drawing.Size(258, 53);
+            this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.bunifuImageButton1.TabIndex = 45;
+            this.bunifuImageButton1.TabStop = false;
+            this.bunifuImageButton1.Zoom = 10;
+            // 
+            // bunifuImageButton14
+            // 
+            this.bunifuImageButton14.BackColor = System.Drawing.Color.SeaGreen;
+            this.bunifuImageButton14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.bunifuImageButton14.Image = global::NCR_SYSTEM_1.Properties.Resources.fadeactivitylog;
+            this.bunifuImageButton14.ImageActive = null;
+            this.bunifuImageButton14.Location = new System.Drawing.Point(38, 533);
+            this.bunifuImageButton14.Name = "bunifuImageButton14";
+            this.bunifuImageButton14.Size = new System.Drawing.Size(258, 53);
+            this.bunifuImageButton14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.bunifuImageButton14.TabIndex = 44;
+            this.bunifuImageButton14.TabStop = false;
+            this.bunifuImageButton14.Zoom = 10;
             // 
             // bunifuImageButton8
             // 
@@ -422,7 +447,7 @@
             this.bunifuImageButton8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.bunifuImageButton8.Image = global::NCR_SYSTEM_1.Properties.Resources.fade_archive_data;
             this.bunifuImageButton8.ImageActive = null;
-            this.bunifuImageButton8.Location = new System.Drawing.Point(24, 530);
+            this.bunifuImageButton8.Location = new System.Drawing.Point(24, 639);
             this.bunifuImageButton8.Name = "bunifuImageButton8";
             this.bunifuImageButton8.Size = new System.Drawing.Size(258, 53);
             this.bunifuImageButton8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -457,6 +482,7 @@
             this.bunifuImageButton19.TabIndex = 35;
             this.bunifuImageButton19.TabStop = false;
             this.bunifuImageButton19.Zoom = 10;
+            this.bunifuImageButton19.Click += new System.EventHandler(this.bunifuImageButton19_Click);
             // 
             // bunifuImageButton6
             // 
@@ -534,14 +560,22 @@
             this.bunifuImageButton9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.bunifuImageButton9.Image = global::NCR_SYSTEM_1.Properties.Resources.fadelogout;
             this.bunifuImageButton9.ImageActive = null;
-            this.bunifuImageButton9.Location = new System.Drawing.Point(24, 580);
+            this.bunifuImageButton9.Location = new System.Drawing.Point(24, 689);
             this.bunifuImageButton9.Name = "bunifuImageButton9";
             this.bunifuImageButton9.Size = new System.Drawing.Size(258, 53);
             this.bunifuImageButton9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.bunifuImageButton9.TabIndex = 39;
             this.bunifuImageButton9.TabStop = false;
             this.bunifuImageButton9.Zoom = 10;
-            this.bunifuImageButton9.Click += new System.EventHandler(this.bunifuImageButton9_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Location = new System.Drawing.Point(386, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(55, 55);
+            this.pictureBox1.TabIndex = 366;
+            this.pictureBox1.TabStop = false;
             // 
             // UserLoginLog_Module
             // 
@@ -549,6 +583,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.combofilter);
             this.Controls.Add(this.datedisplay);
             this.Controls.Add(this.bunifuFlatButton1);
@@ -565,7 +600,6 @@
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UserLoginLog_Module";
             this.Text = "UserLoginLog_Module";
@@ -573,7 +607,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserLoginLog_Datagrid)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton19)).EndInit();
@@ -583,6 +618,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -598,7 +634,6 @@
         private System.Windows.Forms.Label label5;
         protected internal Bunifu.Framework.UI.BunifuCustomDataGrid UserLoginLog_Datagrid;
         private System.Windows.Forms.Panel panel3;
-        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton9;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.Framework.UI.BunifuFlatButton searchbutton;
@@ -606,7 +641,10 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private Bunifu.Framework.UI.BunifuDropdown combofilter;
         private System.Windows.Forms.Panel panel1;
+        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton1;
+        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton14;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton8;
         private System.Windows.Forms.Panel panel2;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton7;
@@ -617,6 +655,6 @@
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton17;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton5;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton16;
-        private Bunifu.Framework.UI.BunifuDropdown combofilter;
+        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton9;
     }
 }

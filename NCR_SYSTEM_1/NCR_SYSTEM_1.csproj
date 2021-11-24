@@ -708,6 +708,9 @@
     <None Include="Resources\fade stock adjustment.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\userloginlog.png" />
+    <None Include="Resources\fadeactivitylog.png" />
+    <None Include="Resources\fadeuserloginlog.png" />
     <None Include="Resources\blue login.png" />
     <None Include="Resources\eye 3.png" />
     <None Include="Resources\eye 1.png" />
@@ -737,6 +740,7 @@
     <None Include="Resources\archive.png" />
     <None Include="Resources\account archive.png" />
     <None Include="Resources\activity logs.png" />
+    <None Include="Resources\activitylog.png" />
     <Content Include="Resources\Bitmap1.bmp" />
     <None Include="Resources\new out of stock.png" />
     <None Include="Resources\new low on stock.png" />

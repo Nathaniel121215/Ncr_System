@@ -136,6 +136,9 @@
   <data name="icons8_gift_96px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8_gift_96px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="activitylog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\activitylog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="blue login" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\blue login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -193,6 +196,9 @@
   <data name="new in stock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\new in stock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="activity logs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\activity logs.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="supplier management" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\supplier management.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -246,6 +252,9 @@
   </data>
   <data name="account_management_button" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\account_management_button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fadeactivitylog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fadeactivitylog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="eye 3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\eye 3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -340,10 +349,13 @@
   <data name="Group 177" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Group 177.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="fadeuserloginlog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fadeuserloginlog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="records" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\records.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="activity logs" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\activity logs.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="userloginlog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\userloginlog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

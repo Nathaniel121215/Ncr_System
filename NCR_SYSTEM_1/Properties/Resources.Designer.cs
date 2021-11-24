@@ -93,6 +93,16 @@ namespace NCR_SYSTEM_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap activitylog {
+            get {
+                object obj = ResourceManager.GetObject("activitylog", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap add_category {
             get {
                 object obj = ResourceManager.GetObject("add_category", resourceCulture);
@@ -343,6 +353,16 @@ namespace NCR_SYSTEM_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fadeactivitylog {
+            get {
+                object obj = ResourceManager.GetObject("fadeactivitylog", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fadeaddcategory {
             get {
                 object obj = ResourceManager.GetObject("fadeaddcategory", resourceCulture);
@@ -436,6 +456,16 @@ namespace NCR_SYSTEM_1.Properties {
         internal static System.Drawing.Bitmap fadestockpurchasing {
             get {
                 object obj = ResourceManager.GetObject("fadestockpurchasing", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fadeuserloginlog {
+            get {
+                object obj = ResourceManager.GetObject("fadeuserloginlog", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -776,6 +806,16 @@ namespace NCR_SYSTEM_1.Properties {
         internal static System.Drawing.Bitmap userlog {
             get {
                 object obj = ResourceManager.GetObject("userlog", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap userloginlog {
+            get {
+                object obj = ResourceManager.GetObject("userloginlog", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

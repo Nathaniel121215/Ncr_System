@@ -442,5 +442,10 @@ namespace NCR_SYSTEM_1
 
             Application.Exit();
         }
+
+        private void bunifuImageButton14_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

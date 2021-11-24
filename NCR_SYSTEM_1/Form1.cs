@@ -35,6 +35,7 @@ namespace NCR_SYSTEM_1
 
 
         public static int loadingtime = 5000;
+        public static string status;
 
         public Form1()
         {
@@ -143,11 +144,16 @@ namespace NCR_SYSTEM_1
                             this.Hide();
                             a.Show();
 
+                            loadingtime = 5000;
+                            status = "false";
                             Loading_popup b = new Loading_popup();
                             b.Show();
+                            
 
                             break;
-                            
+
+
+                       
                         }
 
                         else

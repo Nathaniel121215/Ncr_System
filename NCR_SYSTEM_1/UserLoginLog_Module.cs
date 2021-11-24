@@ -398,5 +398,10 @@ namespace NCR_SYSTEM_1
                 MessageBox.Show("The tab is currently already open.");
             }
         }
+
+        private void bunifuImageButton19_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

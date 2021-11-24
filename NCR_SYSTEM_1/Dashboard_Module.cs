@@ -44,9 +44,9 @@ namespace NCR_SYSTEM_1
 
         private void Dashboard_Module_Load(object sender, EventArgs e)
         {
+            
 
             datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
-
             client = new FireSharp.FirebaseClient(config);
 
             //existing product
@@ -127,31 +127,48 @@ namespace NCR_SYSTEM_1
         private void bunifuImageButton18_Click(object sender, EventArgs e)
         {
            
-            if(Form1.levelac.Equals("Admin"))
+            if(Form1.levelac.Equals("Admin") && Form1.status == "true")
             {
                 POS_module a = new POS_module();
                 this.Hide();
                 a.Show();
+
+                Form1.loadingtime = 9000;
+                Form1.status = "false";
+                Loading_popup b = new Loading_popup();
+                b.Show();
             }
-            else if(Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized"))
+            else if(Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized")  && Form1.status == "true")
             {
                 POS_module a = new POS_module();
                 this.Hide();
                 a.Show();
+
+                Form1.loadingtime = 9000;
+                Form1.status = "false";
+                Loading_popup b = new Loading_popup();
+                b.Show();
             }
             else
             {
-                MessageBox.Show("Your account do not have access on this Module.");
+                //MessageBox.Show("Your account do not have access on this Module.");
             }
 
         }
 
         private void bunifuImageButton17_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Inventory_Module a = new Inventory_Module();
-        
-            a.Show();
+
+            if(Form1.status=="true")
+            {
+                this.Hide();
+                Inventory_Module a = new Inventory_Module();
+
+                a.Show();
+            }
+
+
+           
         }
 
         private void bunifuImageButton16_Click(object sender, EventArgs e)
@@ -248,6 +265,11 @@ namespace NCR_SYSTEM_1
             {
                 MessageBox.Show("Your account do not have access on this Module.");
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
