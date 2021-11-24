@@ -367,9 +367,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton12_Click(object sender, EventArgs e)
         {
-            stockpurchase_Module a = new stockpurchase_Module();
-            this.Hide();
-            a.Show();
+            
 
 
             if (Form1.levelac.Equals("Admin") && Form1.status == "true")
