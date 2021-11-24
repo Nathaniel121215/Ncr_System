@@ -995,9 +995,34 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton19_Click(object sender, EventArgs e)
         {
-            Dashboard_Module a = new Dashboard_Module();
-            this.Hide();
-            a.Show();
+            
+
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+                Dashboard_Module a = new Dashboard_Module();
+                this.Hide();
+                a.Show();
+
+                Form1.loadingtime = 9000;
+                Form1.status = "false";
+                Loading_popup b = new Loading_popup();
+                b.Show();
+            }
+            else if (Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized") && Form1.status == "true")
+            {
+                Dashboard_Module a = new Dashboard_Module();
+                this.Hide();
+                a.Show();
+
+                Form1.loadingtime = 9000;
+                Form1.status = "false";
+                Loading_popup b = new Loading_popup();
+                b.Show();
+            }
+            else
+            {
+                //MessageBox.Show("Your account do not have access on this Module.");
+            }
         }
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
@@ -1185,7 +1210,219 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton17_Click(object sender, EventArgs e)
         {
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+                Inventory_Module a = new Inventory_Module();
+                this.Hide();
+                a.Show();
 
+                Form1.loadingtime = 9000;
+                Form1.status = "false";
+                Loading_popup b = new Loading_popup();
+                b.Show();
+            }
+            else if (Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized") && Form1.status == "true")
+            {
+                Inventory_Module a = new Inventory_Module();
+                this.Hide();
+                a.Show();
+
+                Form1.loadingtime = 9000;
+                Form1.status = "false";
+                Loading_popup b = new Loading_popup();
+                b.Show();
+            }
+            else
+            {
+                //MessageBox.Show("Your account do not have access on this Module.");
+            }
+        }
+
+        private void bunifuImageButton18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuImageButton16_Click(object sender, EventArgs e)
+        {
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+                Accountmanagement_Module a = new Accountmanagement_Module();
+                this.Hide();
+                a.Show();
+
+                Form1.loadingtime = 9000;
+                Form1.status = "false";
+                Loading_popup b = new Loading_popup();
+                b.Show();
+            }
+            else if (Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized") && Form1.status == "true")
+            {
+                Accountmanagement_Module a = new Accountmanagement_Module();
+                this.Hide();
+                a.Show();
+
+                Form1.loadingtime = 9000;
+                Form1.status = "false";
+                Loading_popup b = new Loading_popup();
+                b.Show();
+            }
+            else
+            {
+                //MessageBox.Show("Your account do not have access on this Module.");
+            }
+        }
+
+        private void bunifuImageButton5_Click(object sender, EventArgs e)
+        {
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+                Suppliermanagement_module a = new Suppliermanagement_module();
+                this.Hide();
+                a.Show();
+
+                Form1.loadingtime = 9000;
+                Form1.status = "false";
+                Loading_popup b = new Loading_popup();
+                b.Show();
+            }
+            else if (Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized") && Form1.status == "true")
+            {
+                Suppliermanagement_module a = new Suppliermanagement_module();
+                this.Hide();
+                a.Show();
+
+                Form1.loadingtime = 9000;
+                Form1.status = "false";
+                Loading_popup b = new Loading_popup();
+                b.Show();
+            }
+            else
+            {
+                //MessageBox.Show("Your account do not have access on this Module.");
+            }
+        }
+
+        private void bunifuImageButton6_Click(object sender, EventArgs e)
+        {
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+                Salesrecord_module a = new Salesrecord_module();
+                this.Hide();
+                a.Show();
+
+                Form1.loadingtime = 9000;
+                Form1.status = "false";
+                Loading_popup b = new Loading_popup();
+                b.Show();
+            }
+            else if (Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized") && Form1.status == "true")
+            {
+                Salesrecord_module a = new Salesrecord_module();
+                this.Hide();
+                a.Show();
+
+                Form1.loadingtime = 9000;
+                Form1.status = "false";
+                Loading_popup b = new Loading_popup();
+                b.Show();
+            }
+            else
+            {
+                //MessageBox.Show("Your account do not have access on this Module.");
+            }
+        }
+
+        private void bunifuImageButton7_Click(object sender, EventArgs e)
+        {
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+                ActivityLog_Module a = new ActivityLog_Module();
+                this.Hide();
+                a.Show();
+
+                Form1.loadingtime = 9000;
+                Form1.status = "false";
+                Loading_popup b = new Loading_popup();
+                b.Show();
+            }
+            else if (Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized") && Form1.status == "true")
+            {
+                ActivityLog_Module a = new ActivityLog_Module();
+                this.Hide();
+                a.Show();
+
+                Form1.loadingtime = 9000;
+                Form1.status = "false";
+                Loading_popup b = new Loading_popup();
+                b.Show();
+            }
+            else
+            {
+                //MessageBox.Show("Your account do not have access on this Module.");
+            }
+        }
+
+        private void bunifuImageButton8_Click(object sender, EventArgs e)
+        {
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+                InventoryArchive_Module a = new InventoryArchive_Module();
+                this.Hide();
+                a.Show();
+
+                Form1.loadingtime = 9000;
+                Form1.status = "false";
+                Loading_popup b = new Loading_popup();
+                b.Show();
+            }
+            else if (Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized") && Form1.status == "true")
+            {
+                InventoryArchive_Module a = new InventoryArchive_Module();
+                this.Hide();
+                a.Show();
+
+                Form1.loadingtime = 9000;
+                Form1.status = "false";
+                Loading_popup b = new Loading_popup();
+                b.Show();
+            }
+            else
+            {
+                //MessageBox.Show("Your account do not have access on this Module.");
+            }
+        }
+
+        private void bunifuImageButton9_Click(object sender, EventArgs e)
+        {
+            //TIMEOUT LOG
+
+            try
+            {
+
+                FirebaseResponse resp10 = client.Get("UserLoginLogCounter/node");
+                Counter_class get10 = resp10.ResultAs<Counter_class>();
+                int cnt10 = (Convert.ToInt32(get10.cnt));
+
+
+                var data10 = new Timeout_Class
+                {
+                    Event_ID = cnt10.ToString(),
+                    Timeout = DateTime.Now.ToString("hh:mm tt"),
+                };
+
+                FirebaseResponse response10 = client.Update("UserLoginLog/" + data10.Event_ID, data10);
+
+
+            }
+
+            catch (Exception b)
+            {
+                MessageBox.Show(b.ToString());
+            }
+
+
+            Application.Exit();
         }
     }
 }
