@@ -36,6 +36,7 @@ namespace NCR_SYSTEM_1
 
         public static int loadingtime = 5000;
         public static string status;
+        public static string session;
 
         public Form1()
         {
@@ -146,6 +147,7 @@ namespace NCR_SYSTEM_1
 
                             loadingtime = 5000;
                             status = "false";
+                            session = data7.Event_ID;
                             Loading_popup b = new Loading_popup();
                             b.Show();
                             

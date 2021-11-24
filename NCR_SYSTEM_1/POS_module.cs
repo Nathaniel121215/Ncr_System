@@ -1400,14 +1400,12 @@ namespace NCR_SYSTEM_1
             try
             {
 
-                FirebaseResponse resp10 = client.Get("UserLoginLogCounter/node");
-                Counter_class get10 = resp10.ResultAs<Counter_class>();
-                int cnt10 = (Convert.ToInt32(get10.cnt));
+
 
 
                 var data10 = new Timeout_Class
                 {
-                    Event_ID = cnt10.ToString(),
+                    Event_ID = Form1.session,
                     Timeout = DateTime.Now.ToString("hh:mm tt"),
                 };
 
