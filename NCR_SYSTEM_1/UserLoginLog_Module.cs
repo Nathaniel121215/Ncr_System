@@ -403,5 +403,10 @@ namespace NCR_SYSTEM_1
         {
 
         }
+
+        private void bunifuImageButton9_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
