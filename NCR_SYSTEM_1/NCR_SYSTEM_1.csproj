@@ -708,6 +708,7 @@
     <None Include="Resources\fade stock adjustment.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\side rectangle.png" />
     <None Include="Resources\fadeutilitysettings.png" />
     <None Include="Resources\userloginlog.png" />
     <None Include="Resources\fadeactivitylog.png" />

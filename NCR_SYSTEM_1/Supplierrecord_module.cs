@@ -412,21 +412,11 @@ namespace NCR_SYSTEM_1
         private void bunifuImageButton9_Click(object sender, EventArgs e)
         {
 
-            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+            if (Form1.status == "true")
             {
-                if (Form1.levelac.Equals("Admin") && Form1.status == "true")
-                {
-                    Dashboard_Module a = new Dashboard_Module();
-                    this.Hide();
-                    a.Show();
 
-                    Form1.loadingtime = 9000;
-                    Form1.status = "false";
-                    Loading_popup b = new Loading_popup();
-                    b.Show();
-                }
-                else if (Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized") && Form1.status == "true")
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
                 {
                     Dashboard_Module a = new Dashboard_Module();
                     this.Hide();
@@ -439,36 +429,29 @@ namespace NCR_SYSTEM_1
                 }
                 else
                 {
-                    //MessageBox.Show("Your account do not have access on this Module.");
+
                 }
+
+
             }
+
             else
             {
-
+                //MessageBox.Show("Your account do not have access on this Module.");
             }
 
-               
+
         }
 
         private void bunifuImageButton4_Click_1(object sender, EventArgs e)
         {
-            
 
-            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
             {
-                if (Form1.levelac.Equals("Admin") && Form1.status == "true")
-                {
-                    Inventory_Module a = new Inventory_Module();
-                    this.Hide();
-                    a.Show();
 
-                    Form1.loadingtime = 9000;
-                    Form1.status = "false";
-                    Loading_popup b = new Loading_popup();
-                    b.Show();
-                }
-                else if (Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized") && Form1.status == "true")
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
                 {
                     Inventory_Module a = new Inventory_Module();
                     this.Hide();
@@ -481,34 +464,44 @@ namespace NCR_SYSTEM_1
                 }
                 else
                 {
-                    //MessageBox.Show("Your account do not have access on this Module.");
+
+                }
+
+
+            }
+            else if (Form1.levelac.Equals("Employee") && Form1.inventoryac.Equals("Authorized") && Form1.status == "true")
+            {
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    Inventory_Module a = new Inventory_Module();
+                    this.Hide();
+                    a.Show();
+
+                    Form1.loadingtime = 9000;
+                    Form1.status = "false";
+                    Loading_popup b = new Loading_popup();
+                    b.Show();
+                }
+                else
+                {
+
                 }
             }
             else
             {
-
+                //MessageBox.Show("Your account do not have access on this Module.");
             }
         }
 
         private void bunifuImageButton15_Click_1(object sender, EventArgs e)
         {
-            
 
-            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
             {
-                if (Form1.levelac.Equals("Admin") && Form1.status == "true")
-                {
-                    Accountmanagement_Module a = new Accountmanagement_Module();
-                    this.Hide();
-                    a.Show();
 
-                    Form1.loadingtime = 9000;
-                    Form1.status = "false";
-                    Loading_popup b = new Loading_popup();
-                    b.Show();
-                }
-                else if (Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized") && Form1.status == "true")
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
                 {
                     Accountmanagement_Module a = new Accountmanagement_Module();
                     this.Hide();
@@ -521,34 +514,26 @@ namespace NCR_SYSTEM_1
                 }
                 else
                 {
-                    //MessageBox.Show("Your account do not have access on this Module.");
+
                 }
+
+
             }
+           
             else
             {
-
+                //MessageBox.Show("Your account do not have access on this Module.");
             }
         }
 
         private void bunifuImageButton5_Click(object sender, EventArgs e)
         {
-            
 
-            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
             {
-                if (Form1.levelac.Equals("Admin") && Form1.status == "true")
-                {
-                    Suppliermanagement_module a = new Suppliermanagement_module();
-                    this.Hide();
-                    a.Show();
 
-                    Form1.loadingtime = 9000;
-                    Form1.status = "false";
-                    Loading_popup b = new Loading_popup();
-                    b.Show();
-                }
-                else if (Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized") && Form1.status == "true")
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
                 {
                     Suppliermanagement_module a = new Suppliermanagement_module();
                     this.Hide();
@@ -561,18 +546,39 @@ namespace NCR_SYSTEM_1
                 }
                 else
                 {
-                    //MessageBox.Show("Your account do not have access on this Module.");
+
+                }
+
+
+            }
+            else if (Form1.levelac.Equals("Employee") && Form1.supplierac.Equals("Authorized") && Form1.status == "true")
+            {
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    Suppliermanagement_module a = new Suppliermanagement_module();
+                    this.Hide();
+                    a.Show();
+
+                    Form1.loadingtime = 9000;
+                    Form1.status = "false";
+                    Loading_popup b = new Loading_popup();
+                    b.Show();
+                }
+                else
+                {
+
                 }
             }
             else
             {
-
+                //MessageBox.Show("Your account do not have access on this Module.");
             }
         }
 
         private void bunifuImageButton1_Click_1(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (Form1.status == "true" && MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
             {
                 //TIMEOUT LOG
@@ -600,7 +606,9 @@ namespace NCR_SYSTEM_1
                 }
 
 
-                Application.Exit();
+                Form1 a = new Form1();
+                this.Hide();
+                a.Show();
             }
             else
             {
@@ -611,24 +619,12 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton2_Click_1(object sender, EventArgs e)
         {
-         
-            
 
-            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
             {
-                if (Form1.levelac.Equals("Admin") && Form1.status == "true")
-                {
-                    Salesrecord_module a = new Salesrecord_module();
-                    this.Hide();
-                    a.Show();
 
-                    Form1.loadingtime = 9000;
-                    Form1.status = "false";
-                    Loading_popup b = new Loading_popup();
-                    b.Show();
-                }
-                else if (Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized") && Form1.status == "true")
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
                 {
                     Salesrecord_module a = new Salesrecord_module();
                     this.Hide();
@@ -641,12 +637,33 @@ namespace NCR_SYSTEM_1
                 }
                 else
                 {
-                    //MessageBox.Show("Your account do not have access on this Module.");
+
+                }
+
+
+            }
+            else if (Form1.levelac.Equals("Employee") && Form1.recordsac.Equals("Authorized") && Form1.status == "true")
+            {
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    Salesrecord_module a = new Salesrecord_module();
+                    this.Hide();
+                    a.Show();
+
+                    Form1.loadingtime = 9000;
+                    Form1.status = "false";
+                    Loading_popup b = new Loading_popup();
+                    b.Show();
+                }
+                else
+                {
+
                 }
             }
             else
             {
-
+                //MessageBox.Show("Your account do not have access on this Module.");
             }
         }
 
@@ -832,21 +849,11 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton3_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
             {
-                if (Form1.levelac.Equals("Admin") && Form1.status == "true")
-                {
-                    POS_module a = new POS_module();
-                    this.Hide();
-                    a.Show();
 
-                    Form1.loadingtime = 9000;
-                    Form1.status = "false";
-                    Loading_popup b = new Loading_popup();
-                    b.Show();
-                }
-                else if (Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized") && Form1.status == "true")
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
                 {
                     POS_module a = new POS_module();
                     this.Hide();
@@ -859,32 +866,43 @@ namespace NCR_SYSTEM_1
                 }
                 else
                 {
-                    //MessageBox.Show("Your account do not have access on this Module.");
+
+                }
+
+
+            }
+            else if (Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized") && Form1.status == "true")
+            {
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    POS_module a = new POS_module();
+                    this.Hide();
+                    a.Show();
+
+                    Form1.loadingtime = 9000;
+                    Form1.status = "false";
+                    Loading_popup b = new Loading_popup();
+                    b.Show();
+                }
+                else
+                {
+
                 }
             }
             else
             {
-
+                //MessageBox.Show("Your account do not have access on this Module.");
             }
         }
 
         private void bunifuImageButton7_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
             {
-                if (Form1.levelac.Equals("Admin") && Form1.status == "true")
-                {
-                    ActivityLog_Module a = new ActivityLog_Module();
-                    this.Hide();
-                    a.Show();
 
-                    Form1.loadingtime = 9000;
-                    Form1.status = "false";
-                    Loading_popup b = new Loading_popup();
-                    b.Show();
-                }
-                else if (Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized") && Form1.status == "true")
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
                 {
                     ActivityLog_Module a = new ActivityLog_Module();
                     this.Hide();
@@ -897,32 +915,25 @@ namespace NCR_SYSTEM_1
                 }
                 else
                 {
-                    //MessageBox.Show("Your account do not have access on this Module.");
+
                 }
+
+
             }
+           
             else
             {
-
+                //MessageBox.Show("Your account do not have access on this Module.");
             }
         }
 
         private void bunifuImageButton8_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
             {
-                if (Form1.levelac.Equals("Admin") && Form1.status == "true")
-                {
-                    InventoryArchive_Module a = new InventoryArchive_Module();
-                    this.Hide();
-                    a.Show();
 
-                    Form1.loadingtime = 9000;
-                    Form1.status = "false";
-                    Loading_popup b = new Loading_popup();
-                    b.Show();
-                }
-                else if (Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized") && Form1.status == "true")
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
                 {
                     InventoryArchive_Module a = new InventoryArchive_Module();
                     this.Hide();
@@ -935,12 +946,113 @@ namespace NCR_SYSTEM_1
                 }
                 else
                 {
-                    //MessageBox.Show("Your account do not have access on this Module.");
+
+                }
+
+
+            }
+        
+            else
+            {
+                //MessageBox.Show("Your account do not have access on this Module.");
+            }
+        }
+
+        private void bunifuImageButton6_Click(object sender, EventArgs e)
+        {
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    Salesrecord_module a = new Salesrecord_module();
+                    this.Hide();
+                    a.Show();
+
+                    Form1.loadingtime = 9000;
+                    Form1.status = "false";
+                    Loading_popup b = new Loading_popup();
+                    b.Show();
+                }
+                else
+                {
+
+                }
+
+
+            }
+            else if (Form1.levelac.Equals("Employee") && Form1.recordsac.Equals("Authorized") && Form1.status == "true")
+            {
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    Salesrecord_module a = new Salesrecord_module();
+                    this.Hide();
+                    a.Show();
+
+                    Form1.loadingtime = 9000;
+                    Form1.status = "false";
+                    Loading_popup b = new Loading_popup();
+                    b.Show();
+                }
+                else
+                {
+
                 }
             }
             else
             {
+                //MessageBox.Show("Your account do not have access on this Module.");
+            }
+        }
 
+        private void bunifuImageButton10_Click(object sender, EventArgs e)
+        {
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    Supplierrecord_module a = new Supplierrecord_module();
+                    this.Hide();
+                    a.Show();
+
+                    Form1.loadingtime = 9000;
+                    Form1.status = "false";
+                    Loading_popup b = new Loading_popup();
+                    b.Show();
+                }
+                else
+                {
+
+                }
+
+
+            }
+            else if (Form1.levelac.Equals("Employee") && Form1.recordsac.Equals("Authorized") && Form1.status == "true")
+            {
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    Supplierrecord_module a = new Supplierrecord_module();
+                    this.Hide();
+                    a.Show();
+
+                    Form1.loadingtime = 9000;
+                    Form1.status = "false";
+                    Loading_popup b = new Loading_popup();
+                    b.Show();
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                //MessageBox.Show("Your account do not have access on this Module.");
             }
         }
     }
