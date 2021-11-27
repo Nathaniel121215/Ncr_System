@@ -643,6 +643,16 @@ namespace NCR_SYSTEM_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap minus {
+            get {
+                object obj = ResourceManager.GetObject("minus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap new_high_on_stock {
             get {
                 object obj = ResourceManager.GetObject("new high on stock", resourceCulture);
@@ -776,6 +786,16 @@ namespace NCR_SYSTEM_1.Properties {
         internal static System.Drawing.Bitmap stock_adjustment {
             get {
                 object obj = ResourceManager.GetObject("stock adjustment", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap stock_adjustment1 {
+            get {
+                object obj = ResourceManager.GetObject("stock adjustment1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

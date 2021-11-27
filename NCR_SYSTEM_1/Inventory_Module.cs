@@ -54,7 +54,51 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton15_Click(object sender, EventArgs e)
         {
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
 
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    StockAdjustment_Module a = new StockAdjustment_Module();
+                    this.Hide();
+                    a.Show();
+
+                    Form1.loadingtime = 9000;
+                    Form1.status = "false";
+                    Loading_popup b = new Loading_popup();
+                    b.Show();
+                }
+                else
+                {
+
+                }
+
+
+            }
+            else if (Form1.levelac.Equals("Employee") && Form1.inventoryac.Equals("Authorized") && Form1.status == "true")
+            {
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    StockAdjustment_Module a = new StockAdjustment_Module();
+                    this.Hide();
+                    a.Show();
+
+                    Form1.loadingtime = 9000;
+                    Form1.status = "false";
+                    Loading_popup b = new Loading_popup();
+                    b.Show();
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                //MessageBox.Show("Your account do not have access on this Module.");
+            }
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
@@ -92,7 +136,7 @@ namespace NCR_SYSTEM_1
         {
            
             datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
-
+            datedisplay.Select();
 
             client = new FireSharp.FirebaseClient(config);
             this.Inventory_Datagrid.AllowUserToAddRows = false;
@@ -112,20 +156,7 @@ namespace NCR_SYSTEM_1
 
             Inventory_Datagrid.DataSource = dt;
 
-            //DataGridViewButtonColumn update = new DataGridViewButtonColumn();
-            //Inventory_Datagrid.Columns.Add(update);
-            //update.HeaderText = "Update";
-            //update.Text = "Update";
-            //update.Name = "upd";
-            //update.UseColumnTextForButtonValue = true;
-
-            //DataGridViewButtonColumn Archive = new DataGridViewButtonColumn();
-            //Inventory_Datagrid.Columns.Add(Archive);
-            //Archive.HeaderText = "Archive";
-            //Archive.Text = "Archive";
-            //Archive.Name = "Archive";
-            //Archive.UseColumnTextForButtonValue = true;
-
+            
 
             DataGridViewImageColumn update = new DataGridViewImageColumn();
             Inventory_Datagrid.Columns.Add(update);
@@ -1132,20 +1163,21 @@ namespace NCR_SYSTEM_1
 
 
 
-            DataGridViewButtonColumn update = new DataGridViewButtonColumn();
+            DataGridViewImageColumn update = new DataGridViewImageColumn();
             Inventory_Datagrid.Columns.Add(update);
-            update.HeaderText = "Update";
-            update.Text = "Update";
-            update.Name = "upd";
-            update.UseColumnTextForButtonValue = true;
+            update.HeaderText = "";
+            update.Name = "update";
+            update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            update.Image = Properties.Resources.Update_Icon;
 
 
-            DataGridViewButtonColumn Archive = new DataGridViewButtonColumn();
+            DataGridViewImageColumn Archive = new DataGridViewImageColumn();
             Inventory_Datagrid.Columns.Add(Archive);
-            Archive.HeaderText = "Archive";
-            Archive.Text = "Archive";
+            Archive.HeaderText = "";
             Archive.Name = "Archive";
-            Archive.UseColumnTextForButtonValue = true;
+            Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Archive.Image = Properties.Resources.Archive_Icon;
+
 
             DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
             Inventory_Datagrid.Columns.Add(Indicator);
@@ -1178,20 +1210,21 @@ namespace NCR_SYSTEM_1
 
 
 
-            DataGridViewButtonColumn update = new DataGridViewButtonColumn();
+            DataGridViewImageColumn update = new DataGridViewImageColumn();
             Inventory_Datagrid.Columns.Add(update);
-            update.HeaderText = "Update";
-            update.Text = "Update";
-            update.Name = "upd";
-            update.UseColumnTextForButtonValue = true;
+            update.HeaderText = "";
+            update.Name = "update";
+            update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            update.Image = Properties.Resources.Update_Icon;
 
 
-            DataGridViewButtonColumn Archive = new DataGridViewButtonColumn();
+            DataGridViewImageColumn Archive = new DataGridViewImageColumn();
             Inventory_Datagrid.Columns.Add(Archive);
-            Archive.HeaderText = "Archive";
-            Archive.Text = "Archive";
+            Archive.HeaderText = "";
             Archive.Name = "Archive";
-            Archive.UseColumnTextForButtonValue = true;
+            Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Archive.Image = Properties.Resources.Archive_Icon;
+
 
             DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
             Inventory_Datagrid.Columns.Add(Indicator);
@@ -1224,20 +1257,21 @@ namespace NCR_SYSTEM_1
 
 
 
-            DataGridViewButtonColumn update = new DataGridViewButtonColumn();
+            DataGridViewImageColumn update = new DataGridViewImageColumn();
             Inventory_Datagrid.Columns.Add(update);
-            update.HeaderText = "Update";
-            update.Text = "Update";
-            update.Name = "upd";
-            update.UseColumnTextForButtonValue = true;
+            update.HeaderText = "";
+            update.Name = "update";
+            update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            update.Image = Properties.Resources.Update_Icon;
 
 
-            DataGridViewButtonColumn Archive = new DataGridViewButtonColumn();
+            DataGridViewImageColumn Archive = new DataGridViewImageColumn();
             Inventory_Datagrid.Columns.Add(Archive);
-            Archive.HeaderText = "Archive";
-            Archive.Text = "Archive";
+            Archive.HeaderText = "";
             Archive.Name = "Archive";
-            Archive.UseColumnTextForButtonValue = true;
+            Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Archive.Image = Properties.Resources.Archive_Icon;
+
 
             DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
             Inventory_Datagrid.Columns.Add(Indicator);
@@ -1273,20 +1307,21 @@ namespace NCR_SYSTEM_1
 
 
 
-            DataGridViewButtonColumn update = new DataGridViewButtonColumn();
+            DataGridViewImageColumn update = new DataGridViewImageColumn();
             Inventory_Datagrid.Columns.Add(update);
-            update.HeaderText = "Update";
-            update.Text = "Update";
-            update.Name = "upd";
-            update.UseColumnTextForButtonValue = true;
+            update.HeaderText = "";
+            update.Name = "update";
+            update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            update.Image = Properties.Resources.Update_Icon;
 
 
-            DataGridViewButtonColumn Archive = new DataGridViewButtonColumn();
+            DataGridViewImageColumn Archive = new DataGridViewImageColumn();
             Inventory_Datagrid.Columns.Add(Archive);
-            Archive.HeaderText = "Archive";
-            Archive.Text = "Archive";
+            Archive.HeaderText = "";
             Archive.Name = "Archive";
-            Archive.UseColumnTextForButtonValue = true;
+            Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Archive.Image = Properties.Resources.Archive_Icon;
+
 
             DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
             Inventory_Datagrid.Columns.Add(Indicator);
@@ -1318,20 +1353,21 @@ namespace NCR_SYSTEM_1
 
 
 
-            DataGridViewButtonColumn update = new DataGridViewButtonColumn();
+            DataGridViewImageColumn update = new DataGridViewImageColumn();
             Inventory_Datagrid.Columns.Add(update);
-            update.HeaderText = "Update";
-            update.Text = "Update";
-            update.Name = "upd";
-            update.UseColumnTextForButtonValue = true;
+            update.HeaderText = "";
+            update.Name = "update";
+            update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            update.Image = Properties.Resources.Update_Icon;
 
 
-            DataGridViewButtonColumn Archive = new DataGridViewButtonColumn();
+            DataGridViewImageColumn Archive = new DataGridViewImageColumn();
             Inventory_Datagrid.Columns.Add(Archive);
-            Archive.HeaderText = "Archive";
-            Archive.Text = "Archive";
+            Archive.HeaderText = "";
             Archive.Name = "Archive";
-            Archive.UseColumnTextForButtonValue = true;
+            Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Archive.Image = Properties.Resources.Archive_Icon;
+
 
             DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
             Inventory_Datagrid.Columns.Add(Indicator);
@@ -1509,6 +1545,11 @@ namespace NCR_SYSTEM_1
         }
 
         private void bunifuImageButton10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

@@ -913,6 +913,9 @@ namespace NCR_SYSTEM_1
             Confirmcustomerreceipt_module a = new Confirmcustomerreceipt_module();
             a.Show();
 
+            FreeGoalsuppresor = 1;
+            freeitembtn.Enabled = false;
+            freeitembtn.Visible = false;
             free = true;
 
 

@@ -46,6 +46,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.moduletxt = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,11 +60,12 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(33, 273);
+            this.label7.Location = new System.Drawing.Point(35, 343);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(33, 15);
             this.label7.TabIndex = 374;
             this.label7.Text = "User:";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // endtxt
             // 
@@ -112,7 +115,7 @@
             this.bunifuFlatButton2.IconVisible = true;
             this.bunifuFlatButton2.IconZoom = 90D;
             this.bunifuFlatButton2.IsTab = false;
-            this.bunifuFlatButton2.Location = new System.Drawing.Point(36, 357);
+            this.bunifuFlatButton2.Location = new System.Drawing.Point(40, 426);
             this.bunifuFlatButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bunifuFlatButton2.Name = "bunifuFlatButton2";
             this.bunifuFlatButton2.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
@@ -149,7 +152,7 @@
             this.bunifuFlatButton1.IconVisible = true;
             this.bunifuFlatButton1.IconZoom = 90D;
             this.bunifuFlatButton1.IsTab = false;
-            this.bunifuFlatButton1.Location = new System.Drawing.Point(182, 357);
+            this.bunifuFlatButton1.Location = new System.Drawing.Point(186, 426);
             this.bunifuFlatButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bunifuFlatButton1.Name = "bunifuFlatButton1";
             this.bunifuFlatButton1.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(89)))), ((int)(((byte)(204)))));
@@ -184,12 +187,13 @@
             this.usertxt.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.usertxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.usertxt.isPassword = false;
-            this.usertxt.Location = new System.Drawing.Point(36, 297);
+            this.usertxt.Location = new System.Drawing.Point(38, 367);
             this.usertxt.Margin = new System.Windows.Forms.Padding(4);
             this.usertxt.Name = "usertxt";
             this.usertxt.Size = new System.Drawing.Size(281, 36);
             this.usertxt.TabIndex = 368;
             this.usertxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.usertxt.OnValueChanged += new System.EventHandler(this.usertxt_OnValueChanged);
             // 
             // panel6
             // 
@@ -227,23 +231,23 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.panel4.Location = new System.Drawing.Point(-8, -6);
+            this.panel4.Location = new System.Drawing.Point(-12, -6);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(10, 428);
+            this.panel4.Size = new System.Drawing.Size(14, 505);
             this.panel4.TabIndex = 378;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.panel3.Location = new System.Drawing.Point(354, 1);
+            this.panel3.Location = new System.Drawing.Point(354, -2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(10, 428);
+            this.panel3.Size = new System.Drawing.Size(11, 498);
             this.panel3.TabIndex = 377;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.panel1.Location = new System.Drawing.Point(-6, 418);
+            this.panel1.Location = new System.Drawing.Point(-3, 485);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(369, 14);
             this.panel1.TabIndex = 376;
@@ -271,12 +275,42 @@
             this.bunifuImageButton1.Zoom = 10;
             this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click);
             // 
+            // moduletxt
+            // 
+            this.moduletxt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.moduletxt.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.moduletxt.FormattingEnabled = true;
+            this.moduletxt.Items.AddRange(new object[] {
+            "Inventory Management Module",
+            "Account Management Module",
+            "Stock Purchasing Module",
+            "Point of Sales Module",
+            "Supplier Management Module",
+            "Inventory Archive Module",
+            "Account Archive Module"});
+            this.moduletxt.Location = new System.Drawing.Point(36, 299);
+            this.moduletxt.Name = "moduletxt";
+            this.moduletxt.Size = new System.Drawing.Size(281, 25);
+            this.moduletxt.TabIndex = 380;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(33, 272);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(80, 15);
+            this.label6.TabIndex = 379;
+            this.label6.Text = "Area/Module:";
+            // 
             // ActivityLog_Filter_popup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(357, 421);
+            this.ClientSize = new System.Drawing.Size(357, 488);
+            this.Controls.Add(this.moduletxt);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.endtxt);
             this.Controls.Add(this.starttxt);
@@ -322,5 +356,7 @@
         private System.Windows.Forms.Panel panel2;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
+        private System.Windows.Forms.ComboBox moduletxt;
+        private System.Windows.Forms.Label label6;
     }
 }

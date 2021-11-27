@@ -123,6 +123,7 @@
             this.datedisplay.TabIndex = 256;
             this.datedisplay.Text = "Tuesday, 22 April 2021";
             this.datedisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.datedisplay.Click += new System.EventHandler(this.datedisplay_Click);
             // 
             // label1
             // 
@@ -134,6 +135,7 @@
             this.label1.Size = new System.Drawing.Size(160, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "NCR LOGO HERE";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // combofilter
             // 
@@ -157,6 +159,7 @@
             this.combofilter.selectedIndex = 0;
             this.combofilter.Size = new System.Drawing.Size(148, 40);
             this.combofilter.TabIndex = 254;
+            this.combofilter.onItemSelected += new System.EventHandler(this.combofilter_onItemSelected);
             // 
             // bunifuFlatButton1
             // 
@@ -212,6 +215,7 @@
             this.searchtxt.TabIndex = 240;
             this.searchtxt.Text = "   Type here to filter Inventory Content";
             this.searchtxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.searchtxt.OnValueChanged += new System.EventHandler(this.searchtxt_OnValueChanged);
             this.searchtxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchtxt_KeyUp);
             // 
             // panel6
@@ -221,6 +225,7 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1480, 1);
             this.panel6.TabIndex = 239;
+            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
             // 
             // label3
             // 
@@ -231,6 +236,7 @@
             this.label3.Size = new System.Drawing.Size(92, 17);
             this.label3.TabIndex = 238;
             this.label3.Text = "Administrator";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -242,6 +248,7 @@
             this.label2.Size = new System.Drawing.Size(242, 40);
             this.label2.TabIndex = 237;
             this.label2.Text = "Stock Purchasing";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel1
             // 
@@ -267,6 +274,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(335, 1085);
             this.panel1.TabIndex = 236;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // bunifuImageButton16
             // 
@@ -281,6 +289,7 @@
             this.bunifuImageButton16.TabIndex = 47;
             this.bunifuImageButton16.TabStop = false;
             this.bunifuImageButton16.Zoom = 10;
+            this.bunifuImageButton16.Click += new System.EventHandler(this.bunifuImageButton16_Click);
             // 
             // bunifuImageButton10
             // 
@@ -543,6 +552,7 @@
             this.FinalTotal.Size = new System.Drawing.Size(77, 21);
             this.FinalTotal.TabIndex = 272;
             this.FinalTotal.Text = "0.00 PHP";
+            this.FinalTotal.Click += new System.EventHandler(this.FinalTotal_Click);
             // 
             // label12
             // 
@@ -554,6 +564,7 @@
             this.label12.Size = new System.Drawing.Size(49, 21);
             this.label12.TabIndex = 271;
             this.label12.Text = "Total:";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // Payment
             // 
@@ -603,6 +614,7 @@
             this.label10.Size = new System.Drawing.Size(147, 21);
             this.label10.TabIndex = 268;
             this.label10.Text = "Miscellaneous Fee:";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // Change
             // 
@@ -644,6 +656,7 @@
             this.bunifuMetroTextbox1.Size = new System.Drawing.Size(388, 59);
             this.bunifuMetroTextbox1.TabIndex = 259;
             this.bunifuMetroTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.bunifuMetroTextbox1.OnValueChanged += new System.EventHandler(this.bunifuMetroTextbox1_OnValueChanged);
             // 
             // label7
             // 
@@ -667,6 +680,7 @@
             this.label6.Size = new System.Drawing.Size(77, 21);
             this.label6.TabIndex = 264;
             this.label6.Text = "Payment:";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
             // 
@@ -761,6 +775,7 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(466, 2);
             this.panel5.TabIndex = 240;
+            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
             // label4
             // 
@@ -772,6 +787,7 @@
             this.label4.Size = new System.Drawing.Size(137, 25);
             this.label4.TabIndex = 260;
             this.label4.Text = "Customer Cart";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // pictureBox2
             // 
@@ -783,6 +799,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 259;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // Cart_Datagridview
             // 
@@ -835,6 +852,7 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(940, 754);
             this.panel4.TabIndex = 258;
+            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // Inventory_Datagridview
             // 
@@ -878,6 +896,7 @@
             this.Inventory_Datagridview.Size = new System.Drawing.Size(940, 754);
             this.Inventory_Datagridview.TabIndex = 178;
             this.Inventory_Datagridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Inventory_Datagridview_CellClick);
+            this.Inventory_Datagridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Inventory_Datagridview_CellContentClick);
             // 
             // pictureBox1
             // 
@@ -887,6 +906,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(55, 55);
             this.pictureBox1.TabIndex = 242;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // stockpurchase_Module
             // 

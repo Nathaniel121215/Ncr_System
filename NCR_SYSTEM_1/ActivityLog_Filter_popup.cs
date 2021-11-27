@@ -19,7 +19,7 @@ namespace NCR_SYSTEM_1
 
         public static string startdate;
         public static string enddate;
-        public static string transactiontype;
+        public static string module;
         public static string user;
 
         private void ActivityLog_Filter_popup_Load(object sender, EventArgs e)
@@ -35,6 +35,7 @@ namespace NCR_SYSTEM_1
 
 
             user = usertxt.Text;
+            module = moduletxt.Text;
 
 
             ActivityLog_Module._instance.filter();
@@ -53,6 +54,16 @@ namespace NCR_SYSTEM_1
         {
             ActivityLog_Module.checker = "allow";
             this.Hide();
+        }
+
+        private void usertxt_OnValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

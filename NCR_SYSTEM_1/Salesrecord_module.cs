@@ -1017,5 +1017,10 @@ namespace NCR_SYSTEM_1
         {
 
         }
+
+        private void bunifuFlatButton1_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -370,9 +370,10 @@ namespace NCR_SYSTEM_1
             string date1 = ActivityLog_Filter_popup.startdate;
             string date2 = ActivityLog_Filter_popup.enddate;
             string user = ActivityLog_Filter_popup.user;
+            string module = ActivityLog_Filter_popup.module;
 
 
-            if (InventoryArchive_Filter_popup.user == "")
+            if (ActivityLog_Filter_popup.user == "" && ActivityLog_Filter_popup.module == "")
             {
 
                 dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "'";
@@ -387,17 +388,41 @@ namespace NCR_SYSTEM_1
             }
 
 
-            else
+            else if (ActivityLog_Filter_popup.user == "" && ActivityLog_Filter_popup.module != "")
             {
-                dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "'" + " AND [User] LIKE '%" + user + "%'";
+
+                dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "' " + " AND [Area/Module] LIKE '%" + module + "%'";
+
 
                 ActivityLog_Datagrid.DataSource = null;
                 ActivityLog_Datagrid.Rows.Clear();
                 ActivityLog_Datagrid.Columns.Clear();
                 ActivityLog_Datagrid.DataSource = dv;
-
-
             }
+            else if (ActivityLog_Filter_popup.user != "" && ActivityLog_Filter_popup.module == "")
+            {
+                dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "' " + " AND [User] LIKE '%" + user + "%'";
+
+                ActivityLog_Datagrid.DataSource = null;
+                ActivityLog_Datagrid.Rows.Clear();
+                ActivityLog_Datagrid.Columns.Clear();
+                ActivityLog_Datagrid.DataSource = dv;
+            }
+            else
+            {
+
+                dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "' " + " AND [Area/Module] LIKE '%" + module + "%'" + " AND [User] LIKE '%" + user + "%'";
+
+                ActivityLog_Datagrid.DataSource = null;
+                ActivityLog_Datagrid.Rows.Clear();
+                ActivityLog_Datagrid.Columns.Clear();
+                ActivityLog_Datagrid.DataSource = dv;
+            }
+
+
+
+
+       
 
 
 
