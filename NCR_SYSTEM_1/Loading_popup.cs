@@ -28,7 +28,7 @@ namespace NCR_SYSTEM_1
 
         private async void timer1_Tick(object sender, EventArgs e)
         {
-            await Task.Delay(3500);
+           // await Task.Delay(3500);
             this.Close();
             Form1.status = "true";
           

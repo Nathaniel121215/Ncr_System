@@ -515,5 +515,12 @@ namespace NCR_SYSTEM_1
         {
 
         }
+
+        private void button1_Click_3(object sender, EventArgs e)
+        {
+            Stockadjustmentrecord_module a = new Stockadjustmentrecord_module();
+            this.Hide();
+            a.Show();
+        }
     }
 }

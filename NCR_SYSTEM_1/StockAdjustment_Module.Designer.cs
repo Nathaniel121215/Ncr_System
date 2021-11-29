@@ -34,17 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.datedisplay = new System.Windows.Forms.Label();
-            this.combofilter = new Bunifu.Framework.UI.BunifuDropdown();
-            this.searchbutton = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.searchtxt = new Bunifu.Framework.UI.BunifuMetroTextbox();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.StockAdjustment_Datagrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bunifuImageButton16 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton10 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton8 = new Bunifu.Framework.UI.BunifuImageButton();
@@ -61,9 +50,18 @@
             this.bunifuImageButton4 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton3 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.datedisplay = new System.Windows.Forms.Label();
+            this.searchbutton = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.searchtxt = new Bunifu.Framework.UI.BunifuMetroTextbox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.StockAdjustment_Datagrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.bunifuDropdown1 = new Bunifu.Framework.UI.BunifuDropdown();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StockAdjustment_Datagrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton8)).BeginInit();
@@ -80,6 +78,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StockAdjustment_Datagrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -111,196 +111,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(335, 1085);
             this.panel1.TabIndex = 4;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(77, 54);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "NCR LOGO HERE";
-            // 
-            // datedisplay
-            // 
-            this.datedisplay.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.datedisplay.Location = new System.Drawing.Point(1705, 44);
-            this.datedisplay.Name = "datedisplay";
-            this.datedisplay.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.datedisplay.Size = new System.Drawing.Size(161, 17);
-            this.datedisplay.TabIndex = 208;
-            this.datedisplay.Text = "Tuesday, 22 April 2021";
-            this.datedisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // combofilter
-            // 
-            this.combofilter.BackColor = System.Drawing.Color.Transparent;
-            this.combofilter.BorderRadius = 0;
-            this.combofilter.ForeColor = System.Drawing.Color.White;
-            this.combofilter.Items = new string[] {
-        "Product ID",
-        "Product Name",
-        "Unit",
-        "Brand",
-        "Product Description",
-        "Category",
-        "Price",
-        "Item Sold",
-        "Stock"};
-            this.combofilter.Location = new System.Drawing.Point(912, 179);
-            this.combofilter.Name = "combofilter";
-            this.combofilter.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.combofilter.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.combofilter.selectedIndex = 0;
-            this.combofilter.Size = new System.Drawing.Size(148, 40);
-            this.combofilter.TabIndex = 207;
-            // 
-            // searchbutton
-            // 
-            this.searchbutton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.searchbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.searchbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.searchbutton.BorderRadius = 0;
-            this.searchbutton.ButtonText = "Search";
-            this.searchbutton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.searchbutton.DisabledColor = System.Drawing.Color.Gray;
-            this.searchbutton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchbutton.Iconcolor = System.Drawing.Color.Transparent;
-            this.searchbutton.Iconimage = null;
-            this.searchbutton.Iconimage_right = null;
-            this.searchbutton.Iconimage_right_Selected = null;
-            this.searchbutton.Iconimage_Selected = null;
-            this.searchbutton.IconMarginLeft = 0;
-            this.searchbutton.IconMarginRight = 0;
-            this.searchbutton.IconRightVisible = true;
-            this.searchbutton.IconRightZoom = 0D;
-            this.searchbutton.IconVisible = true;
-            this.searchbutton.IconZoom = 90D;
-            this.searchbutton.IsTab = false;
-            this.searchbutton.Location = new System.Drawing.Point(814, 179);
-            this.searchbutton.Margin = new System.Windows.Forms.Padding(4);
-            this.searchbutton.Name = "searchbutton";
-            this.searchbutton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.searchbutton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.searchbutton.OnHoverTextColor = System.Drawing.Color.White;
-            this.searchbutton.selected = false;
-            this.searchbutton.Size = new System.Drawing.Size(73, 40);
-            this.searchbutton.TabIndex = 204;
-            this.searchbutton.Text = "Search";
-            this.searchbutton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.searchbutton.Textcolor = System.Drawing.Color.White;
-            this.searchbutton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // searchtxt
-            // 
-            this.searchtxt.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.searchtxt.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.searchtxt.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.searchtxt.BorderThickness = 1;
-            this.searchtxt.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.searchtxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.searchtxt.isPassword = false;
-            this.searchtxt.Location = new System.Drawing.Point(385, 178);
-            this.searchtxt.Margin = new System.Windows.Forms.Padding(4);
-            this.searchtxt.Name = "searchtxt";
-            this.searchtxt.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.searchtxt.Size = new System.Drawing.Size(430, 40);
-            this.searchtxt.TabIndex = 203;
-            this.searchtxt.Text = "Type here to filter Inventory Content";
-            this.searchtxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.panel6.Location = new System.Drawing.Point(386, 155);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1480, 1);
-            this.panel6.TabIndex = 202;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(452, 44);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 17);
-            this.label3.TabIndex = 201;
-            this.label3.Text = "Administrator";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.label2.Location = new System.Drawing.Point(379, 112);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(248, 40);
-            this.label2.TabIndex = 200;
-            this.label2.Text = "Stock Adjustment";
-            // 
-            // StockAdjustment_Datagrid
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.StockAdjustment_Datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.StockAdjustment_Datagrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.StockAdjustment_Datagrid.BackgroundColor = System.Drawing.Color.Gainsboro;
-            this.StockAdjustment_Datagrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.StockAdjustment_Datagrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
-            this.StockAdjustment_Datagrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.StockAdjustment_Datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.StockAdjustment_Datagrid.ColumnHeadersHeight = 40;
-            this.StockAdjustment_Datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.StockAdjustment_Datagrid.DefaultCellStyle = dataGridViewCellStyle3;
-            this.StockAdjustment_Datagrid.DoubleBuffered = true;
-            this.StockAdjustment_Datagrid.EnableHeadersVisualStyles = false;
-            this.StockAdjustment_Datagrid.GridColor = System.Drawing.Color.Black;
-            this.StockAdjustment_Datagrid.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.StockAdjustment_Datagrid.HeaderForeColor = System.Drawing.Color.Black;
-            this.StockAdjustment_Datagrid.Location = new System.Drawing.Point(386, 259);
-            this.StockAdjustment_Datagrid.Name = "StockAdjustment_Datagrid";
-            this.StockAdjustment_Datagrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.StockAdjustment_Datagrid.RowHeadersWidth = 40;
-            this.StockAdjustment_Datagrid.RowTemplate.Height = 35;
-            this.StockAdjustment_Datagrid.RowTemplate.ReadOnly = true;
-            this.StockAdjustment_Datagrid.Size = new System.Drawing.Size(1479, 774);
-            this.StockAdjustment_Datagrid.TabIndex = 214;
-            this.StockAdjustment_Datagrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StockAdjustment_Datagrid_CellContentClick);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Transparent;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.panel3.Location = new System.Drawing.Point(385, 258);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1481, 776);
-            this.panel3.TabIndex = 215;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(386, 28);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(55, 55);
-            this.pictureBox1.TabIndex = 206;
-            this.pictureBox1.TabStop = false;
             // 
             // bunifuImageButton16
             // 
@@ -526,15 +336,205 @@
             this.bunifuImageButton1.TabStop = false;
             this.bunifuImageButton1.Zoom = 10;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(77, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 23);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "NCR LOGO HERE";
+            // 
+            // datedisplay
+            // 
+            this.datedisplay.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datedisplay.Location = new System.Drawing.Point(1705, 44);
+            this.datedisplay.Name = "datedisplay";
+            this.datedisplay.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.datedisplay.Size = new System.Drawing.Size(161, 17);
+            this.datedisplay.TabIndex = 208;
+            this.datedisplay.Text = "Tuesday, 22 April 2021";
+            this.datedisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // searchbutton
+            // 
+            this.searchbutton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.searchbutton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.searchbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.searchbutton.BorderRadius = 0;
+            this.searchbutton.ButtonText = "Search";
+            this.searchbutton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.searchbutton.DisabledColor = System.Drawing.Color.Gray;
+            this.searchbutton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchbutton.Iconcolor = System.Drawing.Color.Transparent;
+            this.searchbutton.Iconimage = null;
+            this.searchbutton.Iconimage_right = null;
+            this.searchbutton.Iconimage_right_Selected = null;
+            this.searchbutton.Iconimage_Selected = null;
+            this.searchbutton.IconMarginLeft = 0;
+            this.searchbutton.IconMarginRight = 0;
+            this.searchbutton.IconRightVisible = true;
+            this.searchbutton.IconRightZoom = 0D;
+            this.searchbutton.IconVisible = true;
+            this.searchbutton.IconZoom = 90D;
+            this.searchbutton.IsTab = false;
+            this.searchbutton.Location = new System.Drawing.Point(814, 179);
+            this.searchbutton.Margin = new System.Windows.Forms.Padding(4);
+            this.searchbutton.Name = "searchbutton";
+            this.searchbutton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.searchbutton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.searchbutton.OnHoverTextColor = System.Drawing.Color.White;
+            this.searchbutton.selected = false;
+            this.searchbutton.Size = new System.Drawing.Size(73, 40);
+            this.searchbutton.TabIndex = 204;
+            this.searchbutton.Text = "Search";
+            this.searchbutton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.searchbutton.Textcolor = System.Drawing.Color.White;
+            this.searchbutton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchbutton.Click += new System.EventHandler(this.searchbutton_Click);
+            // 
+            // searchtxt
+            // 
+            this.searchtxt.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.searchtxt.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.searchtxt.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.searchtxt.BorderThickness = 1;
+            this.searchtxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.searchtxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
+            this.searchtxt.isPassword = false;
+            this.searchtxt.Location = new System.Drawing.Point(385, 178);
+            this.searchtxt.Margin = new System.Windows.Forms.Padding(4);
+            this.searchtxt.Name = "searchtxt";
+            this.searchtxt.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.searchtxt.Size = new System.Drawing.Size(430, 40);
+            this.searchtxt.TabIndex = 203;
+            this.searchtxt.Text = "Type here to filter Stock Adjustment Content";
+            this.searchtxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.searchtxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchtxt_KeyUp);
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.panel6.Location = new System.Drawing.Point(386, 155);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1480, 1);
+            this.panel6.TabIndex = 202;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(452, 44);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(92, 17);
+            this.label3.TabIndex = 201;
+            this.label3.Text = "Administrator";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
+            this.label2.Location = new System.Drawing.Point(379, 112);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(248, 40);
+            this.label2.TabIndex = 200;
+            this.label2.Text = "Stock Adjustment";
+            // 
+            // StockAdjustment_Datagrid
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.StockAdjustment_Datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.StockAdjustment_Datagrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.StockAdjustment_Datagrid.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.StockAdjustment_Datagrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.StockAdjustment_Datagrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.StockAdjustment_Datagrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.StockAdjustment_Datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.StockAdjustment_Datagrid.ColumnHeadersHeight = 40;
+            this.StockAdjustment_Datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.StockAdjustment_Datagrid.DefaultCellStyle = dataGridViewCellStyle3;
+            this.StockAdjustment_Datagrid.DoubleBuffered = true;
+            this.StockAdjustment_Datagrid.EnableHeadersVisualStyles = false;
+            this.StockAdjustment_Datagrid.GridColor = System.Drawing.Color.Black;
+            this.StockAdjustment_Datagrid.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.StockAdjustment_Datagrid.HeaderForeColor = System.Drawing.Color.Black;
+            this.StockAdjustment_Datagrid.Location = new System.Drawing.Point(386, 259);
+            this.StockAdjustment_Datagrid.Name = "StockAdjustment_Datagrid";
+            this.StockAdjustment_Datagrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.StockAdjustment_Datagrid.RowHeadersWidth = 40;
+            this.StockAdjustment_Datagrid.RowTemplate.Height = 35;
+            this.StockAdjustment_Datagrid.RowTemplate.ReadOnly = true;
+            this.StockAdjustment_Datagrid.Size = new System.Drawing.Size(1479, 774);
+            this.StockAdjustment_Datagrid.TabIndex = 214;
+            this.StockAdjustment_Datagrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StockAdjustment_Datagrid_CellContentClick);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.panel3.Location = new System.Drawing.Point(385, 258);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1481, 776);
+            this.panel3.TabIndex = 215;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Location = new System.Drawing.Point(386, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(55, 55);
+            this.pictureBox1.TabIndex = 206;
+            this.pictureBox1.TabStop = false;
+            // 
+            // bunifuDropdown1
+            // 
+            this.bunifuDropdown1.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuDropdown1.BorderRadius = 3;
+            this.bunifuDropdown1.ForeColor = System.Drawing.Color.White;
+            this.bunifuDropdown1.Items = new string[] {
+        "Product ID",
+        "Product Name",
+        "Brand",
+        "Product Description",
+        "Category",
+        "Price",
+        "Stock"};
+            this.bunifuDropdown1.Location = new System.Drawing.Point(923, 178);
+            this.bunifuDropdown1.Name = "bunifuDropdown1";
+            this.bunifuDropdown1.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.bunifuDropdown1.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.bunifuDropdown1.selectedIndex = 0;
+            this.bunifuDropdown1.Size = new System.Drawing.Size(172, 41);
+            this.bunifuDropdown1.TabIndex = 217;
+            // 
             // StockAdjustment_Module
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.bunifuDropdown1);
             this.Controls.Add(this.StockAdjustment_Datagrid);
             this.Controls.Add(this.datedisplay);
-            this.Controls.Add(this.combofilter);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.searchbutton);
             this.Controls.Add(this.searchtxt);
@@ -549,8 +549,6 @@
             this.Load += new System.EventHandler(this.StockAdjustment_Module_Load_1);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StockAdjustment_Datagrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton8)).EndInit();
@@ -567,6 +565,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StockAdjustment_Datagrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -594,7 +594,6 @@
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label datedisplay;
-        private Bunifu.Framework.UI.BunifuDropdown combofilter;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Bunifu.Framework.UI.BunifuFlatButton searchbutton;
         private Bunifu.Framework.UI.BunifuMetroTextbox searchtxt;
@@ -603,5 +602,6 @@
         private System.Windows.Forms.Label label2;
         protected internal Bunifu.Framework.UI.BunifuCustomDataGrid StockAdjustment_Datagrid;
         private System.Windows.Forms.Panel panel3;
+        private Bunifu.Framework.UI.BunifuDropdown bunifuDropdown1;
     }
 }

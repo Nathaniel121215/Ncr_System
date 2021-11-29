@@ -119,7 +119,7 @@
             // 
             this.passtxt.BackColor = System.Drawing.Color.White;
             this.passtxt.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.passtxt.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passtxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passtxt.ForeColor = System.Drawing.Color.Gray;
             this.passtxt.HintForeColor = System.Drawing.Color.Empty;
             this.passtxt.HintText = "";
@@ -166,7 +166,7 @@
             // usertxt
             // 
             this.usertxt.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.usertxt.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usertxt.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usertxt.ForeColor = System.Drawing.Color.Gray;
             this.usertxt.HintForeColor = System.Drawing.Color.Empty;
             this.usertxt.HintText = "";

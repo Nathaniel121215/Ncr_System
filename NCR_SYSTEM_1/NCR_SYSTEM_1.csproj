@@ -260,6 +260,18 @@
     <Compile Include="Salesrecord_Filter_popup.Designer.cs">
       <DependentUpon>Salesrecord_Filter_popup.cs</DependentUpon>
     </Compile>
+    <Compile Include="StockAdjustmentFilter_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockAdjustmentFilter_popup.Designer.cs">
+      <DependentUpon>StockAdjustmentFilter_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stockadjustmentrecord_module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stockadjustmentrecord_module.Designer.cs">
+      <DependentUpon>Stockadjustmentrecord_module.cs</DependentUpon>
+    </Compile>
     <Compile Include="StockAdjustment_Class.cs" />
     <Compile Include="StockAdjustment_Module.cs">
       <SubType>Form</SubType>
@@ -512,6 +524,12 @@
     <EmbeddedResource Include="Salesrecord_Filter_popup.resx">
       <DependentUpon>Salesrecord_Filter_popup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="StockAdjustmentFilter_popup.resx">
+      <DependentUpon>StockAdjustmentFilter_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stockadjustmentrecord_module.resx">
+      <DependentUpon>Stockadjustmentrecord_module.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StockAdjustment_Module.resx">
       <DependentUpon>StockAdjustment_Module.cs</DependentUpon>
     </EmbeddedResource>
@@ -727,6 +745,13 @@
     <None Include="Resources\fade stock adjustment.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\stockadjustmentrecord.png" />
+    <None Include="Resources\fadestockadjustmentrecord.png" />
+    <None Include="Resources\Group 203.png" />
+    <None Include="Resources\others.png" />
+    <None Include="Resources\wrong input.png" />
+    <None Include="Resources\lost item.png" />
+    <None Include="Resources\damage item.png" />
     <None Include="Resources\minus.png" />
     <None Include="Resources\stock adjustment1.png" />
     <None Include="Resources\side rectangle.png" />

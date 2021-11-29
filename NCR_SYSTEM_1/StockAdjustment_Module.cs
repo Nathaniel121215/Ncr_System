@@ -16,7 +16,7 @@ namespace NCR_SYSTEM_1
     public partial class StockAdjustment_Module : Form
     {
 
-        
+        DataTable dt = new DataTable();
 
         int supressor = 1;
 
@@ -31,7 +31,7 @@ namespace NCR_SYSTEM_1
         public static int stock = 0;
         
 
-        DataTable dt = new DataTable();
+        
 
         IFirebaseConfig config = new FirebaseConfig
         {
@@ -182,6 +182,67 @@ namespace NCR_SYSTEM_1
         
 
       
+        }
+
+        private void searchtxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (searchtxt.Text == "" && supressor == 1)
+            {
+                supressor = 0;
+
+                StockAdjustment_Datagrid.DataSource = null;
+                StockAdjustment_Datagrid.Rows.Clear();
+                StockAdjustment_Datagrid.Columns.Clear();
+                StockAdjustment_Datagrid.DataSource = dt;
+
+
+
+
+                DataGridViewImageColumn deduct = new DataGridViewImageColumn();
+                StockAdjustment_Datagrid.Columns.Add(deduct);
+                deduct.HeaderText = "";
+                deduct.Name = "";
+                deduct.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                deduct.Image = Properties.Resources.minus;
+
+                DataViewAll();
+
+
+
+            }
+
+            if (searchtxt.Text != "")
+            {
+                supressor = 1;
+
+            }
+        }
+
+        private void searchbutton_Click(object sender, EventArgs e)
+        {
+
+            DataView dv = new DataView(dt);
+            dv.RowFilter = "[" + bunifuDropdown1.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
+
+            StockAdjustment_Datagrid.DataSource = null;
+            StockAdjustment_Datagrid.Rows.Clear();
+            StockAdjustment_Datagrid.Columns.Clear();
+            StockAdjustment_Datagrid.DataSource = dv;
+
+            DataGridViewImageColumn deduct = new DataGridViewImageColumn();
+            StockAdjustment_Datagrid.Columns.Add(deduct);
+            deduct.HeaderText = "";
+            deduct.Name = "";
+            deduct.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            deduct.Image = Properties.Resources.minus;
+
+            foreach (DataGridViewColumn column in StockAdjustment_Datagrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
+            DataGridViewColumn column3 = StockAdjustment_Datagrid.Columns[3];
+            column3.Width = 260;
         }
     }
 }
