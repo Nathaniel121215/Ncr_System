@@ -819,11 +819,13 @@ namespace NCR_SYSTEM_1
                 }
                 try
                 {
+                    int stock = Convert.ToInt32(Inventory_Datagridview.Rows[rowindexI[z]].Cells[8].Value) - Convert.ToInt32(Cart_Datagridview.Rows[rowindexC[z]].Cells[2].Value);
+                    int Items_Sold = Convert.ToInt32(Inventory_Datagridview.Rows[rowindexI[z]].Cells[7].Value) + Convert.ToInt32(Cart_Datagridview.Rows[rowindexC[z]].Cells[2].Value);
                     var datas = new SDU
                     {
                         ID = Cart_Datagridview.Rows[z].Cells[0].Value.ToString(),
-                        Stock = Convert.ToInt32(Inventory_Datagridview.Rows[rowindexI[z]].Cells[8].Value) - Convert.ToInt32(Cart_Datagridview.Rows[rowindexC[z]].Cells[2].Value),
-                        Items_Sold = Convert.ToInt32(Inventory_Datagridview.Rows[rowindexI[z]].Cells[7].Value) + Convert.ToInt32(Cart_Datagridview.Rows[rowindexC[z]].Cells[2].Value),
+                        Stock = stock.ToString(),
+                        Items_Sold = Items_Sold.ToString(),
 
                     };
 
@@ -875,11 +877,11 @@ namespace NCR_SYSTEM_1
                 {
                     if (Convert.ToDouble(Cart_Datagridview.Rows[rowindexC[z]].Cells[4].Value) == 0.00)
                     {
-
-                        var datas = new SDU
+                        int stock = Convert.ToInt32(Inventory_Datagridview.Rows[rowindexI[z]].Cells[8].Value) - Convert.ToInt32(Cart_Datagridview.Rows[rowindexC[z]].Cells[2].Value);
+                        var datas = new SDU2
                         {
                             ID = Inventory_Datagridview.Rows[rowindexI[z]].Cells[0].Value.ToString(),
-                            Stock = Convert.ToInt32(Inventory_Datagridview.Rows[rowindexI[z]].Cells[8].Value) - Convert.ToInt32(Cart_Datagridview.Rows[rowindexC[z]].Cells[2].Value),
+                            Stock = stock.ToString(),
                         };
 
 

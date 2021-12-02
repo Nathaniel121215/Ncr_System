@@ -587,11 +587,12 @@ namespace NCR_SYSTEM_1
                 }
                 try
                 {
-                    var datas = new SDU
+                    int stock = Convert.ToInt32(Inventory_Datagridview.Rows[rowindexI[z]].Cells[8].Value) + Convert.ToInt32(Cart_Datagridview.Rows[rowindexC[z]].Cells[2].Value);
+                    var datas = new SDU2
                     {
                         ID = Cart_Datagridview.Rows[z].Cells[0].Value.ToString(),
                         //Product_Name = Cart_Datagridview.Rows[z].Cells[1].Value.ToString(),
-                        Stock = Convert.ToInt32(Inventory_Datagridview.Rows[rowindexI[z]].Cells[8].Value) + Convert.ToInt32(Cart_Datagridview.Rows[rowindexC[z]].Cells[2].Value),
+                        Stock = stock.ToString(),
                     };
 
                     FirebaseResponse resps = client.Update("Inventory/" + ids[z], datas);
@@ -1514,6 +1515,14 @@ class SDU
 {
     public string ID { get; set; }
     //public string Product_Name { get; set; }
-    public int Stock { get; set; }
-    public int Items_Sold { get; set; }
+    public string Stock { get; set; }
+    public string Items_Sold { get; set; }
+}
+
+class SDU2
+{
+    public string ID { get; set; }
+    //public string Product_Name { get; set; }
+    public string Stock { get; set; }
+ 
 }

@@ -61,11 +61,12 @@ namespace NCR_SYSTEM_1
                 //DEDUCTING STOCK
                 try
                 {
-                    var data = new SDU
+                    int stock = StockAdjustment_Module.stock - minus;
+                    var data = new SDU2
                     {
 
                         ID = StockAdjustment_Module.id,
-                        Stock = StockAdjustment_Module.stock - minus,
+                        Stock = stock.ToString(),
 
                     };
 

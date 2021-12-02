@@ -260,6 +260,18 @@
     <Compile Include="Salesrecord_Filter_popup.Designer.cs">
       <DependentUpon>Salesrecord_Filter_popup.cs</DependentUpon>
     </Compile>
+    <Compile Include="SalesReportExtractionFilter_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesReportExtractionFilter_popup.Designer.cs">
+      <DependentUpon>SalesReportExtractionFilter_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesReportExtraction_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesReportExtraction_popup.Designer.cs">
+      <DependentUpon>SalesReportExtraction_popup.cs</DependentUpon>
+    </Compile>
     <Compile Include="StockAdjustmentFilter_popup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -523,6 +535,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Salesrecord_Filter_popup.resx">
       <DependentUpon>Salesrecord_Filter_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesReportExtractionFilter_popup.resx">
+      <DependentUpon>SalesReportExtractionFilter_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesReportExtraction_popup.resx">
+      <DependentUpon>SalesReportExtraction_popup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StockAdjustmentFilter_popup.resx">
       <DependentUpon>StockAdjustmentFilter_popup.cs</DependentUpon>

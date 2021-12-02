@@ -57,6 +57,19 @@ namespace NCR_SYSTEM_1
 
         public static Salesrecord_module _instance;
 
+
+
+
+        //data for extract
+
+        public static string grosssales2;
+        public static string trasacntioncount2;
+        public static string trasactiontype2;
+        public static string percentage2;
+        public static string date2;
+
+
+
         public Salesrecord_module()
         {
             InitializeComponent();
@@ -1020,7 +1033,8 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            
+            SalesReportExtractionFilter_popup a = new SalesReportExtractionFilter_popup();
+            a.Show();
         }
 
         private void bunifuImageButton13_Click(object sender, EventArgs e)
@@ -1070,6 +1084,72 @@ namespace NCR_SYSTEM_1
             {
                 //MessageBox.Show("Your account do not have access on this Module.");
             }
+        }
+
+        public void extract()
+        {
+            DataView dv = new DataView(dt);
+            string date1 = SalesReportExtractionFilter_popup.startdate;
+            string date2 = SalesReportExtractionFilter_popup.enddate;
+            string percentage = SalesReportExtractionFilter_popup.percentage;
+            string transactiontype = SalesReportExtractionFilter_popup.transactiontype;
+
+
+
+            if (SalesReportExtractionFilter_popup.transactiontype != "" && SalesReportExtractionFilter_popup.percentage != "" && SalesReportExtractionFilter_popup.transactiontype != "All")
+            {
+
+                dv.RowFilter = "[Transaction Date Searcher]  >='" + date1 + "'AND [Transaction Date Searcher] <='" + date2 + "' " + " AND [Transaction Type txt] LIKE '%" + transactiontype + "%'";
+
+                Sales_Datagrid.DataSource = null;
+                Sales_Datagrid.Rows.Clear();
+                Sales_Datagrid.Columns.Clear();
+                Sales_Datagrid.DataSource = dv;
+
+
+            }
+
+            else
+            {
+                dv.RowFilter = "[Transaction Date Searcher]  >='" + date1 + "'AND [Transaction Date Searcher] <='" + date2 + "' ";
+
+                Sales_Datagrid.DataSource = null;
+                Sales_Datagrid.Rows.Clear();
+                Sales_Datagrid.Columns.Clear();
+                Sales_Datagrid.DataSource = dv;
+            }
+
+
+
+            filterlabeltxt.Text = date1 + " to " + date2;
+
+            DataGridViewImageColumn View = new DataGridViewImageColumn();
+            Sales_Datagrid.Columns.Add(View);
+            View.HeaderText = "";
+            View.Name = "View";
+            View.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            View.Image = Properties.Resources.view2;
+
+            DataGridViewImageColumn TransactionType = new DataGridViewImageColumn();
+            Sales_Datagrid.Columns.Add(TransactionType);
+            TransactionType.HeaderText = "Transaction Type";
+            TransactionType.Name = "Transaction Type";
+            TransactionType.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            TransactionType.Image = Properties.Resources.loading;
+
+            getsales();
+            gettransactioncount();
+            searchupdate();
+
+            grosssales2 = Salestxt.ToString();
+            trasacntioncount2 = TransactionCounttxt.ToString();
+            trasactiontype2 = SalesReportExtractionFilter_popup.transactiontype;
+            percentage2 = SalesReportExtractionFilter_popup.percentage;
+            date2 = filterlabeltxt.ToString();
+
+            SalesReportExtraction_popup a = new SalesReportExtraction_popup();
+            a.Show();
+
         }
     }
 }

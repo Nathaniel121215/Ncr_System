@@ -321,9 +321,11 @@ namespace NCR_SYSTEM_1
 
         }
 
-        private void bunifuFlatButton2_Click(object sender, EventArgs e)
+   
+
+        private void bunifuFlatButton2_Click_1(object sender, EventArgs e)
         {
-            Stockadjustmentrecord_module a = new Stockadjustmentrecord_module();
+            Salesrecord_module a = new Salesrecord_module();
             this.Hide();
             a.Show();
         }

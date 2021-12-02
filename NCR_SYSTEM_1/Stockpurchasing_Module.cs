@@ -494,11 +494,12 @@ namespace NCR_SYSTEM_1
                 }
                 try
                 {
+                    int stock = Convert.ToInt32(Inventory_datagrid_stocks.Rows[rowindexI[z]].Cells[8].Value) + Convert.ToInt32(carto_datagrid_stocks.Rows[rowindexC[z]].Cells[6].Value);
                     var datas = new SDU
                     {
                         ID = carto_datagrid_stocks.Rows[z].Cells[0].Value.ToString(),
                         //Product_Name = carto_datagrid_stocks.Rows[z].Cells[1].Value.ToString(),
-                        Stock = Convert.ToInt32(Inventory_datagrid_stocks.Rows[rowindexI[z]].Cells[8].Value) + Convert.ToInt32(carto_datagrid_stocks.Rows[rowindexC[z]].Cells[6].Value),
+                        Stock = stock.ToString(),
                     };
 
                     FirebaseResponse resps = client.Update("Inventory/" + ids[z], datas);

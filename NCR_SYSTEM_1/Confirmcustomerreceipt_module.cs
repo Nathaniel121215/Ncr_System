@@ -93,6 +93,7 @@ namespace NCR_SYSTEM_1
 
             g.DrawString("Customer Address:" + Processcustomerorder_popup.customeraddress, font, new SolidBrush(Color.Black), 40, upperY);
 
+
             upperY = upperY + 15;
 
             g.DrawString("Cashier:" + Form1.username, font, new SolidBrush(Color.Black), 40, upperY);
@@ -107,7 +108,7 @@ namespace NCR_SYSTEM_1
 
             upperY = upperY + 15;
 
-            string top = "x".PadRight(5) + "".PadRight(5) + "Item Name".PadRight(30) + "Price";
+            string top = "x".PadRight(5) + "Item Name".PadRight(30) + "Price";
             g.DrawString(top, font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
@@ -118,7 +119,7 @@ namespace NCR_SYSTEM_1
 
             for (int i = 0; i < POS_module.cartcount; i++)
             {
-                string item = POS_module.quantitylist[i].PadRight(5) + POS_module.Unitlist[i].PadRight(5) + POS_module.productnamelist[i].PadRight(30) + POS_module.Pricelist[i];
+                string item = POS_module.quantitylist[i].PadRight(5) + POS_module.productnamelist[i].PadRight(30) + POS_module.Pricelist[i];
                 g.DrawString(item, font, new SolidBrush(Color.Black), 40, upperY);
                 upperY = upperY + 20;
             }
@@ -129,15 +130,15 @@ namespace NCR_SYSTEM_1
 
             upperY = upperY + 15;
 
-            g.DrawString("SubTotal:".PadRight(40) + subtotal, font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("SubTotal:".PadRight(35) + subtotal, font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
-            g.DrawString("Fee:".PadRight(40) + temfee, font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("Fee:".PadRight(35) + temfee, font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
-            g.DrawString("Total:".PadRight(40) + total, font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("Total:".PadRight(35) + total, font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
@@ -145,11 +146,11 @@ namespace NCR_SYSTEM_1
 
             upperY = upperY + 15;
 
-            g.DrawString("Payment:".PadRight(40) + payment, font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("Payment:".PadRight(35) + payment, font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
-            g.DrawString("Change:".PadRight(40) + change, font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("Change:".PadRight(35) + change, font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
@@ -160,8 +161,12 @@ namespace NCR_SYSTEM_1
 
             g.DrawString("Thank you for purchasing", font, new SolidBrush(Color.Black), 120, upperY);
 
+            upperY = upperY + 30;
 
-          
+            g.DrawString(Processcustomerorder_popup.remarks, font, new SolidBrush(Color.Black), 40, upperY);
+
+
+
 
 
             POS_module._instance.clear();
@@ -177,7 +182,7 @@ namespace NCR_SYSTEM_1
             System.Drawing.Graphics g;
             g = e.Graphics;
 
-            Font font = new Font("Courier New", 8);
+            Font font = new Font("Courier New", 5);
 
             float fontHeight = font.GetHeight();
 
@@ -185,111 +190,115 @@ namespace NCR_SYSTEM_1
 
 
 
-            g.DrawString("NCR Gravel and Sand Enteprise", new Font("Courier New", 10), new SolidBrush(Color.Black), 80, upperY);
+            g.DrawString("NCR Gravel and Sand Enteprise", new Font("Courier New", 6), new SolidBrush(Color.Black), 15, upperY);
 
             upperY = upperY + 15;
 
-            g.DrawString("42 Felix Ave. Brgy San Isidro Cainta Rizal", font, new SolidBrush(Color.Black), 60, upperY);
+            g.DrawString("42 Felix Ave. Brgy San Isidro Cainta Rizal", font, new SolidBrush(Color.Black), 1, upperY);
 
             upperY = upperY + 15;
 
-            g.DrawString("Cecil R. delas Armas Prop.", font, new SolidBrush(Color.Black), 110, upperY);
+            g.DrawString("Cecil R. delas Armas Prop.", font, new SolidBrush(Color.Black), 31, upperY);
             upperY = upperY + 15;
 
-            g.DrawString("Tel Nos: 647-8021/ 296-466/ 492-1773/ 341-7840", font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("Tel Nos: 647-8021/ 296-466/ 492-1773/ 341-7840", font, new SolidBrush(Color.Black), 1, upperY);
             upperY = upperY + 15;
 
-            g.DrawString("Cell #: 0922-853-7840", font, new SolidBrush(Color.Black), 130, upperY);
+            g.DrawString("Cell #: 0922-853-7840", font, new SolidBrush(Color.Black), 43, upperY);
 
 
             upperY = upperY + 15;
 
-            g.DrawString("==============================================", font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("==============================================", font, new SolidBrush(Color.Black), 1, upperY);
 
 
             upperY = upperY + 15;
 
             string info = "Reference Number:" + Processcustomerorder_popup.refferencenum.PadRight(13);
-            g.DrawString(info, font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString(info, font, new SolidBrush(Color.Black), 1, upperY);
             upperY = upperY + 15;
 
-            g.DrawString("Date:" + Processcustomerorder_popup.date, font, new SolidBrush(Color.Black), 40, upperY);
-
-            upperY = upperY + 15;
-
-            g.DrawString("Customer Name:" + Processcustomerorder_popup.customername, font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("Date:" + Processcustomerorder_popup.date, font, new SolidBrush(Color.Black), 1, upperY);
 
             upperY = upperY + 15;
 
-            g.DrawString("Customer Address:" + Processcustomerorder_popup.customeraddress, font, new SolidBrush(Color.Black), 40, upperY);
-
+            g.DrawString("Customer Name:" + Processcustomerorder_popup.customername, font, new SolidBrush(Color.Black), 1, upperY);
 
             upperY = upperY + 15;
 
-            g.DrawString("Cashier:" + Form1.username, font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("Customer Address:" + Processcustomerorder_popup.customeraddress, font, new SolidBrush(Color.Black), 1, upperY);
 
 
             upperY = upperY + 15;
 
+            g.DrawString("Cashier:" + Form1.username, font, new SolidBrush(Color.Black), 1, upperY);
 
-
-
-            g.DrawString("==============================================", font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
-            string top = "x".PadRight(5) + "".PadRight(5) + "Item Name".PadRight(30) + "Price";
-            g.DrawString(top, font, new SolidBrush(Color.Black), 40, upperY);
+
+
+
+            g.DrawString("==============================================", font, new SolidBrush(Color.Black), 1, upperY);
 
             upperY = upperY + 15;
 
-            g.DrawString("----------------------------------------------", font, new SolidBrush(Color.Black), 40, upperY);
+            string top = "x".PadRight(5) + "Item Name".PadRight(30) + "Price";
+            g.DrawString(top, font, new SolidBrush(Color.Black), 1, upperY);
+
+            upperY = upperY + 15;
+
+            g.DrawString("----------------------------------------------", font, new SolidBrush(Color.Black), 1, upperY);
 
             upperY = upperY + 15;
 
             for (int i = 0; i < POS_module.cartcount; i++)
             {
-                string item = POS_module.quantitylist[i].PadRight(5) + POS_module.Unitlist[i].PadRight(5) + POS_module.productnamelist[i].PadRight(30) + POS_module.Pricelist[i];
-                g.DrawString(item, font, new SolidBrush(Color.Black), 40, upperY);
+                string item = POS_module.quantitylist[i].PadRight(5) + POS_module.productnamelist[i].PadRight(30) + POS_module.Pricelist[i];
+                g.DrawString(item, font, new SolidBrush(Color.Black), 1, upperY);
                 upperY = upperY + 20;
             }
 
 
 
-            g.DrawString("----------------------------------------------", font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("----------------------------------------------", font, new SolidBrush(Color.Black), 1, upperY);
 
             upperY = upperY + 15;
 
-            g.DrawString("SubTotal:".PadRight(40) + subtotal, font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("SubTotal:".PadRight(35) + subtotal, font, new SolidBrush(Color.Black), 1, upperY);
 
             upperY = upperY + 15;
 
-            g.DrawString("Fee:".PadRight(40) + temfee, font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("Fee:".PadRight(35) + temfee, font, new SolidBrush(Color.Black), 1, upperY);
 
             upperY = upperY + 15;
 
-            g.DrawString("Total:".PadRight(40) + total, font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("Total:".PadRight(35) + total, font, new SolidBrush(Color.Black), 1, upperY);
 
             upperY = upperY + 15;
 
-            g.DrawString("----------------------------------------------", font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("----------------------------------------------", font, new SolidBrush(Color.Black), 1, upperY);
 
             upperY = upperY + 15;
 
-            g.DrawString("Payment:".PadRight(40) + payment, font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("Payment:".PadRight(35) + payment, font, new SolidBrush(Color.Black), 1, upperY);
 
             upperY = upperY + 15;
 
-            g.DrawString("Change:".PadRight(40) + change, font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("Change:".PadRight(35) + change, font, new SolidBrush(Color.Black), 1, upperY);
 
             upperY = upperY + 15;
 
 
-            g.DrawString("==============================================", font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("==============================================", font, new SolidBrush(Color.Black), 1, upperY);
 
             upperY = upperY + 15;
 
-            g.DrawString("Thank you for purchasing", font, new SolidBrush(Color.Black), 120, upperY);
+            g.DrawString("Thank you for purchasing", font, new SolidBrush(Color.Black), 43, upperY);
+
+            upperY = upperY + 30;
+
+            g.DrawString(Processcustomerorder_popup.remarks, font, new SolidBrush(Color.Black), 1, upperY);
 
 
         }
