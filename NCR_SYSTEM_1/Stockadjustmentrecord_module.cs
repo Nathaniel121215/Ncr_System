@@ -182,7 +182,7 @@ namespace NCR_SYSTEM_1
                     {
 
 
-                        StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.damage_item, NCR_SYSTEM_1.Properties.Resources.lost_item, NCR_SYSTEM_1.Properties.Resources.wrong_input, NCR_SYSTEM_1.Properties.Resources.others };
+                        StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.damage_item, NCR_SYSTEM_1.Properties.Resources.lost_item, NCR_SYSTEM_1.Properties.Resources.wrong_input, NCR_SYSTEM_1.Properties.Resources.others, NCR_SYSTEM_1.Properties.Resources.Group_204 };
 
 
 
@@ -204,6 +204,11 @@ namespace NCR_SYSTEM_1
                         if (row.Cells[6].Value.ToString() == "Damaged Item") 
                         {
                             row.Cells[9].Value = StatusImgs[0];
+                        }
+
+                        if (row.Cells[6].Value.ToString() == "Replacement")
+                        {
+                            row.Cells[9].Value = StatusImgs[4];
                         }
 
 
@@ -347,7 +352,7 @@ namespace NCR_SYSTEM_1
                     {
 
 
-                        StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.damage_item, NCR_SYSTEM_1.Properties.Resources.lost_item, NCR_SYSTEM_1.Properties.Resources.wrong_input, NCR_SYSTEM_1.Properties.Resources.others };
+                        StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.damage_item, NCR_SYSTEM_1.Properties.Resources.lost_item, NCR_SYSTEM_1.Properties.Resources.wrong_input, NCR_SYSTEM_1.Properties.Resources.others, NCR_SYSTEM_1.Properties.Resources.Group_204 };
 
 
 
@@ -369,6 +374,11 @@ namespace NCR_SYSTEM_1
                         if (row.Cells[6].Value.ToString() == "Damaged Item")
                         {
                             row.Cells[9].Value = StatusImgs[0];
+                        }
+
+                        if (row.Cells[6].Value.ToString() == "Replacement")
+                        {
+                            row.Cells[9].Value = StatusImgs[4];
                         }
 
 
@@ -475,7 +485,7 @@ namespace NCR_SYSTEM_1
             else
             {
 
-                dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Transaction Date Searcher] <='" + date2 + "' " + " AND [Reason] LIKE '%" + reason + "%'" + " AND [User] LIKE '%" + user + "%'";
+                dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "' " + " AND [Reason] LIKE '%" + reason + "%'" + " AND [User] LIKE '%" + user + "%'";
 
                 StockAdjustment_Datagrid.DataSource = null;
                 StockAdjustment_Datagrid.Rows.Clear();

@@ -94,6 +94,7 @@
             "Wrong Input",
             "Lost Item",
             "Damaged Item",
+            "Replacement",
             "Other"});
             this.reasontxt.Location = new System.Drawing.Point(30, 377);
             this.reasontxt.Name = "reasontxt";
