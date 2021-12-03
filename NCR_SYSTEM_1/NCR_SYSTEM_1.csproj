@@ -309,6 +309,12 @@
     <Compile Include="SupplierReportExtraction_popup.Designer.cs">
       <DependentUpon>SupplierReportExtraction_popup.cs</DependentUpon>
     </Compile>
+    <Compile Include="testarea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="testarea.Designer.cs">
+      <DependentUpon>testarea.cs</DependentUpon>
+    </Compile>
     <Compile Include="Timeout_Class.cs" />
     <Compile Include="Updateaccountuseraccess.cs">
       <SubType>Form</SubType>
@@ -571,6 +577,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierReportExtraction_popup.resx">
       <DependentUpon>SupplierReportExtraction_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="testarea.resx">
+      <DependentUpon>testarea.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Updateaccountuseraccess.resx">
       <DependentUpon>Updateaccountuseraccess.cs</DependentUpon>

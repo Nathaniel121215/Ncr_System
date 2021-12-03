@@ -40,7 +40,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -52,7 +54,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(36, 103);
+            this.panel1.Location = new System.Drawing.Point(1, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(388, 603);
             this.panel1.TabIndex = 281;
@@ -197,6 +199,16 @@
             this.panel5.Size = new System.Drawing.Size(481, 14);
             this.panel5.TabIndex = 332;
             // 
+            // panel6
+            // 
+            this.panel6.AutoScroll = true;
+            this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.Controls.Add(this.panel1);
+            this.panel6.Location = new System.Drawing.Point(36, 103);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(412, 603);
+            this.panel6.TabIndex = 333;
+            // 
             // Confirmcustomerreceipt_module
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -209,16 +221,17 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.bunifuFlatButton2);
             this.Controls.Add(this.Print_Button);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.bunifuImageButton1);
+            this.Controls.Add(this.panel6);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Confirmcustomerreceipt_module";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Confirmcustomerreceipt_module";
             this.Load += new System.EventHandler(this.Confirmcustomerreceipt_module_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
+            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,5 +250,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel6;
     }
 }

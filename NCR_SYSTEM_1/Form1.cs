@@ -325,7 +325,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton2_Click_1(object sender, EventArgs e)
         {
-            Salesrecord_module a = new Salesrecord_module();
+            testarea a = new testarea();
             this.Hide();
             a.Show();
         }

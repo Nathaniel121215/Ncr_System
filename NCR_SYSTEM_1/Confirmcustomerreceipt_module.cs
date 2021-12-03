@@ -74,7 +74,7 @@ namespace NCR_SYSTEM_1
 
             upperY = upperY + 15;
 
-            g.DrawString("********************************************", font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("**********************************************", font, new SolidBrush(Color.Black), 40, upperY);
 
 
             upperY = upperY + 15;
@@ -104,7 +104,7 @@ namespace NCR_SYSTEM_1
 
 
 
-            g.DrawString("********************************************", font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("**********************************************", font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
@@ -113,7 +113,7 @@ namespace NCR_SYSTEM_1
 
             upperY = upperY + 15;
 
-            g.DrawString("********************************************", font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("**********************************************", font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
@@ -126,7 +126,7 @@ namespace NCR_SYSTEM_1
 
 
 
-            g.DrawString("********************************************", font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("**********************************************", font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
@@ -142,7 +142,7 @@ namespace NCR_SYSTEM_1
 
             upperY = upperY + 15;
 
-            g.DrawString("********************************************", font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("**********************************************", font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
@@ -155,7 +155,7 @@ namespace NCR_SYSTEM_1
             upperY = upperY + 15;
 
 
-            g.DrawString("********************************************", font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("**********************************************", font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
@@ -208,7 +208,7 @@ namespace NCR_SYSTEM_1
 
             upperY = upperY + 15;
 
-            g.DrawString("********************************************", font, new SolidBrush(Color.Black), 1, upperY);
+            g.DrawString("**********************************************", font, new SolidBrush(Color.Black), 1, upperY);
 
 
             upperY = upperY + 15;
@@ -238,7 +238,7 @@ namespace NCR_SYSTEM_1
 
 
 
-            g.DrawString("********************************************", font, new SolidBrush(Color.Black), 1, upperY);
+            g.DrawString("**********************************************", font, new SolidBrush(Color.Black), 1, upperY);
 
             upperY = upperY + 15;
 
@@ -247,7 +247,7 @@ namespace NCR_SYSTEM_1
 
             upperY = upperY + 15;
 
-            g.DrawString("********************************************", font, new SolidBrush(Color.Black), 1, upperY);
+            g.DrawString("**********************************************", font, new SolidBrush(Color.Black), 1, upperY);
 
             upperY = upperY + 15;
 
@@ -260,7 +260,7 @@ namespace NCR_SYSTEM_1
 
 
 
-            g.DrawString("********************************************", font, new SolidBrush(Color.Black), 1, upperY);
+            g.DrawString("**********************************************", font, new SolidBrush(Color.Black), 1, upperY);
 
             upperY = upperY + 15;
 
@@ -276,7 +276,7 @@ namespace NCR_SYSTEM_1
 
             upperY = upperY + 15;
 
-            g.DrawString("********************************************", font, new SolidBrush(Color.Black), 1, upperY);
+            g.DrawString("**********************************************", font, new SolidBrush(Color.Black), 1, upperY);
 
             upperY = upperY + 15;
 
@@ -289,7 +289,7 @@ namespace NCR_SYSTEM_1
             upperY = upperY + 15;
 
 
-            g.DrawString("********************************************", font, new SolidBrush(Color.Black), 1, upperY);
+            g.DrawString("**********************************************", font, new SolidBrush(Color.Black), 1, upperY);
 
             upperY = upperY + 15;
 
@@ -304,7 +304,14 @@ namespace NCR_SYSTEM_1
 
         private void Confirmcustomerreceipt_module_Load(object sender, EventArgs e)
         {
-            panel1.Refresh();
+            panel1.Height = 603;
+
+            if (POS_module.cartcount > 8)
+            {
+                int sizeadjust = POS_module.cartcount - 8;
+                int sizeadjus2 = sizeadjust * 25;
+                panel1.Height = 603 + sizeadjus2;
+            }
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)

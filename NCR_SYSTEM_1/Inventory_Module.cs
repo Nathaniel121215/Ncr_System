@@ -303,7 +303,7 @@ namespace NCR_SYSTEM_1
 
 
 
-                        if (Convert.ToInt32(row.Cells[8].Value) < Convert.ToInt32(row.Cells[9].Value) && Convert.ToInt32(row.Cells[8].Value) !=0) //Low on stock
+                        if (Convert.ToInt32(row.Cells[8].Value) <= Convert.ToInt32(row.Cells[9].Value) && Convert.ToInt32(row.Cells[8].Value) !=0) //Low on stock
                         {
 
                       
@@ -314,7 +314,7 @@ namespace NCR_SYSTEM_1
                       
                         }
                        
-                        if (Convert.ToInt32(row.Cells[8].Value) >= Convert.ToInt32(row.Cells[9].Value) && Convert.ToInt32(row.Cells[8].Value) < Convert.ToInt32(row.Cells[10].Value))
+                        if (Convert.ToInt32(row.Cells[8].Value) > Convert.ToInt32(row.Cells[9].Value) && Convert.ToInt32(row.Cells[8].Value) < Convert.ToInt32(row.Cells[10].Value))
                         {
                             row.Cells[14].Value = StatusImgs[1];
                             row.Cells[11].Value = "in stock";
@@ -902,10 +902,10 @@ namespace NCR_SYSTEM_1
 
 
 
-                        if (Convert.ToInt32(row.Cells[8].Value) < Convert.ToInt32(row.Cells[9].Value)  && Convert.ToInt32(row.Cells[8].Value) != 0 ) //Low on stock
+                        if (Convert.ToInt32(row.Cells[8].Value) <= Convert.ToInt32(row.Cells[9].Value) && Convert.ToInt32(row.Cells[8].Value) != 0) //Low on stock
                         {
 
-                           
+
 
                             row.Cells[14].Value = StatusImgs[0];
                             row.Cells[11].Value = "low on stock";
@@ -913,19 +913,19 @@ namespace NCR_SYSTEM_1
 
                         }
 
-                        else if (Convert.ToInt32(row.Cells[8].Value) >= Convert.ToInt32(row.Cells[9].Value) && Convert.ToInt32(row.Cells[8].Value) < Convert.ToInt32(row.Cells[10].Value))
+                        if (Convert.ToInt32(row.Cells[8].Value) > Convert.ToInt32(row.Cells[9].Value) && Convert.ToInt32(row.Cells[8].Value) < Convert.ToInt32(row.Cells[10].Value))
                         {
                             row.Cells[14].Value = StatusImgs[1];
                             row.Cells[11].Value = "in stock";
                         }
 
-                        else if (Convert.ToInt32(row.Cells[8].Value) > Convert.ToInt32(row.Cells[10].Value))
+                        if (Convert.ToInt32(row.Cells[8].Value) > Convert.ToInt32(row.Cells[10].Value))
                         {
                             row.Cells[14].Value = StatusImgs[2];
                             row.Cells[11].Value = "high on stock";
                         }
 
-                        if (Convert.ToInt32(row.Cells[8].Value).Equals(0)) 
+                        if (Convert.ToInt32(row.Cells[8].Value).Equals(0)) //out of stock
                         {
                             row.Cells[14].Value = StatusImgs[3];
                             row.Cells[11].Value = "out of stock";
