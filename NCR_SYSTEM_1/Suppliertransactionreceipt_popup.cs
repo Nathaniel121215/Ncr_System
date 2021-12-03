@@ -90,7 +90,7 @@ namespace NCR_SYSTEM_1
 
             upperY = upperY + 15;
 
-            g.DrawString("----------------------------------------------", font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("********************************************", font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 

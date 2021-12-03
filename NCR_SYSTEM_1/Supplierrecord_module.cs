@@ -54,6 +54,14 @@ namespace NCR_SYSTEM_1
 
         public static Supplierrecord_module _instance;
 
+        //data for extract
+
+        public static string grosssales2;
+        public static string trasacntioncount2;
+        public static string supplier2;
+        public static string percentage2;
+        public static string date3;
+
         public Supplierrecord_module()
         {
             InitializeComponent();
@@ -844,7 +852,8 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click_1(object sender, EventArgs e)
         {
-
+            SupplierReportExtractionFilter_popup a = new SupplierReportExtractionFilter_popup();
+            a.Show();
         }
 
         private void bunifuImageButton3_Click(object sender, EventArgs e)
@@ -1104,5 +1113,62 @@ namespace NCR_SYSTEM_1
                 //MessageBox.Show("Your account do not have access on this Module.");
             }
         }
+
+        public void extract()
+        {
+            DataView dv = new DataView(dt);
+            string date1 = SupplierReportExtractionFilter_popup.startdate;
+            string date2 = SupplierReportExtractionFilter_popup.enddate;
+            string supplier = SupplierReportExtractionFilter_popup.supplier;
+
+
+
+            if (SupplierReportExtractionFilter_popup.supplier != "" && SupplierReportExtractionFilter_popup.supplier != "All")
+            {
+
+                dv.RowFilter = "[Transaction Date Searcher]  >='" + date1 + "'AND [Transaction Date Searcher] <='" + date2 + "' " + " AND [Supplier Name] LIKE '%" + supplier + "%'";
+
+                Supplier_Datagrid.DataSource = null;
+                Supplier_Datagrid.Rows.Clear();
+                Supplier_Datagrid.Columns.Clear();
+                Supplier_Datagrid.DataSource = dv;
+
+
+            }
+
+            else
+            {
+                dv.RowFilter = "[Transaction Date Searcher]  >='" + date1 + "'AND [Transaction Date Searcher] <='" + date2 + "' ";
+
+                Supplier_Datagrid.DataSource = null;
+                Supplier_Datagrid.Rows.Clear();
+                Supplier_Datagrid.Columns.Clear();
+                Supplier_Datagrid.DataSource = dv;
+            }
+
+
+
+            filterlabeltxt.Text = date1 + " to " + date2;
+
+            DataGridViewImageColumn View = new DataGridViewImageColumn();
+            Supplier_Datagrid.Columns.Add(View);
+            View.HeaderText = "";
+            View.Name = "View";
+            View.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            View.Image = Properties.Resources.view2;
+
+            getsales();
+            gettransactioncount();
+
+            grosssales2 = Salestxt.Text.ToString();
+            trasacntioncount2 = TransactionCounttxt.Text.ToString();
+            supplier2 = SupplierReportExtractionFilter_popup.supplier; 
+            date3 = filterlabeltxt.Text;
+
+            SupplierReportExtraction_popup a = new SupplierReportExtraction_popup();
+            a.Show();
+
+        }
+
     }
 }

@@ -13,12 +13,17 @@ using System.Windows.Forms;
 
 namespace NCR_SYSTEM_1
 {
-    public partial class Supplierrecord_Filter_popup : Form
+    public partial class SupplierReportExtractionFilter_popup : Form
     {
+        public SupplierReportExtractionFilter_popup()
+        {
+            InitializeComponent();
+        }
+
         public static string startdate;
         public static string enddate;
         public static string supplier;
-        public static string assistedby;
+
 
         IFirebaseClient client;
 
@@ -29,31 +34,14 @@ namespace NCR_SYSTEM_1
         };
 
 
-
-        public Supplierrecord_Filter_popup()
+        private void SupplierReportExtractionFilter_popup_Load(object sender, EventArgs e)
         {
-            InitializeComponent();
-        }
+            client = new FireSharp.FirebaseClient(config);
 
-        private void bunifuFlatButton1_Click(object sender, EventArgs e)
-        {
-            startdate = starttxt.Value.ToString("MM/dd/yyyy");
-            enddate = endtxt.Value.ToString("MM/dd/yyyy");
-            supplier = suppliertxt.Text;
-            assistedby = assistedtxt.Text;
-
-
-            Supplierrecord_module._instance.filter();
-            Supplierrecord_module.checker = "allow";
-            this.Hide();
-        }
-
-        private void Supplierrecord_Filter_popup_Load(object sender, EventArgs e)
-        {
             endtxt.Value = DateTime.Today;
             starttxt.Value = DateTime.Today;
 
-            client = new FireSharp.FirebaseClient(config);
+
 
             ////adding supplier combobox
             try
@@ -76,16 +64,11 @@ namespace NCR_SYSTEM_1
                     {
 
                     }
-
                 }
-
-
                 //ADD supplier to combobox
                 for (int i = 0; i <= cnt; i++)
                 {
-
                     suppliertxt.Items.Add(supplier[i].ToString());
-
                 }
             }
             catch
@@ -93,13 +76,24 @@ namespace NCR_SYSTEM_1
             }
         }
 
-        private void bunifuImageButton1_Click(object sender, EventArgs e)
+        private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
+            startdate = starttxt.Value.ToString("MM/dd/yyyy");
+            enddate = endtxt.Value.ToString("MM/dd/yyyy");
+            supplier = suppliertxt.Text;
+      
+
+
+            Supplierrecord_module._instance.extract();
             this.Hide();
-            Supplierrecord_module.checker = "allow";
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
             this.Hide();
         }
