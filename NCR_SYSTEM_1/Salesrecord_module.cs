@@ -66,7 +66,7 @@ namespace NCR_SYSTEM_1
         public static string trasacntioncount2;
         public static string trasactiontype2;
         public static string percentage2;
-        public static string date2;
+        public static string date3;
 
 
 
@@ -1141,11 +1141,13 @@ namespace NCR_SYSTEM_1
             gettransactioncount();
             searchupdate();
 
-            grosssales2 = Salestxt.ToString();
-            trasacntioncount2 = TransactionCounttxt.ToString();
+            grosssales2 = Salestxt.Text.ToString();
+            trasacntioncount2 = TransactionCounttxt.Text.ToString();
             trasactiontype2 = SalesReportExtractionFilter_popup.transactiontype;
             percentage2 = SalesReportExtractionFilter_popup.percentage;
-            date2 = filterlabeltxt.ToString();
+            date3 = filterlabeltxt.Text;
+
+            Console.WriteLine(date3);
 
             SalesReportExtraction_popup a = new SalesReportExtraction_popup();
             a.Show();

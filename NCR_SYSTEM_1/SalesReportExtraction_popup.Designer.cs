@@ -38,6 +38,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.Print_Button = new Bunifu.Framework.UI.BunifuFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Location = new System.Drawing.Point(34, 96);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1181, 489);
+            this.panel1.Size = new System.Drawing.Size(849, 315);
             this.panel1.TabIndex = 285;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -61,7 +62,7 @@
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
             this.panel8.Location = new System.Drawing.Point(34, 89);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1181, 1);
+            this.panel8.Size = new System.Drawing.Size(849, 1);
             this.panel8.TabIndex = 284;
             // 
             // label13
@@ -87,11 +88,12 @@
             this.bunifuImageButton1.TabIndex = 282;
             this.bunifuImageButton1.TabStop = false;
             this.bunifuImageButton1.Zoom = 10;
+            this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.panel2.Location = new System.Drawing.Point(1250, -4);
+            this.panel2.Location = new System.Drawing.Point(918, -11);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(16, 620);
             this.panel2.TabIndex = 365;
@@ -115,17 +117,55 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.panel5.Location = new System.Drawing.Point(-1, 610);
+            this.panel5.Location = new System.Drawing.Point(-2, 475);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1254, 10);
             this.panel5.TabIndex = 368;
+            // 
+            // Print_Button
+            // 
+            this.Print_Button.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.Print_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(89)))), ((int)(((byte)(204)))));
+            this.Print_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Print_Button.BorderRadius = 0;
+            this.Print_Button.ButtonText = "Print Report";
+            this.Print_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Print_Button.DisabledColor = System.Drawing.Color.Gray;
+            this.Print_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Print_Button.Iconcolor = System.Drawing.Color.Transparent;
+            this.Print_Button.Iconimage = null;
+            this.Print_Button.Iconimage_right = null;
+            this.Print_Button.Iconimage_right_Selected = null;
+            this.Print_Button.Iconimage_Selected = null;
+            this.Print_Button.IconMarginLeft = 0;
+            this.Print_Button.IconMarginRight = 0;
+            this.Print_Button.IconRightVisible = true;
+            this.Print_Button.IconRightZoom = 0D;
+            this.Print_Button.IconVisible = true;
+            this.Print_Button.IconZoom = 90D;
+            this.Print_Button.IsTab = false;
+            this.Print_Button.Location = new System.Drawing.Point(693, 424);
+            this.Print_Button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Print_Button.Name = "Print_Button";
+            this.Print_Button.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(89)))), ((int)(((byte)(204)))));
+            this.Print_Button.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.Print_Button.OnHoverTextColor = System.Drawing.Color.White;
+            this.Print_Button.selected = false;
+            this.Print_Button.Size = new System.Drawing.Size(190, 38);
+            this.Print_Button.TabIndex = 369;
+            this.Print_Button.Text = "Print Report";
+            this.Print_Button.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Print_Button.Textcolor = System.Drawing.Color.White;
+            this.Print_Button.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Print_Button.Click += new System.EventHandler(this.Print_Button_Click);
             // 
             // SalesReportExtraction_popup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1253, 613);
+            this.ClientSize = new System.Drawing.Size(921, 478);
+            this.Controls.Add(this.Print_Button);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -138,6 +178,7 @@
             this.Name = "SalesReportExtraction_popup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SalesReportExtraction_popup";
+            this.Load += new System.EventHandler(this.SalesReportExtraction_popup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -155,5 +196,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
+        private Bunifu.Framework.UI.BunifuFlatButton Print_Button;
     }
 }
