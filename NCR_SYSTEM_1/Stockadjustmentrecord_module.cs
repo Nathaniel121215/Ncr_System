@@ -43,6 +43,15 @@ namespace NCR_SYSTEM_1
         DataTable dt = new DataTable();
 
 
+        //data for extract
+
+        public static string grosssales2;
+        public static string trasacntioncount2;
+        public static string reason2;
+        public static string percentage2;
+        public static string date3;
+
+
         private void Stockadjustmentrecord_module_Load(object sender, EventArgs e)
         {
 
@@ -1022,6 +1031,80 @@ namespace NCR_SYSTEM_1
             {
 
             }
+        }
+
+        public void extract()
+        {
+            DataView dv = new DataView(dt);
+            string date1 = StockAdjustmentReportExtractionFilter_popup.startdate;
+            string date2 = StockAdjustmentReportExtractionFilter_popup.enddate;
+            string percentage = StockAdjustmentReportExtractionFilter_popup.percentage;
+            string reason = StockAdjustmentReportExtractionFilter_popup.reason;
+
+
+
+            if (StockAdjustmentReportExtractionFilter_popup.reason != "" && StockAdjustmentReportExtractionFilter_popup.percentage != "" && StockAdjustmentReportExtractionFilter_popup.reason != "All")
+            {
+
+                dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "' " + " AND [Reason] LIKE '%" + reason + "%'";
+
+                StockAdjustment_Datagrid.DataSource = null;
+                StockAdjustment_Datagrid.Rows.Clear();
+                StockAdjustment_Datagrid.Columns.Clear();
+                StockAdjustment_Datagrid.DataSource = dv;
+
+
+            }
+
+            else
+            {
+                dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "' ";
+
+                StockAdjustment_Datagrid.DataSource = null;
+                StockAdjustment_Datagrid.Rows.Clear();
+                StockAdjustment_Datagrid.Columns.Clear();
+                StockAdjustment_Datagrid.DataSource = dv;
+            }
+
+
+
+            filterlabeltxt.Text = date1 + " to " + date2;
+
+            DataGridViewImageColumn Reason = new DataGridViewImageColumn();
+            StockAdjustment_Datagrid.Columns.Add(Reason);
+            Reason.HeaderText = "Reason";
+            Reason.Name = "Reason";
+            Reason.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            Reason.Image = Properties.Resources.loading;
+
+            DataGridViewImageColumn remarks = new DataGridViewImageColumn();
+            StockAdjustment_Datagrid.Columns.Add(remarks);
+            remarks.HeaderText = "";
+            remarks.Name = "";
+            remarks.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            remarks.Image = Properties.Resources.Group_203;
+
+            getvalue();
+            gettransactioncount();
+            searchupdate();
+
+            grosssales2 = Salestxt.Text.ToString();
+            trasacntioncount2 = TransactionCounttxt.Text.ToString();
+            reason2 = StockAdjustmentReportExtractionFilter_popup.reason;
+            percentage2 = StockAdjustmentReportExtractionFilter_popup.percentage;
+            date3 = filterlabeltxt.Text;
+
+
+
+            SalesReportExtraction_popup a = new SalesReportExtraction_popup();
+            a.Show();
+
+        }
+
+        private void bunifuFlatButton1_Click(object sender, EventArgs e)
+        {
+            StockAdjustmentReportExtractionFilter_popup a = new StockAdjustmentReportExtractionFilter_popup();
+            a.Show();
         }
     }
 }

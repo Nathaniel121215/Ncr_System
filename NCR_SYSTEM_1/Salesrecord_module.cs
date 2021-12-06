@@ -530,7 +530,7 @@ namespace NCR_SYSTEM_1
             string assist = Salesrecord_Filter_popup.assistedby;
             string transactiontype = Salesrecord_Filter_popup.transactiontype;
 
-            if (Salesrecord_Filter_popup.transactiontype == "" && Salesrecord_Filter_popup.assistedby == "")
+            if (Salesrecord_Filter_popup.transactiontype != "" && Salesrecord_Filter_popup.assistedby == "" && Salesrecord_Filter_popup.transactiontype == "All")
             {
 
                 dv.RowFilter = "[Transaction Date Searcher]  >='" + date1 + "'AND [Transaction Date Searcher] <='" + date2 + "'";
@@ -543,7 +543,19 @@ namespace NCR_SYSTEM_1
 
             }
 
-            else if (Salesrecord_Filter_popup.transactiontype == "" && Salesrecord_Filter_popup.assistedby != "")
+            else if (Salesrecord_Filter_popup.transactiontype != "" && Salesrecord_Filter_popup.assistedby != "" && Salesrecord_Filter_popup.transactiontype != "All")
+            {
+
+                dv.RowFilter = "[Transaction Date Searcher]  >='" + date1 + "'AND [Transaction Date Searcher] <='" + date2 + "' " + " AND [Transaction Type txt] LIKE '%" + transactiontype + "%'" + " AND [Assisted By] LIKE '%" + assist + "%'";
+
+
+                Sales_Datagrid.DataSource = null;
+                Sales_Datagrid.Rows.Clear();
+                Sales_Datagrid.Columns.Clear();
+                Sales_Datagrid.DataSource = dv;
+            }
+
+            else if (Salesrecord_Filter_popup.transactiontype != "" && Salesrecord_Filter_popup.assistedby != "" && Salesrecord_Filter_popup.transactiontype == "All")
             {
 
                 dv.RowFilter = "[Transaction Date Searcher]  >='" + date1 + "'AND [Transaction Date Searcher] <='" + date2 + "' " + " AND [Assisted By] LIKE '%" + assist + "%'";
@@ -554,7 +566,8 @@ namespace NCR_SYSTEM_1
                 Sales_Datagrid.Columns.Clear();
                 Sales_Datagrid.DataSource = dv;
             }
-            else if (Salesrecord_Filter_popup.transactiontype != "" && Salesrecord_Filter_popup.assistedby == "")
+
+            else if (Salesrecord_Filter_popup.transactiontype != "" && Salesrecord_Filter_popup.assistedby == "" && Salesrecord_Filter_popup.transactiontype != "All")
             {
                 dv.RowFilter = "[Transaction Date Searcher]  >='" + date1 + "'AND [Transaction Date Searcher] <='" + date2 + "' " + " AND [Transaction Type txt] LIKE '%" + transactiontype + "%'";
 
@@ -566,12 +579,7 @@ namespace NCR_SYSTEM_1
             else
             {
 
-                dv.RowFilter = "[Transaction Date Searcher]  >='" + date1 + "'AND [Transaction Date Searcher] <='" + date2 + "' " + " AND [Transaction Type txt] LIKE '%" + transactiontype + "%'" + " AND [Assisted By] LIKE '%" + assist + "%'";
-
-                Sales_Datagrid.DataSource = null;
-                Sales_Datagrid.Rows.Clear();
-                Sales_Datagrid.Columns.Clear();
-                Sales_Datagrid.DataSource = dv;
+       
             }
 
 
