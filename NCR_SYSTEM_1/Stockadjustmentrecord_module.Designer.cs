@@ -535,6 +535,7 @@
             this.StockAdjustment_Datagrid.RowTemplate.ReadOnly = true;
             this.StockAdjustment_Datagrid.Size = new System.Drawing.Size(1479, 710);
             this.StockAdjustment_Datagrid.TabIndex = 327;
+            this.StockAdjustment_Datagrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StockAdjustment_Datagrid_CellClick);
             // 
             // searchtxt
             // 

@@ -284,6 +284,12 @@
     <Compile Include="Stockadjustmentrecord_module.Designer.cs">
       <DependentUpon>Stockadjustmentrecord_module.cs</DependentUpon>
     </Compile>
+    <Compile Include="StockAdjustmentRemarks_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockAdjustmentRemarks_popup.Designer.cs">
+      <DependentUpon>StockAdjustmentRemarks_popup.cs</DependentUpon>
+    </Compile>
     <Compile Include="StockAdjustmentReportExtractionFilter_popup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -577,6 +583,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Stockadjustmentrecord_module.resx">
       <DependentUpon>Stockadjustmentrecord_module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockAdjustmentRemarks_popup.resx">
+      <DependentUpon>StockAdjustmentRemarks_popup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StockAdjustmentReportExtractionFilter_popup.resx">
       <DependentUpon>StockAdjustmentReportExtractionFilter_popup.cs</DependentUpon>

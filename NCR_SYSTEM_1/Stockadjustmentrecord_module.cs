@@ -15,7 +15,7 @@ namespace NCR_SYSTEM_1
 {
     public partial class Stockadjustmentrecord_module : Form
     {
-
+        public static string remarks;
 
 
         public static Stockadjustmentrecord_module _instance;
@@ -1115,6 +1115,32 @@ namespace NCR_SYSTEM_1
         {
             StockAdjustmentReportExtractionFilter_popup a = new StockAdjustmentReportExtractionFilter_popup();
             a.Show();
+        }
+
+        private void StockAdjustment_Datagrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            string columnindex = "";
+
+
+            //remarks
+            if (e.ColumnIndex == StockAdjustment_Datagrid.Columns[10].Index)
+            {
+                columnindex = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+
+                StockAdjustment_Datagrid.Rows[e.RowIndex].Selected = true;
+
+                remarks = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[7].Value.ToString();
+                
+             
+
+                StockAdjustmentRemarks_popup c = new StockAdjustmentRemarks_popup();
+                c.Show();
+
+            }
+        
+        
         }
     }
 }
