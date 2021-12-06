@@ -1155,7 +1155,7 @@ namespace NCR_SYSTEM_1
             percentage2 = SalesReportExtractionFilter_popup.percentage;
             date3 = filterlabeltxt.Text;
 
-            Console.WriteLine(date3);
+      
 
             SalesReportExtraction_popup a = new SalesReportExtraction_popup();
             a.Show();

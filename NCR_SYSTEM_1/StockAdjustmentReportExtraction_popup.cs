@@ -11,14 +11,19 @@ using System.Windows.Forms;
 
 namespace NCR_SYSTEM_1
 {
-    public partial class SupplierReportExtraction_popup : Form
+    public partial class StockAdjustmentReportExtraction_popup : Form
     {
-        public SupplierReportExtraction_popup()
+        public StockAdjustmentReportExtraction_popup()
         {
             InitializeComponent();
         }
 
-        private void SupplierReportExtraction_popup_Load(object sender, EventArgs e)
+        private void bunifuImageButton1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void StockAdjustmentReportExtraction_popup_Load(object sender, EventArgs e)
         {
 
         }
@@ -27,7 +32,11 @@ namespace NCR_SYSTEM_1
         {
             string fmt = "##.00";
 
-            double value = Convert.ToDouble(Supplierrecord_module.grosssales2);
+
+            double percent = 100 + Convert.ToDouble(Stockadjustmentrecord_module.percentage2);
+            double finalpercent = .01 * percent;
+            double minus = Convert.ToDouble(Stockadjustmentrecord_module.grosssales2) / finalpercent;
+        
 
             System.Drawing.Graphics g;
             g = e.Graphics;
@@ -39,7 +48,7 @@ namespace NCR_SYSTEM_1
             int upperY = 20;
 
 
-            g.DrawString("Supplier Extraction Report", font, new SolidBrush(Color.Black), 636, upperY);
+            g.DrawString("Stock Adjustment Extraction Report", font, new SolidBrush(Color.Black), 580, upperY);
 
             g.DrawString("NCR Gravel and Sand Enteprise", new Font("Courier New", 10), new SolidBrush(Color.Black), 40, upperY);
 
@@ -67,15 +76,15 @@ namespace NCR_SYSTEM_1
 
             upperY = upperY + 15;
 
-            g.DrawString("Date: " + Supplierrecord_module.date3, font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("Date: " + Stockadjustmentrecord_module.date3, font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
-            g.DrawString("Transaction Count: " + Supplierrecord_module.trasacntioncount2, font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("Transaction Count: " + Stockadjustmentrecord_module.trasacntioncount2, font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
-            g.DrawString("Supplier Name: " + Supplierrecord_module.supplier2, font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("Reason: " + Stockadjustmentrecord_module.reason2, font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
@@ -83,16 +92,23 @@ namespace NCR_SYSTEM_1
 
             upperY = upperY + 15;
 
-            g.DrawString("Total Value: " + Supplierrecord_module.grosssales2, font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("Total Value: " + Stockadjustmentrecord_module.grosssales2, font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
-        
+            g.DrawString("Company Average Profit Percentage: " + Stockadjustmentrecord_module.percentage2, font, new SolidBrush(Color.Black), 40, upperY);
+
+            upperY = upperY + 15;
+
+            g.DrawString("Total Loss: " + Stockadjustmentrecord_module.grosssales2 + " / " + finalpercent.ToString(fmt) + " = " + minus.ToString(fmt), font, new SolidBrush(Color.Black), 40, upperY);
+
+            upperY = upperY + 15;
+
             g.DrawString("********************************************************************************************************************", font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
-            g.DrawString("Total Cost of Goods: " + value.ToString(fmt), font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("Total Loss: " + minus.ToString(fmt), font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
@@ -111,7 +127,11 @@ namespace NCR_SYSTEM_1
         {
             string fmt = "##.00";
 
-            double value = Convert.ToDouble(Supplierrecord_module.grosssales2);
+
+            double percent = 100 + Convert.ToDouble(Stockadjustmentrecord_module.percentage2);
+            double finalpercent = .01 * percent;
+            double minus = Convert.ToDouble(Stockadjustmentrecord_module.grosssales2) / finalpercent;
+
 
             System.Drawing.Graphics g;
             g = e.Graphics;
@@ -123,7 +143,7 @@ namespace NCR_SYSTEM_1
             int upperY = 20;
 
 
-            g.DrawString("Supplier Extraction Report", font, new SolidBrush(Color.Black), 636, upperY);
+            g.DrawString("Stock Adjustment Extraction Report", font, new SolidBrush(Color.Black), 580, upperY);
 
             g.DrawString("NCR Gravel and Sand Enteprise", new Font("Courier New", 10), new SolidBrush(Color.Black), 40, upperY);
 
@@ -144,21 +164,6 @@ namespace NCR_SYSTEM_1
 
 
 
-            upperY = upperY + 15;
-
-            g.DrawString("********************************************************************************************************************", font, new SolidBrush(Color.Black), 40, upperY);
-
-            upperY = upperY + 15;
-
-            g.DrawString("Date: " + Supplierrecord_module.date3, font, new SolidBrush(Color.Black), 40, upperY);
-
-            upperY = upperY + 15;
-
-            g.DrawString("Transaction Count: " + Supplierrecord_module.trasacntioncount2, font, new SolidBrush(Color.Black), 40, upperY);
-
-            upperY = upperY + 15;
-
-            g.DrawString("Supplier Name: " + Supplierrecord_module.supplier2, font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
@@ -166,16 +171,39 @@ namespace NCR_SYSTEM_1
 
             upperY = upperY + 15;
 
-            g.DrawString("Total Value: " + Supplierrecord_module.grosssales2, font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("Date: " + Stockadjustmentrecord_module.date3, font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
+            g.DrawString("Transaction Count: " + Stockadjustmentrecord_module.trasacntioncount2, font, new SolidBrush(Color.Black), 40, upperY);
+
+            upperY = upperY + 15;
+
+            g.DrawString("Reason: " + Stockadjustmentrecord_module.reason2, font, new SolidBrush(Color.Black), 40, upperY);
+
+            upperY = upperY + 15;
 
             g.DrawString("********************************************************************************************************************", font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
-            g.DrawString("Total Cost of Goods: " + value.ToString(fmt), font, new SolidBrush(Color.Black), 40, upperY);
+            g.DrawString("Total Value: " + Stockadjustmentrecord_module.grosssales2, font, new SolidBrush(Color.Black), 40, upperY);
+
+            upperY = upperY + 15;
+
+            g.DrawString("Company Average Profit Percentage: " + Stockadjustmentrecord_module.percentage2, font, new SolidBrush(Color.Black), 40, upperY);
+
+            upperY = upperY + 15;
+
+            g.DrawString("Total Loss: " + Stockadjustmentrecord_module.grosssales2 + " / " + finalpercent.ToString(fmt) + " = " + minus.ToString(fmt), font, new SolidBrush(Color.Black), 40, upperY);
+
+            upperY = upperY + 15;
+
+            g.DrawString("********************************************************************************************************************", font, new SolidBrush(Color.Black), 40, upperY);
+
+            upperY = upperY + 15;
+
+            g.DrawString("Total Loss: " + minus.ToString(fmt), font, new SolidBrush(Color.Black), 40, upperY);
 
             upperY = upperY + 15;
 
@@ -188,6 +216,7 @@ namespace NCR_SYSTEM_1
             upperY = upperY + 15;
 
             g.DrawString("Extracted By: " + Form1.username, font, new SolidBrush(Color.Black), 40, upperY);
+
         }
 
         private void Print_Button_Click(object sender, EventArgs e)

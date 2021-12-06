@@ -290,6 +290,12 @@
     <Compile Include="StockAdjustmentReportExtractionFilter_popup.Designer.cs">
       <DependentUpon>StockAdjustmentReportExtractionFilter_popup.cs</DependentUpon>
     </Compile>
+    <Compile Include="StockAdjustmentReportExtraction_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockAdjustmentReportExtraction_popup.Designer.cs">
+      <DependentUpon>StockAdjustmentReportExtraction_popup.cs</DependentUpon>
+    </Compile>
     <Compile Include="StockAdjustment_Class.cs" />
     <Compile Include="StockAdjustment_Module.cs">
       <SubType>Form</SubType>
@@ -574,6 +580,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StockAdjustmentReportExtractionFilter_popup.resx">
       <DependentUpon>StockAdjustmentReportExtractionFilter_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockAdjustmentReportExtraction_popup.resx">
+      <DependentUpon>StockAdjustmentReportExtraction_popup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StockAdjustment_Module.resx">
       <DependentUpon>StockAdjustment_Module.cs</DependentUpon>

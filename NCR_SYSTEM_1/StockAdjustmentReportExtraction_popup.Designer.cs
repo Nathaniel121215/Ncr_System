@@ -1,6 +1,6 @@
 ﻿namespace NCR_SYSTEM_1
 {
-    partial class SupplierReportExtraction_popup
+    partial class StockAdjustmentReportExtraction_popup
     {
         /// <summary>
         /// Required designer variable.
@@ -77,7 +77,7 @@
             this.Print_Button.OnHoverTextColor = System.Drawing.Color.White;
             this.Print_Button.selected = false;
             this.Print_Button.Size = new System.Drawing.Size(190, 38);
-            this.Print_Button.TabIndex = 378;
+            this.Print_Button.TabIndex = 387;
             this.Print_Button.Text = "Print Report";
             this.Print_Button.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Print_Button.Textcolor = System.Drawing.Color.White;
@@ -90,7 +90,7 @@
             this.panel5.Location = new System.Drawing.Point(-2, 475);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1254, 10);
-            this.panel5.TabIndex = 377;
+            this.panel5.TabIndex = 386;
             // 
             // panel4
             // 
@@ -98,7 +98,7 @@
             this.panel4.Location = new System.Drawing.Point(0, -8);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1254, 10);
-            this.panel4.TabIndex = 376;
+            this.panel4.TabIndex = 385;
             // 
             // panel3
             // 
@@ -106,7 +106,7 @@
             this.panel3.Location = new System.Drawing.Point(-14, -4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(16, 620);
-            this.panel3.TabIndex = 375;
+            this.panel3.TabIndex = 384;
             // 
             // panel2
             // 
@@ -114,7 +114,7 @@
             this.panel2.Location = new System.Drawing.Point(918, -11);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(16, 620);
-            this.panel2.TabIndex = 374;
+            this.panel2.TabIndex = 383;
             // 
             // panel1
             // 
@@ -123,7 +123,7 @@
             this.panel1.Location = new System.Drawing.Point(34, 96);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(849, 315);
-            this.panel1.TabIndex = 373;
+            this.panel1.TabIndex = 382;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel8
@@ -132,7 +132,7 @@
             this.panel8.Location = new System.Drawing.Point(34, 89);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(849, 1);
-            this.panel8.TabIndex = 372;
+            this.panel8.TabIndex = 381;
             // 
             // label13
             // 
@@ -140,9 +140,9 @@
             this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(30, 58);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(211, 23);
-            this.label13.TabIndex = 371;
-            this.label13.Text = "Supplier Report Extraction";
+            this.label13.Size = new System.Drawing.Size(284, 23);
+            this.label13.TabIndex = 380;
+            this.label13.Text = "Stock Adjustment Report Extraction";
             // 
             // bunifuImageButton1
             // 
@@ -154,11 +154,12 @@
             this.bunifuImageButton1.Name = "bunifuImageButton1";
             this.bunifuImageButton1.Size = new System.Drawing.Size(32, 32);
             this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.bunifuImageButton1.TabIndex = 370;
+            this.bunifuImageButton1.TabIndex = 379;
             this.bunifuImageButton1.TabStop = false;
             this.bunifuImageButton1.Zoom = 10;
+            this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click);
             // 
-            // SupplierReportExtraction_popup
+            // StockAdjustmentReportExtraction_popup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -174,10 +175,10 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.bunifuImageButton1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "SupplierReportExtraction_popup";
+            this.Name = "StockAdjustmentReportExtraction_popup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SupplierReportExtraction_popup";
-            this.Load += new System.EventHandler(this.SupplierReportExtraction_popup_Load);
+            this.Text = "StockAdjustmentReportExtraction_popup";
+            this.Load += new System.EventHandler(this.StockAdjustmentReportExtraction_popup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

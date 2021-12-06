@@ -103,6 +103,7 @@
             this.reasontxt.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.reasontxt.FormattingEnabled = true;
             this.reasontxt.Items.AddRange(new object[] {
+            "All",
             "Damaged Item",
             "Lost Item",
             "Wrong Input",

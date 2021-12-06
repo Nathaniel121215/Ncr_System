@@ -458,7 +458,10 @@ namespace NCR_SYSTEM_1
             string reason = StockAdjustmentFilter_popup.reason;
             string user = StockAdjustmentFilter_popup.user;
 
-            if (StockAdjustmentFilter_popup.user == "" && StockAdjustmentFilter_popup.reason == "")
+     
+
+
+            if (StockAdjustmentFilter_popup.reason != "" && StockAdjustmentFilter_popup.user == "" && StockAdjustmentFilter_popup.reason == "All")
             {
 
                 dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "'";
@@ -471,10 +474,10 @@ namespace NCR_SYSTEM_1
 
             }
 
-            else if (StockAdjustmentFilter_popup.user == "" && StockAdjustmentFilter_popup.reason != "")
+            else if (StockAdjustmentFilter_popup.reason != "" && StockAdjustmentFilter_popup.user != "" && StockAdjustmentFilter_popup.reason != "All")
             {
 
-                dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "' " + " AND [Reason] LIKE '%" + reason + "%'";
+                dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "' " + " AND [Reason] LIKE '%" + reason + "%'" + " AND [User] LIKE '%" + user + "%'";
 
 
                 StockAdjustment_Datagrid.DataSource = null;
@@ -482,9 +485,21 @@ namespace NCR_SYSTEM_1
                 StockAdjustment_Datagrid.Columns.Clear();
                 StockAdjustment_Datagrid.DataSource = dv;
             }
-            else if (StockAdjustmentFilter_popup.user != "" && StockAdjustmentFilter_popup.reason == "")
+
+            else if (StockAdjustmentFilter_popup.reason != "" && StockAdjustmentFilter_popup.user != "" && StockAdjustmentFilter_popup.reason == "All")
             {
+
                 dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "' " + " AND [User] LIKE '%" + user + "%'";
+
+                StockAdjustment_Datagrid.DataSource = null;
+                StockAdjustment_Datagrid.Rows.Clear();
+                StockAdjustment_Datagrid.Columns.Clear();
+                StockAdjustment_Datagrid.DataSource = dv;
+            }
+
+            else if (StockAdjustmentFilter_popup.reason != "" && StockAdjustmentFilter_popup.user == "" && StockAdjustmentFilter_popup.reason != "All")
+            {
+                dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "' " + " AND [Reason] LIKE '%" + reason + "%'";
 
                 StockAdjustment_Datagrid.DataSource = null;
                 StockAdjustment_Datagrid.Rows.Clear();
@@ -494,12 +509,7 @@ namespace NCR_SYSTEM_1
             else
             {
 
-                dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "' " + " AND [Reason] LIKE '%" + reason + "%'" + " AND [User] LIKE '%" + user + "%'";
 
-                StockAdjustment_Datagrid.DataSource = null;
-                StockAdjustment_Datagrid.Rows.Clear();
-                StockAdjustment_Datagrid.Columns.Clear();
-                StockAdjustment_Datagrid.DataSource = dv;
             }
 
 
@@ -1096,7 +1106,7 @@ namespace NCR_SYSTEM_1
 
 
 
-            SalesReportExtraction_popup a = new SalesReportExtraction_popup();
+            StockAdjustmentReportExtraction_popup a = new StockAdjustmentReportExtraction_popup();
             a.Show();
 
         }
