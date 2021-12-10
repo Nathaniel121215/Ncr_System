@@ -29,7 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard_Module));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.bunifuImageButton2 = new Bunifu.Framework.UI.BunifuImageButton();
@@ -48,28 +53,26 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.datedisplay = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.trasaccount = new System.Windows.Forms.Label();
             this.numberofproductlabel = new System.Windows.Forms.Label();
             this.existingemployee = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.Sales_Datagrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.inventory = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.todaysales = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.highstock = new System.Windows.Forms.Label();
+            this.instock = new System.Windows.Forms.Label();
+            this.low = new System.Windows.Forms.Label();
+            this.outstock = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
@@ -82,14 +85,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Sales_Datagrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inventory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -333,225 +340,197 @@
             this.datedisplay.Text = "Tuesday, 22 April 2021";
             this.datedisplay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label6
+            // trasaccount
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 15F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.label6.Location = new System.Drawing.Point(448, 463);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(155, 28);
-            this.label6.TabIndex = 204;
-            this.label6.Text = "Annoucements:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 26F, System.Drawing.FontStyle.Bold);
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.label7.Location = new System.Drawing.Point(929, 261);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 47);
-            this.label7.TabIndex = 214;
-            this.label7.Text = "00";
+            this.trasaccount.AutoSize = true;
+            this.trasaccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.trasaccount.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
+            this.trasaccount.ForeColor = System.Drawing.Color.White;
+            this.trasaccount.Location = new System.Drawing.Point(878, 218);
+            this.trasaccount.Name = "trasaccount";
+            this.trasaccount.Size = new System.Drawing.Size(49, 37);
+            this.trasaccount.TabIndex = 214;
+            this.trasaccount.Text = "00";
             // 
             // numberofproductlabel
             // 
             this.numberofproductlabel.AutoSize = true;
-            this.numberofproductlabel.Font = new System.Drawing.Font("Segoe UI Semibold", 26F, System.Drawing.FontStyle.Bold);
-            this.numberofproductlabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.numberofproductlabel.Location = new System.Drawing.Point(447, 262);
+            this.numberofproductlabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.numberofproductlabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
+            this.numberofproductlabel.ForeColor = System.Drawing.Color.White;
+            this.numberofproductlabel.Location = new System.Drawing.Point(1614, 232);
             this.numberofproductlabel.Name = "numberofproductlabel";
-            this.numberofproductlabel.Size = new System.Drawing.Size(53, 47);
+            this.numberofproductlabel.Size = new System.Drawing.Size(49, 37);
             this.numberofproductlabel.TabIndex = 217;
-            this.numberofproductlabel.Text = "01";
+            this.numberofproductlabel.Text = "00";
             // 
             // existingemployee
             // 
             this.existingemployee.AutoSize = true;
-            this.existingemployee.Font = new System.Drawing.Font("Segoe UI Semibold", 26F, System.Drawing.FontStyle.Bold);
-            this.existingemployee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.existingemployee.Location = new System.Drawing.Point(1415, 261);
+            this.existingemployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.existingemployee.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
+            this.existingemployee.ForeColor = System.Drawing.Color.White;
+            this.existingemployee.Location = new System.Drawing.Point(1244, 232);
             this.existingemployee.Name = "existingemployee";
-            this.existingemployee.Size = new System.Drawing.Size(53, 47);
+            this.existingemployee.Size = new System.Drawing.Size(49, 37);
             this.existingemployee.TabIndex = 220;
-            this.existingemployee.Text = "01";
+            this.existingemployee.Text = "00";
             // 
-            // label4
+            // Sales_Datagrid
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.label4.Location = new System.Drawing.Point(451, 513);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(261, 20);
-            this.label4.TabIndex = 221;
-            this.label4.Text = "* Check the incoming supply this week";
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            this.Sales_Datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.Sales_Datagrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Sales_Datagrid.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.Sales_Datagrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Sales_Datagrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.Sales_Datagrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Sales_Datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.Sales_Datagrid.ColumnHeadersHeight = 40;
+            this.Sales_Datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Sales_Datagrid.DefaultCellStyle = dataGridViewCellStyle9;
+            this.Sales_Datagrid.DoubleBuffered = true;
+            this.Sales_Datagrid.EnableHeadersVisualStyles = false;
+            this.Sales_Datagrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.Sales_Datagrid.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.Sales_Datagrid.HeaderForeColor = System.Drawing.Color.Black;
+            this.Sales_Datagrid.Location = new System.Drawing.Point(576, 14);
+            this.Sales_Datagrid.Name = "Sales_Datagrid";
+            this.Sales_Datagrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.Sales_Datagrid.RowHeadersWidth = 40;
+            this.Sales_Datagrid.RowTemplate.Height = 35;
+            this.Sales_Datagrid.RowTemplate.ReadOnly = true;
+            this.Sales_Datagrid.Size = new System.Drawing.Size(200, 95);
+            this.Sales_Datagrid.TabIndex = 221;
             // 
-            // label5
+            // inventory
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.label5.Location = new System.Drawing.Point(451, 545);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(288, 20);
-            this.label5.TabIndex = 222;
-            this.label5.Text = "* Check the inventory if everything is good";
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            this.inventory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            this.inventory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.inventory.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.inventory.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.inventory.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.inventory.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.inventory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.inventory.ColumnHeadersHeight = 40;
+            this.inventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.inventory.DefaultCellStyle = dataGridViewCellStyle12;
+            this.inventory.DoubleBuffered = true;
+            this.inventory.EnableHeadersVisualStyles = false;
+            this.inventory.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.inventory.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.inventory.HeaderForeColor = System.Drawing.Color.Black;
+            this.inventory.Location = new System.Drawing.Point(782, 14);
+            this.inventory.Name = "inventory";
+            this.inventory.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.inventory.RowHeadersWidth = 40;
+            this.inventory.RowTemplate.Height = 35;
+            this.inventory.RowTemplate.ReadOnly = true;
+            this.inventory.Size = new System.Drawing.Size(188, 95);
+            this.inventory.TabIndex = 222;
             // 
-            // label8
+            // todaysales
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.label8.Location = new System.Drawing.Point(451, 578);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(353, 20);
-            this.label8.TabIndex = 223;
-            this.label8.Text = "* Remind Holden to check the record before closing";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.label9.Location = new System.Drawing.Point(451, 630);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(201, 20);
-            this.label9.TabIndex = 224;
-            this.label9.Text = "* Clean the stock room today";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.label10.Location = new System.Drawing.Point(451, 660);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(266, 20);
-            this.label10.TabIndex = 225;
-            this.label10.Text = "* Call Rabe if the deliveries is prepared";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.label11.Location = new System.Drawing.Point(451, 691);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(171, 20);
-            this.label11.TabIndex = 226;
-            this.label11.Text = "* Clean outside the store";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 26F, System.Drawing.FontStyle.Bold);
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.label12.Location = new System.Drawing.Point(447, 903);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(58, 47);
-            this.label12.TabIndex = 227;
-            this.label12.Text = "00";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 26F, System.Drawing.FontStyle.Bold);
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.label13.Location = new System.Drawing.Point(929, 903);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(58, 47);
-            this.label13.TabIndex = 228;
-            this.label13.Text = "00";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 26F, System.Drawing.FontStyle.Bold);
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.label14.Location = new System.Drawing.Point(1415, 903);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(58, 47);
-            this.label14.TabIndex = 229;
-            this.label14.Text = "00";
+            this.todaysales.AutoSize = true;
+            this.todaysales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.todaysales.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.todaysales.ForeColor = System.Drawing.Color.White;
+            this.todaysales.Location = new System.Drawing.Point(532, 232);
+            this.todaysales.Name = "todaysales";
+            this.todaysales.Size = new System.Drawing.Size(49, 37);
+            this.todaysales.TabIndex = 226;
+            this.todaysales.Text = "00";
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(386, 799);
+            this.pictureBox8.Image = global::NCR_SYSTEM_1.Properties.Resources.graphbg;
+            this.pictureBox8.Location = new System.Drawing.Point(356, 385);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(509, 257);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 219;
+            this.pictureBox8.Size = new System.Drawing.Size(743, 551);
+            this.pictureBox8.TabIndex = 229;
             this.pictureBox8.TabStop = false;
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(871, 799);
+            this.pictureBox6.Image = global::NCR_SYSTEM_1.Properties.Resources.inventorystatus;
+            this.pictureBox6.Location = new System.Drawing.Point(1452, 384);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(509, 257);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 218;
+            this.pictureBox6.Size = new System.Drawing.Size(362, 573);
+            this.pictureBox6.TabIndex = 227;
             this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(386, 156);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(509, 257);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 216;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(871, 156);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(509, 257);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 213;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(1357, 156);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(509, 257);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 212;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(1357, 799);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(509, 257);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox7.TabIndex = 206;
-            this.pictureBox7.TabStop = false;
             // 
             // pictureBox5
             // 
             this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(386, 412);
+            this.pictureBox5.Image = global::NCR_SYSTEM_1.Properties.Resources.numberofitems;
+            this.pictureBox5.Location = new System.Drawing.Point(1481, 183);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(1479, 385);
+            this.pictureBox5.Size = new System.Drawing.Size(305, 151);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 203;
+            this.pictureBox5.TabIndex = 225;
             this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pictureBox4.Image = global::NCR_SYSTEM_1.Properties.Resources.numberofemployee;
+            this.pictureBox4.Location = new System.Drawing.Point(1115, 183);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(305, 151);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 224;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pictureBox3.Image = global::NCR_SYSTEM_1.Properties.Resources.todaytransaction;
+            this.pictureBox3.Location = new System.Drawing.Point(749, 183);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(305, 151);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 223;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pictureBox1.Image = global::NCR_SYSTEM_1.Properties.Resources.Group_254;
+            this.pictureBox1.Location = new System.Drawing.Point(386, 183);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(305, 151);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 216;
+            this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -562,15 +541,87 @@
             this.pictureBox2.TabIndex = 187;
             this.pictureBox2.TabStop = false;
             // 
-            // button1
+            // pictureBox9
             // 
-            this.button1.Location = new System.Drawing.Point(766, 53);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 230;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_3);
+            this.pictureBox9.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pictureBox9.Image = global::NCR_SYSTEM_1.Properties.Resources.Group_255;
+            this.pictureBox9.Location = new System.Drawing.Point(1089, 385);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(357, 204);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox9.TabIndex = 231;
+            this.pictureBox9.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pictureBox7.Image = global::NCR_SYSTEM_1.Properties.Resources.Group_255;
+            this.pictureBox7.Location = new System.Drawing.Point(1089, 741);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(357, 204);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox7.TabIndex = 233;
+            this.pictureBox7.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pictureBox10.Image = global::NCR_SYSTEM_1.Properties.Resources.Group_255;
+            this.pictureBox10.Location = new System.Drawing.Point(1089, 564);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(357, 204);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 234;
+            this.pictureBox10.TabStop = false;
+            this.pictureBox10.Click += new System.EventHandler(this.pictureBox10_Click);
+            // 
+            // highstock
+            // 
+            this.highstock.AutoSize = true;
+            this.highstock.BackColor = System.Drawing.Color.White;
+            this.highstock.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold);
+            this.highstock.ForeColor = System.Drawing.Color.Black;
+            this.highstock.Location = new System.Drawing.Point(1619, 502);
+            this.highstock.Name = "highstock";
+            this.highstock.Size = new System.Drawing.Size(51, 40);
+            this.highstock.TabIndex = 235;
+            this.highstock.Text = "00";
+            // 
+            // instock
+            // 
+            this.instock.AutoSize = true;
+            this.instock.BackColor = System.Drawing.Color.White;
+            this.instock.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold);
+            this.instock.ForeColor = System.Drawing.Color.Black;
+            this.instock.Location = new System.Drawing.Point(1619, 603);
+            this.instock.Name = "instock";
+            this.instock.Size = new System.Drawing.Size(51, 40);
+            this.instock.TabIndex = 236;
+            this.instock.Text = "00";
+            // 
+            // low
+            // 
+            this.low.AutoSize = true;
+            this.low.BackColor = System.Drawing.Color.White;
+            this.low.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold);
+            this.low.ForeColor = System.Drawing.Color.Black;
+            this.low.Location = new System.Drawing.Point(1619, 703);
+            this.low.Name = "low";
+            this.low.Size = new System.Drawing.Size(51, 40);
+            this.low.TabIndex = 237;
+            this.low.Text = "00";
+            // 
+            // outstock
+            // 
+            this.outstock.AutoSize = true;
+            this.outstock.BackColor = System.Drawing.Color.White;
+            this.outstock.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outstock.ForeColor = System.Drawing.Color.Black;
+            this.outstock.Location = new System.Drawing.Point(1619, 807);
+            this.outstock.Name = "outstock";
+            this.outstock.Size = new System.Drawing.Size(51, 40);
+            this.outstock.TabIndex = 238;
+            this.outstock.Text = "00";
             // 
             // Dashboard_Module
             // 
@@ -578,31 +629,29 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.existingemployee);
+            this.Controls.Add(this.Sales_Datagrid);
+            this.Controls.Add(this.inventory);
+            this.Controls.Add(this.outstock);
+            this.Controls.Add(this.low);
+            this.Controls.Add(this.instock);
+            this.Controls.Add(this.highstock);
+            this.Controls.Add(this.pictureBox9);
+            this.Controls.Add(this.pictureBox10);
+            this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.pictureBox6);
+            this.Controls.Add(this.todaysales);
+            this.Controls.Add(this.trasaccount);
+            this.Controls.Add(this.existingemployee);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.numberofproductlabel);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.datedisplay);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.panel6);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
@@ -624,14 +673,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Sales_Datagrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inventory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -647,26 +700,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label datedisplay;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label numberofproductlabel;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label trasaccount;
         private System.Windows.Forms.Label existingemployee;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton8;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton7;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton19;
@@ -678,6 +714,21 @@
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton9;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton1;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton2;
-        private System.Windows.Forms.Button button1;
+        protected internal Bunifu.Framework.UI.BunifuCustomDataGrid Sales_Datagrid;
+        protected internal Bunifu.Framework.UI.BunifuCustomDataGrid inventory;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label todaysales;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.Label outstock;
+        private System.Windows.Forms.Label low;
+        private System.Windows.Forms.Label instock;
+        private System.Windows.Forms.Label highstock;
     }
 }

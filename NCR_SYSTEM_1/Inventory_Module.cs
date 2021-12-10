@@ -320,7 +320,7 @@ namespace NCR_SYSTEM_1
                             row.Cells[11].Value = "in stock";
                         }
 
-                        if (Convert.ToInt32(row.Cells[8].Value) > Convert.ToInt32(row.Cells[10].Value))
+                        if (Convert.ToInt32(row.Cells[8].Value) >= Convert.ToInt32(row.Cells[10].Value))
                         {
                             row.Cells[14].Value = StatusImgs[2];
                             row.Cells[11].Value = "high on stock";

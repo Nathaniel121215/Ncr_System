@@ -513,6 +513,16 @@ namespace NCR_SYSTEM_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap graphbg {
+            get {
+                object obj = ResourceManager.GetObject("graphbg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Group_157 {
             get {
                 object obj = ResourceManager.GetObject("Group 157", resourceCulture);
@@ -593,6 +603,26 @@ namespace NCR_SYSTEM_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Group_254 {
+            get {
+                object obj = ResourceManager.GetObject("Group 254", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Group_255 {
+            get {
+                object obj = ResourceManager.GetObject("Group 255", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap high {
             get {
                 object obj = ResourceManager.GetObject("high", resourceCulture);
@@ -656,6 +686,16 @@ namespace NCR_SYSTEM_1.Properties {
         internal static System.Drawing.Bitmap inventorylog {
             get {
                 object obj = ResourceManager.GetObject("inventorylog", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap inventorystatus {
+            get {
+                object obj = ResourceManager.GetObject("inventorystatus", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -736,6 +776,56 @@ namespace NCR_SYSTEM_1.Properties {
         internal static System.Drawing.Bitmap new_out_of_stock {
             get {
                 object obj = ResourceManager.GetObject("new out of stock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap number_of_employee {
+            get {
+                object obj = ResourceManager.GetObject("number of employee", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap number_of_products {
+            get {
+                object obj = ResourceManager.GetObject("number of products", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap number_of_transaction {
+            get {
+                object obj = ResourceManager.GetObject("number of transaction", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap numberofemployee {
+            get {
+                object obj = ResourceManager.GetObject("numberofemployee", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap numberofitems {
+            get {
+                object obj = ResourceManager.GetObject("numberofitems", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -896,6 +986,26 @@ namespace NCR_SYSTEM_1.Properties {
         internal static System.Drawing.Bitmap supplier_record_button {
             get {
                 object obj = ResourceManager.GetObject("supplier_record_button", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap todaysale {
+            get {
+                object obj = ResourceManager.GetObject("todaysale", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap todaytransaction {
+            get {
+                object obj = ResourceManager.GetObject("todaytransaction", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

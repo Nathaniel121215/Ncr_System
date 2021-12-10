@@ -292,7 +292,7 @@ namespace NCR_SYSTEM_1
                         row.Cells[12].Value = StatusImgs[1];
                     }
 
-                    else if (Convert.ToInt32(row.Cells[8].Value) > Convert.ToInt32(row.Cells[10].Value))
+                    else if (Convert.ToInt32(row.Cells[8].Value) >= Convert.ToInt32(row.Cells[10].Value))
                     {
                         row.Cells[12].Value = StatusImgs[2];
                     }

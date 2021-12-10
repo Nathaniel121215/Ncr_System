@@ -817,6 +817,17 @@
     <None Include="Resources\fade stock adjustment.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Group 255.png" />
+    <None Include="Resources\graphbg.png" />
+    <None Include="Resources\inventorystatus.png" />
+    <None Include="Resources\Group 254.png" />
+    <None Include="Resources\numberofemployee.png" />
+    <None Include="Resources\todaytransaction.png" />
+    <None Include="Resources\todaysale.png" />
+    <None Include="Resources\numberofitems.png" />
+    <None Include="Resources\number of employee.png" />
+    <None Include="Resources\number of transaction.png" />
+    <None Include="Resources\number of products.png" />
     <None Include="Resources\Group 204.png" />
     <None Include="Resources\stockadjustmentrecord.png" />
     <None Include="Resources\fadestockadjustmentrecord.png" />

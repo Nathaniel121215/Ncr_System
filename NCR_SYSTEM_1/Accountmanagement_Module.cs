@@ -413,7 +413,7 @@ namespace NCR_SYSTEM_1
                         {
                             Event_ID = cnt4.ToString(),
                             Module = "Account Management Module",
-                            Action = "Account-ID: " + User_ID + "   Moved to Archive Module",
+                            Action = "Account-ID: " + data.User_ID + "   Moved to Archive Module",
                             Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
                             User = Form1.username,
                             Accountlvl = Form1.levelac,
