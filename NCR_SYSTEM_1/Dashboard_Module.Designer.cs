@@ -29,12 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.bunifuImageButton2 = new Bunifu.Framework.UI.BunifuImageButton();
@@ -59,6 +64,11 @@
             this.Sales_Datagrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.inventory = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.todaysales = new System.Windows.Forms.Label();
+            this.highstock = new System.Windows.Forms.Label();
+            this.instock = new System.Windows.Forms.Label();
+            this.low = new System.Windows.Forms.Label();
+            this.outstock = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -66,13 +76,6 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.highstock = new System.Windows.Forms.Label();
-            this.instock = new System.Windows.Forms.Label();
-            this.low = new System.Windows.Forms.Label();
-            this.outstock = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
@@ -87,6 +90,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Sales_Datagrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -94,9 +98,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -378,31 +379,31 @@
             // 
             // Sales_Datagrid
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            this.Sales_Datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.Sales_Datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.Sales_Datagrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Sales_Datagrid.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.Sales_Datagrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Sales_Datagrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.Sales_Datagrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Sales_Datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Sales_Datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.Sales_Datagrid.ColumnHeadersHeight = 40;
             this.Sales_Datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Sales_Datagrid.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Sales_Datagrid.DefaultCellStyle = dataGridViewCellStyle6;
             this.Sales_Datagrid.DoubleBuffered = true;
             this.Sales_Datagrid.EnableHeadersVisualStyles = false;
             this.Sales_Datagrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
@@ -416,40 +417,41 @@
             this.Sales_Datagrid.RowTemplate.ReadOnly = true;
             this.Sales_Datagrid.Size = new System.Drawing.Size(200, 95);
             this.Sales_Datagrid.TabIndex = 221;
+            this.Sales_Datagrid.Visible = false;
             // 
             // inventory
             // 
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            this.inventory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.inventory.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.inventory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.inventory.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.inventory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.inventory.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.inventory.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.inventory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.inventory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.inventory.ColumnHeadersHeight = 40;
             this.inventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.inventory.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.inventory.DefaultCellStyle = dataGridViewCellStyle3;
             this.inventory.DoubleBuffered = true;
             this.inventory.EnableHeadersVisualStyles = false;
             this.inventory.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
             this.inventory.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
             this.inventory.HeaderForeColor = System.Drawing.Color.Black;
-            this.inventory.Location = new System.Drawing.Point(782, 14);
+            this.inventory.Location = new System.Drawing.Point(800, 14);
             this.inventory.Name = "inventory";
             this.inventory.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.inventory.RowHeadersWidth = 40;
@@ -457,6 +459,7 @@
             this.inventory.RowTemplate.ReadOnly = true;
             this.inventory.Size = new System.Drawing.Size(188, 95);
             this.inventory.TabIndex = 222;
+            this.inventory.Visible = false;
             // 
             // todaysales
             // 
@@ -470,12 +473,86 @@
             this.todaysales.TabIndex = 226;
             this.todaysales.Text = "00";
             // 
+            // highstock
+            // 
+            this.highstock.AutoSize = true;
+            this.highstock.BackColor = System.Drawing.Color.White;
+            this.highstock.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold);
+            this.highstock.ForeColor = System.Drawing.Color.Black;
+            this.highstock.Location = new System.Drawing.Point(1619, 502);
+            this.highstock.Name = "highstock";
+            this.highstock.Size = new System.Drawing.Size(51, 40);
+            this.highstock.TabIndex = 235;
+            this.highstock.Text = "00";
+            // 
+            // instock
+            // 
+            this.instock.AutoSize = true;
+            this.instock.BackColor = System.Drawing.Color.White;
+            this.instock.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold);
+            this.instock.ForeColor = System.Drawing.Color.Black;
+            this.instock.Location = new System.Drawing.Point(1619, 603);
+            this.instock.Name = "instock";
+            this.instock.Size = new System.Drawing.Size(51, 40);
+            this.instock.TabIndex = 236;
+            this.instock.Text = "00";
+            // 
+            // low
+            // 
+            this.low.AutoSize = true;
+            this.low.BackColor = System.Drawing.Color.White;
+            this.low.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold);
+            this.low.ForeColor = System.Drawing.Color.Black;
+            this.low.Location = new System.Drawing.Point(1619, 703);
+            this.low.Name = "low";
+            this.low.Size = new System.Drawing.Size(51, 40);
+            this.low.TabIndex = 237;
+            this.low.Text = "00";
+            // 
+            // outstock
+            // 
+            this.outstock.AutoSize = true;
+            this.outstock.BackColor = System.Drawing.Color.White;
+            this.outstock.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outstock.ForeColor = System.Drawing.Color.Black;
+            this.outstock.Location = new System.Drawing.Point(1619, 807);
+            this.outstock.Name = "outstock";
+            this.outstock.Size = new System.Drawing.Size(51, 40);
+            this.outstock.TabIndex = 238;
+            this.outstock.Text = "00";
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(397, 431);
+            this.chart1.Name = "chart1";
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Product Sold";
+            series1.YValuesPerPoint = 6;
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Current Stock";
+            this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(1005, 468);
+            this.chart1.TabIndex = 239;
+            this.chart1.Text = "chart1";
+            title1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.Name = "Title1";
+            title1.Text = "Top 5 Products";
+            this.chart1.Titles.Add(title1);
+            // 
             // pictureBox8
             // 
-            this.pictureBox8.Image = global::NCR_SYSTEM_1.Properties.Resources.graphbg;
+            this.pictureBox8.Image = global::NCR_SYSTEM_1.Properties.Resources.Group_257;
             this.pictureBox8.Location = new System.Drawing.Point(356, 385);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(743, 551);
+            this.pictureBox8.Size = new System.Drawing.Size(1116, 551);
             this.pictureBox8.TabIndex = 229;
             this.pictureBox8.TabStop = false;
             // 
@@ -541,105 +618,20 @@
             this.pictureBox2.TabIndex = 187;
             this.pictureBox2.TabStop = false;
             // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pictureBox9.Image = global::NCR_SYSTEM_1.Properties.Resources.Group_255;
-            this.pictureBox9.Location = new System.Drawing.Point(1089, 385);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(357, 204);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox9.TabIndex = 231;
-            this.pictureBox9.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pictureBox7.Image = global::NCR_SYSTEM_1.Properties.Resources.Group_255;
-            this.pictureBox7.Location = new System.Drawing.Point(1089, 741);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(357, 204);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox7.TabIndex = 233;
-            this.pictureBox7.TabStop = false;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.pictureBox10.Image = global::NCR_SYSTEM_1.Properties.Resources.Group_255;
-            this.pictureBox10.Location = new System.Drawing.Point(1089, 564);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(357, 204);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox10.TabIndex = 234;
-            this.pictureBox10.TabStop = false;
-            this.pictureBox10.Click += new System.EventHandler(this.pictureBox10_Click);
-            // 
-            // highstock
-            // 
-            this.highstock.AutoSize = true;
-            this.highstock.BackColor = System.Drawing.Color.White;
-            this.highstock.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold);
-            this.highstock.ForeColor = System.Drawing.Color.Black;
-            this.highstock.Location = new System.Drawing.Point(1619, 502);
-            this.highstock.Name = "highstock";
-            this.highstock.Size = new System.Drawing.Size(51, 40);
-            this.highstock.TabIndex = 235;
-            this.highstock.Text = "00";
-            // 
-            // instock
-            // 
-            this.instock.AutoSize = true;
-            this.instock.BackColor = System.Drawing.Color.White;
-            this.instock.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold);
-            this.instock.ForeColor = System.Drawing.Color.Black;
-            this.instock.Location = new System.Drawing.Point(1619, 603);
-            this.instock.Name = "instock";
-            this.instock.Size = new System.Drawing.Size(51, 40);
-            this.instock.TabIndex = 236;
-            this.instock.Text = "00";
-            // 
-            // low
-            // 
-            this.low.AutoSize = true;
-            this.low.BackColor = System.Drawing.Color.White;
-            this.low.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold);
-            this.low.ForeColor = System.Drawing.Color.Black;
-            this.low.Location = new System.Drawing.Point(1619, 703);
-            this.low.Name = "low";
-            this.low.Size = new System.Drawing.Size(51, 40);
-            this.low.TabIndex = 237;
-            this.low.Text = "00";
-            // 
-            // outstock
-            // 
-            this.outstock.AutoSize = true;
-            this.outstock.BackColor = System.Drawing.Color.White;
-            this.outstock.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.outstock.ForeColor = System.Drawing.Color.Black;
-            this.outstock.Location = new System.Drawing.Point(1619, 807);
-            this.outstock.Name = "outstock";
-            this.outstock.Size = new System.Drawing.Size(51, 40);
-            this.outstock.TabIndex = 238;
-            this.outstock.Text = "00";
-            // 
             // Dashboard_Module
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.Sales_Datagrid);
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.inventory);
+            this.Controls.Add(this.Sales_Datagrid);
             this.Controls.Add(this.outstock);
             this.Controls.Add(this.low);
             this.Controls.Add(this.instock);
             this.Controls.Add(this.highstock);
-            this.Controls.Add(this.pictureBox9);
-            this.Controls.Add(this.pictureBox10);
-            this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.pictureBox8);
-            this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.todaysales);
             this.Controls.Add(this.trasaccount);
             this.Controls.Add(this.existingemployee);
@@ -654,6 +646,7 @@
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pictureBox6);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dashboard_Module";
@@ -675,6 +668,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Sales_Datagrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -682,9 +676,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -723,12 +714,10 @@
         private System.Windows.Forms.Label todaysales;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.PictureBox pictureBox10;
-        private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.Label outstock;
         private System.Windows.Forms.Label low;
         private System.Windows.Forms.Label instock;
         private System.Windows.Forms.Label highstock;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

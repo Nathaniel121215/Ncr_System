@@ -81,11 +81,13 @@ namespace NCR_SYSTEM_1
 
 
 
-            dt2.Columns.Add("Product ID");
+            dt2.Columns.Add("Product Name");
             dt2.Columns.Add("Stock");
             dt2.Columns.Add("Low");
             dt2.Columns.Add("High");
             dt2.Columns.Add("String Indicator");
+            dt2.Columns.Add("Item Sold", typeof(Int32));
+            dt2.Columns.Add("test");
 
 
             inventory.DataSource = dt2;
@@ -205,10 +207,12 @@ namespace NCR_SYSTEM_1
                     Product_class obj1 = resp1.ResultAs<Product_class>();
 
                     DataRow r = dt2.NewRow();
-                    r["Product ID"] = obj1.ID;
+                    r["Product Name"] = obj1.Product_Name;
                     r["Stock"] = obj1.Stock;
                     r["Low"] = obj1.Low;
                     r["High"] = obj1.High;
+                    r["Item Sold"] = obj1.Items_Sold;
+                    r["test"] = "a";
 
 
                     dt2.Rows.Add(r);
@@ -335,6 +339,80 @@ namespace NCR_SYSTEM_1
             inventorycount = inventory.RowCount;
 
             outstock.Text = inventorycount.ToString();
+
+            ///////////////////////
+            ///
+            dv4.RowFilter = "[test] LIKE '%" + "a" + "%'";
+
+            inventory.DataSource = null;
+            inventory.Rows.Clear();
+            inventory.Columns.Clear();
+            inventory.DataSource = dv4;
+
+            try
+            {
+                DataView dv5 = new DataView(dt2);
+                dv5.Sort = "Item Sold DESC";
+
+
+                inventory.DataSource = null;
+                inventory.Rows.Clear();
+                inventory.Columns.Clear();
+                inventory.DataSource = dv5;
+
+                try
+                {
+                    List<string> list = new List<string>();
+                    List<string> list2 = new List<string>();
+                    List<string> list3 = new List<string>();
+                    for (int a = 0; a < 5; a++)
+                    {
+                        list.Add(inventory.Rows[a].Cells[0].Value.ToString());
+                        list2.Add(inventory.Rows[a].Cells[5].Value.ToString());
+                        list3.Add(inventory.Rows[a].Cells[1].Value.ToString());
+                    }
+
+
+                    this.chart1.Series[0].Points.Clear();
+                    this.chart1.Series["Product Sold"].Points.AddXY(list[0], list2[0]);
+                    this.chart1.Series["Current Stock"].Points.AddXY(list[0], list3[0]);
+
+                    this.chart1.Series["Product Sold"].Points.AddXY(list[1], list2[1]);
+                    this.chart1.Series["Current Stock"].Points.AddXY(list[0], list3[1]);
+
+                    this.chart1.Series["Product Sold"].Points.AddXY(list[2], list2[2]);
+                    this.chart1.Series["Current Stock"].Points.AddXY(list[0], list3[2]);
+
+                    this.chart1.Series["Product Sold"].Points.AddXY(list[3], list2[3]);
+                    this.chart1.Series["Current Stock"].Points.AddXY(list[0], list3[3]);
+
+                    this.chart1.Series["Product Sold"].Points.AddXY(list[4], list2[4]);
+                    this.chart1.Series["Current Stock"].Points.AddXY(list[0], list3[4]);
+
+                    chart1.Series["Product Sold"]["PixelPointWidth"] = "40";
+                    chart1.Series["Current Stock"]["PixelPointWidth"] = "40";
+
+               
+
+
+                }
+                catch
+                {
+                    Console.Write("ERROR");
+                }
+ 
+
+            }
+            catch
+            {
+
+            }
+
+            ///////////////////////////
+
+      
+
+
 
         }
 

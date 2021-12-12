@@ -286,12 +286,12 @@ namespace NCR_SYSTEM_1
                     }
 
 
-                    else if (Convert.ToInt32(row.Cells[8].Value) > Convert.ToInt32(row.Cells[9].Value) && Convert.ToInt32(row.Cells[8].Value) < Convert.ToInt32(row.Cells[10].Value))
+                    if (Convert.ToInt32(row.Cells[8].Value) > Convert.ToInt32(row.Cells[9].Value) && Convert.ToInt32(row.Cells[8].Value) < Convert.ToInt32(row.Cells[10].Value))
                     {
                         row.Cells[12].Value = StatusImgs[1];
                     }
 
-                    else if (Convert.ToInt32(row.Cells[8].Value) > Convert.ToInt32(row.Cells[10].Value))
+                    if (Convert.ToInt32(row.Cells[8].Value) >= Convert.ToInt32(row.Cells[10].Value))
                     {
                         row.Cells[12].Value = StatusImgs[2];
                     }
@@ -1145,12 +1145,12 @@ namespace NCR_SYSTEM_1
                     }
 
 
-                    else if (Convert.ToInt32(row.Cells[8].Value) > Convert.ToInt32(row.Cells[9].Value) && Convert.ToInt32(row.Cells[8].Value) < Convert.ToInt32(row.Cells[10].Value))
+                    if (Convert.ToInt32(row.Cells[8].Value) > Convert.ToInt32(row.Cells[9].Value) && Convert.ToInt32(row.Cells[8].Value) < Convert.ToInt32(row.Cells[10].Value))
                     {
                         row.Cells[12].Value = StatusImgs[1];
                     }
 
-                    else if (Convert.ToInt32(row.Cells[8].Value) > Convert.ToInt32(row.Cells[10].Value))
+                    if (Convert.ToInt32(row.Cells[8].Value) >= Convert.ToInt32(row.Cells[10].Value))
                     {
                         row.Cells[12].Value = StatusImgs[2];
                     }

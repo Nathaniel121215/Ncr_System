@@ -817,6 +817,7 @@
     <None Include="Resources\fade stock adjustment.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Group 257.png" />
     <None Include="Resources\Group 255.png" />
     <None Include="Resources\graphbg.png" />
     <None Include="Resources\inventorystatus.png" />
