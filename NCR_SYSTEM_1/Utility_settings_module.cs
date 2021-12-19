@@ -91,7 +91,7 @@ namespace NCR_SYSTEM_1
             FreeLimit result2 = response2.ResultAs<FreeLimit>();
 
 
-            //SUPPLIER MODULE UPDATE EVENT
+            //activity MODULE UPDATE EVENT
 
             FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
             Counter_class get4 = resp4.ResultAs<Counter_class>();
