@@ -72,6 +72,8 @@ namespace NCR_SYSTEM_1
             dt.Columns.Add("Purchase ID");
             dt.Columns.Add("Transaction Date");
             dt.Columns.Add("Transaction Payment");
+            dt.Columns.Add("MonthYear");
+            dt.Columns.Add("Year");
 
 
             Sales_Datagrid.DataSource = dt;
@@ -131,7 +133,13 @@ namespace NCR_SYSTEM_1
                         r["Purchase ID"] = obj1.Purchase_ID;
                         DateTime date = Convert.ToDateTime(obj1.Date_Of_Transaction);
                         r["Transaction Payment"] = obj1.Order_Total;
+
+
                         r["Transaction Date"] = date.ToString("MM/dd/yyyy");
+
+                        r["MonthYear"] = date.ToString("MM/yyyy");
+                        r["Year"] = date.ToString("yyyy");
+       
 
                         dt.Rows.Add(r);
                     }
@@ -171,6 +179,218 @@ namespace NCR_SYSTEM_1
             }
 
             todaysales.Text = totalsales.ToString();
+
+            //////MONTHLY
+            ///
+
+            string datesearch2 = DateTime.Now.ToString("MM/yyyy");
+
+            DataView dv2 = new DataView(dt);
+
+            dv2.RowFilter = "[MonthYear] LIKE '%" + datesearch2 + "%'";
+
+            Sales_Datagrid.DataSource = null;
+            Sales_Datagrid.Rows.Clear();
+            Sales_Datagrid.Columns.Clear();
+            Sales_Datagrid.DataSource = dv2;
+
+            decimal monthly = 0;
+
+
+            for (int a = 0; a < Sales_Datagrid.Rows.Count; a++)
+            {
+                monthly += Convert.ToDecimal(Sales_Datagrid.Rows[a].Cells[2].Value);
+            }
+
+            month.Text = monthly.ToString();
+
+
+            //////Yearly
+            ///
+
+            string datesearch3 = DateTime.Now.ToString("yyyy");
+
+            DataView dv3 = new DataView(dt);
+
+            dv3.RowFilter = "[Year] LIKE '%" + datesearch3 + "%'";
+
+            Sales_Datagrid.DataSource = null;
+            Sales_Datagrid.Rows.Clear();
+            Sales_Datagrid.Columns.Clear();
+            Sales_Datagrid.DataSource = dv3;
+
+            decimal yearly = 0;
+
+
+            for (int a = 0; a < Sales_Datagrid.Rows.Count; a++)
+            {
+                yearly += Convert.ToDecimal(Sales_Datagrid.Rows[a].Cells[2].Value);
+            }
+
+            year.Text = yearly.ToString();
+
+
+            DateTime dateTime = DateTime.Now;
+          
+            List<string> list7days= new List<string>();
+
+           
+            for (int a = -1; a >= -7; a--)
+            {
+                    
+                    DateTime otherDateTime = dateTime.AddDays(a);
+                    string datesearch4 = otherDateTime.ToString("MM/dd/yyyy");
+
+                    list7days.Add(datesearch4.ToString());  
+     
+            }
+
+
+
+
+
+
+            //////day1
+            ///
+            decimal total = 0;
+
+            DataView dv4 = new DataView(dt);
+
+            dv4.RowFilter = "[Transaction Date] LIKE '%" + list7days[0] + "%'";
+
+            Sales_Datagrid.DataSource = null;
+            Sales_Datagrid.Rows.Clear();
+            Sales_Datagrid.Columns.Clear();
+            Sales_Datagrid.DataSource = dv4;
+
+
+            for (int a = 0; a < Sales_Datagrid.Rows.Count; a++)
+            {
+                total += Convert.ToDecimal(Sales_Datagrid.Rows[a].Cells[2].Value);
+            }
+
+            //////day2
+            ///
+
+
+            DataView dv5 = new DataView(dt);
+
+            dv5.RowFilter = "[Transaction Date] LIKE '%" + list7days[1] + "%'";
+
+            Sales_Datagrid.DataSource = null;
+            Sales_Datagrid.Rows.Clear();
+            Sales_Datagrid.Columns.Clear();
+            Sales_Datagrid.DataSource = dv5;
+
+
+            for (int a = 0; a < Sales_Datagrid.Rows.Count; a++)
+            {
+                total += Convert.ToDecimal(Sales_Datagrid.Rows[a].Cells[2].Value);
+            }
+
+            //////day3
+            ///
+
+
+            DataView dv6 = new DataView(dt);
+
+            dv6.RowFilter = "[Transaction Date] LIKE '%" + list7days[2] + "%'";
+
+            Sales_Datagrid.DataSource = null;
+            Sales_Datagrid.Rows.Clear();
+            Sales_Datagrid.Columns.Clear();
+            Sales_Datagrid.DataSource = dv6;
+
+
+            for (int a = 0; a < Sales_Datagrid.Rows.Count; a++)
+            {
+                total += Convert.ToDecimal(Sales_Datagrid.Rows[a].Cells[2].Value);
+            }
+
+            //////day4
+            ///
+
+
+            DataView dv7 = new DataView(dt);
+
+            dv7.RowFilter = "[Transaction Date] LIKE '%" + list7days[3] + "%'";
+
+            Sales_Datagrid.DataSource = null;
+            Sales_Datagrid.Rows.Clear();
+            Sales_Datagrid.Columns.Clear();
+            Sales_Datagrid.DataSource = dv7;
+
+
+            for (int a = 0; a < Sales_Datagrid.Rows.Count; a++)
+            {
+                total += Convert.ToDecimal(Sales_Datagrid.Rows[a].Cells[2].Value);
+            }
+
+
+            //////day5
+            ///
+
+
+            DataView dv8 = new DataView(dt);
+
+            dv8.RowFilter = "[Transaction Date] LIKE '%" + list7days[4] + "%'";
+
+            Sales_Datagrid.DataSource = null;
+            Sales_Datagrid.Rows.Clear();
+            Sales_Datagrid.Columns.Clear();
+            Sales_Datagrid.DataSource = dv8;
+
+
+            for (int a = 0; a < Sales_Datagrid.Rows.Count; a++)
+            {
+                total += Convert.ToDecimal(Sales_Datagrid.Rows[a].Cells[2].Value);
+            }
+
+
+            //////day6
+            ///
+
+
+            DataView dv9 = new DataView(dt);
+
+            dv9.RowFilter = "[Transaction Date] LIKE '%" + list7days[5] + "%'";
+
+            Sales_Datagrid.DataSource = null;
+            Sales_Datagrid.Rows.Clear();
+            Sales_Datagrid.Columns.Clear();
+            Sales_Datagrid.DataSource = dv9;
+
+
+            for (int a = 0; a < Sales_Datagrid.Rows.Count; a++)
+            {
+                total += Convert.ToDecimal(Sales_Datagrid.Rows[a].Cells[2].Value);
+            }
+
+
+            //////day7
+            ///
+
+
+            DataView dv10 = new DataView(dt);
+
+            dv10.RowFilter = "[Transaction Date] LIKE '%" + list7days[6] + "%'";
+
+            Sales_Datagrid.DataSource = null;
+            Sales_Datagrid.Rows.Clear();
+            Sales_Datagrid.Columns.Clear();
+            Sales_Datagrid.DataSource = dv10;
+
+
+            for (int a = 0; a < Sales_Datagrid.Rows.Count; a++)
+            {
+                total += Convert.ToDecimal(Sales_Datagrid.Rows[a].Cells[2].Value);
+            }
+
+            week.Text = total.ToString();
+
+
+
+
 
         }
 
@@ -857,7 +1077,9 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton1_Click_1(object sender, EventArgs e)
         {
-
+            Utility_settings_module a = new Utility_settings_module();
+            this.Hide();
+            a.Show();
         }
 
         private void button1_Click_3(object sender, EventArgs e)
@@ -868,6 +1090,16 @@ namespace NCR_SYSTEM_1
         }
 
         private void pictureBox10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }

@@ -633,6 +633,46 @@ namespace NCR_SYSTEM_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Group_262 {
+            get {
+                object obj = ResourceManager.GetObject("Group 262", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Group_263 {
+            get {
+                object obj = ResourceManager.GetObject("Group 263", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Group_265 {
+            get {
+                object obj = ResourceManager.GetObject("Group 265", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Group_266 {
+            get {
+                object obj = ResourceManager.GetObject("Group 266", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap high {
             get {
                 object obj = ResourceManager.GetObject("high", resourceCulture);
@@ -1046,6 +1086,16 @@ namespace NCR_SYSTEM_1.Properties {
         internal static System.Drawing.Bitmap userloginlog {
             get {
                 object obj = ResourceManager.GetObject("userloginlog", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap utilitysettings {
+            get {
+                object obj = ResourceManager.GetObject("utilitysettings", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

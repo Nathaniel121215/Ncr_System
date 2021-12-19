@@ -185,6 +185,12 @@
     <Compile Include="Confirmreceipt_Module.Designer.cs">
       <DependentUpon>Confirmreceipt_Module.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfirmReset_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmReset_popup.Designer.cs">
+      <DependentUpon>ConfirmReset_popup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Counter_class.cs" />
     <Compile Include="Customertransactionreceipt_popup.cs">
       <SubType>Form</SubType>
@@ -485,6 +491,12 @@
       <DependentUpon>UserLoginLog_Module.cs</DependentUpon>
     </Compile>
     <Compile Include="User_class.cs" />
+    <Compile Include="Utility_settings_module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utility_settings_module.Designer.cs">
+      <DependentUpon>Utility_settings_module.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AccountArchiveView_popup.resx">
       <DependentUpon>AccountArchiveView_popup.cs</DependentUpon>
     </EmbeddedResource>
@@ -538,6 +550,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Confirmreceipt_Module.resx">
       <DependentUpon>Confirmreceipt_Module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfirmReset_popup.resx">
+      <DependentUpon>ConfirmReset_popup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customertransactionreceipt_popup.resx">
       <DependentUpon>Customertransactionreceipt_popup.cs</DependentUpon>
@@ -682,6 +697,9 @@
     <EmbeddedResource Include="UserLoginLog_Module.resx">
       <DependentUpon>UserLoginLog_Module.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Utility_settings_module.resx">
+      <DependentUpon>Utility_settings_module.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -817,6 +835,11 @@
     <None Include="Resources\fade stock adjustment.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\utilitysettings.png" />
+    <None Include="Resources\Group 266.png" />
+    <None Include="Resources\Group 265.png" />
+    <None Include="Resources\Group 263.png" />
+    <None Include="Resources\Group 262.png" />
     <None Include="Resources\Group 257.png" />
     <None Include="Resources\Group 255.png" />
     <None Include="Resources\graphbg.png" />
