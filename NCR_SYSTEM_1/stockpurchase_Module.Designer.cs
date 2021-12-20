@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(stockpurchase_Module));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -245,9 +244,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
             this.label2.Location = new System.Drawing.Point(379, 111);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(242, 40);
+            this.label2.Size = new System.Drawing.Size(291, 40);
             this.label2.TabIndex = 237;
-            this.label2.Text = "Stock Purchasing";
+            this.label2.Text = "Stock Replenishment";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel1
@@ -400,7 +399,7 @@
             // 
             this.bunifuImageButton12.BackColor = System.Drawing.Color.SeaGreen;
             this.bunifuImageButton12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bunifuImageButton12.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton12.Image")));
+            this.bunifuImageButton12.Image = global::NCR_SYSTEM_1.Properties.Resources.stock_replenishment;
             this.bunifuImageButton12.ImageActive = null;
             this.bunifuImageButton12.Location = new System.Drawing.Point(54, 388);
             this.bunifuImageButton12.Name = "bunifuImageButton12";

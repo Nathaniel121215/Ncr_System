@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuFlatButton3 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.Category_datagrid_stocks = new Bunifu.Framework.UI.BunifuCustomDataGrid();
@@ -42,6 +42,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.bunifuImageButton16 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton10 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton8 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton7 = new Bunifu.Framework.UI.BunifuImageButton();
@@ -61,9 +62,9 @@
             this.datedisplay = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.bunifuImageButton16 = new Bunifu.Framework.UI.BunifuImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.Category_datagrid_stocks)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton7)).BeginInit();
@@ -80,7 +81,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -127,31 +127,31 @@
             // 
             // Category_datagrid_stocks
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            this.Category_datagrid_stocks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.Category_datagrid_stocks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Category_datagrid_stocks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Category_datagrid_stocks.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.Category_datagrid_stocks.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Category_datagrid_stocks.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.Category_datagrid_stocks.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Category_datagrid_stocks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Category_datagrid_stocks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.Category_datagrid_stocks.ColumnHeadersHeight = 40;
             this.Category_datagrid_stocks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Category_datagrid_stocks.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Category_datagrid_stocks.DefaultCellStyle = dataGridViewCellStyle3;
             this.Category_datagrid_stocks.DoubleBuffered = true;
             this.Category_datagrid_stocks.EnableHeadersVisualStyles = false;
             this.Category_datagrid_stocks.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
@@ -286,6 +286,20 @@
             this.panel1.Size = new System.Drawing.Size(335, 1085);
             this.panel1.TabIndex = 186;
             // 
+            // bunifuImageButton16
+            // 
+            this.bunifuImageButton16.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuImageButton16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.bunifuImageButton16.Image = global::NCR_SYSTEM_1.Properties.Resources.side_rectangle;
+            this.bunifuImageButton16.ImageActive = null;
+            this.bunifuImageButton16.Location = new System.Drawing.Point(-1, 294);
+            this.bunifuImageButton16.Name = "bunifuImageButton16";
+            this.bunifuImageButton16.Size = new System.Drawing.Size(10, 38);
+            this.bunifuImageButton16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.bunifuImageButton16.TabIndex = 49;
+            this.bunifuImageButton16.TabStop = false;
+            this.bunifuImageButton16.Zoom = 10;
+            // 
             // bunifuImageButton10
             // 
             this.bunifuImageButton10.BackColor = System.Drawing.Color.SeaGreen;
@@ -394,7 +408,7 @@
             // 
             this.bunifuImageButton12.BackColor = System.Drawing.Color.SeaGreen;
             this.bunifuImageButton12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bunifuImageButton12.Image = global::NCR_SYSTEM_1.Properties.Resources.fadestockpurchasing;
+            this.bunifuImageButton12.Image = global::NCR_SYSTEM_1.Properties.Resources.fade_stock_replenishment;
             this.bunifuImageButton12.ImageActive = null;
             this.bunifuImageButton12.Location = new System.Drawing.Point(54, 389);
             this.bunifuImageButton12.Name = "bunifuImageButton12";
@@ -439,7 +453,7 @@
             // 
             this.bunifuImageButton15.BackColor = System.Drawing.Color.SeaGreen;
             this.bunifuImageButton15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bunifuImageButton15.Image = global::NCR_SYSTEM_1.Properties.Resources.fadestockcorrection;
+            this.bunifuImageButton15.Image = global::NCR_SYSTEM_1.Properties.Resources.fade_stock_adjustment;
             this.bunifuImageButton15.ImageActive = null;
             this.bunifuImageButton15.Location = new System.Drawing.Point(54, 441);
             this.bunifuImageButton15.Name = "bunifuImageButton15";
@@ -557,20 +571,6 @@
             this.panel3.Size = new System.Drawing.Size(1481, 762);
             this.panel3.TabIndex = 197;
             // 
-            // bunifuImageButton16
-            // 
-            this.bunifuImageButton16.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuImageButton16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bunifuImageButton16.Image = global::NCR_SYSTEM_1.Properties.Resources.side_rectangle;
-            this.bunifuImageButton16.ImageActive = null;
-            this.bunifuImageButton16.Location = new System.Drawing.Point(-1, 294);
-            this.bunifuImageButton16.Name = "bunifuImageButton16";
-            this.bunifuImageButton16.Size = new System.Drawing.Size(10, 38);
-            this.bunifuImageButton16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.bunifuImageButton16.TabIndex = 49;
-            this.bunifuImageButton16.TabStop = false;
-            this.bunifuImageButton16.Zoom = 10;
-            // 
             // Addcategory_module
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -596,6 +596,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Category_datagrid_stocks)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton7)).EndInit();
@@ -612,7 +613,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

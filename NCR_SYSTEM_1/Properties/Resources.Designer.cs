@@ -333,6 +333,16 @@ namespace NCR_SYSTEM_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fade_stock_replenishment {
+            get {
+                object obj = ResourceManager.GetObject("fade stock replenishment", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fade_supplier_archive {
             get {
                 object obj = ResourceManager.GetObject("fade supplier archive", resourceCulture);
@@ -1006,6 +1016,16 @@ namespace NCR_SYSTEM_1.Properties {
         internal static System.Drawing.Bitmap stock_purchasing_record {
             get {
                 object obj = ResourceManager.GetObject("stock purchasing record", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap stock_replenishment {
+            get {
+                object obj = ResourceManager.GetObject("stock replenishment", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

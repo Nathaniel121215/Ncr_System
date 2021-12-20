@@ -242,7 +242,7 @@
             // 
             this.bunifuImageButton12.BackColor = System.Drawing.Color.SeaGreen;
             this.bunifuImageButton12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bunifuImageButton12.Image = global::NCR_SYSTEM_1.Properties.Resources.fadestockpurchasing;
+            this.bunifuImageButton12.Image = global::NCR_SYSTEM_1.Properties.Resources.fade_stock_replenishment;
             this.bunifuImageButton12.ImageActive = null;
             this.bunifuImageButton12.Location = new System.Drawing.Point(54, 389);
             this.bunifuImageButton12.Name = "bunifuImageButton12";

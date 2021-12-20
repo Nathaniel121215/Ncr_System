@@ -232,7 +232,7 @@ namespace NCR_SYSTEM_1
                 var data3 = new ActivityLog_Class
                 {
                     Event_ID = cnt4.ToString(),
-                    Module = "Stock Purchasing Module",
+                    Module = "Stock Replenishment Module",
                     Action = "Restock-ID: " + data.Restock_ID + "   Item Restocked",
                     Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
                     User = Form1.username,

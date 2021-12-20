@@ -236,7 +236,7 @@
             // 
             this.bunifuImageButton12.BackColor = System.Drawing.Color.SeaGreen;
             this.bunifuImageButton12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bunifuImageButton12.Image = global::NCR_SYSTEM_1.Properties.Resources.fadestockpurchasing;
+            this.bunifuImageButton12.Image = global::NCR_SYSTEM_1.Properties.Resources.fade_stock_replenishment;
             this.bunifuImageButton12.ImageActive = null;
             this.bunifuImageButton12.Location = new System.Drawing.Point(54, 389);
             this.bunifuImageButton12.Name = "bunifuImageButton12";
@@ -281,7 +281,7 @@
             // 
             this.bunifuImageButton15.BackColor = System.Drawing.Color.SeaGreen;
             this.bunifuImageButton15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bunifuImageButton15.Image = global::NCR_SYSTEM_1.Properties.Resources.fadestockcorrection;
+            this.bunifuImageButton15.Image = global::NCR_SYSTEM_1.Properties.Resources.fade_stock_adjustment;
             this.bunifuImageButton15.ImageActive = null;
             this.bunifuImageButton15.Location = new System.Drawing.Point(54, 441);
             this.bunifuImageButton15.Name = "bunifuImageButton15";
