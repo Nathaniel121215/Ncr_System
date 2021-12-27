@@ -315,6 +315,19 @@
     <Compile Include="StockAdjustment_Module.Designer.cs">
       <DependentUpon>StockAdjustment_Module.cs</DependentUpon>
     </Compile>
+    <Compile Include="SupplierArchiveFilter_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierArchiveFilter_popup.Designer.cs">
+      <DependentUpon>SupplierArchiveFilter_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierArchive_Class.cs" />
+    <Compile Include="SupplierManagementArchive_module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplierManagementArchive_module.Designer.cs">
+      <DependentUpon>SupplierManagementArchive_module.cs</DependentUpon>
+    </Compile>
     <Compile Include="Supplierrecord_Filter_popup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -611,6 +624,12 @@
     <EmbeddedResource Include="StockAdjustment_Module.resx">
       <DependentUpon>StockAdjustment_Module.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SupplierArchiveFilter_popup.resx">
+      <DependentUpon>SupplierArchiveFilter_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplierManagementArchive_module.resx">
+      <DependentUpon>SupplierManagementArchive_module.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Supplierrecord_Filter_popup.resx">
       <DependentUpon>Supplierrecord_Filter_popup.cs</DependentUpon>
     </EmbeddedResource>
@@ -835,6 +854,7 @@
     <None Include="Resources\fade stock adjustment.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\supplier archive.png" />
     <None Include="Resources\fade stock replenishment.png" />
     <None Include="Resources\stock replenishment.png" />
     <None Include="Resources\utilitysettings.png" />

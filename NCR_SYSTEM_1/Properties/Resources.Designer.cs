@@ -1043,6 +1043,16 @@ namespace NCR_SYSTEM_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap supplier_archive {
+            get {
+                object obj = ResourceManager.GetObject("supplier archive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap supplier_management {
             get {
                 object obj = ResourceManager.GetObject("supplier management", resourceCulture);
