@@ -67,6 +67,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.highonstock = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton10)).BeginInit();
@@ -774,12 +775,23 @@
             this.pictureBox1.TabIndex = 166;
             this.pictureBox1.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(829, 102);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 200;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Inventory_Module
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.highonstock);
             this.Controls.Add(this.outofstock);
             this.Controls.Add(this.instock);
@@ -864,5 +876,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton highonstock;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton10;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton16;
+        private System.Windows.Forms.Button button1;
     }
 }

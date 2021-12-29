@@ -283,11 +283,16 @@
             this.moduletxt.Items.AddRange(new object[] {
             "Inventory Management Module",
             "Account Management Module",
-            "Stock Purchasing Module",
+            "Stock Replenishment Module",
             "Point of Sales Module",
             "Supplier Management Module",
             "Inventory Archive Module",
-            "Account Archive Module"});
+            "Account Archive Module",
+            "Supplier Archive Module",
+            "Sales Record Module",
+            "Stock Replenishment Record",
+            "Stock Adjustment Record Module",
+            "Utility Settings Module"});
             this.moduletxt.Location = new System.Drawing.Point(36, 299);
             this.moduletxt.Name = "moduletxt";
             this.moduletxt.Size = new System.Drawing.Size(281, 25);

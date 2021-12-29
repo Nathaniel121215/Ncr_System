@@ -93,7 +93,7 @@ namespace NCR_SYSTEM_1
             var data3 = new ActivityLog_Class
             {
                 Event_ID = cnt4.ToString(),
-                Module = "Stock Replenishment Module",
+                Module = "Stock Replenishment Record",
                 Action = "Stock Replenishment Report Extracted",
                 Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
                 User = Form1.username,

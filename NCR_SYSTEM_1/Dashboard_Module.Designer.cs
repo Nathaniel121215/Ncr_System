@@ -46,7 +46,6 @@
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton8 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton7 = new Bunifu.Framework.UI.BunifuImageButton();
-            this.label1 = new System.Windows.Forms.Label();
             this.bunifuImageButton19 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton6 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton18 = new Bunifu.Framework.UI.BunifuImageButton();
@@ -82,6 +81,7 @@
             this.week = new System.Windows.Forms.Label();
             this.month = new System.Windows.Forms.Label();
             this.year = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
@@ -192,17 +192,6 @@
             this.bunifuImageButton7.TabStop = false;
             this.bunifuImageButton7.Zoom = 10;
             this.bunifuImageButton7.Click += new System.EventHandler(this.bunifuImageButton7_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(77, 54);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "NCR LOGO HERE";
             // 
             // bunifuImageButton19
             // 
@@ -693,6 +682,17 @@
             this.year.TabIndex = 252;
             this.year.Text = "00";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(77, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 23);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "NCR LOGO HERE";
+            // 
             // Dashboard_Module
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -769,7 +769,6 @@
 
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label3;
@@ -809,5 +808,6 @@
         private System.Windows.Forms.Label year;
         private System.Windows.Forms.Label month;
         private System.Windows.Forms.Label week;
+        private System.Windows.Forms.Label label1;
     }
 }

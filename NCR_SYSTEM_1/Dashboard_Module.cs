@@ -788,7 +788,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if(Form1.status=="true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading.");
+                }
             }
 
 

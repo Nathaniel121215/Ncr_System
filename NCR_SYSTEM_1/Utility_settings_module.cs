@@ -284,7 +284,7 @@ namespace NCR_SYSTEM_1
             SetResponse response13 = client.Set("AccountArchiveCounter/node", obj12);
 
 
-            //reset Accountarchive
+            //reset inventoryarchive
             FirebaseResponse response14 = await client.DeleteTaskAsync("InventoryArchive");
 
             var obj14 = new Counter_class
@@ -294,6 +294,18 @@ namespace NCR_SYSTEM_1
             };
 
             SetResponse response15 = client.Set("InventoryArchiveCounter/node", obj14);
+
+
+            //reset supplierarchive
+            FirebaseResponse response144 = await client.DeleteTaskAsync("SupplierArchive");
+
+            var obj144 = new Counter_class
+            {
+                cnt = "0"
+
+            };
+
+            SetResponse response154 = client.Set("SupplierArchiveCounter/node", obj144);
 
             //reset Companysales
             FirebaseResponse response16 = await client.DeleteTaskAsync("CompanySales");
