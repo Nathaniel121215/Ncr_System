@@ -139,9 +139,6 @@
   <data name="activitylog" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\activitylog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fade supplier management" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fade supplier management.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="blue login" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\blue login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -187,9 +184,6 @@
   <data name="view2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\view2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cancel Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cancel Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="fadeinventorymanagement" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fadeinventorymanagement.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -217,6 +211,9 @@
   <data name="Add Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Add Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="fadeaddcategory" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fadeaddcategory.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Group 175" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Group 175.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -231,9 +228,6 @@
   </data>
   <data name="todaysale" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\todaysale.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="high" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\high.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="supplier management" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\supplier management.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -250,11 +244,17 @@
   <data name="loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\loading.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="delivery-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delivery-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="View_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\View_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cart Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cart Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fadeinventorylog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fadeinventorylog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ave" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ave.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -264,9 +264,6 @@
   </data>
   <data name="Group 157" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Group 157.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="inventory archive" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\inventory archive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Group 265" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Group 265.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -289,9 +286,6 @@
   <data name="dashboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dashboard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fade supplier archive" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fade supplier archive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="new high on stock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\new high on stock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -310,6 +304,9 @@
   <data name="fadeactivitylog" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fadeactivitylog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="fade record" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fade record.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="eye 3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\eye 3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -325,14 +322,17 @@
   <data name="Group 257" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Group 257.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Group 263" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Group 263.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="side rectangle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\side rectangle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="stock purchasing record" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\stock purchasing record.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="archive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\archive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Archive Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Archive Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -346,8 +346,8 @@
   <data name="Group 203" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Group 203.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fadeinventorylog" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fadeinventorylog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="fade supplier management" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fade supplier management.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="outofstock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\outofstock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -367,11 +367,14 @@
   <data name="fadeinventory" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fadeinventory.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fadeutilitysettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fadeutilitysettings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="inventory archive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\inventory archive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="wrong input" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wrong input.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="supplier archive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\supplier archive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="fade archive data" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fade archive data.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -394,14 +397,14 @@
   <data name="utilitysettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\utilitysettings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="eye 1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\eye 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="fadeutilitysettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fadeutilitysettings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="inventorylog" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\inventorylog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="delivery-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delivery-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="high" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\high.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="userloginlog" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\userloginlog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -418,8 +421,8 @@
   <data name="stock adjustment" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stock adjustment.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fade record" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fade record.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="stock purchasing record" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stock purchasing record.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="numberofemployee" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\numberofemployee.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -427,31 +430,31 @@
   <data name="sales_record_button" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sales_record_button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fadeaddcategory" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fadeaddcategory.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cancel Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="archive" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\archive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="fade supplier archive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fade supplier archive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="stock adjustment1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stock adjustment1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Group 177" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Group 177.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="fade stock replenishment" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fade stock replenishment.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fadeuserloginlog" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fadeuserloginlog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Group 263" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Group 263.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="records" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\records.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="supplier archive" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\supplier archive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="fadeuserloginlog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fadeuserloginlog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eye 1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eye 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Group 177" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Group 177.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Group 269" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Group 269.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

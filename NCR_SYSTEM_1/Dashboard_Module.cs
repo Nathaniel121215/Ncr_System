@@ -97,6 +97,18 @@ namespace NCR_SYSTEM_1
 
             dataviewstock();
 
+            //accountlvldisplay
+
+            if(Form1.levelac=="Admin")
+            {
+                accountinfolvl.Text = "Login as Administrator";
+            }
+            else
+            {
+                accountinfolvl.Text = "Login as Employee";
+            }
+        
+
         }
 
         public async void dataviewtransaction()
@@ -734,8 +746,15 @@ namespace NCR_SYSTEM_1
                }
                 else
                 {
-                    //MessageBox.Show("Your account do not have access on this Module.");
-                }
+                    if (Form1.status == "true")
+                    {
+                        MessageBox.Show("Your Account do not have access in this module.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("The Module is still loading.");
+                    }
+            }
             
             
 
@@ -829,7 +848,14 @@ namespace NCR_SYSTEM_1
          
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading.");
+                }
             }
         }
 
@@ -930,7 +956,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading.");
+                }
             }
         }
 
@@ -993,7 +1026,7 @@ namespace NCR_SYSTEM_1
                 }
                 else
                 {
-
+                  
                 }
 
 
@@ -1001,7 +1034,14 @@ namespace NCR_SYSTEM_1
           
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading.");
+                }
             }
         }
 
@@ -1041,7 +1081,14 @@ namespace NCR_SYSTEM_1
           
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading.");
+                }
             }
         }
 
@@ -1073,7 +1120,14 @@ namespace NCR_SYSTEM_1
             
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading.");
+                }
             }
         }
 
@@ -1084,9 +1138,42 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton1_Click_1(object sender, EventArgs e)
         {
-            Utility_settings_module a = new Utility_settings_module();
-            this.Hide();
-            a.Show();
+          
+
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    Utility_settings_module a = new Utility_settings_module();
+                    this.Hide();
+                    a.Show();
+
+                    Form1.loadingtime = 9000;
+                    Form1.status = "false";
+                    Loading_popup b = new Loading_popup();
+                    b.Show();
+                }
+                else
+                {
+
+                }
+
+
+            }
+
+            else
+            {
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading.");
+                }
+            }
         }
 
         private void button1_Click_3(object sender, EventArgs e)
