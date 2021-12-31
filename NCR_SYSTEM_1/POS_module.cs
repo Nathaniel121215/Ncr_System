@@ -15,6 +15,7 @@ namespace NCR_SYSTEM_1
 {
     public partial class POS_module : Form
     {
+        string approve = "false";
         int supressor = 1;
 
 
@@ -145,6 +146,17 @@ namespace NCR_SYSTEM_1
 
             DataViewAll();
 
+            //accountlvldisplay
+
+            if (Form1.levelac == "Admin")
+            {
+                accountinfolvl.Text = "Login as Administrator";
+            }
+            else
+            {
+                accountinfolvl.Text = "Login as Employee";
+            }
+
         }
 
         public async void DataViewAll()
@@ -155,8 +167,14 @@ namespace NCR_SYSTEM_1
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
 
+            foreach (DataGridViewColumn column in Cart_Datagridview.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
             //Adjusting Visual settings of Inventory Datagridview
             this.Inventory_Datagridview.AllowUserToAddRows = false;
+            this.Cart_Datagridview.AllowUserToAddRows = false;
 
             Inventory_Datagridview.Columns[5].Visible = false;
             Inventory_Datagridview.Columns[0].Visible = false;
@@ -328,9 +346,9 @@ namespace NCR_SYSTEM_1
 
             limit = obj3.Limit;
 
-           
 
 
+         
 
 
 
@@ -528,6 +546,7 @@ namespace NCR_SYSTEM_1
                         }
 
                     }
+                    compute();
                 }
                 else
                 {
@@ -572,6 +591,8 @@ namespace NCR_SYSTEM_1
                  
                 }
 
+                compute();
+
             }
             catch
             {
@@ -582,137 +603,279 @@ namespace NCR_SYSTEM_1
 
         private void Cart_Datagridview_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            // inialize variable that will be used in computation
-            decimal uprice = 0;
-            int qty = 0;
-            decimal product = 0;
-            decimal stockk = 0;
-
-            //checking
-            stockk = Convert.ToInt32(Cart_Datagridview.Rows[e.RowIndex].Cells[6].Value);
-
-            //  calculation
-            uprice = Convert.ToDecimal(Cart_Datagridview.Rows[e.RowIndex].Cells[4].Value);
-            qty = Convert.ToInt32(Cart_Datagridview.Rows[e.RowIndex].Cells[2].Value);
-
-
-            if (qty <= stockk)
+            try
             {
-                
-                product = uprice * qty;
+                // inialize variable that will be used in computation
+                decimal uprice = 0;
+                int qty = 0;
+                decimal product = 0;
+                decimal stockk = 0;
 
-                Cart_Datagridview.Rows[e.RowIndex].Cells[4].Value = uprice.ToString(fmt);
-                Cart_Datagridview.Rows[e.RowIndex].Cells[5].Value = product.ToString(fmt);
+                //checking
+                stockk = Convert.ToInt32(Cart_Datagridview.Rows[e.RowIndex].Cells[6].Value);
 
-                if (Cart_Datagridview.Rows[e.RowIndex].Cells[5].Value.Equals(".00"))
+                //  calculation
+                uprice = Convert.ToDecimal(Cart_Datagridview.Rows[e.RowIndex].Cells[4].Value);
+                qty = Convert.ToInt32(Cart_Datagridview.Rows[e.RowIndex].Cells[2].Value);
+
+
+                if (qty <= stockk)
+                {
+
+                    product = uprice * qty;
+
+                    Cart_Datagridview.Rows[e.RowIndex].Cells[4].Value = uprice.ToString(fmt);
+                    Cart_Datagridview.Rows[e.RowIndex].Cells[5].Value = product.ToString(fmt);
+
+                    if (Cart_Datagridview.Rows[e.RowIndex].Cells[5].Value.Equals(".00"))
+                    {
+                        Cart_Datagridview.Rows[e.RowIndex].Cells[5].Value = "0.00";
+                    }
+
+
+                    // line total
+                    try
+                    {
+                        subtotal = 0;
+
+
+                        for (int i = 0; i < Cart_Datagridview.Rows.Count; i++)
+                        {
+                            subtotal += Convert.ToDecimal(Cart_Datagridview.Rows[i].Cells[5].Value);
+
+                        }
+
+                        Sum.Text = subtotal.ToString(fmt) + " PHP";
+
+                        if (Sum.Text == ".00 PHP")
+                        {
+                            Sum.Text = "0.00" + " PHP";
+                        }
+
+                    }
+
+                    catch
+                    {
+
+                    }
+
+                    //TESTING GOAL
+
+                    if (subtotal >= goal && FreeGoalsuppresor == 1 && free == true)
+                    {
+
+                        freeitembtn.Enabled = true;
+                        freeitembtn.Visible = true;
+                    }
+                    if (subtotal < goal /*&& FreeGoalsuppresor == 0*/)
+                    {
+                        FreeGoalsuppresor = 1;
+                        freeitembtn.Enabled = false;
+                        freeitembtn.Visible = false;
+                    }
+                }
+                else
                 {
                     Cart_Datagridview.Rows[e.RowIndex].Cells[5].Value = "0.00";
-                }
+                    Cart_Datagridview.Rows[e.RowIndex].Cells[2].Value = "0";
+                    MessageBox.Show("Enter Valid Amount");
 
 
-                // line total
-                try
-                {
-                    subtotal = 0;
 
-
-                    for (int i = 0; i < Cart_Datagridview.Rows.Count; i++)
+                    // line total
+                    try
                     {
-                        subtotal += Convert.ToDecimal(Cart_Datagridview.Rows[i].Cells[5].Value);
+                        subtotal = 0;
+
+
+                        for (int i = 0; i < Cart_Datagridview.Rows.Count; i++)
+                        {
+                            subtotal += Convert.ToDecimal(Cart_Datagridview.Rows[i].Cells[5].Value);
+
+                        }
+
+                        Sum.Text = subtotal.ToString(fmt) + " PHP";
+
+                        if (Sum.Text == ".00 PHP")
+                        {
+                            Sum.Text = "0.00" + " PHP";
+                        }
 
                     }
 
-                    Sum.Text = subtotal.ToString(fmt) + " PHP";
-
-                    if (Sum.Text == ".00 PHP")
+                    catch
                     {
-                        Sum.Text = "0.00" + " PHP";
+
                     }
 
+                    //TESTING GOAL
+
+                    if (subtotal >= goal && FreeGoalsuppresor == 1 && free == true)
+                    {
+
+                        freeitembtn.Enabled = true;
+                        freeitembtn.Visible = true;
+                    }
+                    if (subtotal < goal /*&& FreeGoalsuppresor == 0*/)
+                    {
+                        FreeGoalsuppresor = 1;
+                        freeitembtn.Enabled = false;
+                        freeitembtn.Visible = false;
+                    }
+
+
                 }
 
-                catch
-                {
 
-                }
 
-                //TESTING GOAL
 
-                if (subtotal >= goal && FreeGoalsuppresor == 1 && free == true)
-                {
-
-                    freeitembtn.Enabled = true;
-                    freeitembtn.Visible = true;
-                }
-                if (subtotal < goal /*&& FreeGoalsuppresor == 0*/)
-                {
-                    FreeGoalsuppresor = 1;
-                    freeitembtn.Enabled = false;
-                    freeitembtn.Visible = false;
-                }
+                compute();
             }
-            else
+            catch
             {
-                Cart_Datagridview.Rows[e.RowIndex].Cells[5].Value = "0.00";
+                MessageBox.Show("Invalid Character is detected.");
                 Cart_Datagridview.Rows[e.RowIndex].Cells[2].Value = "0";
-                MessageBox.Show("Enter Valid Amount");
 
-
-
-                // line total
                 try
                 {
-                    subtotal = 0;
+                    // inialize variable that will be used in computation
+                    decimal uprice = 0;
+                    int qty = 0;
+                    decimal product = 0;
+                    decimal stockk = 0;
+
+                    //checking
+                    stockk = Convert.ToInt32(Cart_Datagridview.Rows[e.RowIndex].Cells[6].Value);
+
+                    //  calculation
+                    uprice = Convert.ToDecimal(Cart_Datagridview.Rows[e.RowIndex].Cells[4].Value);
+                    qty = Convert.ToInt32(Cart_Datagridview.Rows[e.RowIndex].Cells[2].Value);
 
 
-                    for (int i = 0; i < Cart_Datagridview.Rows.Count; i++)
+                    if (qty <= stockk)
                     {
-                        subtotal += Convert.ToDecimal(Cart_Datagridview.Rows[i].Cells[5].Value);
+
+                        product = uprice * qty;
+
+                        Cart_Datagridview.Rows[e.RowIndex].Cells[4].Value = uprice.ToString(fmt);
+                        Cart_Datagridview.Rows[e.RowIndex].Cells[5].Value = product.ToString(fmt);
+
+                        if (Cart_Datagridview.Rows[e.RowIndex].Cells[5].Value.Equals(".00"))
+                        {
+                            Cart_Datagridview.Rows[e.RowIndex].Cells[5].Value = "0.00";
+                        }
+
+
+                        // line total
+                        try
+                        {
+                            subtotal = 0;
+
+
+                            for (int i = 0; i < Cart_Datagridview.Rows.Count; i++)
+                            {
+                                subtotal += Convert.ToDecimal(Cart_Datagridview.Rows[i].Cells[5].Value);
+
+                            }
+
+                            Sum.Text = subtotal.ToString(fmt) + " PHP";
+
+                            if (Sum.Text == ".00 PHP")
+                            {
+                                Sum.Text = "0.00" + " PHP";
+                            }
+
+                        }
+
+                        catch
+                        {
+
+                        }
+
+                        //TESTING GOAL
+
+                        if (subtotal >= goal && FreeGoalsuppresor == 1 && free == true)
+                        {
+
+                            freeitembtn.Enabled = true;
+                            freeitembtn.Visible = true;
+                        }
+                        if (subtotal < goal /*&& FreeGoalsuppresor == 0*/)
+                        {
+                            FreeGoalsuppresor = 1;
+                            freeitembtn.Enabled = false;
+                            freeitembtn.Visible = false;
+                        }
+                    }
+                    else
+                    {
+                        Cart_Datagridview.Rows[e.RowIndex].Cells[5].Value = "0.00";
+                        Cart_Datagridview.Rows[e.RowIndex].Cells[2].Value = "0";
+                        MessageBox.Show("Enter Valid Amount");
+
+
+
+                        // line total
+                        try
+                        {
+                            subtotal = 0;
+
+
+                            for (int i = 0; i < Cart_Datagridview.Rows.Count; i++)
+                            {
+                                subtotal += Convert.ToDecimal(Cart_Datagridview.Rows[i].Cells[5].Value);
+
+                            }
+
+                            Sum.Text = subtotal.ToString(fmt) + " PHP";
+
+                            if (Sum.Text == ".00 PHP")
+                            {
+                                Sum.Text = "0.00" + " PHP";
+                            }
+
+                        }
+
+                        catch
+                        {
+
+                        }
+
+                        //TESTING GOAL
+
+                        if (subtotal >= goal && FreeGoalsuppresor == 1 && free == true)
+                        {
+
+                            freeitembtn.Enabled = true;
+                            freeitembtn.Visible = true;
+                        }
+                        if (subtotal < goal /*&& FreeGoalsuppresor == 0*/)
+                        {
+                            FreeGoalsuppresor = 1;
+                            freeitembtn.Enabled = false;
+                            freeitembtn.Visible = false;
+                        }
+
 
                     }
 
-                    Sum.Text = subtotal.ToString(fmt) + " PHP";
 
-                    if (Sum.Text == ".00 PHP")
-                    {
-                        Sum.Text = "0.00" + " PHP";
-                    }
 
+
+                    compute();
                 }
-
                 catch
                 {
 
                 }
-
-                //TESTING GOAL
-
-                if (subtotal >= goal && FreeGoalsuppresor == 1 && free == true)
-                {
-
-                    freeitembtn.Enabled = true;
-                    freeitembtn.Visible = true;
-                }
-                if (subtotal < goal /*&& FreeGoalsuppresor == 0*/)
-                {
-                    FreeGoalsuppresor = 1;
-                    freeitembtn.Enabled = false;
-                    freeitembtn.Visible = false;
-                }
-
-
             }
-
-
-
-
-
+            
 
         }
 
         private void Fee_OnValueChanged(object sender, EventArgs e)
         {
-            compute();
+           
         }
 
         // COMPUTATION
@@ -730,58 +893,159 @@ namespace NCR_SYSTEM_1
                 change = payment - total;
                 Change.Text = Convert.ToString(change) + " PHP";
 
+                Fee.Text = fee.ToString(fmt);
+                Payment.Text = payment.ToString(fmt);
 
+                if(Fee.Text==".00")
+                {
+                    Fee.Text = "0.00";
+                }
+                if(Payment.Text == ".00")
+                {
+                    Payment.Text = "0.00";
+                }
+                else
+                {
+
+                }
+                approve = "true";
 
             }
             catch
             {
-
+                MessageBox.Show("Invalid Character is detected.");
+                approve = "false";
             }
 
         }
 
         private void Payment_OnValueChanged(object sender, EventArgs e)
         {
-            compute();
+         
         }
 
         private void bunifuFlatButton3_Click(object sender, EventArgs e)
         {
-            //clear
-            quantitylist.Clear();
-            Unitlist.Clear();
-            productnamelist.Clear();
-            Pricelist.Clear();
-
-
-
-            // details of cart
-
-            details2 = "";
-
-            for (int i = 0; i < Cart_Datagridview.RowCount; i++)
+          
+            if(Form1.status == "true")
             {
 
+                //compute
 
-                productnamelist.Add(Cart_Datagridview.Rows[i].Cells[1].Value.ToString());
-                quantitylist.Add(Cart_Datagridview.Rows[i].Cells[2].Value.ToString());
-                Unitlist.Add(Cart_Datagridview.Rows[i].Cells[3].Value.ToString());
-                Pricelist.Add(Cart_Datagridview.Rows[i].Cells[4].Value.ToString());
+                try
+                {
+                    //Calculate total
+                    fee = Convert.ToDecimal(Fee.Text);
+                    total = subtotal + fee;
+                    FinalTotal.Text = Convert.ToString(total) + " PHP";
+
+                    //calculate Change
+                    payment = Convert.ToDecimal(Payment.Text);
+                    change = payment - total;
+                    Change.Text = Convert.ToString(change) + " PHP";
+
+                    Fee.Text = fee.ToString(fmt);
+                    Payment.Text = payment.ToString(fmt);
+
+                    if (Fee.Text == ".00")
+                    {
+                        Fee.Text = "0.00";
+                    }
+                    if (Payment.Text == ".00")
+                    {
+                        Payment.Text = "0.00";
+                    }
+                    else
+                    {
+
+                    }
+                    approve = "true";
+
+                }
+                catch
+                {
+                    MessageBox.Show("Invalid Character is detected.");
+                    approve = "false";
+                }
+
+
+                try
+                {
+
+                    foreach (DataGridViewRow row in Cart_Datagridview.Rows)
+                    {
+                        if (Convert.ToInt32(row.Cells[2].Value) == 0)
+                        {
+                            approve = "false";
+                            break;
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+                catch
+                {
+
+                }
+
+                if (approve == "true" && Cart_Datagridview.RowCount != 0 && payment != 0 && total != 0 && payment >= total)
+                {
+
+                    //clear
+                    quantitylist.Clear();
+                    Unitlist.Clear();
+                    productnamelist.Clear();
+                    Pricelist.Clear();
 
 
 
+                    // details of cart
 
-                details2 += quantitylist[i] + "\r\n";
-                details2 += Unitlist[i] + "\r\n";
-                details2 += productnamelist[i] + "\r\n";
-                details2 += Pricelist[i] + "\r\n";
+                    details2 = "";
+
+                    for (int i = 0; i < Cart_Datagridview.RowCount; i++)
+                    {
+
+
+                        productnamelist.Add(Cart_Datagridview.Rows[i].Cells[1].Value.ToString());
+                        quantitylist.Add(Cart_Datagridview.Rows[i].Cells[2].Value.ToString());
+                        Unitlist.Add(Cart_Datagridview.Rows[i].Cells[3].Value.ToString());
+                        Pricelist.Add(Cart_Datagridview.Rows[i].Cells[4].Value.ToString());
+
+
+                        details2 += quantitylist[i] + "\r\n";
+                        details2 += Unitlist[i] + "\r\n";
+                        details2 += productnamelist[i] + "\r\n";
+                        details2 += Pricelist[i] + "\r\n";
+                    }
+
+                    cartcount = Cart_Datagridview.RowCount;
+
+
+                    Processcustomerorder_popup a = new Processcustomerorder_popup();
+                    a.Show();
+                    Form1.status = "false";
+                }
+                else
+                {
+                    MessageBox.Show("Check and fill up all necessary fields.");
+                }
+
+                if (payment < total)
+                {
+                    MessageBox.Show("Amount tendered is not enough.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Window currenly open in another tab.");
             }
 
-            cartcount = Cart_Datagridview.RowCount;
+            
 
 
-            Processcustomerorder_popup a = new Processcustomerorder_popup();
-            a.Show();
 
 
 
@@ -920,8 +1184,10 @@ namespace NCR_SYSTEM_1
             freeitembtn.Visible = false;
             free = true;
 
+           
+    
 
-        }
+    }
 
         private void FreeItembtn_Click(object sender, EventArgs e)
         {
@@ -949,6 +1215,12 @@ namespace NCR_SYSTEM_1
             freeitembtn.Visible = false;
             free = true;
 
+            payment = 0;
+            change = 0;
+            fee = 0;
+            subtotal = 0;
+            total = 0;
+
         }
 
         private void Cart_Datagridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -975,6 +1247,52 @@ namespace NCR_SYSTEM_1
                     {
                         Sum.Text = "0.00" + " PHP";
                     }
+
+                    compute();
+
+
+
+                    // line total
+                    try
+                    {
+                        subtotal = 0;
+
+
+                        for (int i = 0; i < Cart_Datagridview.Rows.Count; i++)
+                        {
+                            subtotal += Convert.ToDecimal(Cart_Datagridview.Rows[i].Cells[5].Value);
+
+                        }
+
+                        Sum.Text = subtotal.ToString(fmt) + " PHP";
+
+                        if (Sum.Text == ".00 PHP")
+                        {
+                            Sum.Text = "0.00" + " PHP";
+                        }
+
+                    }
+
+                    catch
+                    {
+
+                    }
+
+                    //TESTING GOAL
+
+                    if (subtotal >= goal && FreeGoalsuppresor == 1 && free == true)
+                    {
+
+                        freeitembtn.Enabled = true;
+                        freeitembtn.Visible = true;
+                    }
+                    if (subtotal < goal /*&& FreeGoalsuppresor == 0*/)
+                    {
+                        FreeGoalsuppresor = 1;
+                        freeitembtn.Enabled = false;
+                        freeitembtn.Visible = false;
+                    }
+
                 }
 
                 catch
@@ -987,15 +1305,23 @@ namespace NCR_SYSTEM_1
 
         private void Cart_Datagridview_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            foreach (DataGridViewRow row in Cart_Datagridview.Rows)
+            try
             {
-                if (Convert.ToInt32(row.Cells[2].Value) == 1 && Convert.ToDouble(row.Cells[4].Value) == 0.00)
+                foreach (DataGridViewRow row in Cart_Datagridview.Rows)
                 {
-                    row.DefaultCellStyle.BackColor = Color.LightGoldenrodYellow;
-                    row.ReadOnly = true;
+                    if (Convert.ToInt32(row.Cells[2].Value) == 1 && Convert.ToDouble(row.Cells[4].Value) == 0.00)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGoldenrodYellow;
+                        row.ReadOnly = true;
 
+                    }
                 }
             }
+            catch
+            {
+                
+            }
+          
         }
 
         private void bunifuImageButton19_Click(object sender, EventArgs e)
@@ -1026,7 +1352,14 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -1069,8 +1402,15 @@ namespace NCR_SYSTEM_1
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
 
+
+            foreach (DataGridViewColumn column in Cart_Datagridview.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
             //Adjusting Visual settings of Inventory Datagridview
             this.Inventory_Datagridview.AllowUserToAddRows = false;
+            this.Cart_Datagridview.AllowUserToAddRows = false;
 
             Inventory_Datagridview.Columns[5].Visible = false;
             Inventory_Datagridview.Columns[0].Visible = false;
@@ -1258,7 +1598,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -1307,7 +1654,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -1338,7 +1692,14 @@ namespace NCR_SYSTEM_1
            
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -1387,7 +1748,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -1436,7 +1804,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -1467,7 +1842,14 @@ namespace NCR_SYSTEM_1
           
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -1498,7 +1880,14 @@ namespace NCR_SYSTEM_1
            
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -1539,6 +1928,140 @@ namespace NCR_SYSTEM_1
             else
             {
 
+            }
+        }
+
+        private void Fee_Enter(object sender, EventArgs e)
+        {
+              if(Fee.Text == "" || Fee.Text == "0.00")
+            {
+                Fee.Text = "";
+            }
+              else
+            {
+
+            }
+           
+           
+        }
+
+        private void Fee_Leave(object sender, EventArgs e)
+        {
+            if (Fee.Text == "")
+            {
+                Fee.Text = "0.00";
+                compute();
+            }
+            else
+            {
+                compute();
+            }
+        }
+
+        private void Payment_Enter(object sender, EventArgs e)
+        {
+            if (Payment.Text == "" || Payment.Text == "0.00")
+            {
+                Payment.Text = "";
+            }
+            else
+            {
+
+            }
+        }
+
+        private void Payment_Leave(object sender, EventArgs e)
+        {
+            if (Payment.Text == "")
+            {
+                Payment.Text = "0.00";
+                compute();
+            }
+            else
+            {
+                compute();
+            }
+        }
+
+        private void Payment_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                compute();
+            }
+        }
+
+        private void Fee_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                compute();
+            }
+        }
+
+        private void Fee_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void searchtxt_Enter(object sender, EventArgs e)
+        {
+            searchtxt.Text = "";
+        }
+
+        private void searchtxt_Leave(object sender, EventArgs e)
+        {
+            if(searchtxt.Text == "")
+            {
+                searchtxt.Text = "Type here to filter Inventory Content";
+            }
+            else
+            {
+
+            }
+            
+        }
+
+        private void Payment_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void bunifuImageButton1_Click(object sender, EventArgs e)
+        {
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    Utility_settings_module a = new Utility_settings_module();
+                    this.Hide();
+                    a.Show();
+
+                    Form1.loadingtime = 9000;
+                    Form1.status = "false";
+                    Loading_popup b = new Loading_popup();
+                    b.Show();
+                }
+                else
+                {
+
+                }
+
+
+            }
+
+            else
+            {
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
     }
