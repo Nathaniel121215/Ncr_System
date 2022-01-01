@@ -427,7 +427,7 @@
             this.searchtxt.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.searchtxt.Size = new System.Drawing.Size(430, 40);
             this.searchtxt.TabIndex = 262;
-            this.searchtxt.Text = "Type here to filter Inventory Content";
+            this.searchtxt.Text = "Type here to filter Point of sales Content";
             this.searchtxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.searchtxt.Enter += new System.EventHandler(this.searchtxt_Enter);
             this.searchtxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.searchtxt_KeyUp);

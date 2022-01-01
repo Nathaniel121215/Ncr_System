@@ -42,7 +42,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pprice = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.label3 = new System.Windows.Forms.Label();
-            this.pname = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.label2 = new System.Windows.Forms.Label();
             this.pcategory = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,6 +54,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
+            this.pname = new Bunifu.Framework.UI.BunifuMetroTextbox();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -227,23 +227,6 @@
             this.label3.TabIndex = 189;
             this.label3.Text = "Product Name:";
             // 
-            // pname
-            // 
-            this.pname.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.pname.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pname.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.pname.BorderThickness = 1;
-            this.pname.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.pname.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.pname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pname.isPassword = false;
-            this.pname.Location = new System.Drawing.Point(338, 144);
-            this.pname.Margin = new System.Windows.Forms.Padding(4);
-            this.pname.Name = "pname";
-            this.pname.Size = new System.Drawing.Size(281, 36);
-            this.pname.TabIndex = 188;
-            this.pname.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -397,12 +380,30 @@
             this.bunifuImageButton1.Zoom = 10;
             this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click);
             // 
+            // pname
+            // 
+            this.pname.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.pname.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pname.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.pname.BorderThickness = 1;
+            this.pname.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.pname.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.pname.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pname.isPassword = false;
+            this.pname.Location = new System.Drawing.Point(338, 144);
+            this.pname.Margin = new System.Windows.Forms.Padding(4);
+            this.pname.Name = "pname";
+            this.pname.Size = new System.Drawing.Size(281, 36);
+            this.pname.TabIndex = 279;
+            this.pname.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
             // Addnewproduct_popup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(658, 507);
+            this.Controls.Add(this.pname);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bunifuFlatButton2);
@@ -423,7 +424,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pprice);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.pname);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pcategory);
             this.Controls.Add(this.label1);
@@ -454,7 +454,6 @@
         private System.Windows.Forms.Label label4;
         private Bunifu.Framework.UI.BunifuMetroTextbox pprice;
         private System.Windows.Forms.Label label3;
-        private Bunifu.Framework.UI.BunifuMetroTextbox pname;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox pcategory;
         private System.Windows.Forms.Label label1;
@@ -467,5 +466,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private Bunifu.Framework.UI.BunifuMetroTextbox pname;
     }
 }

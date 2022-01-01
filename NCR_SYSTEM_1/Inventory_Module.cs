@@ -369,165 +369,170 @@ namespace NCR_SYSTEM_1
 
         private void Inventory_Datagrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string columnindex = "";
-
-            try
+            if(Form1.status=="true")
             {
+                string columnindex = "";
 
-                
+                try
+                {
+
+
                     //Archive
                     if (e.ColumnIndex == Inventory_Datagrid.Columns[13].Index)
                     {
 
                         if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
+                        {
+                            columnindex = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+
+
+                            //new archive code
+
+                            var data = new InventoryArchive_Class
+                            {
+                                ID = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString(),
+                                Product_Name = Inventory_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                                Unit = Inventory_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString(),
+                                Brand = Inventory_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                                Description = Inventory_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString(),
+                                Category = Inventory_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString(),
+                                Price = Inventory_Datagrid.Rows[e.RowIndex].Cells[6].Value.ToString(),
+                                Items_Sold = Inventory_Datagrid.Rows[e.RowIndex].Cells[7].Value.ToString(),
+                                Stock = Inventory_Datagrid.Rows[e.RowIndex].Cells[8].Value.ToString(),
+                                Low = Inventory_Datagrid.Rows[e.RowIndex].Cells[9].Value.ToString(),
+                                High = Inventory_Datagrid.Rows[e.RowIndex].Cells[10].Value.ToString(),
+
+                                Date_Archived = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                                User = Form1.username,
+
+                            };
+
+
+                            //add to archive 
+                            FirebaseResponse response3 = client.Set("InventoryArchive/" + data.ID, data);
+                            Product_class result = response3.ResultAs<Product_class>();
+
+                            //get archive counter
+                            FirebaseResponse resp = client.Get("InventoryArchiveCounter/node");
+                            Counter_class get = resp.ResultAs<Counter_class>();
+
+                            //update archive counter
+                            var obj = new Counter_class
+                            {
+                                cnt = (Convert.ToInt32(get.cnt) + 1).ToString(),
+                            };
+
+                            SetResponse response4 = client.Set("InventoryArchiveCounter/node", obj);
+
+
+
+                            //delete from current table
+
+                            FirebaseResponse response = client.Delete("Inventory/" + columnindex);
+
+
+
+
+                            //Minus existing
+                            FirebaseResponse resp3 = client.Get("inventoryCounterExisting/node");
+                            Counter_class gett = resp3.ResultAs<Counter_class>();
+                            int exist = (Convert.ToInt32(gett.cnt) - 1);
+
+                            var obj2 = new Counter_class
+                            {
+                                cnt = exist.ToString()
+                            };
+                            SetResponse response2 = client.Set("inventoryCounterExisting/node", obj2);
+
+
+
+                            //Activity Log ARCHIVING PRODUCT EVENT
+
+
+                            FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
+                            Counter_class get4 = resp4.ResultAs<Counter_class>();
+                            int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
+
+
+
+                            var data2 = new ActivityLog_Class
+                            {
+                                Event_ID = cnt4.ToString(),
+                                Module = "Inventory Management Module",
+                                Action = "Product-ID: " + data.ID + "   Moved to Archive Module",
+                                Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                                User = Form1.username,
+                                Accountlvl = Form1.levelac,
+
+                            };
+
+
+
+                            FirebaseResponse response5 = client.Set("ActivityLog/" + data2.Event_ID, data2);
+
+
+
+                            var obj4 = new Counter_class
+                            {
+                                cnt = data2.Event_ID
+
+                            };
+
+                            SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
+
+
+
+                            DataViewAll();
+                        }
+
+                        else
+
+                        {
+                            //do something if NO
+                        }
+
+                    }
+
+
+
+
+                    //update
+                    if (e.ColumnIndex == Inventory_Datagrid.Columns[12].Index)
                     {
                         columnindex = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-                       
 
-                        //new archive code
+                        Inventory_Datagrid.Rows[e.RowIndex].Selected = true;
 
-                        var data = new InventoryArchive_Class
-                        {
-                            ID = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString(),
-                            Product_Name = Inventory_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString(),
-                            Unit = Inventory_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString(),
-                            Brand = Inventory_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString(),
-                            Description = Inventory_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString(),
-                            Category = Inventory_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString(),
-                            Price = Inventory_Datagrid.Rows[e.RowIndex].Cells[6].Value.ToString(),
-                            Items_Sold = Inventory_Datagrid.Rows[e.RowIndex].Cells[7].Value.ToString(),
-                            Stock = Inventory_Datagrid.Rows[e.RowIndex].Cells[8].Value.ToString(),
-                            Low = Inventory_Datagrid.Rows[e.RowIndex].Cells[9].Value.ToString(),
-                            High = Inventory_Datagrid.Rows[e.RowIndex].Cells[10].Value.ToString(),
+                        id = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        name = Inventory_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString();
+                        unit = Inventory_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        brand = Inventory_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString();
+                        desc = Inventory_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString();
+                        category = Inventory_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString();
+                        price = Convert.ToDecimal(Inventory_Datagrid.Rows[e.RowIndex].Cells[6].Value);
 
-                            Date_Archived = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
-                            User = Form1.username,
+                        low = Inventory_Datagrid.Rows[e.RowIndex].Cells[9].Value.ToString();
+                        high = Inventory_Datagrid.Rows[e.RowIndex].Cells[10].Value.ToString();
 
-                    };
+                        Updateproduct_popup c = new Updateproduct_popup();
+                        c.Show();
+                        Form1.status = "false";
 
-
-                        //add to archive 
-                        FirebaseResponse response3 = client.Set("InventoryArchive/" + data.ID, data);
-                        Product_class result = response3.ResultAs<Product_class>();
-
-                        //get archive counter
-                        FirebaseResponse resp = client.Get("InventoryArchiveCounter/node");
-                        Counter_class get = resp.ResultAs<Counter_class>();
-
-                        //update archive counter
-                        var obj = new Counter_class
-                        {
-                            cnt = (Convert.ToInt32(get.cnt) + 1).ToString(),
-                        };
-
-                        SetResponse response4 = client.Set("InventoryArchiveCounter/node", obj);
-
-
-
-                        //delete from current table
-
-                        FirebaseResponse response = client.Delete("Inventory/" + columnindex);
-
-
-
-
-                        //Minus existing
-                        FirebaseResponse resp3 = client.Get("inventoryCounterExisting/node");
-                        Counter_class gett = resp3.ResultAs<Counter_class>();
-                        int exist = (Convert.ToInt32(gett.cnt) - 1);
-
-                        var obj2 = new Counter_class
-                        {
-                            cnt = exist.ToString()
-                        };
-                        SetResponse response2 = client.Set("inventoryCounterExisting/node", obj2);
-
-
-
-                        //Activity Log ARCHIVING PRODUCT EVENT
-
-
-                        FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
-                        Counter_class get4 = resp4.ResultAs<Counter_class>();
-                        int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
-
-
-
-                        var data2 = new ActivityLog_Class
-                        {
-                            Event_ID = cnt4.ToString(),
-                            Module = "Inventory Management Module",
-                            Action = "Product-ID: " + data.ID + "   Moved to Archive Module",
-                            Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
-                            User = Form1.username,
-                            Accountlvl = Form1.levelac,
-
-                        };
-
-
-
-                        FirebaseResponse response5 = client.Set("ActivityLog/" + data2.Event_ID, data2);
-
-
-
-                        var obj4 = new Counter_class
-                        {
-                            cnt = data2.Event_ID
-
-                        };
-
-                        SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
-
-
-
-                        DataViewAll();
                     }
-
-                    else
-
-                    {
-                        //do something if NO
-                    }
-                    
-                    }
-
-           
-
-
-
-               
-                
-
-                //update
-                if (e.ColumnIndex == Inventory_Datagrid.Columns[12].Index)
+                }
+                catch
                 {
-                    columnindex = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
-
-
-                    Inventory_Datagrid.Rows[e.RowIndex].Selected = true;
-
-                    id = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    name = Inventory_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString();
-                    unit = Inventory_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString();
-                    brand = Inventory_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString();
-                    desc = Inventory_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString();
-                    category = Inventory_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString();
-                    price = Convert.ToDecimal(Inventory_Datagrid.Rows[e.RowIndex].Cells[6].Value);
-
-                    low = Inventory_Datagrid.Rows[e.RowIndex].Cells[9].Value.ToString();
-                    high =Inventory_Datagrid.Rows[e.RowIndex].Cells[10].Value.ToString();
-
-                    Updateproduct_popup c = new Updateproduct_popup();
-                    c.Show();
 
                 }
             }
-            catch
+            else
             {
-
+                MessageBox.Show("Module is still loading.");
             }
+            
         }
 
         private void bunifuImageButton12_Click(object sender, EventArgs e)
@@ -1660,6 +1665,23 @@ namespace NCR_SYSTEM_1
             else
             {
                 MessageBox.Show("The tab is currently already open.");
+            }
+        }
+
+        private void searchtxt_Enter(object sender, EventArgs e)
+        {
+            searchtxt.Text = "";
+        }
+
+        private void searchtxt_Leave(object sender, EventArgs e)
+        {
+            if (searchtxt.Text == "")
+            {
+                searchtxt.Text = "Type here to filter Inventory Content";
+            }
+            else
+            {
+
             }
         }
     }

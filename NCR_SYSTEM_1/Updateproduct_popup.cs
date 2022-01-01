@@ -16,6 +16,7 @@ namespace NCR_SYSTEM_1
   
     public partial class Updateproduct_popup : Form
     {
+        string fmt = "##.00";
 
         IFirebaseConfig config = new FirebaseConfig
         {
@@ -139,7 +140,10 @@ namespace NCR_SYSTEM_1
             pbrand.Text = Inventory_Module.brand;
             pprice.Text = Inventory_Module.price.ToString();
             punit.Text = Inventory_Module.unit;
-          
+
+            namemetro(pname);
+            brandmetro(pbrand);
+
 
         }
 
@@ -155,8 +159,20 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            Updateproductstockindicator a = new Updateproductstockindicator(); 
-            a.Show();
+            decimal n = Convert.ToDecimal(pprice.Text);
+            pprice.Text = n.ToString(fmt);
+
+            if (pname.Text != "" && pprice.Text != "" && pbrand.Text != "" && pdescription.Text != "" && pcategory.Text != "" && punit.Text != "" && pprice.Text != "0.00")
+            {
+                Updateproductstockindicator a = new Updateproductstockindicator();
+                a.Show();
+                this.Hide();
+
+            }
+            else
+            {
+                MessageBox.Show("Fill up all necessary fields.");
+            }
 
         }
 
@@ -251,6 +267,7 @@ namespace NCR_SYSTEM_1
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
             this.Hide();
+            Form1.status = "true";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -357,7 +374,95 @@ namespace NCR_SYSTEM_1
         private void bunifuFlatButton2_Click_1(object sender, EventArgs e)
         {
             this.Hide();
+            Form1.status = "true";
         }
+
+        private void pprice_MouseEnter(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void pprice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void pprice_Enter(object sender, EventArgs e)
+        {
+            if (pprice.Text == "0.00")
+            {
+                pprice.Text = "";
+            }
+            else
+            {
+
+            }
+        }
+
+        private void pprice_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                decimal a = Convert.ToDecimal(pprice.Text);
+                pprice.Text = a.ToString(fmt);
+            }
+        }
+
+        private void pprice_Leave(object sender, EventArgs e)
+        {
+            if (pprice.Text == "")
+            {
+                pprice.Text = "0.00";
+
+                decimal a = Convert.ToDecimal(pprice.Text);
+                pprice.Text = a.ToString(fmt);
+            }
+            else
+            {
+                decimal a = Convert.ToDecimal(pprice.Text);
+                pprice.Text = a.ToString(fmt);
+                if(pprice.Text==".00")
+                {
+                    pprice.Text = "0.00";
+                }
+            }
+        }
+
+        private void namemetro(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox)
+
+        {
+            foreach (var ctl in metroTextbox.Controls)
+            {
+
+                if (ctl.GetType() == typeof(TextBox))
+
+                {
+                    var txt = (TextBox)ctl;
+                    txt.MaxLength = 30;
+
+                }
+
+            }
+
+        }
+        private void brandmetro(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox)
+
+        {
+            foreach (var ctl in metroTextbox.Controls)
+            {
+
+                if (ctl.GetType() == typeof(TextBox))
+
+                {
+                    var txt = (TextBox)ctl;
+                    txt.MaxLength = 30;
+
+                }
+
+            }
+
+        }
+
     }
 }
 

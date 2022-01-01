@@ -451,7 +451,9 @@
             this.searchtxt.TabIndex = 163;
             this.searchtxt.Text = "Type here to filter Inventory Content";
             this.searchtxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.searchtxt.Enter += new System.EventHandler(this.searchtxt_Enter);
             this.searchtxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.bunifuMetroTextbox2_KeyUp);
+            this.searchtxt.Leave += new System.EventHandler(this.searchtxt_Leave);
             // 
             // searchbutton
             // 

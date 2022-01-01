@@ -151,6 +151,7 @@
             this.high.Size = new System.Drawing.Size(281, 36);
             this.high.TabIndex = 292;
             this.high.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.high.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.high_KeyPress);
             // 
             // label5
             // 
@@ -178,6 +179,7 @@
             this.low.Size = new System.Drawing.Size(281, 36);
             this.low.TabIndex = 290;
             this.low.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.low.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.low_KeyPress);
             // 
             // panel6
             // 
@@ -210,6 +212,7 @@
             this.bunifuImageButton1.TabIndex = 287;
             this.bunifuImageButton1.TabStop = false;
             this.bunifuImageButton1.Zoom = 10;
+            this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click);
             // 
             // panel1
             // 

@@ -146,7 +146,14 @@ namespace NCR_SYSTEM_1
 
 
             pid.Text = data.ID;
+
+            namemetro(pname);
+            brandmetro(pbrand);
+          
+
+
         }
+
 
         private void label8_Click(object sender, EventArgs e)
         {
@@ -155,7 +162,10 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            if(pname.Text!="" && pprice.Text != "" && pbrand.Text != "" && pdescription.Text != "" && pcategory.Text != "" && punit.Text != "")
+            decimal n = Convert.ToDecimal(pprice.Text);
+            pprice.Text = n.ToString(fmt);
+
+            if (pname.Text!="" && pprice.Text != "" && pbrand.Text != "" && pdescription.Text != "" && pcategory.Text != "" && punit.Text != "" && pprice.Text != "0.00")
             {
                 Addproductstockindicator_popup a = new Addproductstockindicator_popup();
                 a.Show();
@@ -440,6 +450,10 @@ namespace NCR_SYSTEM_1
             {
                 decimal a = Convert.ToDecimal(pprice.Text);
                 pprice.Text = a.ToString(fmt);
+                if (pprice.Text == ".00")
+                {
+                    pprice.Text = "0.00";
+                }
             }
         }
 
@@ -451,5 +465,44 @@ namespace NCR_SYSTEM_1
                 pprice.Text = a.ToString(fmt);
             }
         }
+
+        private void namemetro(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox)
+
+        {
+            foreach (var ctl in metroTextbox.Controls)
+            {
+
+                if (ctl.GetType() == typeof(TextBox))
+
+                {
+                    var txt = (TextBox)ctl;
+                    txt.MaxLength = 25;
+               
+                }
+
+            }
+
+        }
+        private void brandmetro(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox)
+
+        {
+            foreach (var ctl in metroTextbox.Controls)
+            {
+
+                if (ctl.GetType() == typeof(TextBox))
+
+                {
+                    var txt = (TextBox)ctl;
+                    txt.MaxLength = 25;
+
+                }
+
+            }
+
+        }
+
+       
     }
+
+
 }

@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.label10 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label9 = new System.Windows.Forms.Label();
@@ -63,16 +62,6 @@
             // 
             this.bunifuElipse1.ElipseRadius = 5;
             this.bunifuElipse1.TargetControl = this;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(458, 67);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(161, 17);
-            this.label10.TabIndex = 183;
-            this.label10.Text = "Wednesday, 22 April 2021";
             // 
             // panel6
             // 
@@ -227,6 +216,11 @@
             this.pprice.TabIndex = 170;
             this.pprice.Text = "0.00";
             this.pprice.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.pprice.Enter += new System.EventHandler(this.pprice_Enter);
+            this.pprice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pprice_KeyPress);
+            this.pprice.KeyUp += new System.Windows.Forms.KeyEventHandler(this.pprice_KeyUp);
+            this.pprice.Leave += new System.EventHandler(this.pprice_Leave);
+            this.pprice.MouseEnter += new System.EventHandler(this.pprice_MouseEnter);
             // 
             // label3
             // 
@@ -424,7 +418,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.bunifuImageButton1);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.bunifuFlatButton1);
             this.Controls.Add(this.label9);
@@ -456,7 +449,6 @@
         #endregion
 
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel6;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
         private System.Windows.Forms.Label label9;
