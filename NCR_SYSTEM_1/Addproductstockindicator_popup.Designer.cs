@@ -151,6 +151,7 @@
             this.high.Size = new System.Drawing.Size(281, 36);
             this.high.TabIndex = 283;
             this.high.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.high.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.high_KeyPress);
             // 
             // label5
             // 
@@ -178,6 +179,7 @@
             this.low.Size = new System.Drawing.Size(281, 36);
             this.low.TabIndex = 281;
             this.low.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.low.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.low_KeyPress);
             // 
             // panel6
             // 

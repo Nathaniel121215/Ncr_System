@@ -17,7 +17,7 @@ namespace NCR_SYSTEM_1
 {
     public partial class Inventory_Module : Form
     {
-        public static string checker = "";
+
 
         int supressor = 1;
 
@@ -134,7 +134,7 @@ namespace NCR_SYSTEM_1
 
         private void Inventory_Module_Load(object sender, EventArgs e)
         {
-           
+            
             datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
             datedisplay.Select();
 
@@ -187,7 +187,18 @@ namespace NCR_SYSTEM_1
             DataViewAll();
 
 
-       
+            //accountlvldisplay
+
+            if (Form1.levelac == "Admin")
+            {
+                accountinfolvl.Text = "Login as Administrator";
+            }
+            else
+            {
+                accountinfolvl.Text = "Login as Employee";
+            }
+
+
 
         }
         public async void DataViewAll()
@@ -349,28 +360,12 @@ namespace NCR_SYSTEM_1
 
             }
 
-            checker = "allow";
+
 
         }
 
  
 
-    private void bunifuFlatButton2_Click(object sender, EventArgs e)
-        {
-            
-
-            if (checker.Equals("allow"))
-            {
-                Addnewproduct_popup a = new Addnewproduct_popup();
-                a.Show();
-
-                checker = "dontallow";
-            }
-            else
-            {
-                MessageBox.Show("The tab is currently already open.");
-            }
-        }
 
         private void Inventory_Datagrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -804,44 +799,51 @@ namespace NCR_SYSTEM_1
 
         private void searchbutton_Click(object sender, EventArgs e)
         {
+            if (searchtxt.Text != "" & Form1.status == "true")
+            {
+                DataView dv = new DataView(dt);
+                dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
+
+                Inventory_Datagrid.DataSource = null;
+                Inventory_Datagrid.Rows.Clear();
+                Inventory_Datagrid.Columns.Clear();
+                Inventory_Datagrid.DataSource = dv;
+
+
+
+                DataGridViewImageColumn update = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(update);
+                update.HeaderText = "";
+                update.Name = "update";
+                update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                update.Image = Properties.Resources.Update_Icon;
+
+
+                DataGridViewImageColumn Archive = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(Archive);
+                Archive.HeaderText = "";
+                Archive.Name = "Archive";
+                Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Archive.Image = Properties.Resources.Archive_Icon;
+
+                DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(Indicator);
+                Indicator.HeaderText = "Indicator";
+                Indicator.Name = "Indicator";
+                Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Indicator.Image = Properties.Resources.loading;
+
+
+
+                searchupdate();
+            }
+            else
+            {
+
+            }
+
 
             
-
-            DataView dv = new DataView(dt);
-            dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
-
-            Inventory_Datagrid.DataSource = null;
-            Inventory_Datagrid.Rows.Clear();
-            Inventory_Datagrid.Columns.Clear();
-            Inventory_Datagrid.DataSource = dv;
-
-
-
-            DataGridViewImageColumn update = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(update);
-            update.HeaderText = "";
-            update.Name = "update";
-            update.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            update.Image = Properties.Resources.Update_Icon;
-
-
-            DataGridViewImageColumn Archive = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(Archive);
-            Archive.HeaderText = "";
-            Archive.Name = "Archive";
-            Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Archive.Image = Properties.Resources.Archive_Icon;
-
-            DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(Indicator);
-            Indicator.HeaderText = "Indicator";
-            Indicator.Name = "Indicator";
-            Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Indicator.Image = Properties.Resources.loading;
-
-
-
-            searchupdate();
 
         }
 
@@ -1145,142 +1147,165 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton5_Click(object sender, EventArgs e)
         {
-            //instock button
+            if(Form1.status=="true")
+            {
+                //instock button
 
-            showall.Normalcolor = Color.FromArgb(116, 170, 255);
-            instock.Normalcolor = Color.FromArgb(49, 129, 255);
-            highonstock.Normalcolor = Color.FromArgb(116, 170, 255);
-            lowonstock.Normalcolor = Color.FromArgb(116, 170, 255);
-            outofstock.Normalcolor = Color.FromArgb(116, 170, 255);
+                showall.Normalcolor = Color.FromArgb(116, 170, 255);
+                instock.Normalcolor = Color.FromArgb(49, 129, 255);
+                highonstock.Normalcolor = Color.FromArgb(116, 170, 255);
+                lowonstock.Normalcolor = Color.FromArgb(116, 170, 255);
+                outofstock.Normalcolor = Color.FromArgb(116, 170, 255);
 
-            DataView dv = new DataView(dt);
-            dv.RowFilter = "[" + "String Indicator" + "]" + "LIKE '%" + "in stock" + "%'";
+                DataView dv = new DataView(dt);
+                dv.RowFilter = "[" + "String Indicator" + "]" + "LIKE '%" + "in stock" + "%'";
 
-            Inventory_Datagrid.DataSource = null;
-            Inventory_Datagrid.Rows.Clear();
-            Inventory_Datagrid.Columns.Clear();
-            Inventory_Datagrid.DataSource = dv;
-
-
-
-            DataGridViewImageColumn update = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(update);
-            update.HeaderText = "";
-            update.Name = "update";
-            update.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            update.Image = Properties.Resources.Update_Icon;
+                Inventory_Datagrid.DataSource = null;
+                Inventory_Datagrid.Rows.Clear();
+                Inventory_Datagrid.Columns.Clear();
+                Inventory_Datagrid.DataSource = dv;
 
 
-            DataGridViewImageColumn Archive = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(Archive);
-            Archive.HeaderText = "";
-            Archive.Name = "Archive";
-            Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Archive.Image = Properties.Resources.Archive_Icon;
+
+                DataGridViewImageColumn update = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(update);
+                update.HeaderText = "";
+                update.Name = "update";
+                update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                update.Image = Properties.Resources.Update_Icon;
 
 
-            DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(Indicator);
-            Indicator.HeaderText = "Indicator";
-            Indicator.Name = "Indicator";
-            Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Indicator.Image = Properties.Resources.loading;
+                DataGridViewImageColumn Archive = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(Archive);
+                Archive.HeaderText = "";
+                Archive.Name = "Archive";
+                Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Archive.Image = Properties.Resources.Archive_Icon;
 
-            searchupdate();
+
+                DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(Indicator);
+                Indicator.HeaderText = "Indicator";
+                Indicator.Name = "Indicator";
+                Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Indicator.Image = Properties.Resources.loading;
+
+                searchupdate();
+            }
+            else
+            {
+                MessageBox.Show("Module is still loading.");
+            }
+           
 
 
         }
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            //view all
+            if(Form1.status=="true")
+            {
+                //view all
 
-            showall.Normalcolor = Color.FromArgb(49, 129, 255);
-            instock.Normalcolor = Color.FromArgb(116, 170, 255);
-            highonstock.Normalcolor = Color.FromArgb(116, 170, 255);
-            lowonstock.Normalcolor = Color.FromArgb(116, 170, 255);
-            outofstock.Normalcolor = Color.FromArgb(116, 170, 255);
-
-
-            Inventory_Datagrid.DataSource = null;
-            Inventory_Datagrid.Rows.Clear();
-            Inventory_Datagrid.Columns.Clear();
-            Inventory_Datagrid.DataSource = dt;
+                showall.Normalcolor = Color.FromArgb(49, 129, 255);
+                instock.Normalcolor = Color.FromArgb(116, 170, 255);
+                highonstock.Normalcolor = Color.FromArgb(116, 170, 255);
+                lowonstock.Normalcolor = Color.FromArgb(116, 170, 255);
+                outofstock.Normalcolor = Color.FromArgb(116, 170, 255);
 
 
+                Inventory_Datagrid.DataSource = null;
+                Inventory_Datagrid.Rows.Clear();
+                Inventory_Datagrid.Columns.Clear();
+                Inventory_Datagrid.DataSource = dt;
+
+                DataGridViewImageColumn update = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(update);
+                update.HeaderText = "";
+                update.Name = "update";
+                update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                update.Image = Properties.Resources.Update_Icon;
 
 
-            DataGridViewImageColumn update = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(update);
-            update.HeaderText = "";
-            update.Name = "update";
-            update.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            update.Image = Properties.Resources.Update_Icon;
+                DataGridViewImageColumn Archive = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(Archive);
+                Archive.HeaderText = "";
+                Archive.Name = "Archive";
+                Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Archive.Image = Properties.Resources.Archive_Icon;
 
 
-            DataGridViewImageColumn Archive = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(Archive);
-            Archive.HeaderText = "";
-            Archive.Name = "Archive";
-            Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Archive.Image = Properties.Resources.Archive_Icon;
+                DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(Indicator);
+                Indicator.HeaderText = "Indicator";
+                Indicator.Name = "Indicator";
+                Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Indicator.Image = Properties.Resources.loading;
 
-
-            DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(Indicator);
-            Indicator.HeaderText = "Indicator";
-            Indicator.Name = "Indicator";
-            Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Indicator.Image = Properties.Resources.loading;
-
-            DataViewAll();
+                DataViewAll();
+            }
+            else
+            {
+                MessageBox.Show("Module is still loading.");
+            }
+            
            
         }
 
         private void outofstock_Click(object sender, EventArgs e)
         {
-            //out of stock button
 
-            showall.Normalcolor = Color.FromArgb(116, 170, 255);
-            instock.Normalcolor = Color.FromArgb(116, 170, 255);
-            highonstock.Normalcolor = Color.FromArgb(116, 170, 255);
-            lowonstock.Normalcolor = Color.FromArgb(116, 170, 255);
-            outofstock.Normalcolor = Color.FromArgb(49, 129, 255);
+            if (Form1.status == "true")
+            {
+                //out of stock button
 
-            DataView dv = new DataView(dt);
-            dv.RowFilter = "[" + "String Indicator" + "]" + "LIKE '%" + "out of stock" + "%'";
+                showall.Normalcolor = Color.FromArgb(116, 170, 255);
+                instock.Normalcolor = Color.FromArgb(116, 170, 255);
+                highonstock.Normalcolor = Color.FromArgb(116, 170, 255);
+                lowonstock.Normalcolor = Color.FromArgb(116, 170, 255);
+                outofstock.Normalcolor = Color.FromArgb(49, 129, 255);
 
-            Inventory_Datagrid.DataSource = null;
-            Inventory_Datagrid.Rows.Clear();
-            Inventory_Datagrid.Columns.Clear();
-            Inventory_Datagrid.DataSource = dv;
+                DataView dv = new DataView(dt);
+                dv.RowFilter = "[" + "String Indicator" + "]" + "LIKE '%" + "out of stock" + "%'";
 
-
-
-            DataGridViewImageColumn update = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(update);
-            update.HeaderText = "";
-            update.Name = "update";
-            update.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            update.Image = Properties.Resources.Update_Icon;
+                Inventory_Datagrid.DataSource = null;
+                Inventory_Datagrid.Rows.Clear();
+                Inventory_Datagrid.Columns.Clear();
+                Inventory_Datagrid.DataSource = dv;
 
 
-            DataGridViewImageColumn Archive = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(Archive);
-            Archive.HeaderText = "";
-            Archive.Name = "Archive";
-            Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Archive.Image = Properties.Resources.Archive_Icon;
+
+                DataGridViewImageColumn update = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(update);
+                update.HeaderText = "";
+                update.Name = "update";
+                update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                update.Image = Properties.Resources.Update_Icon;
 
 
-            DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(Indicator);
-            Indicator.HeaderText = "Indicator";
-            Indicator.Name = "Indicator";
-            Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Indicator.Image = Properties.Resources.loading;
+                DataGridViewImageColumn Archive = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(Archive);
+                Archive.HeaderText = "";
+                Archive.Name = "Archive";
+                Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Archive.Image = Properties.Resources.Archive_Icon;
 
-            searchupdate();
+
+                DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(Indicator);
+                Indicator.HeaderText = "Indicator";
+                Indicator.Name = "Indicator";
+                Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Indicator.Image = Properties.Resources.loading;
+
+                searchupdate();
+            }
+            else
+            {
+                MessageBox.Show("Module is still loading.");
+            }
+
+            
         }
 
     
@@ -1289,94 +1314,115 @@ namespace NCR_SYSTEM_1
 
         private void lowonstock_Click(object sender, EventArgs e)
         {
-            //low on stock button
 
-            showall.Normalcolor = Color.FromArgb(116, 170, 255);
-            instock.Normalcolor = Color.FromArgb(116, 170, 255);
-            highonstock.Normalcolor = Color.FromArgb(116, 170, 255);
-            lowonstock.Normalcolor = Color.FromArgb(49, 129, 255);
-            outofstock.Normalcolor = Color.FromArgb(116, 170, 255);
+            if (Form1.status == "true")
+            {
+                //low on stock button
 
-            DataView dv = new DataView(dt);
-            dv.RowFilter = "[" + "String Indicator" + "]" + "LIKE '%" + "low on stock" + "%'";
+                showall.Normalcolor = Color.FromArgb(116, 170, 255);
+                instock.Normalcolor = Color.FromArgb(116, 170, 255);
+                highonstock.Normalcolor = Color.FromArgb(116, 170, 255);
+                lowonstock.Normalcolor = Color.FromArgb(49, 129, 255);
+                outofstock.Normalcolor = Color.FromArgb(116, 170, 255);
 
-            Inventory_Datagrid.DataSource = null;
-            Inventory_Datagrid.Rows.Clear();
-            Inventory_Datagrid.Columns.Clear();
-            Inventory_Datagrid.DataSource = dv;
+                DataView dv = new DataView(dt);
+                dv.RowFilter = "[" + "String Indicator" + "]" + "LIKE '%" + "low on stock" + "%'";
 
-
-
-            DataGridViewImageColumn update = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(update);
-            update.HeaderText = "";
-            update.Name = "update";
-            update.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            update.Image = Properties.Resources.Update_Icon;
+                Inventory_Datagrid.DataSource = null;
+                Inventory_Datagrid.Rows.Clear();
+                Inventory_Datagrid.Columns.Clear();
+                Inventory_Datagrid.DataSource = dv;
 
 
-            DataGridViewImageColumn Archive = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(Archive);
-            Archive.HeaderText = "";
-            Archive.Name = "Archive";
-            Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Archive.Image = Properties.Resources.Archive_Icon;
+
+                DataGridViewImageColumn update = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(update);
+                update.HeaderText = "";
+                update.Name = "update";
+                update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                update.Image = Properties.Resources.Update_Icon;
 
 
-            DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(Indicator);
-            Indicator.HeaderText = "Indicator";
-            Indicator.Name = "Indicator";
-            Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Indicator.Image = Properties.Resources.loading;
+                DataGridViewImageColumn Archive = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(Archive);
+                Archive.HeaderText = "";
+                Archive.Name = "Archive";
+                Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Archive.Image = Properties.Resources.Archive_Icon;
 
-            searchupdate();
+
+                DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(Indicator);
+                Indicator.HeaderText = "Indicator";
+                Indicator.Name = "Indicator";
+                Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Indicator.Image = Properties.Resources.loading;
+
+                searchupdate();
+            }
+            else
+            {
+                MessageBox.Show("Module is still loading.");
+            }
+
+            
         }
 
         private void highonstock_Click(object sender, EventArgs e)
         {
-            //high on stock button
 
-            showall.Normalcolor = Color.FromArgb(116, 170, 255);
-            instock.Normalcolor = Color.FromArgb(116, 170, 255);
-            highonstock.Normalcolor = Color.FromArgb(49, 129, 255);
-            lowonstock.Normalcolor = Color.FromArgb(116, 170, 255);
-            outofstock.Normalcolor = Color.FromArgb(116, 170, 255);
+            if (Form1.status == "true")
+            {
+                //high on stock button
 
-            DataView dv = new DataView(dt);
-            dv.RowFilter = "[" + "String Indicator" + "]" + "LIKE '%" + "high on stock" + "%'";
+                showall.Normalcolor = Color.FromArgb(116, 170, 255);
+                instock.Normalcolor = Color.FromArgb(116, 170, 255);
+                highonstock.Normalcolor = Color.FromArgb(49, 129, 255);
+                lowonstock.Normalcolor = Color.FromArgb(116, 170, 255);
+                outofstock.Normalcolor = Color.FromArgb(116, 170, 255);
 
-            Inventory_Datagrid.DataSource = null;
-            Inventory_Datagrid.Rows.Clear();
-            Inventory_Datagrid.Columns.Clear();
-            Inventory_Datagrid.DataSource = dv;
+                DataView dv = new DataView(dt);
+                dv.RowFilter = "[" + "String Indicator" + "]" + "LIKE '%" + "high on stock" + "%'";
 
-
-
-            DataGridViewImageColumn update = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(update);
-            update.HeaderText = "";
-            update.Name = "update";
-            update.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            update.Image = Properties.Resources.Update_Icon;
+                Inventory_Datagrid.DataSource = null;
+                Inventory_Datagrid.Rows.Clear();
+                Inventory_Datagrid.Columns.Clear();
+                Inventory_Datagrid.DataSource = dv;
 
 
-            DataGridViewImageColumn Archive = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(Archive);
-            Archive.HeaderText = "";
-            Archive.Name = "Archive";
-            Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Archive.Image = Properties.Resources.Archive_Icon;
+
+                DataGridViewImageColumn update = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(update);
+                update.HeaderText = "";
+                update.Name = "update";
+                update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                update.Image = Properties.Resources.Update_Icon;
 
 
-            DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(Indicator);
-            Indicator.HeaderText = "Indicator";
-            Indicator.Name = "Indicator";
-            Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Indicator.Image = Properties.Resources.loading;
+                DataGridViewImageColumn Archive = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(Archive);
+                Archive.HeaderText = "";
+                Archive.Name = "Archive";
+                Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Archive.Image = Properties.Resources.Archive_Icon;
 
-            searchupdate();
+
+                DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(Indicator);
+                Indicator.HeaderText = "Indicator";
+                Indicator.Name = "Indicator";
+                Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Indicator.Image = Properties.Resources.loading;
+
+                searchupdate();
+            }
+            else
+            {
+                MessageBox.Show("Module is still loading.");
+            }
+
+
+            
         }
 
         private void Inventory_Datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1576,6 +1622,45 @@ namespace NCR_SYSTEM_1
             DataObject dataObj = Inventory_Datagrid.GetClipboardContent();
             if (dataObj != null)
                 Clipboard.SetDataObject(dataObj);
+        }
+
+        private void bunifuFlatButton1_Click_1(object sender, EventArgs e)
+        {
+            if (Form1.status == "true")
+            {
+                copyAlltoClipboard();
+                Microsoft.Office.Interop.Excel.Application xlexcel;
+                Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+                Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+                object misValue = System.Reflection.Missing.Value;
+                xlexcel = new Excel.Application();
+                xlexcel.Visible = true;
+                xlWorkBook = xlexcel.Workbooks.Add(misValue);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+                Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[1, 1];
+                CR.Select();
+                xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+            }
+            else
+            {
+                MessageBox.Show("Module is still loading.");
+            }
+            
+        }
+
+        private void bunifuFlatButton2_Click_1(object sender, EventArgs e)
+        {
+            if (Form1.status=="true")
+            {
+                Addnewproduct_popup a = new Addnewproduct_popup();
+                a.Show();
+
+                Form1.status = "false";
+            }
+            else
+            {
+                MessageBox.Show("The tab is currently already open.");
+            }
         }
     }
 }

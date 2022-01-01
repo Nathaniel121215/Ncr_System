@@ -212,6 +212,10 @@
             this.pprice.TabIndex = 190;
             this.pprice.Text = "0.00";
             this.pprice.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.pprice.Enter += new System.EventHandler(this.pprice_Enter);
+            this.pprice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pprice_KeyPress);
+            this.pprice.KeyUp += new System.Windows.Forms.KeyEventHandler(this.pprice_KeyUp);
+            this.pprice.Leave += new System.EventHandler(this.pprice_Leave);
             // 
             // label3
             // 

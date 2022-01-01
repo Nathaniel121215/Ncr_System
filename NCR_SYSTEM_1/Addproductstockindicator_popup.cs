@@ -23,17 +23,33 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            lowtxt = low.Text;
-            hightxt = high.Text;
-            this.Hide();
-            Inventory_Module.checker = "allow";
-            Addnewproduct_popup._instance.save();
+            if(low.Text!="" && high.Text!="" && Convert.ToInt32(low.Text) < Convert.ToInt32(high.Text) && low.Text != "0" && high.Text != "0")
+            {
+                lowtxt = low.Text;
+                hightxt = high.Text;
+                this.Hide();
+                Form1.status = "true";
+                Addnewproduct_popup._instance.save();
+            }
+            else
+            {
+                if(low.Text == "0" && high.Text == "0")
+                {
+                    MessageBox.Show("Invalid input.");
+                }
+                else
+                {
+                    MessageBox.Show("Fill up all necessary fields.");
+                }
+                
+            }
+            
 
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            Inventory_Module.checker = "allow";
+            Form1.status = "true";
             this.Hide();
           
         }
@@ -45,9 +61,19 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            Inventory_Module.checker = "allow";
+            Form1.status = "true";
             this.Hide();
           
+        }
+
+        private void low_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void high_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

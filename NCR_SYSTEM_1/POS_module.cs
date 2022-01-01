@@ -1365,34 +1365,42 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            DataView dv = new DataView(dt);
-            dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
+            if(searchtxt.Text!="" & Form1.status=="true")
+            {
+                DataView dv = new DataView(dt);
+                dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
 
-            Inventory_Datagridview.DataSource = null;
-            Inventory_Datagridview.Rows.Clear();
-            Inventory_Datagridview.Columns.Clear();
-            Inventory_Datagridview.DataSource = dv;
-
-
-
-            DataGridViewImageColumn Add = new DataGridViewImageColumn();
-            Inventory_Datagridview.Columns.Add(Add);
-            Add.HeaderText = "";
-            Add.Name = "";
-            Add.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Add.Image = Properties.Resources.Add_Icon;
-
-
-            DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
-            Inventory_Datagridview.Columns.Add(Indicator);
-            Indicator.HeaderText = "Indicator";
-            Indicator.Name = "Indicator";
-            Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Indicator.Image = Properties.Resources.loading;
+                Inventory_Datagridview.DataSource = null;
+                Inventory_Datagridview.Rows.Clear();
+                Inventory_Datagridview.Columns.Clear();
+                Inventory_Datagridview.DataSource = dv;
 
 
 
-            searchupdate();
+                DataGridViewImageColumn Add = new DataGridViewImageColumn();
+                Inventory_Datagridview.Columns.Add(Add);
+                Add.HeaderText = "";
+                Add.Name = "";
+                Add.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Add.Image = Properties.Resources.Add_Icon;
+
+
+                DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
+                Inventory_Datagridview.Columns.Add(Indicator);
+                Indicator.HeaderText = "Indicator";
+                Indicator.Name = "Indicator";
+                Indicator.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Indicator.Image = Properties.Resources.loading;
+
+
+
+                searchupdate();
+            }
+            else
+            {
+
+            }
+            
         }
 
         public void searchupdate()

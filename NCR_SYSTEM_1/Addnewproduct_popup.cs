@@ -15,6 +15,8 @@ namespace NCR_SYSTEM_1
 {
     public partial class Addnewproduct_popup : Form
     {
+        string fmt = "##.00";
+
         IFirebaseClient client;
 
 
@@ -153,10 +155,18 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            
+            if(pname.Text!="" && pprice.Text != "" && pbrand.Text != "" && pdescription.Text != "" && pcategory.Text != "" && punit.Text != "")
+            {
                 Addproductstockindicator_popup a = new Addproductstockindicator_popup();
                 a.Show();
                 this.Hide();
+
+            }
+            else
+            {
+                MessageBox.Show("Fill up all necessary fields.");
+            }
+               
          
 
 
@@ -283,7 +293,8 @@ namespace NCR_SYSTEM_1
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Inventory_Module.checker = "allow";
+            Form1.status = "true";
+            
         }
 
         public void refreshcategory()
@@ -390,12 +401,55 @@ namespace NCR_SYSTEM_1
         private void bunifuFlatButton2_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            Inventory_Module.checker = "allow";
+            Form1.status = "true";
         }
 
         private void errormessage_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pprice_Enter(object sender, EventArgs e)
+        {
+            if(pprice.Text=="0.00")
+            {
+                pprice.Text = "";
+            }
+            else
+            {
+                
+            }
+        }
+
+        private void pprice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void pprice_Leave(object sender, EventArgs e)
+        {
+           
+            if (pprice.Text == "")
+            {
+                pprice.Text = "0.00";
+
+                decimal a = Convert.ToDecimal(pprice.Text);
+                pprice.Text = a.ToString(fmt);
+            }
+            else
+            {
+                decimal a = Convert.ToDecimal(pprice.Text);
+                pprice.Text = a.ToString(fmt);
+            }
+        }
+
+        private void pprice_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                decimal a = Convert.ToDecimal(pprice.Text);
+                pprice.Text = a.ToString(fmt);
+            }
         }
     }
 }
