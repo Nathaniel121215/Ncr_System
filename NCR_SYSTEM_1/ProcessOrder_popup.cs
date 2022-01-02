@@ -111,168 +111,185 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-
-       
-            temfee = stockpurchase_Module.fee.ToString(fmt);
-
-         
-            if (temfee.Equals(".00"))
+            if(suppliername.Text != "" && remarks.Text!="" )
             {
-                temfee = "0.00";
-            }
-
-      
-
-            refferencenum = refnumber.Text;
-            date = transacdate.Text;
-            supplier = suppliername.Text;
-            remark = remarks.Text;
+                temfee = stockpurchase_Module.fee.ToString(fmt);
 
 
-
-
-            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
-            {
-                MessageBox.Show("Recorded successfully");
-
-
-                //GET restock counter
-                FirebaseResponse resp = client.Get("ReStockCounter/node");
-                Counter_class get = resp.ResultAs<Counter_class>();
-
-                var data = new Stock_class
+                if (temfee.Equals(".00"))
                 {
-                    Restock_ID = (Convert.ToInt32(get.cnt) + 1).ToString(),
-
-                    Reference_Number = refferencenum,
-                    Date_Of_Transaction = date,
-                    Supplier_Name = supplier,
-                    Items = stockpurchase_Module.details2,
-
-                    Order_Total = stockpurchase_Module.total.ToString(),
-                    Sub_Total = stockpurchase_Module.subtotal.ToString(),
-
-
-
-
-                    Fee = temfee,
-                    Change = stockpurchase_Module.change.ToString(),
-                    Amount_Tendered = stockpurchase_Module.payment.ToString(fmt),
-
-                    Assisted_By = Form1.username,
-                    Remark = remark,
-
-                };
-
-                //ADD new restocklog
-                SetResponse response = client.Set("ReStockLog/" + data.Restock_ID, data);
-                Stock_class result = response.ResultAs<Stock_class>();
-
-                //update counter
-                var obj = new Counter_class
-                {
-                    cnt = data.Restock_ID
-                };
-
-                SetResponse response1 = client.Set("ReStockCounter/node", obj);
-
-
-                //update last transaction 
-                int i = 0;
-                FirebaseResponse resp2 = client.Get("SupplierCounter/node");
-                Counter_class obj2 = resp.ResultAs<Counter_class>();
-                int cnt = Convert.ToInt32(obj2.cnt);
-
-
-                while (i <= cnt)
-                {
-
-                    i++;
-                    try
-                    {
-
-                        FirebaseResponse resp1 = client.Get("Supplier/" + i);
-                        Supplier_Class obj3 = resp1.ResultAs<Supplier_Class>();
-
-                        if (supplier.Equals(obj3.Supplier_Name))
-                        {
-                            var data2 = new update_last
-                            {
-
-                                Supplier_ID = obj3.Supplier_ID,
-                                Supplier_LastTransaction = date,
-
-                            };
-                            FirebaseResponse response2 = client.Update("Supplier/" + data2.Supplier_ID, data2);
-
-
-                        }
-                        else
-                        {
-
-                        }
-
-                    }
-
-                    catch
-                    {
-
-                    }
+                    temfee = "0.00";
                 }
 
-                //Activity Log STOCK PURCHASE EVENT
-
-                FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
-                Counter_class get4 = resp4.ResultAs<Counter_class>();
-                int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
 
 
+                refferencenum = refnumber.Text;
+                date = transacdate.Text;
+                supplier = suppliername.Text;
+                remark = remarks.Text;
 
-                var data3 = new ActivityLog_Class
+
+
+
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
                 {
-                    Event_ID = cnt4.ToString(),
-                    Module = "Stock Replenishment Module",
-                    Action = "Restock-ID: " + data.Restock_ID + "   Item Restocked",
-                    Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
-                    User = Form1.username,
-                    Accountlvl = Form1.levelac,
-
-                };
+                    MessageBox.Show("Recorded successfully");
 
 
+                    //GET restock counter
+                    FirebaseResponse resp = client.Get("ReStockCounter/node");
+                    Counter_class get = resp.ResultAs<Counter_class>();
 
-                FirebaseResponse response5 = client.Set("ActivityLog/" + data3.Event_ID, data3);
+                    var data = new Stock_class
+                    {
+                        Restock_ID = (Convert.ToInt32(get.cnt) + 1).ToString(),
+
+                        Reference_Number = refferencenum,
+                        Date_Of_Transaction = date,
+                        Supplier_Name = supplier,
+                        Items = stockpurchase_Module.details2,
+
+                        Order_Total = stockpurchase_Module.total.ToString(),
+                        Sub_Total = stockpurchase_Module.subtotal.ToString(),
 
 
 
-                var obj4 = new Counter_class
+
+                        Fee = temfee,
+                        Change = stockpurchase_Module.change.ToString(),
+                        Amount_Tendered = stockpurchase_Module.payment.ToString(fmt),
+
+                        Assisted_By = Form1.username,
+                        Remark = remark,
+
+                    };
+
+                    //ADD new restocklog
+                    SetResponse response = client.Set("ReStockLog/" + data.Restock_ID, data);
+                    Stock_class result = response.ResultAs<Stock_class>();
+
+                    //update counter
+                    var obj = new Counter_class
+                    {
+                        cnt = data.Restock_ID
+                    };
+
+                    SetResponse response1 = client.Set("ReStockCounter/node", obj);
+
+
+                    //update last transaction 
+                    int i = 0;
+                    FirebaseResponse resp2 = client.Get("SupplierCounter/node");
+                    Counter_class obj2 = resp.ResultAs<Counter_class>();
+                    int cnt = Convert.ToInt32(obj2.cnt);
+
+
+                    while (i <= cnt)
+                    {
+
+                        i++;
+                        try
+                        {
+
+                            FirebaseResponse resp1 = client.Get("Supplier/" + i);
+                            Supplier_Class obj3 = resp1.ResultAs<Supplier_Class>();
+
+                            if (supplier.Equals(obj3.Supplier_Name))
+                            {
+                                var data2 = new update_last
+                                {
+
+                                    Supplier_ID = obj3.Supplier_ID,
+                                    Supplier_LastTransaction = date,
+
+                                };
+                                FirebaseResponse response2 = client.Update("Supplier/" + data2.Supplier_ID, data2);
+
+
+                            }
+                            else
+                            {
+
+                            }
+
+                        }
+
+                        catch
+                        {
+
+                        }
+                    }
+
+                    //Activity Log STOCK PURCHASE EVENT
+
+                    FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
+                    Counter_class get4 = resp4.ResultAs<Counter_class>();
+                    int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
+
+
+
+                    var data3 = new ActivityLog_Class
+                    {
+                        Event_ID = cnt4.ToString(),
+                        Module = "Stock Replenishment Module",
+                        Action = "Restock-ID: " + data.Restock_ID + "   Item Restocked",
+                        Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                        User = Form1.username,
+                        Accountlvl = Form1.levelac,
+
+                    };
+
+
+
+                    FirebaseResponse response5 = client.Set("ActivityLog/" + data3.Event_ID, data3);
+
+
+
+                    var obj4 = new Counter_class
+                    {
+                        cnt = data3.Event_ID
+
+                    };
+
+                    SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
+
+
+
+
+                    this.Hide();
+                    stockpurchase_Module._instance.addstock();
+                }
+
+                else
+
                 {
-                    cnt = data3.Event_ID
-
-                };
-
-                SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
-
-
-
-
-                this.Hide();
-                stockpurchase_Module._instance.addstock();
+                    //do something if NO
+                }
             }
-
             else
-
             {
-                //do something if NO
+                MessageBox.Show("Fill up all necessary fields.");
             }
+       
+            
 
 
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -323,6 +340,20 @@ namespace NCR_SYSTEM_1
             }
 
 
+        }
+
+        private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
         }
     }
 }

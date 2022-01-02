@@ -23,13 +23,24 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            if(low.Text!="" && high.Text!="" && Convert.ToInt32(low.Text) < Convert.ToInt32(high.Text) && low.Text != "0" && high.Text != "0")
+          
+            if (low.Text!="" && high.Text!="" && Convert.ToInt32(low.Text) < Convert.ToInt32(high.Text) && low.Text != "0" && high.Text != "0")
             {
-                lowtxt = low.Text;
-                hightxt = high.Text;
-                this.Hide();
-                Form1.status = "true";
-                Addnewproduct_popup._instance.save();
+
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    lowtxt = low.Text;
+                    hightxt = high.Text;
+                    this.Hide();
+                    Form1.status = "true";
+                    Addnewproduct_popup._instance.save();
+                }
+                else
+                {
+
+                }
+              
             }
             else
             {
@@ -49,9 +60,17 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            Form1.status = "true";
-            this.Hide();
-          
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
+
         }
 
         private void Addproductstockindicator_popup_Load(object sender, EventArgs e)
@@ -61,9 +80,17 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            Form1.status = "true";
-            this.Hide();
-          
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
+
         }
 
         private void low_KeyPress(object sender, KeyPressEventArgs e)

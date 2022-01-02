@@ -51,7 +51,6 @@
             this.bunifuImageButton9 = new Bunifu.Framework.UI.BunifuImageButton();
             this.panel4 = new System.Windows.Forms.Panel();
             this.Inventory_Datagridview = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            this.combofilter = new Bunifu.Framework.UI.BunifuDropdown();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.searchtxt = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -78,6 +77,7 @@
             this.datedisplay = new System.Windows.Forms.Label();
             this.accountinfolvl = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.combofilter = new Bunifu.Framework.UI.BunifuDropdown();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
@@ -350,29 +350,6 @@
             this.Inventory_Datagridview.Size = new System.Drawing.Size(940, 754);
             this.Inventory_Datagridview.TabIndex = 178;
             this.Inventory_Datagridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Inventory_Datagridview_CellClick);
-            // 
-            // combofilter
-            // 
-            this.combofilter.BackColor = System.Drawing.Color.Transparent;
-            this.combofilter.BorderRadius = 0;
-            this.combofilter.ForeColor = System.Drawing.Color.White;
-            this.combofilter.Items = new string[] {
-        "Product ID",
-        "Product Name",
-        "Unit",
-        "Brand",
-        "Product Description",
-        "Category",
-        "Price",
-        "Item Sold",
-        "Stock"};
-            this.combofilter.Location = new System.Drawing.Point(914, 178);
-            this.combofilter.Name = "combofilter";
-            this.combofilter.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.combofilter.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.combofilter.selectedIndex = 0;
-            this.combofilter.Size = new System.Drawing.Size(148, 40);
-            this.combofilter.TabIndex = 265;
             // 
             // bunifuFlatButton1
             // 
@@ -824,18 +801,38 @@
             this.pictureBox3.TabIndex = 275;
             this.pictureBox3.TabStop = false;
             // 
+            // combofilter
+            // 
+            this.combofilter.BackColor = System.Drawing.Color.Transparent;
+            this.combofilter.BorderRadius = 3;
+            this.combofilter.ForeColor = System.Drawing.Color.White;
+            this.combofilter.Items = new string[] {
+        "Product Name",
+        "Unit",
+        "Brand",
+        "Price",
+        "Indicator",
+        "Stock"};
+            this.combofilter.Location = new System.Drawing.Point(910, 177);
+            this.combofilter.Name = "combofilter";
+            this.combofilter.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.combofilter.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.combofilter.selectedIndex = 0;
+            this.combofilter.Size = new System.Drawing.Size(148, 40);
+            this.combofilter.TabIndex = 276;
+            // 
             // POS_module
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.combofilter);
             this.Controls.Add(this.accountinfolvl);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.datedisplay);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.combofilter);
             this.Controls.Add(this.bunifuFlatButton1);
             this.Controls.Add(this.searchtxt);
             this.Controls.Add(this.panel6);
@@ -886,7 +883,6 @@
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton9;
         private System.Windows.Forms.Panel panel4;
         protected internal Bunifu.Framework.UI.BunifuCustomDataGrid Inventory_Datagridview;
-        private Bunifu.Framework.UI.BunifuDropdown combofilter;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
         private Bunifu.Framework.UI.BunifuMetroTextbox searchtxt;
         private System.Windows.Forms.Panel panel6;
@@ -916,5 +912,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label accountinfolvl;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private Bunifu.Framework.UI.BunifuDropdown combofilter;
     }
 }

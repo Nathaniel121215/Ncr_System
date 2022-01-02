@@ -162,15 +162,26 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
+           
             decimal n = Convert.ToDecimal(pprice.Text);
             pprice.Text = n.ToString(fmt);
 
             if (pname.Text!="" && pprice.Text != "" && pbrand.Text != "" && pdescription.Text != "" && pcategory.Text != "" && punit.Text != "" && pprice.Text != "0.00")
             {
-                Addproductstockindicator_popup a = new Addproductstockindicator_popup();
-                a.Show();
-                this.Hide();
+                
 
+
+                if (MessageBox.Show("Please confirm before proceed" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    Addproductstockindicator_popup a = new Addproductstockindicator_popup();
+                    a.Show();
+                    this.Hide();
+                }
+                else
+                {
+
+                }
             }
             else
             {
@@ -302,8 +313,17 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Form1.status = "true";
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
+                
             
         }
 
@@ -410,8 +430,16 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton2_Click_1(object sender, EventArgs e)
         {
-            this.Hide();
-            Form1.status = "true";
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
         }
 
         private void errormessage_Click(object sender, EventArgs e)

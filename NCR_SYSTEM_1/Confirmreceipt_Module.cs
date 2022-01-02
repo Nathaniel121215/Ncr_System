@@ -30,7 +30,22 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+
+                stockpurchase_Module.payment = 0;
+                stockpurchase_Module.change = 0;
+                stockpurchase_Module.fee = 0;
+                stockpurchase_Module.subtotal = 0;
+                stockpurchase_Module.total = 0;
+            }
+            else
+            {
+
+            }
         }
 
         private void Confirmreceipt_Module_Load(object sender, EventArgs e)
@@ -339,7 +354,23 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide(); 
+                Form1.status = "true";
+
+                stockpurchase_Module.payment = 0;
+                stockpurchase_Module.change = 0;
+                stockpurchase_Module.fee = 0;
+                stockpurchase_Module.subtotal = 0;
+                stockpurchase_Module.total = 0;
+            }
+            else
+            {
+
+            }
+
         }
     }
 }

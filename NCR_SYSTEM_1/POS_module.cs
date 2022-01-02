@@ -1206,20 +1206,28 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            Cart_Datagridview.Rows.Clear();
-            clear();
+            if (Form1.status == "true")
+            {
+                Cart_Datagridview.Rows.Clear();
+                clear();
 
 
-            FreeGoalsuppresor = 1;
-            freeitembtn.Enabled = false;
-            freeitembtn.Visible = false;
-            free = true;
+                FreeGoalsuppresor = 1;
+                freeitembtn.Enabled = false;
+                freeitembtn.Visible = false;
+                free = true;
 
-            payment = 0;
-            change = 0;
-            fee = 0;
-            subtotal = 0;
-            total = 0;
+                payment = 0;
+                change = 0;
+                fee = 0;
+                subtotal = 0;
+                total = 0;
+            }
+            else
+            {
+                MessageBox.Show("The Module is still loading or a window is currently open.");
+            }
+            
 
         }
 
