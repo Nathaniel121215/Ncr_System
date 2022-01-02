@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             this.bunifuImageButton16 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton10 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton8 = new Bunifu.Framework.UI.BunifuImageButton();
@@ -55,7 +56,6 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.searchtxt = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.searchbutton = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.combofilter = new Bunifu.Framework.UI.BunifuDropdown();
             this.datedisplay = new System.Windows.Forms.Label();
             this.showall = new Bunifu.Framework.UI.BunifuFlatButton();
             this.lowonstock = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -67,7 +67,7 @@
             this.accountinfolvl = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.label8 = new System.Windows.Forms.Label();
+            this.combofilter = new Bunifu.Framework.UI.BunifuDropdown();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton10)).BeginInit();
@@ -119,6 +119,17 @@
             this.panel1.Size = new System.Drawing.Size(335, 1085);
             this.panel1.TabIndex = 3;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(46, 54);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(232, 19);
+            this.label8.TabIndex = 48;
+            this.label8.Text = "NCR TRANSACTION SYSTEM";
             // 
             // bunifuImageButton16
             // 
@@ -361,31 +372,31 @@
             // 
             // Inventory_Datagrid
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.Inventory_Datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.Inventory_Datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Inventory_Datagrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Inventory_Datagrid.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.Inventory_Datagrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Inventory_Datagrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.Inventory_Datagrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Inventory_Datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Inventory_Datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.Inventory_Datagrid.ColumnHeadersHeight = 40;
             this.Inventory_Datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Inventory_Datagrid.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Inventory_Datagrid.DefaultCellStyle = dataGridViewCellStyle3;
             this.Inventory_Datagrid.DoubleBuffered = true;
             this.Inventory_Datagrid.EnableHeadersVisualStyles = false;
             this.Inventory_Datagrid.GridColor = System.Drawing.Color.Black;
@@ -480,29 +491,6 @@
             this.searchbutton.Textcolor = System.Drawing.Color.White;
             this.searchbutton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchbutton.Click += new System.EventHandler(this.searchbutton_Click);
-            // 
-            // combofilter
-            // 
-            this.combofilter.BackColor = System.Drawing.Color.Transparent;
-            this.combofilter.BorderRadius = 0;
-            this.combofilter.ForeColor = System.Drawing.Color.White;
-            this.combofilter.Items = new string[] {
-        "Product ID",
-        "Product Name",
-        "Unit",
-        "Brand",
-        "Product Description",
-        "Category",
-        "Price",
-        "Item Sold",
-        "Stock"};
-            this.combofilter.Location = new System.Drawing.Point(912, 179);
-            this.combofilter.Name = "combofilter";
-            this.combofilter.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.combofilter.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
-            this.combofilter.selectedIndex = 0;
-            this.combofilter.Size = new System.Drawing.Size(148, 40);
-            this.combofilter.TabIndex = 167;
             // 
             // datedisplay
             // 
@@ -804,16 +792,27 @@
             this.bunifuFlatButton2.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuFlatButton2.Click += new System.EventHandler(this.bunifuFlatButton2_Click_1);
             // 
-            // label8
+            // combofilter
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(46, 54);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(232, 19);
-            this.label8.TabIndex = 48;
-            this.label8.Text = "NCR TRANSACTION SYSTEM";
+            this.combofilter.BackColor = System.Drawing.Color.Transparent;
+            this.combofilter.BorderRadius = 3;
+            this.combofilter.ForeColor = System.Drawing.Color.White;
+            this.combofilter.Items = new string[] {
+        "Product ID",
+        "Product Name",
+        "Unit",
+        "Brand",
+        "Category",
+        "Price",
+        "Item Sold",
+        "Stock"};
+            this.combofilter.Location = new System.Drawing.Point(912, 178);
+            this.combofilter.Name = "combofilter";
+            this.combofilter.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.combofilter.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.combofilter.selectedIndex = 0;
+            this.combofilter.Size = new System.Drawing.Size(148, 40);
+            this.combofilter.TabIndex = 279;
             // 
             // Inventory_Module
             // 
@@ -821,6 +820,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.combofilter);
             this.Controls.Add(this.bunifuFlatButton2);
             this.Controls.Add(this.accountinfolvl);
             this.Controls.Add(this.pictureBox3);
@@ -831,7 +831,6 @@
             this.Controls.Add(this.lowonstock);
             this.Controls.Add(this.showall);
             this.Controls.Add(this.datedisplay);
-            this.Controls.Add(this.combofilter);
             this.Controls.Add(this.searchbutton);
             this.Controls.Add(this.searchtxt);
             this.Controls.Add(this.panel6);
@@ -886,7 +885,6 @@
         private System.Windows.Forms.Panel panel6;
         private Bunifu.Framework.UI.BunifuFlatButton searchbutton;
         private Bunifu.Framework.UI.BunifuMetroTextbox searchtxt;
-        private Bunifu.Framework.UI.BunifuDropdown combofilter;
         private System.Windows.Forms.Label datedisplay;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton8;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton7;
@@ -907,5 +905,6 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton2;
         private System.Windows.Forms.Label label8;
+        private Bunifu.Framework.UI.BunifuDropdown combofilter;
     }
 }

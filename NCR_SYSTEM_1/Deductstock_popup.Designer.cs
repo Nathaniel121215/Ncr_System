@@ -83,6 +83,9 @@
             this.deductedstocktxt.Size = new System.Drawing.Size(310, 36);
             this.deductedstocktxt.TabIndex = 363;
             this.deductedstocktxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.deductedstocktxt.Enter += new System.EventHandler(this.deductedstocktxt_Enter);
+            this.deductedstocktxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.deductedstocktxt_KeyPress);
+            this.deductedstocktxt.Leave += new System.EventHandler(this.deductedstocktxt_Leave);
             // 
             // reasontxt
             // 

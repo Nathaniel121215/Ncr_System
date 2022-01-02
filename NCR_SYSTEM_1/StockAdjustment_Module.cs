@@ -81,6 +81,18 @@ namespace NCR_SYSTEM_1
 
 
             DataViewAll();
+
+
+            //accountlvldisplay
+
+            if (Form1.levelac == "Admin")
+            {
+                accountinfolvl.Text = "Login as Administrator";
+            }
+            else
+            {
+                accountinfolvl.Text = "Login as Employee";
+            }
         }
 
         public async void DataViewAll()
@@ -89,6 +101,9 @@ namespace NCR_SYSTEM_1
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
+
+            DataGridViewColumn column1 = StockAdjustment_Datagrid.Columns[1];
+            column1.Width = 230;
 
             DataGridViewColumn column3 = StockAdjustment_Datagrid.Columns[3];
             column3.Width = 260;
@@ -145,40 +160,49 @@ namespace NCR_SYSTEM_1
 
         private void StockAdjustment_Datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string columnindex = "";
-
-            try
+            if(Form1.status=="true")
             {
+                string columnindex = "";
 
-
-                //update
-                if (e.ColumnIndex == StockAdjustment_Datagrid.Columns[7].Index)
+                try
                 {
-                    columnindex = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
 
-                    StockAdjustment_Datagrid.Rows[e.RowIndex].Selected = true;
+                    //update
+                    if (e.ColumnIndex == StockAdjustment_Datagrid.Columns[7].Index)
+                    {
+                        columnindex = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-                    id = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    name = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString();
-                    brand = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString();
-                    description = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString();
-                    category = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString();
-                    price = Convert.ToDecimal(StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[5].Value);
-                    stock = Convert.ToInt32(StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[6].Value);
 
-           
+                        StockAdjustment_Datagrid.Rows[e.RowIndex].Selected = true;
 
-                    Deductstock_popup c = new Deductstock_popup();
-                    c.Show();
+                        id = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        name = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString();
+                        brand = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        description = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString();
+                        category = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString();
+                        price = Convert.ToDecimal(StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[5].Value);
+                        stock = Convert.ToInt32(StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[6].Value);
+
+
+
+                        Deductstock_popup c = new Deductstock_popup();
+                        c.Show();
+                        Form1.status = "false";
+
+                    }
+                }
+
+                catch
+                {
 
                 }
             }
-
-            catch
+            else
             {
-
+                MessageBox.Show("Module is still loading.");
             }
+           
         
 
       
@@ -241,6 +265,11 @@ namespace NCR_SYSTEM_1
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
 
+          
+
+            DataGridViewColumn column1 = StockAdjustment_Datagrid.Columns[1];
+            column1.Width = 230;
+
             DataGridViewColumn column3 = StockAdjustment_Datagrid.Columns[3];
             column3.Width = 260;
         }
@@ -272,7 +301,14 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -321,7 +357,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -370,7 +413,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -419,7 +469,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -468,7 +525,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -517,7 +581,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -566,7 +637,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -615,7 +693,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -646,7 +731,14 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -695,7 +787,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -744,7 +843,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -775,7 +881,14 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -806,7 +919,14 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -844,6 +964,61 @@ namespace NCR_SYSTEM_1
             else
             {
 
+            }
+        }
+
+        private void searchtxt_Enter(object sender, EventArgs e)
+        {
+            searchtxt.Text = "";
+        }
+
+        private void searchtxt_Leave(object sender, EventArgs e)
+        {
+            if (searchtxt.Text == "")
+            {
+                searchtxt.Text = "Type here to filter Inventory Content";
+            }
+            else
+            {
+
+            }
+        }
+
+        private void bunifuImageButton10_Click(object sender, EventArgs e)
+        {
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    Utility_settings_module a = new Utility_settings_module();
+                    this.Hide();
+                    a.Show();
+
+                    Form1.loadingtime = 9000;
+                    Form1.status = "false";
+                    Loading_popup b = new Loading_popup();
+                    b.Show();
+                }
+                else
+                {
+
+                }
+
+
+            }
+
+            else
+            {
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
     }

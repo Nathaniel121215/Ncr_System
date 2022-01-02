@@ -534,6 +534,7 @@
             this.Fee.Text = "0.00";
             this.Fee.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.Fee.OnValueChanged += new System.EventHandler(this.Fee_OnValueChanged);
+            this.Fee.FontChanged += new System.EventHandler(this.Fee_FontChanged);
             this.Fee.Enter += new System.EventHandler(this.Fee_Enter);
             this.Fee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Fee_KeyPress);
             this.Fee.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Fee_KeyUp);

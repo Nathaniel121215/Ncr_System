@@ -2080,6 +2080,11 @@ namespace NCR_SYSTEM_1
                 }
             }
         }
+
+        private void Fee_FontChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
