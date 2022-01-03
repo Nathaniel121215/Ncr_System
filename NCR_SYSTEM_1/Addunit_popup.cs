@@ -52,110 +52,127 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-
-            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+            if(unitname.Text!="")
             {
-                String date = DateTime.Now.ToString("MM/dd/yyyy");
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
-
-                FirebaseResponse resp = client.Get("UnitCounter/node");
-
-                Counter_class get = resp.ResultAs<Counter_class>();
-
-                var data = new Unit_Class
                 {
-                    Unit_ID = (Convert.ToInt32(get.cnt) + 1).ToString(),
-                    Unit_Name = unitname.Text,
-                    Date_Added = date,
-
-                };
-
-                SetResponse response = client.Set("Unit/" + data.Unit_ID, data);
-                User_class result = response.ResultAs<User_class>();
-
-                var obj = new Counter_class
-                {
-                    cnt = data.Unit_ID
-                };
-
-                SetResponse response1 = client.Set("UnitCounter/node", obj);
-
-                this.Hide();
+                    String date = DateTime.Now.ToString("MM/dd/yyyy");
 
 
+                    FirebaseResponse resp = client.Get("UnitCounter/node");
 
-                //default
-                try
-                {
-                    Addunit_module._instance.DataViewAll();
-                    Addunit_module.checker = "allow";
+                    Counter_class get = resp.ResultAs<Counter_class>();
+
+                    var data = new Unit_Class
+                    {
+                        Unit_ID = (Convert.ToInt32(get.cnt) + 1).ToString(),
+                        Unit_Name = unitname.Text,
+                        Date_Added = date,
+
+                    };
+
+                    SetResponse response = client.Set("Unit/" + data.Unit_ID, data);
+                    User_class result = response.ResultAs<User_class>();
+
+                    var obj = new Counter_class
+                    {
+                        cnt = data.Unit_ID
+                    };
+
+                    SetResponse response1 = client.Set("UnitCounter/node", obj);
+
+                    this.Hide();
+
+
+
+                    //default
+                    try
+                    {
+                        Addunit_module._instance.DataViewAll();
+                        Form1.status = "true";
+                    }
+                    catch
+                    {
+
+
+
+                    }
+
+
+
+
+                    //add
+                    try
+                    {
+                        Addnewproduct_popup._instance.refreshunit();
+                       
+
+                    }
+                    catch
+                    {
+
+
+
+                    }
+
+                    //update
+
+                    try
+                    {
+                        Updateproduct_popup._instance.refreshunit();
+                     
+                    }
+                    catch
+                    {
+
+
+
+                    }
+
                 }
-                catch
+
+                else
+
                 {
-
-
-
+                    //do something if NO
                 }
-                
-
-
-
-                //add
-                try
-                {
-                    Addnewproduct_popup._instance.refreshunit();
-                }
-                catch
-                {
-
-
-
-                }
-
-                //update
-
-                try
-                {
-                    Updateproduct_popup._instance.refreshunit();
-                }
-                catch
-                {
-
-
-
-
-                }
-
-
-
-
-
-
-
-
-
             }
-
             else
-
             {
-                //do something if NO
+                MessageBox.Show("Fill up all necessary fields.");
             }
+            
 
            
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            Addunit_module.checker = "allow";
-            this.Hide();
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            Addunit_module.checker = "allow";
-            this.Hide();
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
         }
     }
 }

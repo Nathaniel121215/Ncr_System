@@ -70,23 +70,35 @@ namespace NCR_SYSTEM_1
             Archive.Image = Properties.Resources.Archive_Icon;
 
             DataViewAll();
+
+            //accountlvldisplay
+
+            if (Form1.levelac == "Admin")
+            {
+                accountinfolvl.Text = "Login as Administrator";
+            }
+            else
+            {
+                accountinfolvl.Text = "Login as Employee";
+            }
         }
 
         private void bunifuFlatButton3_Click(object sender, EventArgs e)
         {
-           
 
-            if (checker.Equals("allow"))
+
+            if (Form1.status=="true")
             {
                 Addcategory_popup a = new Addcategory_popup();
                 a.Show();
-
-                checker = "dontallow";
+                Form1.status = "false;";
             }
             else
             {
-                MessageBox.Show("The tab is currently already open.");
+                MessageBox.Show("The Module is still loading or a window is currently open.");
             }
+               
+
         }
         public async void DataViewAll()
         {
@@ -178,39 +190,81 @@ namespace NCR_SYSTEM_1
 
         private void Category_datagrid_stocks_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string columnindex = "";
 
-            try
+            if (Form1.status == "true")
             {
+                string columnindex = "";
 
-
-                if (e.ColumnIndex == Category_datagrid_stocks.Columns[3].Index)
+                try
                 {
-                  
-                    columnindex = Category_datagrid_stocks.Rows[e.RowIndex].Cells[0].Value.ToString();
 
 
-                    Category_datagrid_stocks.Rows[e.RowIndex].Selected = true;
+                    if (e.ColumnIndex == Category_datagrid_stocks.Columns[3].Index)
+                    {
 
-                    Category_ID = Category_datagrid_stocks.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    Category_Name = Category_datagrid_stocks.Rows[e.RowIndex].Cells[1].Value.ToString();
-                    Date_Added = Category_datagrid_stocks.Rows[e.RowIndex].Cells[2].Value.ToString();
-
+                        columnindex = Category_datagrid_stocks.Rows[e.RowIndex].Cells[0].Value.ToString();
 
 
-                    Updatecategory_popup a = new Updatecategory_popup();
+                        Category_datagrid_stocks.Rows[e.RowIndex].Selected = true;
 
-                    a.Show();
+                        Category_ID = Category_datagrid_stocks.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        Category_Name = Category_datagrid_stocks.Rows[e.RowIndex].Cells[1].Value.ToString();
+                        Date_Added = Category_datagrid_stocks.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+
+
+                        Updatecategory_popup a = new Updatecategory_popup();
+
+                        a.Show();
+
+
+                    }
 
 
                 }
+                catch
+                {
+
+                }
+
+                //delete
+
+                try
+                {
 
 
+                    if (e.ColumnIndex == Category_datagrid_stocks.Columns[4].Index)
+                    {
+                        if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                        {
+                            columnindex = Category_datagrid_stocks.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+                            FirebaseResponse response = client.Delete("Category/" + columnindex);
+                            DataViewAll();
+                        }
+                        else
+                        {
+
+                        }
+
+                    }
+
+
+                }
+                catch
+                {
+
+                }
             }
-            catch
+
+            else
             {
-
+                MessageBox.Show("The Module is still loading or a window is currently open.");
             }
+
+
+            
         }
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)

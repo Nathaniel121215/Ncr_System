@@ -42,50 +42,70 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+            if(unitname.Text != "")
             {
-                string date = Addunit_module.Date_Added.ToString();
-                try
+
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
                 {
-                    var data = new Unit_Class
+                    string date = Addunit_module.Date_Added.ToString();
+                    try
+                    {
+                        var data = new Unit_Class
+                        {
+
+                            Unit_ID = idtxt.Text,
+                            Unit_Name = unitname.Text,
+                            Date_Added = date,
+
+
+
+                        };
+
+                        FirebaseResponse response = client.Update("Unit/" + data.Unit_ID, data);
+                        User_class result = response.ResultAs<User_class>();
+
+                        this.Hide();
+                        Addunit_module._instance.DataViewAll();
+                        Form1.status = "true";
+
+
+                    }
+
+                    catch
                     {
 
-                        Unit_ID = idtxt.Text,
-                        Unit_Name = unitname.Text,
-                        Date_Added = date,
-
-
-
-                    };
-
-                    FirebaseResponse response = client.Update("Unit/" + data.Unit_ID, data);
-                    User_class result = response.ResultAs<User_class>();
-
-                    this.Hide();
-                    Addunit_module._instance.DataViewAll();
-
-
+                    }
                 }
 
-                catch 
+                else
+
                 {
-
+                    //do something if NO
                 }
             }
-
             else
-
             {
-                //do something if NO
+                MessageBox.Show("Fill up all necessary fields.");
             }
+            
 
           
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
+                
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -116,6 +136,20 @@ namespace NCR_SYSTEM_1
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
         }
     }
 }

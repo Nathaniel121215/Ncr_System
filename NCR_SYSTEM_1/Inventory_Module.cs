@@ -544,7 +544,7 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                MessageBox.Show("Module is still loading.");
+                MessageBox.Show("The Module is still loading or a window is currently open.");
             }
             
         }
