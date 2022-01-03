@@ -405,49 +405,56 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-
-
-            
-
-            DataView dv = new DataView(dt);
-            dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
-
-            Unit_datagrid_stocks.DataSource = null;
-            Unit_datagrid_stocks.Rows.Clear();
-            Unit_datagrid_stocks.Columns.Clear();
-            Unit_datagrid_stocks.DataSource = dv;
-
-            DataGridViewImageColumn update = new DataGridViewImageColumn();
-            Unit_datagrid_stocks.Columns.Add(update);
-            update.HeaderText = "";
-            update.Name = "update";
-            update.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            update.Image = Properties.Resources.Update_Icon;
-
-
-            DataGridViewImageColumn Archive = new DataGridViewImageColumn();
-            Unit_datagrid_stocks.Columns.Add(Archive);
-            Archive.HeaderText = "";
-            Archive.Name = "Archive";
-            Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Archive.Image = Properties.Resources.Archive_Icon;
-
-
-            //visual
-            DataGridViewColumn column2 = Unit_datagrid_stocks.Columns[2];
-            column2.Width = 600;
-
-            DataGridViewColumn column3 = Unit_datagrid_stocks.Columns[3];
-            column3.Width = 80;
-
-            DataGridViewColumn column4 = Unit_datagrid_stocks.Columns[4];
-            column4.Width = 80;
-
-
-            foreach (DataGridViewColumn column in Unit_datagrid_stocks.Columns)
+            if (searchtxt.Text != "" & Form1.status == "true")
             {
-                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                DataView dv = new DataView(dt);
+                dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
+
+                Unit_datagrid_stocks.DataSource = null;
+                Unit_datagrid_stocks.Rows.Clear();
+                Unit_datagrid_stocks.Columns.Clear();
+                Unit_datagrid_stocks.DataSource = dv;
+
+                DataGridViewImageColumn update = new DataGridViewImageColumn();
+                Unit_datagrid_stocks.Columns.Add(update);
+                update.HeaderText = "";
+                update.Name = "update";
+                update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                update.Image = Properties.Resources.Update_Icon;
+
+
+                DataGridViewImageColumn Archive = new DataGridViewImageColumn();
+                Unit_datagrid_stocks.Columns.Add(Archive);
+                Archive.HeaderText = "";
+                Archive.Name = "Archive";
+                Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Archive.Image = Properties.Resources.Archive_Icon;
+
+
+                //visual
+                DataGridViewColumn column2 = Unit_datagrid_stocks.Columns[2];
+                column2.Width = 600;
+
+                DataGridViewColumn column3 = Unit_datagrid_stocks.Columns[3];
+                column3.Width = 80;
+
+                DataGridViewColumn column4 = Unit_datagrid_stocks.Columns[4];
+                column4.Width = 80;
+
+
+                foreach (DataGridViewColumn column in Unit_datagrid_stocks.Columns)
+                {
+                    column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
             }
+            else
+            {
+                
+            }
+
+
+
+                
 
 
         }

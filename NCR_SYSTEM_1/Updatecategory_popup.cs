@@ -62,6 +62,7 @@ namespace NCR_SYSTEM_1
 
                         this.Hide();
                         Addcategory_module._instance.DataViewAll();
+                        Form1.status = "true";
 
 
                     }

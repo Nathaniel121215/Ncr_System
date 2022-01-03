@@ -244,34 +244,42 @@ namespace NCR_SYSTEM_1
 
         private void searchbutton_Click(object sender, EventArgs e)
         {
-
-            DataView dv = new DataView(dt);
-            dv.RowFilter = "[" + bunifuDropdown1.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
-
-            StockAdjustment_Datagrid.DataSource = null;
-            StockAdjustment_Datagrid.Rows.Clear();
-            StockAdjustment_Datagrid.Columns.Clear();
-            StockAdjustment_Datagrid.DataSource = dv;
-
-            DataGridViewImageColumn deduct = new DataGridViewImageColumn();
-            StockAdjustment_Datagrid.Columns.Add(deduct);
-            deduct.HeaderText = "";
-            deduct.Name = "";
-            deduct.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            deduct.Image = Properties.Resources.minus;
-
-            foreach (DataGridViewColumn column in StockAdjustment_Datagrid.Columns)
+            if (searchtxt.Text != "" & Form1.status == "true")
             {
-                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                DataView dv = new DataView(dt);
+                dv.RowFilter = "[" + bunifuDropdown1.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
+
+                StockAdjustment_Datagrid.DataSource = null;
+                StockAdjustment_Datagrid.Rows.Clear();
+                StockAdjustment_Datagrid.Columns.Clear();
+                StockAdjustment_Datagrid.DataSource = dv;
+
+                DataGridViewImageColumn deduct = new DataGridViewImageColumn();
+                StockAdjustment_Datagrid.Columns.Add(deduct);
+                deduct.HeaderText = "";
+                deduct.Name = "";
+                deduct.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                deduct.Image = Properties.Resources.minus;
+
+                foreach (DataGridViewColumn column in StockAdjustment_Datagrid.Columns)
+                {
+                    column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
+
+
+
+                DataGridViewColumn column1 = StockAdjustment_Datagrid.Columns[1];
+                column1.Width = 230;
+
+                DataGridViewColumn column3 = StockAdjustment_Datagrid.Columns[3];
+                column3.Width = 260;
+            }
+            else
+            {
+                
             }
 
-          
-
-            DataGridViewColumn column1 = StockAdjustment_Datagrid.Columns[1];
-            column1.Width = 230;
-
-            DataGridViewColumn column3 = StockAdjustment_Datagrid.Columns[3];
-            column3.Width = 260;
+                
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)

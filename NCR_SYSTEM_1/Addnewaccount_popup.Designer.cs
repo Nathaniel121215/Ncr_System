@@ -86,6 +86,7 @@
             this.idtxt.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
             this.idtxt.BorderThickness = 1;
             this.idtxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.idtxt.Enabled = false;
             this.idtxt.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.idtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.idtxt.isPassword = false;
@@ -153,6 +154,7 @@
             this.usertxt.Size = new System.Drawing.Size(281, 36);
             this.usertxt.TabIndex = 212;
             this.usertxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.usertxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.usertxt_KeyPress);
             // 
             // label3
             // 
@@ -182,6 +184,7 @@
             this.fnametxt.TabIndex = 214;
             this.fnametxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.fnametxt.OnValueChanged += new System.EventHandler(this.bunifuMetroTextbox2_OnValueChanged);
+            this.fnametxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.fnametxt_KeyPress);
             // 
             // label4
             // 
@@ -211,6 +214,7 @@
             this.lnametxt.TabIndex = 218;
             this.lnametxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.lnametxt.OnValueChanged += new System.EventHandler(this.bunifuMetroTextbox3_OnValueChanged);
+            this.lnametxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lnametxt_KeyPress);
             // 
             // label6
             // 

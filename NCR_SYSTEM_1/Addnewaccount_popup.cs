@@ -79,40 +79,101 @@ namespace NCR_SYSTEM_1
 
 
             idtxt.Text = data.User_ID;
+
+            namemetro(usertxt);
+            namemetro(passtxt);
+            namemetro(fnametxt);
+            namemetro(lnametxt);
         }
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
+            if(usertxt.Text!="" && passtxt.Text != "" && fnametxt.Text != "" && lnametxt.Text != "" && leveltxt.Text != "")
+            {
+                String date = DateTime.Now.ToString("MM/dd/yyyy");
 
-            String date = DateTime.Now.ToString("MM/dd/yyyy");
+                id = idtxt.Text;
+                user = usertxt.Text;
+                pass = passtxt.Text;
+                firstname = fnametxt.Text;
+                lastname = lnametxt.Text;
+                accountlvl = leveltxt.Text;
+                dateadded = date;
 
-
-
-            id = idtxt.Text;
-            user = usertxt.Text;
-            pass = passtxt.Text;
-            firstname = fnametxt.Text;
-            lastname = lnametxt.Text;
-            accountlvl = leveltxt.Text;
-            dateadded = date;
-
-            Addnewaccountuseraccess_popup a = new Addnewaccountuseraccess_popup();
-            a.Show();
-            this.Hide();
+                Addnewaccountuseraccess_popup a = new Addnewaccountuseraccess_popup();
+                a.Show();
+                this.Hide();
+                
+            }
+            else
+            {
+                MessageBox.Show("Fill up all necessary fields.");
+            }
+            
             
 
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            Accountmanagement_Module.checker = "allow";
-            this.Hide();
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            Accountmanagement_Module.checker = "allow";
-            this.Hide();
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
         }
+
+        private void usertxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void fnametxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void lnametxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void namemetro(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox)
+
+        {
+            foreach (var ctl in metroTextbox.Controls)
+            {
+
+                if (ctl.GetType() == typeof(TextBox))
+
+                {
+                    var txt = (TextBox)ctl;
+                    txt.MaxLength = 25;
+
+                }
+
+            }
+
+        }
+
     }
 }

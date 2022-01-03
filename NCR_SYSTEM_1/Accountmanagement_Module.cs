@@ -147,6 +147,17 @@ namespace NCR_SYSTEM_1
 
 
             dataview();
+
+            //accountlvldisplay
+
+            if (Form1.levelac == "Admin")
+            {
+                accountinfolvl.Text = "Login as Administrator";
+            }
+            else
+            {
+                accountinfolvl.Text = "Login as Employee";
+            }
         }
 
         public async void dataview()
@@ -320,192 +331,186 @@ namespace NCR_SYSTEM_1
 
         private void Account_Datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string columnindex = "";
-            
-            try
+            if(Form1.status=="true")
             {
-                //delete
-                if (e.ColumnIndex == Account_Datagrid.Columns[12].Index)
+                string columnindex = "";
+
+                try
                 {
-
-
-
-
-
-                    if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+                    //delete
+                    if (e.ColumnIndex == Account_Datagrid.Columns[12].Index)
                     {
+                        if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
-                        columnindex = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
-
-                        //new archive code
-
-
-
-                        var data = new AccountArchive_Class
                         {
 
-                            User_ID = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString(),
-                            Username = Account_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString(),
-                            Password = Account_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString(),
-                            Firstname = Account_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString(),
-                            Lastname = Account_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString(),
-                            Account_Level = Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString(),
-                            Date_Added = Account_Datagrid.Rows[e.RowIndex].Cells[6].Value.ToString(),
-                            Inventoryaccess = Account_Datagrid.Rows[e.RowIndex].Cells[7].Value.ToString(),
-                            Posaccess = Account_Datagrid.Rows[e.RowIndex].Cells[8].Value.ToString(),
-                            Supplieraccess = Account_Datagrid.Rows[e.RowIndex].Cells[9].Value.ToString(),
-                            Recordaccess = Account_Datagrid.Rows[e.RowIndex].Cells[10].Value.ToString(),
+                            columnindex = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-                            Date_Archive = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
-                            User = Form1.username,
-
-                        };
-
-
-                        //add to archive 
-                        FirebaseResponse response3 = client.Set("AccountArchive/" + data.User_ID, data);
-                        Product_class result = response3.ResultAs<Product_class>();
-
-                        //get archive counter
-                        FirebaseResponse resp = client.Get("AccountArchiveCounter/node");
-                        Counter_class get = resp.ResultAs<Counter_class>();
-
-                        //update archive counter
-                        var obj = new Counter_class
-                        {
-                            cnt = (Convert.ToInt32(get.cnt) + 1).ToString(),
-                        };
-
-                        SetResponse response4 = client.Set("AccountArchiveCounter/node", obj);
+                            //new archive code
 
 
 
-                        //delete from current table
-
-                        FirebaseResponse response = client.Delete("Accounts/" + columnindex);
-
-                        if (Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString().Equals("Employee"))
-                        {
-                            //existing employee
-                            FirebaseResponse resp2 = client.Get("employeeCounterExisting/node");
-                            Counter_class get2 = resp2.ResultAs<Counter_class>();
-                            string employee = (Convert.ToInt32(get2.cnt) - 1).ToString();
-                            var obj2 = new Counter_class
+                            var data = new AccountArchive_Class
                             {
-                                cnt = employee
+
+                                User_ID = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString(),
+                                Username = Account_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                                Password = Account_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString(),
+                                Firstname = Account_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                                Lastname = Account_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString(),
+                                Account_Level = Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString(),
+                                Date_Added = Account_Datagrid.Rows[e.RowIndex].Cells[6].Value.ToString(),
+                                Inventoryaccess = Account_Datagrid.Rows[e.RowIndex].Cells[7].Value.ToString(),
+                                Posaccess = Account_Datagrid.Rows[e.RowIndex].Cells[8].Value.ToString(),
+                                Supplieraccess = Account_Datagrid.Rows[e.RowIndex].Cells[9].Value.ToString(),
+                                Recordaccess = Account_Datagrid.Rows[e.RowIndex].Cells[10].Value.ToString(),
+
+                                Date_Archive = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                                User = Form1.username,
+
                             };
 
-                            SetResponse response2 = client.Set("employeeCounterExisting/node", obj2);
+
+                            //add to archive 
+                            FirebaseResponse response3 = client.Set("AccountArchive/" + data.User_ID, data);
+                            Product_class result = response3.ResultAs<Product_class>();
+
+                            //get archive counter
+                            FirebaseResponse resp = client.Get("AccountArchiveCounter/node");
+                            Counter_class get = resp.ResultAs<Counter_class>();
+
+                            //update archive counter
+                            var obj = new Counter_class
+                            {
+                                cnt = (Convert.ToInt32(get.cnt) + 1).ToString(),
+                            };
+
+                            SetResponse response4 = client.Set("AccountArchiveCounter/node", obj);
+
+
+
+                            //delete from current table
+
+                            FirebaseResponse response = client.Delete("Accounts/" + columnindex);
+
+                            if (Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString().Equals("Employee"))
+                            {
+                                //existing employee
+                                FirebaseResponse resp2 = client.Get("employeeCounterExisting/node");
+                                Counter_class get2 = resp2.ResultAs<Counter_class>();
+                                string employee = (Convert.ToInt32(get2.cnt) - 1).ToString();
+                                var obj2 = new Counter_class
+                                {
+                                    cnt = employee
+                                };
+
+                                SetResponse response2 = client.Set("employeeCounterExisting/node", obj2);
+                            }
+
+
+
+
+                            //Activity Log ARCHIVING ACCOUNT EVENT
+
+
+                            FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
+                            Counter_class get4 = resp4.ResultAs<Counter_class>();
+                            int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
+
+
+
+                            var data2 = new ActivityLog_Class
+                            {
+                                Event_ID = cnt4.ToString(),
+                                Module = "Account Management Module",
+                                Action = "Account-ID: " + data.User_ID + "   Moved to Archive Module",
+                                Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                                User = Form1.username,
+                                Accountlvl = Form1.levelac,
+
+                            };
+
+
+
+                            FirebaseResponse response5 = client.Set("ActivityLog/" + data2.Event_ID, data2);
+
+
+
+                            var obj4 = new Counter_class
+                            {
+                                cnt = data2.Event_ID
+
+                            };
+
+                            SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
+
+
+                            dataview();
                         }
-
-
-
-
-                        //Activity Log ARCHIVING ACCOUNT EVENT
-
-
-                        FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
-                        Counter_class get4 = resp4.ResultAs<Counter_class>();
-                        int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
-
-
-
-                        var data2 = new ActivityLog_Class
-                        {
-                            Event_ID = cnt4.ToString(),
-                            Module = "Account Management Module",
-                            Action = "Account-ID: " + data.User_ID + "   Moved to Archive Module",
-                            Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
-                            User = Form1.username,
-                            Accountlvl = Form1.levelac,
-
-                        };
-
-
-
-                        FirebaseResponse response5 = client.Set("ActivityLog/" + data2.Event_ID, data2);
-
-
-
-                        var obj4 = new Counter_class
-                        {
-                            cnt = data2.Event_ID
-
-                        };
-
-                        SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
-
-
-
-
-
-
-
-
-
-                        dataview();
                     }
+
+
+                    //update
+                    if (e.ColumnIndex == Account_Datagrid.Columns[11].Index)
+                    {
+                        columnindex = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+
+                        Account_Datagrid.Rows[e.RowIndex].Selected = true;
+
+                        User_ID = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        Username = Account_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString();
+                        Password = Account_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        Firstname = Account_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString();
+                        Lastname = Account_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString();
+                        Account_Level = Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString();
+                        Date_Added = Account_Datagrid.Rows[e.RowIndex].Cells[6].Value.ToString();
+
+                        inventory = Account_Datagrid.Rows[e.RowIndex].Cells[7].Value.ToString();
+                        Pos = Account_Datagrid.Rows[e.RowIndex].Cells[8].Value.ToString();
+                        Supplier = Account_Datagrid.Rows[e.RowIndex].Cells[9].Value.ToString();
+                        Records = Account_Datagrid.Rows[e.RowIndex].Cells[10].Value.ToString();
+
+
+
+
+                        Updateaccount_popup update = new Updateaccount_popup();
+
+                        update.Show();
+                        Form1.status = "false";
+
+
+                    }
+
+
                 }
-
-                
-
-
-                  
-                
-                //update
-                if (e.ColumnIndex == Account_Datagrid.Columns[11].Index)
+                catch
                 {
-                    columnindex = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
-
-
-                    Account_Datagrid.Rows[e.RowIndex].Selected = true;
-
-                    User_ID = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
-                    Username = Account_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString();
-                    Password = Account_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString();
-                    Firstname = Account_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString();
-                    Lastname = Account_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString();
-                    Account_Level = Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString();
-                    Date_Added = Account_Datagrid.Rows[e.RowIndex].Cells[6].Value.ToString();
-
-                    inventory = Account_Datagrid.Rows[e.RowIndex].Cells[7].Value.ToString();
-                    Pos = Account_Datagrid.Rows[e.RowIndex].Cells[8].Value.ToString();
-                    Supplier = Account_Datagrid.Rows[e.RowIndex].Cells[9].Value.ToString();
-                    Records = Account_Datagrid.Rows[e.RowIndex].Cells[10].Value.ToString();
-
-
-
-
-                    Updateaccount_popup update = new Updateaccount_popup();
-
-                    update.Show();
-
 
                 }
-
-
             }
-            catch
+            else
             {
-
+                MessageBox.Show("The Module is still loading or a window is currently open.");
             }
+           
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
             
 
-            if (checker.Equals("allow"))
+            if (Form1.status=="true")
             {
                 Addnewaccount_popup create = new Addnewaccount_popup();
                 create.Show();
 
-                checker = "dontallow";
+                Form1.status = "false";
+
             }
             else
             {
-                MessageBox.Show("The tab is currently already open.");
+                MessageBox.Show("The Module is still loading or a window is currently open.");
             }
         }
 
@@ -544,76 +549,84 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            
+            if(searchtxt.Text != "" & Form1.status == "true")
+            {
+
+                DataView dv = new DataView(dt);
+                dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
+
+                Account_Datagrid.DataSource = null;
+                Account_Datagrid.Rows.Clear();
+                Account_Datagrid.Columns.Clear();
+                Account_Datagrid.DataSource = dv;
+
+                DataGridViewImageColumn update = new DataGridViewImageColumn();
+                Account_Datagrid.Columns.Add(update);
+                update.HeaderText = "";
+                update.Name = "update";
+                update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                update.Image = Properties.Resources.Update_Icon;
+
+
+                DataGridViewImageColumn Archive = new DataGridViewImageColumn();
+                Account_Datagrid.Columns.Add(Archive);
+                Archive.HeaderText = "";
+                Archive.Name = "Archive";
+                Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Archive.Image = Properties.Resources.Archive_Icon;
+
+                ///////////////////////// access/////////////////////////
+
+                DataGridViewImageColumn Inventory = new DataGridViewImageColumn();
+                Account_Datagrid.Columns.Add(Inventory);
+                Inventory.HeaderText = "Inventory Module";
+                Inventory.Name = "Inventory";
+                Inventory.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Inventory.Image = Properties.Resources.loading;
+
+
+                DataGridViewImageColumn PoS = new DataGridViewImageColumn();
+                Account_Datagrid.Columns.Add(PoS);
+                PoS.HeaderText = "PoS Module";
+                PoS.Name = "PoS";
+                PoS.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                PoS.Image = Properties.Resources.loading;
+
+
+                DataGridViewImageColumn Supplier = new DataGridViewImageColumn();
+                Account_Datagrid.Columns.Add(Supplier);
+                Supplier.HeaderText = "Supplier Module";
+                Supplier.Name = "Supplier";
+                Supplier.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Supplier.Image = Properties.Resources.loading;
+
+
+
+                DataGridViewImageColumn Records = new DataGridViewImageColumn();
+                Account_Datagrid.Columns.Add(Records);
+                Records.HeaderText = "Record Module";
+                Records.Name = "Records";
+                Records.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Records.Image = Properties.Resources.loading;
+
+                ///////////////////////// Level /////////////////////////
+
+
+                DataGridViewImageColumn AccountLvl = new DataGridViewImageColumn();
+                Account_Datagrid.Columns.Add(AccountLvl);
+                AccountLvl.HeaderText = "Account Level";
+                AccountLvl.Name = "Account Level";
+                AccountLvl.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                AccountLvl.Image = Properties.Resources.loading;
+
+                searchupdate();
+            }
+            else
+            {
+               
+            }
    
-            DataView dv = new DataView(dt);
-            dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
-
-            Account_Datagrid.DataSource = null;
-            Account_Datagrid.Rows.Clear();
-            Account_Datagrid.Columns.Clear();
-            Account_Datagrid.DataSource = dv;
-
-            DataGridViewImageColumn update = new DataGridViewImageColumn();
-            Account_Datagrid.Columns.Add(update);
-            update.HeaderText = "";
-            update.Name = "update";
-            update.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            update.Image = Properties.Resources.Update_Icon;
-
-
-            DataGridViewImageColumn Archive = new DataGridViewImageColumn();
-            Account_Datagrid.Columns.Add(Archive);
-            Archive.HeaderText = "";
-            Archive.Name = "Archive";
-            Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Archive.Image = Properties.Resources.Archive_Icon;
-
-            ///////////////////////// access/////////////////////////
-
-            DataGridViewImageColumn Inventory = new DataGridViewImageColumn();
-            Account_Datagrid.Columns.Add(Inventory);
-            Inventory.HeaderText = "Inventory Module";
-            Inventory.Name = "Inventory";
-            Inventory.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Inventory.Image = Properties.Resources.loading;
-
-
-            DataGridViewImageColumn PoS = new DataGridViewImageColumn();
-            Account_Datagrid.Columns.Add(PoS);
-            PoS.HeaderText = "PoS Module";
-            PoS.Name = "PoS";
-            PoS.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            PoS.Image = Properties.Resources.loading;
-
-
-            DataGridViewImageColumn Supplier = new DataGridViewImageColumn();
-            Account_Datagrid.Columns.Add(Supplier);
-            Supplier.HeaderText = "Supplier Module";
-            Supplier.Name = "Supplier";
-            Supplier.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Supplier.Image = Properties.Resources.loading;
-
-
-
-            DataGridViewImageColumn Records = new DataGridViewImageColumn();
-            Account_Datagrid.Columns.Add(Records);
-            Records.HeaderText = "Record Module";
-            Records.Name = "Records";
-            Records.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Records.Image = Properties.Resources.loading;
-
-            ///////////////////////// Level /////////////////////////
-
-
-            DataGridViewImageColumn AccountLvl = new DataGridViewImageColumn();
-            Account_Datagrid.Columns.Add(AccountLvl);
-            AccountLvl.HeaderText = "Account Level";
-            AccountLvl.Name = "Account Level";
-            AccountLvl.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            AccountLvl.Image = Properties.Resources.loading;
-
-            searchupdate();
+            
 
 
         }
@@ -768,7 +781,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -799,7 +819,14 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -848,7 +875,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -898,7 +932,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -1101,7 +1142,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -1133,7 +1181,14 @@ namespace NCR_SYSTEM_1
          
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -1183,7 +1238,14 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
@@ -1214,31 +1276,106 @@ namespace NCR_SYSTEM_1
             
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            copyAlltoClipboard();
-            Microsoft.Office.Interop.Excel.Application xlexcel;
-            Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
-            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
-            object misValue = System.Reflection.Missing.Value;
-            xlexcel = new Excel.Application();
-            xlexcel.Visible = true;
-            xlWorkBook = xlexcel.Workbooks.Add(misValue);
-            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-            Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[1, 1];
-            CR.Select();
-            xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+           
         }
         private void copyAlltoClipboard()
         {
             Account_Datagrid.SelectAll();
             DataObject dataObj = Account_Datagrid.GetClipboardContent();
             if (dataObj != null)
-                Clipboard.SetDataObject(dataObj);
+            Clipboard.SetDataObject(dataObj);
+        }
+
+        private void bunifuFlatButton3_Click(object sender, EventArgs e)
+        {
+            if(Form1.status=="true")
+            {
+                copyAlltoClipboard();
+                Microsoft.Office.Interop.Excel.Application xlexcel;
+                Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+                Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+                object misValue = System.Reflection.Missing.Value;
+                xlexcel = new Excel.Application();
+                xlexcel.Visible = true;
+                xlWorkBook = xlexcel.Workbooks.Add(misValue);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+                Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[1, 1];
+                CR.Select();
+                xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+            }
+            else
+            {
+                MessageBox.Show("The Module is still loading or a window is currently open.");
+            }
+            
+        }
+
+        private void searchtxt_Leave(object sender, EventArgs e)
+        {
+            if (searchtxt.Text == "")
+            {
+                searchtxt.Text = "Type here to filter Inventory Content";
+            }
+            else
+            {
+
+            }
+        }
+
+        private void searchtxt_Enter(object sender, EventArgs e)
+        {
+            searchtxt.Text = "";
+        }
+
+        private void bunifuImageButton10_Click(object sender, EventArgs e)
+        {
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    Utility_settings_module a = new Utility_settings_module();
+                    this.Hide();
+                    a.Show();
+
+                    Form1.loadingtime = 9000;
+                    Form1.status = "false";
+                    Loading_popup b = new Loading_popup();
+                    b.Show();
+                }
+                else
+                {
+
+                }
+
+
+            }
+
+            else
+            {
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+            }
         }
     }
 }

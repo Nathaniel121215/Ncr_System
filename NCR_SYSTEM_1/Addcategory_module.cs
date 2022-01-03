@@ -91,7 +91,7 @@ namespace NCR_SYSTEM_1
             {
                 Addcategory_popup a = new Addcategory_popup();
                 a.Show();
-                Form1.status = "false;";
+                Form1.status = "false";
             }
             else
             {
@@ -221,9 +221,8 @@ namespace NCR_SYSTEM_1
 
 
                         Updatecategory_popup a = new Updatecategory_popup();
-
                         a.Show();
-
+                        Form1.status = "false";
 
                     }
 
@@ -276,49 +275,56 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            
-
-
-
-            DataView dv = new DataView(dt);
-            dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
-
-            Category_datagrid_stocks.DataSource = null;
-            Category_datagrid_stocks.Rows.Clear();
-            Category_datagrid_stocks.Columns.Clear();
-            Category_datagrid_stocks.DataSource = dv;
-
-
-            DataGridViewImageColumn update = new DataGridViewImageColumn();
-            Category_datagrid_stocks.Columns.Add(update);
-            update.HeaderText = "";
-            update.Name = "update";
-            update.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            update.Image = Properties.Resources.Update_Icon;
-
-
-            DataGridViewImageColumn Archive = new DataGridViewImageColumn();
-            Category_datagrid_stocks.Columns.Add(Archive);
-            Archive.HeaderText = "";
-            Archive.Name = "Archive";
-            Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Archive.Image = Properties.Resources.Archive_Icon;
-
-            //visual
-            DataGridViewColumn column2 = Category_datagrid_stocks.Columns[2];
-            column2.Width = 600;
-
-            DataGridViewColumn column3 = Category_datagrid_stocks.Columns[3];
-            column3.Width = 80;
-
-            DataGridViewColumn column4 = Category_datagrid_stocks.Columns[4];
-            column4.Width = 80;
-
-
-            foreach (DataGridViewColumn column in Category_datagrid_stocks.Columns)
+            if(searchtxt.Text != "" & Form1.status == "true")
             {
-                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                DataView dv = new DataView(dt);
+                dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
+
+                Category_datagrid_stocks.DataSource = null;
+                Category_datagrid_stocks.Rows.Clear();
+                Category_datagrid_stocks.Columns.Clear();
+                Category_datagrid_stocks.DataSource = dv;
+
+
+                DataGridViewImageColumn update = new DataGridViewImageColumn();
+                Category_datagrid_stocks.Columns.Add(update);
+                update.HeaderText = "";
+                update.Name = "update";
+                update.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                update.Image = Properties.Resources.Update_Icon;
+
+
+                DataGridViewImageColumn Archive = new DataGridViewImageColumn();
+                Category_datagrid_stocks.Columns.Add(Archive);
+                Archive.HeaderText = "";
+                Archive.Name = "Archive";
+                Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Archive.Image = Properties.Resources.Archive_Icon;
+
+                //visual
+                DataGridViewColumn column2 = Category_datagrid_stocks.Columns[2];
+                column2.Width = 600;
+
+                DataGridViewColumn column3 = Category_datagrid_stocks.Columns[3];
+                column3.Width = 80;
+
+                DataGridViewColumn column4 = Category_datagrid_stocks.Columns[4];
+                column4.Width = 80;
+
+
+                foreach (DataGridViewColumn column in Category_datagrid_stocks.Columns)
+                {
+                    column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
             }
+            else
+            {
+              
+            }
+
+
+
+            
 
         }
 
