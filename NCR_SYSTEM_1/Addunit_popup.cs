@@ -94,7 +94,7 @@ namespace NCR_SYSTEM_1
                     }
                     catch
                     {
-
+                        Form1.status = "false";
 
 
                     }

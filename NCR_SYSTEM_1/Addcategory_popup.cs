@@ -33,96 +33,93 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+            if (unitname.Text != "")
             {
-                String date = DateTime.Now.ToString("MM/dd/yyyy");
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
-
-                FirebaseResponse resp = client.Get("CategoryCounter/node");
-
-                Counter_class get = resp.ResultAs<Counter_class>();
-
-                var data = new Category_Class
                 {
-                    Category_ID = (Convert.ToInt32(get.cnt) + 1).ToString(),
-                    Category_Name = unitname.Text,
-                    Date_Added = date,
-
-                };
-
-                SetResponse response = client.Set("Category/" + data.Category_ID, data);
+                    String date = DateTime.Now.ToString("MM/dd/yyyy");
 
 
-                var obj = new Counter_class
-                {
-                    cnt = data.Category_ID
-                };
+                    FirebaseResponse resp = client.Get("CategoryCounter/node");
 
-                SetResponse response1 = client.Set("CategoryCounter/node", obj);
+                    Counter_class get = resp.ResultAs<Counter_class>();
 
-                this.Hide();
+                    var data = new Category_Class
+                    {
+                        Category_ID = (Convert.ToInt32(get.cnt) + 1).ToString(),
+                        Category_Name = unitname.Text,
+                        Date_Added = date,
+
+                    };
+
+                    SetResponse response = client.Set("Category/" + data.Category_ID, data);
+
+
+                    var obj = new Counter_class
+                    {
+                        cnt = data.Category_ID
+                    };
+
+                    SetResponse response1 = client.Set("CategoryCounter/node", obj);
+
+                    this.Hide();
 
 
 
-                //default
-                try
-                {
-                    Addcategory_module.checker = "allow";
-                    Addcategory_module._instance.DataViewAll();
+                    //default
+                    try
+                    {
+
+                        Addcategory_module._instance.DataViewAll();
+                        Form1.status = "true";
+
+                    }
+                    catch
+                    {
+                        Form1.status = "false";
+
+
+                    }
+
+
+
+                    //add
+                    try
+                    {
+                        Addnewproduct_popup._instance.refreshcategory();
+                    }
+                    catch
+                    {
+
+
+
+                    }
+
+                    //update
+
+                    try
+                    {
+                        Updateproduct_popup._instance.refreshcategory();
+                    }
+                    catch
+                    {
+
+                    }
 
                 }
-                catch
+
+                else
+
                 {
-
-
-
+                    //do something if NO
                 }
-
-               
-
-                //add
-                try
-                {
-                    Addnewproduct_popup._instance.refreshcategory();
-                }
-                catch
-                {
-                    
-
-
-                }
-
-                //update
-
-                try
-                {
-                    Updateproduct_popup._instance.refreshcategory();
-                }
-                catch
-                {
-                    
-                    
-
-
-                }
-
-
-
-
-
-
-
-
-
-
             }
-
             else
-
             {
-                //do something if NO
+                MessageBox.Show("Fill up all necessary fields.");
             }
+                
            
         }
 
@@ -146,14 +143,33 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            Addcategory_module.checker = "allow";
-            this.Hide();
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+          
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
+                
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            Addcategory_module.checker = "allow";
-            this.Hide();
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
         }
     }
 }
