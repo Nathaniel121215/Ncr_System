@@ -215,6 +215,7 @@
             this.assistedtxt.Size = new System.Drawing.Size(281, 36);
             this.assistedtxt.TabIndex = 338;
             this.assistedtxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.assistedtxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.assistedtxt_KeyPress);
             // 
             // panel6
             // 

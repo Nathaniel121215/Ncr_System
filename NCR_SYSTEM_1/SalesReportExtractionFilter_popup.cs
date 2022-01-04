@@ -44,57 +44,89 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            startdate = starttxt.Value.ToString("MM/dd/yyyy");
-            enddate = endtxt.Value.ToString("MM/dd/yyyy");
-            transactiontype = transactiontypetxt.Text;
-            percentage = percentagetxt.Text;
-
-            //Activity Log STOCK PURCHASE EVENT
-
-            FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
-            Counter_class get4 = resp4.ResultAs<Counter_class>();
-            int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
-
-
-
-            var data3 = new ActivityLog_Class
+            if(starttxt.Value.ToString() != "" && endtxt.Value.ToString() != "" && transactiontypetxt.Text != "" && percentagetxt.Text != "")
             {
-                Event_ID = cnt4.ToString(),
-                Module = "Sales Record Module",
-                Action = "Sales Report Extracted",
-                Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
-                User = Form1.username,
-                Accountlvl = Form1.levelac,
-
-            };
+                startdate = starttxt.Value.ToString("MM/dd/yyyy");
+                enddate = endtxt.Value.ToString("MM/dd/yyyy");
+                transactiontype = transactiontypetxt.Text;
+                percentage = percentagetxt.Text;
 
 
+                //Activity Log STOCK PURCHASE EVENT
 
-            FirebaseResponse response5 = client.Set("ActivityLog/" + data3.Event_ID, data3);
+                FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
+                Counter_class get4 = resp4.ResultAs<Counter_class>();
+                int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
 
 
 
-            var obj4 = new Counter_class
+                var data3 = new ActivityLog_Class
+                {
+                    Event_ID = cnt4.ToString(),
+                    Module = "Sales Record Module",
+                    Action = "Sales Report Extracted",
+                    Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                    User = Form1.username,
+                    Accountlvl = Form1.levelac,
+
+                };
+
+
+
+                FirebaseResponse response5 = client.Set("ActivityLog/" + data3.Event_ID, data3);
+
+
+
+                var obj4 = new Counter_class
+                {
+                    cnt = data3.Event_ID
+
+                };
+
+                SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
+
+
+                Salesrecord_module._instance.extract();
+                this.Hide();
+            }
+            else
             {
-                cnt = data3.Event_ID
-
-            };
-
-            SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
-
-
-            Salesrecord_module._instance.extract();
-            this.Hide();
+                MessageBox.Show("Fill up all necessary fields.");
+            }
+            
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            this.Hide(); 
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
+        }
+
+        private void percentagetxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }
