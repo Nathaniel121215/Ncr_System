@@ -1034,5 +1034,13 @@ namespace NCR_SYSTEM_1
             if (dataObj != null)
             Clipboard.SetDataObject(dataObj);
         }
+
+        private void ActivityLog_Datagrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

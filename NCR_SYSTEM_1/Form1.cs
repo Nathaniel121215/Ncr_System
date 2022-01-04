@@ -26,6 +26,7 @@ namespace NCR_SYSTEM_1
         IFirebaseClient client;
 
         bool a = true;
+        public static string userid;
         public static string username;
         public static string inventoryac;
         public static string posac;
@@ -102,6 +103,7 @@ namespace NCR_SYSTEM_1
 
                             MessageBox.Show("Logged in successfully");
                             username = obj2.Firstname + " " + obj2.Lastname;
+                            userid = obj2.User_ID;
 
 
                             //LOGIN LOG

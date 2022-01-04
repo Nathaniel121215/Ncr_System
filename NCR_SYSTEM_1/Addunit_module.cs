@@ -1141,5 +1141,13 @@ namespace NCR_SYSTEM_1
 
             }
         }
+
+        private void Unit_datagrid_stocks_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

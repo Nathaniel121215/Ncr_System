@@ -75,7 +75,8 @@ namespace NCR_SYSTEM_1
 
         private void Addproductstockindicator_popup_Load(object sender, EventArgs e)
         {
-
+            numberlimit(low);
+            numberlimit(high);
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
@@ -102,5 +103,24 @@ namespace NCR_SYSTEM_1
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+
+        private void numberlimit(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox)
+
+        {
+            foreach (var ctl in metroTextbox.Controls)
+            {
+
+                if (ctl.GetType() == typeof(TextBox))
+
+                {
+                    var txt = (TextBox)ctl;
+                    txt.MaxLength = 10;
+
+                }
+
+            }
+
+        }
+
     }
 }

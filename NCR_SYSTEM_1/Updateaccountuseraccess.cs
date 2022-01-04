@@ -161,9 +161,18 @@ namespace NCR_SYSTEM_1
                         SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
 
 
-                        this.Hide();
-                        Accountmanagement_Module._instance.dataview();
-                        Form1.status = "true";
+                        
+
+                        if(Form1.userid == data.User_ID)
+                        {
+                            Application.Exit();
+                        }
+                        else
+                        {
+                            this.Hide();
+                            Accountmanagement_Module._instance.dataview();
+                            Form1.status = "true";
+                        }
 
                     }
 

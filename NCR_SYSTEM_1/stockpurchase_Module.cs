@@ -71,6 +71,12 @@ namespace NCR_SYSTEM_1
 
         private void Test_Load(object sender, EventArgs e)
         {
+            payment = 0;
+            change = 0;
+            fee = 0;
+            subtotal = 0;
+            total = 0;
+
 
             //open connection
             client = new FireSharp.FirebaseClient(config);
@@ -516,6 +522,7 @@ namespace NCR_SYSTEM_1
         {
             try
             {
+               
                 //Calculate total
                 fee = Convert.ToDecimal(Fee.Text);
                 total = subtotal + fee;
@@ -1987,6 +1994,22 @@ namespace NCR_SYSTEM_1
             else
             {
 
+            }
+        }
+
+        private void Inventory_Datagridview_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void Cart_Datagridview_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                e.SuppressKeyPress = true;
             }
         }
     }

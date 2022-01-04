@@ -1808,5 +1808,13 @@ namespace NCR_SYSTEM_1
 
             }
         }
+
+        private void Inventory_Datagrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

@@ -470,9 +470,10 @@ namespace NCR_SYSTEM_1
             if (pprice.Text == "")
             {
                 pprice.Text = "0.00";
-
                 decimal a = Convert.ToDecimal(pprice.Text);
                 pprice.Text = a.ToString(fmt);
+                pprice.Text = "0.00";
+
             }
             else
             {
@@ -491,6 +492,11 @@ namespace NCR_SYSTEM_1
             {
                 decimal a = Convert.ToDecimal(pprice.Text);
                 pprice.Text = a.ToString(fmt);
+
+                if (pprice.Text == ".00")
+                {
+                    pprice.Text = "0.00";
+                }
             }
         }
 

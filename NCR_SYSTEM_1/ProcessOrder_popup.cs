@@ -111,7 +111,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            if(suppliername.Text != "" && remarks.Text!="" )
+            if(suppliername.Text != "")
             {
                 temfee = stockpurchase_Module.fee.ToString(fmt);
 

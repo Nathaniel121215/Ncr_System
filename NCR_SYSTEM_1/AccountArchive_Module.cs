@@ -1081,5 +1081,13 @@ namespace NCR_SYSTEM_1
                 //MessageBox.Show("Your account do not have access on this Module.");
             }
         }
+
+        private void Account_Datagrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

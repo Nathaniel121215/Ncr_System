@@ -412,6 +412,7 @@
             this.Inventory_Datagrid.TabIndex = 42;
             this.Inventory_Datagrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Inventory_Datagrid_CellClick);
             this.Inventory_Datagrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Inventory_Datagrid_CellContentClick);
+            this.Inventory_Datagrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Inventory_Datagrid_KeyDown);
             // 
             // label2
             // 

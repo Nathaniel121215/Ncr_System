@@ -350,6 +350,8 @@
             this.Inventory_Datagridview.Size = new System.Drawing.Size(940, 754);
             this.Inventory_Datagridview.TabIndex = 178;
             this.Inventory_Datagridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Inventory_Datagridview_CellClick);
+            this.Inventory_Datagridview.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Inventory_Datagridview_KeyDown);
+            this.Inventory_Datagridview.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Inventory_Datagridview_KeyPress);
             // 
             // bunifuFlatButton1
             // 
@@ -770,6 +772,7 @@
             this.Cart_Datagridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Cart_Datagridview_CellContentClick);
             this.Cart_Datagridview.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.Cart_Datagridview_CellEndEdit);
             this.Cart_Datagridview.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.Cart_Datagridview_CellFormatting);
+            this.Cart_Datagridview.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Cart_Datagridview_KeyDown);
             // 
             // datedisplay
             // 

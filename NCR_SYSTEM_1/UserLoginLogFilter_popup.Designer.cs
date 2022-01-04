@@ -189,6 +189,7 @@
             this.usertxt.Size = new System.Drawing.Size(281, 36);
             this.usertxt.TabIndex = 383;
             this.usertxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.usertxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.usertxt_KeyPress);
             // 
             // panel6
             // 

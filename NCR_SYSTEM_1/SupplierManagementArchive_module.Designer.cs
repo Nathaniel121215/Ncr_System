@@ -581,6 +581,7 @@
             this.Supplier_Datagrid.Size = new System.Drawing.Size(1479, 710);
             this.Supplier_Datagrid.TabIndex = 366;
             this.Supplier_Datagrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Supplier_Datagrid_CellClick);
+            this.Supplier_Datagrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Supplier_Datagrid_KeyDown);
             // 
             // panel3
             // 

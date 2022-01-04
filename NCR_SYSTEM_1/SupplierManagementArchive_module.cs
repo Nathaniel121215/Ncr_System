@@ -381,5 +381,13 @@ namespace NCR_SYSTEM_1
             SupplierArchiveFilter_popup c = new SupplierArchiveFilter_popup();
             c.Show();
         }
+
+        private void Supplier_Datagrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

@@ -445,7 +445,17 @@ namespace NCR_SYSTEM_1
                             SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
 
 
-                            dataview();
+                            
+
+                            if (Form1.userid == data.User_ID)
+                            {
+                                Application.Exit();
+                            }
+                            else
+                            {
+                                dataview();
+                            }
+
                         }
                     }
 
@@ -1375,6 +1385,14 @@ namespace NCR_SYSTEM_1
                 {
                     MessageBox.Show("The Module is still loading or a window is currently open.");
                 }
+            }
+        }
+
+        private void Account_Datagrid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                e.SuppressKeyPress = true;
             }
         }
     }

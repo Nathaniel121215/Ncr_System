@@ -478,6 +478,7 @@
             this.Supplier_Datagrid.Size = new System.Drawing.Size(1479, 710);
             this.Supplier_Datagrid.TabIndex = 185;
             this.Supplier_Datagrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Supplier_Datagrid_CellContentClick);
+            this.Supplier_Datagrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Supplier_Datagrid_KeyDown);
             // 
             // datedisplay
             // 
