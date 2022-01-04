@@ -24,14 +24,30 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            UserLoginLog_Module.checker = "allow";
-            this.Hide();
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            UserLoginLog_Module.checker = "allow";
-            this.Hide();
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
         }
 
         private void UserLoginLogFilter_popup_Load(object sender, EventArgs e)
@@ -42,13 +58,22 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            startdate = starttxt.Value.ToString("MM/dd/yyyy");
-            enddate = endtxt.Value.ToString("MM/dd/yyyy");
-            user = usertxt.Text;
+            if (starttxt.Value.ToString() !="" && endtxt.Value.ToString() != "")
+            {
+                startdate = starttxt.Value.ToString("MM/dd/yyyy");
+                enddate = endtxt.Value.ToString("MM/dd/yyyy");
+                user = usertxt.Text;
 
-            UserLoginLog_Module.checker = "allow";
-            UserLoginLog_Module._instance.filter();
-            this.Hide();
+                UserLoginLog_Module.checker = "allow";
+                UserLoginLog_Module._instance.filter();
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+                MessageBox.Show("Fill up all necessary fields.");
+            }
+            
         }
     }
 }

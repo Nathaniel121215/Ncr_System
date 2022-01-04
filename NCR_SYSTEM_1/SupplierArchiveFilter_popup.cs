@@ -49,5 +49,10 @@ namespace NCR_SYSTEM_1
             SupplierManagementArchive_module._instance.filter();
             this.Hide();
         }
+
+        private void usertxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
     }
 }
