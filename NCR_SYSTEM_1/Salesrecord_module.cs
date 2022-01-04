@@ -1199,7 +1199,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            if(Form1.status=="true")
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
             {
                 SalesReportExtractionFilter_popup a = new SalesReportExtractionFilter_popup();
                 a.Show();
@@ -1357,7 +1357,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton3_Click(object sender, EventArgs e)
         {
-            if (Form1.status == "true")
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
             {
                 copyAlltoClipboard();
                 Microsoft.Office.Interop.Excel.Application xlexcel;

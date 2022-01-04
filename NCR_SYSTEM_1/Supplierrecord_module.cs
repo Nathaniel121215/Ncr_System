@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace NCR_SYSTEM_1
 {
@@ -123,7 +124,18 @@ namespace NCR_SYSTEM_1
 
             DataViewAll();
 
-         
+            //accountlvldisplay
+
+            if (Form1.levelac == "Admin")
+            {
+                accountinfolvl.Text = "Login as Administrator";
+            }
+            else
+            {
+                accountinfolvl.Text = "Login as Employee";
+            }
+
+
         }
 
         public void getsales()
@@ -214,99 +226,109 @@ namespace NCR_SYSTEM_1
 
         private void Supplier_Datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string columnindex = "";
-
-            try
+            if(Form1.status=="true")
             {
-                if (e.ColumnIndex == Supplier_Datagrid.Columns[7].Index)
+                string columnindex = "";
+
+                try
                 {
-                    columnindex = Supplier_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
-
-
-
-
-                    FirebaseResponse resp1 = client.Get("ReStockLog/" + columnindex);
-                    Stock_class obj1 = resp1.ResultAs<Stock_class>();
-
-                    ID = obj1.Restock_ID;
-                    refnumber = obj1.Reference_Number;
-                    items = obj1.Items;
-                    sub = obj1.Sub_Total;
-                    fee = obj1.Fee;
-                    total = obj1.Order_Total;
-                    supp = obj1.Supplier_Name;
-                    assist = obj1.Assisted_By;
-                    remarks = obj1.Remark;
-                    date = obj1.Date_Of_Transaction;
-                    amount = obj1.Amount_Tendered;
-                    change = obj1.Change;
-
-                   
-
-                    //clear
-                    listBox1.Items.Clear();
-                    textBox1.Text = "";
-                    dataGridView1.Rows.Clear();
-
-
-
-
-                    textBox1.Text = obj1.Items;
-                    listBox1.Items.Clear();
-                    listBox1.Items.AddRange(textBox1.Lines);
-
-
-
-                    try
+                    if (e.ColumnIndex == Supplier_Datagrid.Columns[7].Index)
                     {
+                        columnindex = Supplier_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
 
-                        for (int i = 0; i <= listBox1.Items.Count; i += 4)
+
+
+                        FirebaseResponse resp1 = client.Get("ReStockLog/" + columnindex);
+                        Stock_class obj1 = resp1.ResultAs<Stock_class>();
+
+                        ID = obj1.Restock_ID;
+                        refnumber = obj1.Reference_Number;
+                        items = obj1.Items;
+                        sub = obj1.Sub_Total;
+                        fee = obj1.Fee;
+                        total = obj1.Order_Total;
+                        supp = obj1.Supplier_Name;
+                        assist = obj1.Assisted_By;
+                        remarks = obj1.Remark;
+                        date = obj1.Date_Of_Transaction;
+                        amount = obj1.Amount_Tendered;
+                        change = obj1.Change;
+
+
+
+                        //clear
+                        listBox1.Items.Clear();
+                        textBox1.Text = "";
+                        dataGridView1.Rows.Clear();
+
+
+
+
+                        textBox1.Text = obj1.Items;
+                        listBox1.Items.Clear();
+                        listBox1.Items.AddRange(textBox1.Lines);
+
+
+
+                        try
                         {
-                            dataGridView1.Rows.Add(listBox1.Items[i], listBox1.Items[i + 1], listBox1.Items[i + 2], listBox1.Items[i + 3]);
+
+
+                            for (int i = 0; i <= listBox1.Items.Count; i += 4)
+                            {
+                                dataGridView1.Rows.Add(listBox1.Items[i], listBox1.Items[i + 1], listBox1.Items[i + 2], listBox1.Items[i + 3]);
+                            }
                         }
-                    }
-                    catch
-                    {
+                        catch
+                        {
+
+                        }
+
+
+
+                        //clear
+                        quantitylist.Clear();
+                        Unitlist.Clear();
+                        productnamelist.Clear();
+                        Pricelist.Clear();
+
+
+
+
+                        for (int i = 0; i < dataGridView1.RowCount; i++)
+                        {
+
+
+                            quantitylist.Add(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                            Unitlist.Add(dataGridView1.Rows[i].Cells[1].Value.ToString());
+                            productnamelist.Add(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                            Pricelist.Add(dataGridView1.Rows[i].Cells[3].Value.ToString());
+
+
+
+                        }
+
+
+                        cartcount = dataGridView1.RowCount;
+
+                        Suppliertransactionreceipt_popup c = new Suppliertransactionreceipt_popup();
+                        c.Show();
+                        Form1.status = "false";
 
                     }
-
-
-
-                    //clear
-                    quantitylist.Clear();
-                    Unitlist.Clear();
-                    productnamelist.Clear();
-                    Pricelist.Clear();
-
-                    
-
-
-                    for (int i = 0; i < dataGridView1.RowCount; i++)
-                    {
-
-
-                        quantitylist.Add(dataGridView1.Rows[i].Cells[0].Value.ToString());
-                        Unitlist.Add(dataGridView1.Rows[i].Cells[1].Value.ToString());
-                        productnamelist.Add(dataGridView1.Rows[i].Cells[2].Value.ToString());
-                        Pricelist.Add(dataGridView1.Rows[i].Cells[3].Value.ToString());
-
-
-
-                    }
-
-               
-                    cartcount = dataGridView1.RowCount;
-
-                    Suppliertransactionreceipt_popup c = new Suppliertransactionreceipt_popup();
-                    c.Show();
+                }
+                catch
+                {
 
                 }
             }
-            catch 
+            else
             {
-                
+                MessageBox.Show("The Module is still loading or a window is currently open.");
+
             }
+            
 
             
 
@@ -335,37 +357,41 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-           
-
-
-
-            DataView dv = new DataView(dt);
-            dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
-
-            Supplier_Datagrid.DataSource = null;
-            Supplier_Datagrid.Rows.Clear();
-            Supplier_Datagrid.Columns.Clear();
-            Supplier_Datagrid.DataSource = dv;
-
-
-            DataGridViewImageColumn View = new DataGridViewImageColumn();
-            Supplier_Datagrid.Columns.Add(View);
-            View.HeaderText = "";
-            View.Name = "View";
-            View.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            View.Image = Properties.Resources.view2;
-
-            foreach (DataGridViewColumn column in Supplier_Datagrid.Columns)
+            if (searchtxt.Text != "" & Form1.status == "true")
             {
-                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                DataView dv = new DataView(dt);
+                dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
+
+                Supplier_Datagrid.DataSource = null;
+                Supplier_Datagrid.Rows.Clear();
+                Supplier_Datagrid.Columns.Clear();
+                Supplier_Datagrid.DataSource = dv;
+
+
+                DataGridViewImageColumn View = new DataGridViewImageColumn();
+                Supplier_Datagrid.Columns.Add(View);
+                View.HeaderText = "";
+                View.Name = "View";
+                View.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                View.Image = Properties.Resources.view2;
+
+                foreach (DataGridViewColumn column in Supplier_Datagrid.Columns)
+                {
+                    column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
+
+                Supplier_Datagrid.Columns[6].Visible = false;
+
+                getsales();
+                gettransactioncount();
+
+                filterlabeltxt.Text = "";
             }
 
-            Supplier_Datagrid.Columns[6].Visible = false;
+            else
+            {
 
-            getsales();
-            gettransactioncount();
-
-            filterlabeltxt.Text = "";
+            }
         }
 
         private void bunifuMetroTextbox2_KeyUp(object sender, KeyEventArgs e)
@@ -445,7 +471,15 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
 
 
@@ -498,7 +532,15 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -530,7 +572,15 @@ namespace NCR_SYSTEM_1
            
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -580,7 +630,15 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -671,116 +729,34 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            //conns.Open();//OPEN YOUR CONNECTION
-            //command = new SqlCommand("select * from tblSales WHERE Date BETWEEN @date1 and @date2", conns); // GET KEYWORDS FROM YOUR TEXTBOX
-            //command.Parameters.AddWithValue("@date1", bunifuDatepicker1.Value);
-            //command.Parameters.AddWithValue("@date2", bunifuDatepicker2.Value);
-            //command.ExecuteNonQuery(); //EXECUTE COMMAND
-            //dt = new DataTable();
-            //SqlDataAdapter da = new SqlDataAdapter(command); // USE DATAADPATER TO UPDATE THE TABLE
-            //da.Fill(dt); //UPDATE THE TABLE USING THE WORDS ON THE TEXTBOX
-            //sale.DataSource = dt;
-            //conns.Close();//CLOSE
-
-
-
-            //DataView dv = new DataView(dt);
-            //dv.RowFilter = "[" + bunifuDatepicker1.Value + "]" + "LIKE '%" + bunifuDatepicker2.Text + "%'";
-
-            //Supplier_Datagrid.DataSource = null;
-            //Supplier_Datagrid.Rows.Clear();
-            //Supplier_Datagrid.Columns.Clear();
-            //Supplier_Datagrid.DataSource = dv;
-
-
-            //dv.RowFilter = "[" + test + "]" + "LIKE'%" + searchtxt.Text + "%'" + "AND'%" + searchtxt.Text + "%'";
-
-            //dv.RowFilter = "[Transaction_Date]" + "LIKE'" + searchtxt.Text + "'";
-            //dataView.RowFilter = "Name = 'StackOverflow' and Amount >= 5000 and Amount <= 5999";
-            //dv.RowFilter = "Transaction_Date Like "+ searchtxt.Text;
-            //TaskDataSet.Filter = "Deadline >='" + startSchedule + "' AND Deadline <= '" + endSchedule + "'";
-
-            //dv.RowFilter = "[Transaction_Date]" + ">='" + searchtxt.Text + "%'" +"'AND <='" + searchtxt.Text + "'";
-
-            /*   dv.RowFilter = "Transaction_Date >='" + searchtxt.Text + "' AND Transaction_Date <= '" + searchtxt.Text + "'*/
-
-
-
-
-
-
-            //dv.RowFilter = "[Transaction_Date]  >='" + date1 + "'AND [Transaction_Date] <='" + date2 + "'";
-
-            ////dv.RowFilter = "[Assisted_By] LIKE '%" + bunifuMetroTextbox1.Text + "'" + "OR [Transaction_Date]  >='" + date1 + "'AND [Transaction_Date] <='" + date2 + "'";
-            ////dv.RowFilter = "[Supplier_Name] LIKE '%" + bunifuMetroTextbox2.Text + "%'";
-
-            //Supplier_Datagrid.DataSource = null;
-            //Supplier_Datagrid.Rows.Clear();
-            //Supplier_Datagrid.Columns.Clear();
-            //Supplier_Datagrid.DataSource = dv;
-
-
-            //DataView dv = new DataView(dt);
-            //string date1 = bunifuDatepicker1.Value.ToString("MM/dd/yyyy");
-            //string date2 = bunifuDatepicker2.Value.ToString("MM/dd/yyyy");
-
-            //if (bunifuMetroTextbox1.Text == "")
-            //{
-
-            //    dv.RowFilter = "[Transaction_Date]  >='" + date1 + "'AND [Transaction_Date] <='" + date2 + "'";
-
-            //    Supplier_Datagrid.DataSource = null;
-            //    Supplier_Datagrid.Rows.Clear();
-            //    Supplier_Datagrid.Columns.Clear();
-            //    Supplier_Datagrid.DataSource = dv;
-
-            //}
-            //else
-            //{
-            //    dv.RowFilter = "[Transaction_Date]  >='" + date1 + "'AND [Transaction_Date] <='" + date2 + "' " + " AND [Assisted_By] LIKE '%" + bunifuMetroTextbox1.Text + "%'";
-
-            //    //dv.RowFilter = "[Assisted_By] LIKE '" + bunifuMetroTextbox1.Text + "' OR [Assisted_By] LIKE '%" + bunifuMetroTextbox1.Text + "%'";
-            //    Supplier_Datagrid.DataSource = null;
-            //    Supplier_Datagrid.Rows.Clear();
-            //    Supplier_Datagrid.Columns.Clear();
-            //    Supplier_Datagrid.DataSource = dv;
-
-            //}
-
-            //dt.DefaultView.RowFilter = "[Transaction_Date]  >='" + date1 + "'AND [Transaction_Date] <='" + date2 + "'";
-
-            //string test = "Nathaniel";
-            //dt.DefaultView.RowFilter = "[Assisted_By] LIKE '%" + test + "%'";
-
-
-
-            //DataGridViewImageColumn View = new DataGridViewImageColumn();
-            //Supplier_Datagrid.Columns.Add(View);
-            //View.HeaderText = "";
-            //View.Name = "View";
-            //View.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            //View.Image = Properties.Resources.view;
-
            
-          
 
+        
 
-            if (checker.Equals("allow"))
+            if (Form1.status=="true")
             {
                 Supplierrecord_Filter_popup a = new Supplierrecord_Filter_popup();
                 a.Show();
 
-                checker = "dontallow";
+                Form1.status = "false";
             }
             else
             {
-                MessageBox.Show("The tab is currently already open.");
+                MessageBox.Show("The Module is still loading or a window is currently open.");
             }
 
         }
@@ -852,8 +828,17 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click_1(object sender, EventArgs e)
         {
-            SupplierReportExtractionFilter_popup a = new SupplierReportExtractionFilter_popup();
-            a.Show();
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+                SupplierReportExtractionFilter_popup a = new SupplierReportExtractionFilter_popup();
+                a.Show();
+                Form1.status = "false";
+            }
+            else
+            {
+                MessageBox.Show("The Module is still loading or a window is currently open.");
+            }
+                
         }
 
         private void bunifuImageButton3_Click(object sender, EventArgs e)
@@ -901,7 +886,15 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -932,7 +925,15 @@ namespace NCR_SYSTEM_1
            
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -963,7 +964,15 @@ namespace NCR_SYSTEM_1
         
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -1012,7 +1021,15 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -1061,7 +1078,15 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -1110,7 +1135,15 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -1170,5 +1203,90 @@ namespace NCR_SYSTEM_1
 
         }
 
+        private void bunifuFlatButton3_Click(object sender, EventArgs e)
+        {
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+                copyAlltoClipboard();
+                Microsoft.Office.Interop.Excel.Application xlexcel;
+                Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+                Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+                object misValue = System.Reflection.Missing.Value;
+                xlexcel = new Excel.Application();
+                xlexcel.Visible = true;
+                xlWorkBook = xlexcel.Workbooks.Add(misValue);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+                Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[1, 1];
+                CR.Select();
+                xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+            }
+            else
+            {
+                MessageBox.Show("The Module is still loading or a window is currently open.");
+            }
+        }
+
+        private void copyAlltoClipboard()
+        {
+            Supplier_Datagrid.SelectAll();
+            DataObject dataObj = Supplier_Datagrid.GetClipboardContent();
+            if (dataObj != null)
+            Clipboard.SetDataObject(dataObj);
+        }
+
+        private void searchtxt_Enter(object sender, EventArgs e)
+        {
+            searchtxt.Text = "";
+        }
+
+        private void searchtxt_Leave(object sender, EventArgs e)
+        {
+            if (searchtxt.Text == "")
+            {
+                searchtxt.Text = "Type here to filter Stock Replenishment Record Content";
+            }
+            else
+            {
+
+            }
+        }
+
+        private void bunifuImageButton11_Click(object sender, EventArgs e)
+        {
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    Utility_settings_module a = new Utility_settings_module();
+                    this.Hide();
+                    a.Show();
+
+                    Form1.loadingtime = 9000;
+                    Form1.status = "false";
+                    Loading_popup b = new Loading_popup();
+                    b.Show();
+                }
+                else
+                {
+
+                }
+
+
+            }
+
+            else
+            {
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+            }
+        }
     }
 }

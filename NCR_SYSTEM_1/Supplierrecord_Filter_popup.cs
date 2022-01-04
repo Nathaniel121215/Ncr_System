@@ -37,15 +37,23 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            startdate = starttxt.Value.ToString("MM/dd/yyyy");
-            enddate = endtxt.Value.ToString("MM/dd/yyyy");
-            supplier = suppliertxt.Text;
-            assistedby = assistedtxt.Text;
+            if (starttxt.Value.ToString() != "" && endtxt.Value.ToString() != "" && suppliertxt.Text != "")
+            {
+                startdate = starttxt.Value.ToString("MM/dd/yyyy");
+                enddate = endtxt.Value.ToString("MM/dd/yyyy");
+                supplier = suppliertxt.Text;
+                assistedby = assistedtxt.Text;
 
 
-            Supplierrecord_module._instance.filter();
-            Supplierrecord_module.checker = "allow";
-            this.Hide();
+                Supplierrecord_module._instance.filter();
+                Form1.status = "true";
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Fill up all necessary fields.");
+            }
+          
         }
 
         private void Supplierrecord_Filter_popup_Load(object sender, EventArgs e)
@@ -95,13 +103,36 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Supplierrecord_module.checker = "allow";
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
+          
+        }
+
+        private void assistedtxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
         }
     }
 }
