@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace NCR_SYSTEM_1
 {
@@ -78,6 +79,17 @@ namespace NCR_SYSTEM_1
 
 
             dataview();
+
+            //accountlvldisplay
+
+            if (Form1.levelac == "Admin")
+            {
+                accountinfolvl.Text = "Login as Administrator";
+            }
+            else
+            {
+                accountinfolvl.Text = "Login as Employee";
+            }
         }
 
         public async void dataview()
@@ -243,29 +255,37 @@ namespace NCR_SYSTEM_1
 
         private void searchbutton_Click(object sender, EventArgs e)
         {
-            DataView dv = new DataView(dt);
-            dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
+            if (searchtxt.Text != "" & Form1.status == "true")
+            {
+                DataView dv = new DataView(dt);
+                dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
 
-            ActivityLog_Datagrid.DataSource = null;
-            ActivityLog_Datagrid.Rows.Clear();
-            ActivityLog_Datagrid.Columns.Clear();
-            ActivityLog_Datagrid.DataSource = dv;
+                ActivityLog_Datagrid.DataSource = null;
+                ActivityLog_Datagrid.Rows.Clear();
+                ActivityLog_Datagrid.Columns.Clear();
+                ActivityLog_Datagrid.DataSource = dv;
 
-            DataGridViewImageColumn AccountLvl = new DataGridViewImageColumn();
-            ActivityLog_Datagrid.Columns.Add(AccountLvl);
-            AccountLvl.HeaderText = "Account Level";
-            AccountLvl.Name = "Account Level";
-            AccountLvl.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            AccountLvl.Image = Properties.Resources.loading;
-
-
+                DataGridViewImageColumn AccountLvl = new DataGridViewImageColumn();
+                ActivityLog_Datagrid.Columns.Add(AccountLvl);
+                AccountLvl.HeaderText = "Account Level";
+                AccountLvl.Name = "Account Level";
+                AccountLvl.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                AccountLvl.Image = Properties.Resources.loading;
 
 
-            gettotalcount();
 
-            filterlabeltxt.Text = "";
 
-            searchupdate();
+                gettotalcount();
+
+                filterlabeltxt.Text = "";
+
+                searchupdate();
+            }
+            else
+            {
+
+            }
+            
         }
 
         public void searchupdate()
@@ -357,7 +377,15 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -372,8 +400,8 @@ namespace NCR_SYSTEM_1
             string user = ActivityLog_Filter_popup.user;
             string module = ActivityLog_Filter_popup.module;
 
-
-            if (ActivityLog_Filter_popup.user == "" && ActivityLog_Filter_popup.module == "")
+          
+            if (ActivityLog_Filter_popup.user == "" && ActivityLog_Filter_popup.module != "" && ActivityLog_Filter_popup.module == "All")
             {
 
                 dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "'";
@@ -388,10 +416,10 @@ namespace NCR_SYSTEM_1
             }
 
 
-            else if (ActivityLog_Filter_popup.user == "" && ActivityLog_Filter_popup.module != "")
+            else if (ActivityLog_Filter_popup.user != "" && ActivityLog_Filter_popup.module != "" && ActivityLog_Filter_popup.module != "All")
             {
 
-                dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "' " + " AND [Area/Module] LIKE '%" + module + "%'";
+                dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "' " + " AND [Area/Module] LIKE '%" + module + "%'" + " AND [User] LIKE '%" + user + "%'";
 
 
                 ActivityLog_Datagrid.DataSource = null;
@@ -399,7 +427,7 @@ namespace NCR_SYSTEM_1
                 ActivityLog_Datagrid.Columns.Clear();
                 ActivityLog_Datagrid.DataSource = dv;
             }
-            else if (ActivityLog_Filter_popup.user != "" && ActivityLog_Filter_popup.module == "")
+            else if (ActivityLog_Filter_popup.user != "" && ActivityLog_Filter_popup.module != "" && ActivityLog_Filter_popup.module == "All")
             {
                 dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "' " + " AND [User] LIKE '%" + user + "%'";
 
@@ -408,10 +436,10 @@ namespace NCR_SYSTEM_1
                 ActivityLog_Datagrid.Columns.Clear();
                 ActivityLog_Datagrid.DataSource = dv;
             }
-            else
+            else if (ActivityLog_Filter_popup.user == "" && ActivityLog_Filter_popup.module != "" && ActivityLog_Filter_popup.module != "All")
             {
 
-                dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "' " + " AND [Area/Module] LIKE '%" + module + "%'" + " AND [User] LIKE '%" + user + "%'";
+                dv.RowFilter = "[Date Searcher]  >='" + date1 + "'AND [Date Searcher] <='" + date2 + "' " + " AND [Area/Module] LIKE '%" + module + "%'";
 
                 ActivityLog_Datagrid.DataSource = null;
                 ActivityLog_Datagrid.Rows.Clear();
@@ -419,14 +447,6 @@ namespace NCR_SYSTEM_1
                 ActivityLog_Datagrid.DataSource = dv;
             }
 
-
-
-
-       
-
-
-
-            
 
             DataGridViewImageColumn AccountLvl = new DataGridViewImageColumn();
             ActivityLog_Datagrid.Columns.Add(AccountLvl);
@@ -440,23 +460,24 @@ namespace NCR_SYSTEM_1
             searchupdate();
             gettotalcount();
 
+
+         
+
+
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            
-
-
-            if (checker.Equals("allow"))
+            if (Form1.status=="true")
             {
                 ActivityLog_Filter_popup a = new ActivityLog_Filter_popup();
                 a.Show();
 
-                checker = "dontallow";
+                Form1.status = "false";
             }
             else
             {
-                MessageBox.Show("The tab is currently already open.");
+                MessageBox.Show("The Module is still loading or a window is currently open.");
             }
         }
 
@@ -527,7 +548,15 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -576,7 +605,15 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -625,7 +662,15 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -656,7 +701,15 @@ namespace NCR_SYSTEM_1
             
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -705,7 +758,15 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -754,7 +815,15 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -785,7 +854,15 @@ namespace NCR_SYSTEM_1
            
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -816,7 +893,15 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -847,8 +932,107 @@ namespace NCR_SYSTEM_1
          
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
+        }
+
+        private void bunifuFlatButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchtxt_Enter(object sender, EventArgs e)
+        {
+            searchtxt.Text = "";
+        }
+
+        private void searchtxt_Leave(object sender, EventArgs e)
+        {
+            if (searchtxt.Text == "")
+            {
+                searchtxt.Text = "Type here to filter Activity Log Content";
+            }
+            else
+            {
+
+            }
+        }
+
+        private void bunifuImageButton11_Click(object sender, EventArgs e)
+        {
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    Utility_settings_module a = new Utility_settings_module();
+                    this.Hide();
+                    a.Show();
+
+                    Form1.loadingtime = 9000;
+                    Form1.status = "false";
+                    Loading_popup b = new Loading_popup();
+                    b.Show();
+                }
+                else
+                {
+
+                }
+
+
+            }
+
+            else
+            {
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+            }
+        }
+
+        private void bunifuFlatButton1_Click_1(object sender, EventArgs e)
+        {
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+                copyAlltoClipboard();
+                Microsoft.Office.Interop.Excel.Application xlexcel;
+                Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+                Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+                object misValue = System.Reflection.Missing.Value;
+                xlexcel = new Excel.Application();
+                xlexcel.Visible = true;
+                xlWorkBook = xlexcel.Workbooks.Add(misValue);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+                Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[1, 1];
+                CR.Select();
+                xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+            }
+            else
+            {
+                MessageBox.Show("The Module is still loading or a window is currently open.");
+            }
+        }
+
+        private void copyAlltoClipboard()
+        {
+            ActivityLog_Datagrid.SelectAll();
+            DataObject dataObj = ActivityLog_Datagrid.GetClipboardContent();
+            if (dataObj != null)
+            Clipboard.SetDataObject(dataObj);
         }
     }
 }

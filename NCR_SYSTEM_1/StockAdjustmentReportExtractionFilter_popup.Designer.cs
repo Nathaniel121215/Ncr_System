@@ -233,6 +233,7 @@
             this.percentagetxt.Size = new System.Drawing.Size(281, 36);
             this.percentagetxt.TabIndex = 372;
             this.percentagetxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.percentagetxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.percentagetxt_KeyPress);
             // 
             // panel6
             // 

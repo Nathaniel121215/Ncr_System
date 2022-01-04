@@ -68,6 +68,7 @@ namespace NCR_SYSTEM_1
 
                 Stockadjustmentrecord_module._instance.filter();
                 this.Hide();
+                Form1.status = "true";
             }
             else
             {

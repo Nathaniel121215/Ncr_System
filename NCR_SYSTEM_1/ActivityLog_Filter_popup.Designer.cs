@@ -281,8 +281,8 @@
             this.moduletxt.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.moduletxt.FormattingEnabled = true;
             this.moduletxt.Items.AddRange(new object[] {
+            "All",
             "Inventory Management Module",
-            "Account Management Module",
             "Stock Replenishment Module",
             "Point of Sales Module",
             "Supplier Management Module",
@@ -292,7 +292,8 @@
             "Sales Record Module",
             "Stock Replenishment Record",
             "Stock Adjustment Record Module",
-            "Utility Settings Module"});
+            "Utility Settings Module",
+            "Account Management Module"});
             this.moduletxt.Location = new System.Drawing.Point(36, 299);
             this.moduletxt.Name = "moduletxt";
             this.moduletxt.Size = new System.Drawing.Size(281, 25);

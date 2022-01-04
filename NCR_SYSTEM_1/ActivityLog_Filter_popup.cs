@@ -30,30 +30,56 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            startdate = starttxt.Value.ToString("MM/dd/yyyy");
-            enddate = endtxt.Value.ToString("MM/dd/yyyy");
+            if(starttxt.Value.ToString() != "" && endtxt.Value.ToString() != "" && moduletxt.Text!="")
+            {
+                startdate = starttxt.Value.ToString("MM/dd/yyyy");
+                enddate = endtxt.Value.ToString("MM/dd/yyyy");
 
 
-            user = usertxt.Text;
-            module = moduletxt.Text;
+                user = usertxt.Text;
+                module = moduletxt.Text;
 
 
-            ActivityLog_Module._instance.filter();
-            ActivityLog_Module.checker = "allow";
-            this.Hide();
+                ActivityLog_Module._instance.filter();
+                ActivityLog_Module.checker = "allow";
+                this.Hide();
+                Form1.status = "true";
+
+            }
+            else
+            {
+                MessageBox.Show("Fill up all necessary fields.");
+            }
+            
             
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            ActivityLog_Module.checker = "allow";
-            this.Hide();
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            ActivityLog_Module.checker = "allow";
-            this.Hide();
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
         }
 
         private void usertxt_OnValueChanged(object sender, EventArgs e)

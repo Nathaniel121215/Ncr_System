@@ -470,7 +470,7 @@ namespace NCR_SYSTEM_1
             {
                 StockAdjustmentFilter_popup a = new StockAdjustmentFilter_popup();
                 a.Show();
-                Form1.status = "true";
+                Form1.status = "false";
             }
             else
             {
