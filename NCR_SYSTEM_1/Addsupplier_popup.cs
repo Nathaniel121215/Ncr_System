@@ -33,109 +33,118 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+            if(supname.Text!="" && supaddress.Text != "" && supnumber.Text != "")
             {
-                String date = DateTime.Now.ToString("MM/dd/yyyy");
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
-
-                FirebaseResponse resp = client.Get("SupplierCounter/node");
-
-                Counter_class get = resp.ResultAs<Counter_class>();
-
-                var data = new Supplier_Class
                 {
-                    Supplier_ID = (Convert.ToInt32(get.cnt) + 1).ToString(),
-                    Supplier_Name = supname.Text,
-                    Supplier_Address = supaddress.Text,
-                    Supplier_Number = supnumber.Text,    
-                    Supplier_DateAdded = date,
-
-                };
-
-                SetResponse response = client.Set("Supplier/" + data.Supplier_ID, data);
-                Supplier_Class result = response.ResultAs<Supplier_Class>();
-
-                var obj = new Counter_class
-                {
-                    cnt = data.Supplier_ID
-                };
-
-                SetResponse response1 = client.Set("SupplierCounter/node", obj);
+                    String date = DateTime.Now.ToString("MM/dd/yyyy");
 
 
+                    FirebaseResponse resp = client.Get("SupplierCounter/node");
 
+                    Counter_class get = resp.ResultAs<Counter_class>();
 
+                    var data = new Supplier_Class
+                    {
+                        Supplier_ID = (Convert.ToInt32(get.cnt) + 1).ToString(),
+                        Supplier_Name = supname.Text,
+                        Supplier_Address = supaddress.Text,
+                        Supplier_Number = supnumber.Text,
+                        Supplier_DateAdded = date,
 
+                    };
 
-                FirebaseResponse resp3 = client.Get("SupplierCounterExisting/node");
-                Counter_class gett = resp3.ResultAs<Counter_class>();
-                int exist = (Convert.ToInt32(gett.cnt) + 1);
-                var obj2 = new Counter_class
-                {
-                    cnt = exist.ToString()
-                };
+                    SetResponse response = client.Set("Supplier/" + data.Supplier_ID, data);
+                    Supplier_Class result = response.ResultAs<Supplier_Class>();
 
+                    var obj = new Counter_class
+                    {
+                        cnt = data.Supplier_ID
+                    };
 
-                SetResponse response2 = client.Set("SupplierCounterExisting/node", obj2);
-
-
-                //Supplier Module ADD SUPPLIER EVENT
-
-                FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
-                Counter_class get4 = resp4.ResultAs<Counter_class>();
-                int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
-
-
-
-                var data3 = new ActivityLog_Class
-                {
-                    Event_ID = cnt4.ToString(),
-                    Module = "Supplier Management Module",
-                    Action = "Supplier-ID: " + data.Supplier_ID + "   New Supplier Added",
-                    Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
-                    User = Form1.username,
-                    Accountlvl = Form1.levelac,
-
-                };
-
-
-
-                FirebaseResponse response5 = client.Set("ActivityLog/" + data3.Event_ID, data3);
-
-
-
-                var obj4 = new Counter_class
-                {
-                    cnt = data3.Event_ID
-
-                };
-
-                SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
+                    SetResponse response1 = client.Set("SupplierCounter/node", obj);
 
 
 
 
-                this.Hide();
 
 
-                try
-                {
-                    Suppliermanagement_module._instance.dataview();
-                    Suppliermanagement_module.checker = "allow";
+                    FirebaseResponse resp3 = client.Get("SupplierCounterExisting/node");
+                    Counter_class gett = resp3.ResultAs<Counter_class>();
+                    int exist = (Convert.ToInt32(gett.cnt) + 1);
+                    var obj2 = new Counter_class
+                    {
+                        cnt = exist.ToString()
+                    };
+
+
+                    SetResponse response2 = client.Set("SupplierCounterExisting/node", obj2);
+
+
+                    //Supplier Module ADD SUPPLIER EVENT
+
+                    FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
+                    Counter_class get4 = resp4.ResultAs<Counter_class>();
+                    int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
+
+
+
+                    var data3 = new ActivityLog_Class
+                    {
+                        Event_ID = cnt4.ToString(),
+                        Module = "Supplier Management Module",
+                        Action = "Supplier-ID: " + data.Supplier_ID + "   New Supplier Added",
+                        Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                        User = Form1.username,
+                        Accountlvl = Form1.levelac,
+
+                    };
+
+
+
+                    FirebaseResponse response5 = client.Set("ActivityLog/" + data3.Event_ID, data3);
+
+
+
+                    var obj4 = new Counter_class
+                    {
+                        cnt = data3.Event_ID
+
+                    };
+
+                    SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
+
+
+
+
+                    this.Hide();
+
+
+                    try
+                    {
+                        Suppliermanagement_module._instance.dataview();
+                        Form1.status = "true";
+                    }
+                    catch
+                    {
+                        Form1.status = "false";
+                        ProcessOrder_popup._instance.refreshsupplier();
+                    }
+
                 }
-                catch
+
+                else
+
                 {
-                    ProcessOrder_popup._instance.refreshsupplier();
+                    //do something if NO
                 }
-                
             }
-
             else
-
             {
-                //do something if NO
+                MessageBox.Show("Fill up all necessary fields.");
             }
+            
         }
 
         private void Addsupplier_popup_Load(object sender, EventArgs e)
@@ -154,19 +163,61 @@ namespace NCR_SYSTEM_1
 
 
             supid.Text = data.Supplier_ID;
+
+            namemetro(supname);
+            namemetro(supaddress);
+            namemetro(supnumber);
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            Suppliermanagement_module.checker = "allow";
-            this.Hide();
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            Suppliermanagement_module.checker = "allow";
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
-            this.Hide();
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
+        }
+
+        private void namemetro(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox)
+
+        {
+            foreach (var ctl in metroTextbox.Controls)
+            {
+
+                if (ctl.GetType() == typeof(TextBox))
+
+                {
+                    var txt = (TextBox)ctl;
+                    txt.MaxLength = 30;
+
+                }
+
+            }
+
+        }
+
+        private void supnumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

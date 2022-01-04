@@ -33,84 +33,94 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+            if (supname.Text != "" && supaddress.Text != "" && supnumber.Text != "")
             {
-                try
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
                 {
-                    var data = new Supplier_Class
+                    try
+                    {
+                        var data = new Supplier_Class
+                        {
+
+                            Supplier_ID = supid.Text,
+                            Supplier_Name = supname.Text,
+                            Supplier_Address = supaddress.Text,
+                            Supplier_Number = supnumber.Text,
+                            Supplier_LastTransaction = Suppliermanagement_module.Last_Transaction,
+                            Supplier_DateAdded = Suppliermanagement_module.Date_Added,
+
+
+
+                        };
+
+                        FirebaseResponse response = client.Update("Supplier/" + data.Supplier_ID, data);
+                        User_class result = response.ResultAs<User_class>();
+
+
+                        //SUPPLIER MODULE UPDATE EVENT
+
+                        FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
+                        Counter_class get4 = resp4.ResultAs<Counter_class>();
+                        int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
+
+
+
+                        var data3 = new ActivityLog_Class
+                        {
+                            Event_ID = cnt4.ToString(),
+                            Module = "Supplier Mangement Module",
+                            Action = "Supplier-ID: " + data.Supplier_ID + "   Supplier Details Updated",
+                            Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                            User = Form1.username,
+                            Accountlvl = Form1.levelac,
+
+                        };
+
+
+
+                        FirebaseResponse response5 = client.Set("ActivityLog/" + data3.Event_ID, data3);
+
+
+
+                        var obj4 = new Counter_class
+                        {
+                            cnt = data3.Event_ID
+
+                        };
+
+                        SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
+
+
+
+
+                        this.Hide();
+                        Suppliermanagement_module._instance.dataview();
+                        Form1.status = "true";
+
+                    }
+
+                    catch
                     {
 
-                        Supplier_ID = supid.Text,
-                        Supplier_Name = supname.Text,
-                        Supplier_Address = supaddress.Text,
-                        Supplier_Number = supnumber.Text,
-                        Supplier_LastTransaction = Suppliermanagement_module.Last_Transaction,
-                        Supplier_DateAdded = Suppliermanagement_module.Date_Added,
-                        
+                    }
 
 
-                    };
-
-                    FirebaseResponse response = client.Update("Supplier/" + data.Supplier_ID, data);
-                    User_class result = response.ResultAs<User_class>();
-
-
-                    //SUPPLIER MODULE UPDATE EVENT
-
-                    FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
-                    Counter_class get4 = resp4.ResultAs<Counter_class>();
-                    int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
-
-
-
-                    var data3 = new ActivityLog_Class
-                    {
-                        Event_ID = cnt4.ToString(),
-                        Module = "Supplier Mangement Module",
-                        Action = "Supplier-ID: " + data.Supplier_ID + "   Supplier Details Updated",
-                        Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
-                        User = Form1.username,
-                        Accountlvl = Form1.levelac,
-
-                    };
-
-
-
-                    FirebaseResponse response5 = client.Set("ActivityLog/" + data3.Event_ID, data3);
-
-
-
-                    var obj4 = new Counter_class
-                    {
-                        cnt = data3.Event_ID
-
-                    };
-
-                    SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
-
-
-
-
-                    this.Hide();
-                    Suppliermanagement_module._instance.dataview();
 
                 }
 
-                catch 
+                else
+
                 {
-
+                    //do something if NO
                 }
-
-   
-
             }
-
             else
 
             {
-                //do something if NO
+                MessageBox.Show("Fill up all necessary fields.");
             }
+                
         }
 
         private void Updatesupplier_popup_Load(object sender, EventArgs e)
@@ -123,6 +133,39 @@ namespace NCR_SYSTEM_1
             supnumber.Text = Suppliermanagement_module.Supplier_Number;
           
             
+        }
+
+        private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
+        }
+
+        private void bunifuImageButton1_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
+        }
+
+        private void supnumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

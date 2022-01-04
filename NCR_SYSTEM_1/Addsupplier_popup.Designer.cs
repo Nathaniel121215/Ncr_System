@@ -145,6 +145,7 @@
             this.supnumber.Size = new System.Drawing.Size(281, 36);
             this.supnumber.TabIndex = 236;
             this.supnumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.supnumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.supnumber_KeyPress);
             // 
             // label2
             // 
