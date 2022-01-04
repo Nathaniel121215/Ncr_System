@@ -24,18 +24,24 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-     
-
-            startdate = starttxt.Value.ToString("MM/dd/yyyy");
-            enddate = endtxt.Value.ToString("MM/dd/yyyy");
-           
-
-            user = usertxt.Text;
+            if(starttxt.Value.ToString() !="" & endtxt.Value.ToString() != "")
+            {
+                startdate = starttxt.Value.ToString("MM/dd/yyyy");
+                enddate = endtxt.Value.ToString("MM/dd/yyyy");
 
 
-            InventoryArchive_Module._instance.filter();
-            InventoryArchive_Module.checker = "allow";
-            this.Hide();
+                user = usertxt.Text;
+
+
+                InventoryArchive_Module._instance.filter();
+                Form1.status = "true";
+                this.Hide();
+            }
+            else
+            {
+
+            }
+            
 
         }
 
@@ -51,14 +57,32 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            InventoryArchive_Module.checker = "allow";
-            this.Hide();
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
+
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            InventoryArchive_Module.checker = "allow";
-            this.Hide();
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
+
         }
     }
 }

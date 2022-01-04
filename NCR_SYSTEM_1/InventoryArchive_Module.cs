@@ -97,7 +97,18 @@ namespace NCR_SYSTEM_1
 
 
             DataViewAll();
-            
+
+            //accountlvldisplay
+
+            if (Form1.levelac == "Admin")
+            {
+                accountinfolvl.Text = "Login as Administrator";
+            }
+            else
+            {
+                accountinfolvl.Text = "Login as Employee";
+            }
+
 
         }
 
@@ -214,16 +225,16 @@ namespace NCR_SYSTEM_1
         {
           
 
-            if (checker.Equals("allow"))
+            if (Form1.status=="true")
             {
                 InventoryArchive_Filter_popup a = new InventoryArchive_Filter_popup();
                 a.Show();
 
-                checker = "dontallow";
+                Form1.status = "false";
             }
             else
             {
-                MessageBox.Show("The tab is currently already open.");
+                MessageBox.Show("The Module is still loading or a window is currently open.");
             }
         }
         public void filter()
@@ -344,36 +355,45 @@ namespace NCR_SYSTEM_1
 
         private void searchbutton_Click(object sender, EventArgs e)
         {
-            DataView dv = new DataView(dt);
-            dv.RowFilter = "[" + bunifuDropdown1.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
+            if (searchtxt.Text != "" & Form1.status == "true")
+            {
+                DataView dv = new DataView(dt);
+                dv.RowFilter = "[" + bunifuDropdown1.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
 
-            Inventory_Datagrid.DataSource = null;
-            Inventory_Datagrid.Rows.Clear();
-            Inventory_Datagrid.Columns.Clear();
-            Inventory_Datagrid.DataSource = dv;
-
-
-            DataGridViewImageColumn View = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(View);
-            View.HeaderText = "";
-            View.Name = "";
-            View.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            View.Image = Properties.Resources.View_Icon;
-
-            DataGridViewImageColumn Restore = new DataGridViewImageColumn();
-            Inventory_Datagrid.Columns.Add(Restore);
-            Restore.HeaderText = "";
-            Restore.Name = "";
-            Restore.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Restore.Image = Properties.Resources.Restore_Icon;
+                Inventory_Datagrid.DataSource = null;
+                Inventory_Datagrid.Rows.Clear();
+                Inventory_Datagrid.Columns.Clear();
+                Inventory_Datagrid.DataSource = dv;
 
 
+                DataGridViewImageColumn View = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(View);
+                View.HeaderText = "";
+                View.Name = "";
+                View.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                View.Image = Properties.Resources.View_Icon;
 
-            gettransactioncount();
+                DataGridViewImageColumn Restore = new DataGridViewImageColumn();
+                Inventory_Datagrid.Columns.Add(Restore);
+                Restore.HeaderText = "";
+                Restore.Name = "";
+                Restore.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Restore.Image = Properties.Resources.Restore_Icon;
 
-            filterlabeltxt.Text = "";
 
-            searchupdate();
+
+                gettransactioncount();
+
+                filterlabeltxt.Text = "";
+
+                searchupdate();
+            }
+            else
+            {
+
+            }
+      
+                
 
         }
 
@@ -404,7 +424,15 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -455,175 +483,170 @@ namespace NCR_SYSTEM_1
 
         private void Inventory_Datagrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            //restore
-            string columnindex = "";
-
-            try
+            if(Form1.status=="true")
             {
-                if (e.ColumnIndex == Inventory_Datagrid.Columns[11].Index)
+                //restore
+                string columnindex = "";
+
+                try
                 {
-                    columnindex = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
-
-
-
-
-                    FirebaseResponse resp1 = client.Get("InventoryArchive/" + columnindex);
-                    Product_class obj1 = resp1.ResultAs<Product_class>();
-
-                    var data = new Product_class
+                    if (e.ColumnIndex == Inventory_Datagrid.Columns[11].Index)
                     {
-                        ID = obj1.ID,
-                        Product_Name = obj1.Product_Name,
-                        Unit = obj1.Unit,
-                        Brand = obj1.Brand,
-                        Description = obj1.Description,
-                        Category = obj1.Category,
-                        Price = obj1.Price,
-                        Items_Sold = obj1.Items_Sold,
-                        Stock = "0",
-
-                        Low = obj1.Low,
-                        High = obj1.High,
-
-
-                    };
-
-                    FirebaseResponse response = client.Set("Inventory/" + data.ID, data);
-                    Product_class result = response.ResultAs<Product_class>();
-               
+                        columnindex = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
 
 
-                    FirebaseResponse resp3 = client.Get("inventoryCounterExisting/node");
-                    Counter_class gett = resp3.ResultAs<Counter_class>();
-                    int exist = (Convert.ToInt32(gett.cnt) + 1);
-                    var obj2 = new Counter_class
+
+                        FirebaseResponse resp1 = client.Get("InventoryArchive/" + columnindex);
+                        Product_class obj1 = resp1.ResultAs<Product_class>();
+
+                        var data = new Product_class
+                        {
+                            ID = obj1.ID,
+                            Product_Name = obj1.Product_Name,
+                            Unit = obj1.Unit,
+                            Brand = obj1.Brand,
+                            Description = obj1.Description,
+                            Category = obj1.Category,
+                            Price = obj1.Price,
+                            Items_Sold = obj1.Items_Sold,
+                            Stock = "0",
+
+                            Low = obj1.Low,
+                            High = obj1.High,
+
+
+                        };
+
+                        FirebaseResponse response = client.Set("Inventory/" + data.ID, data);
+                        Product_class result = response.ResultAs<Product_class>();
+
+
+
+
+                        FirebaseResponse resp3 = client.Get("inventoryCounterExisting/node");
+                        Counter_class gett = resp3.ResultAs<Counter_class>();
+                        int exist = (Convert.ToInt32(gett.cnt) + 1);
+                        var obj2 = new Counter_class
+                        {
+                            cnt = exist.ToString()
+                        };
+
+
+                        SetResponse response2 = client.Set("inventoryCounterExisting/node", obj2);
+
+
+
+                        //get archive counter
+                        FirebaseResponse resp = client.Get("InventoryArchiveCounter/node");
+                        Counter_class get = resp.ResultAs<Counter_class>();
+
+                        //update archive counter
+                        var obj = new Counter_class
+                        {
+                            cnt = (Convert.ToInt32(get.cnt) - 1).ToString(),
+                        };
+
+                        SetResponse response4 = client.Set("InventoryArchiveCounter/node", obj);
+
+
+
+                        //delete from current table
+
+                        FirebaseResponse response5 = client.Delete("InventoryArchive/" + columnindex);
+
+
+
+
+
+                        //INVENTORY ARCHIVE RESTORE EVENT
+
+                        FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
+                        Counter_class get4 = resp4.ResultAs<Counter_class>();
+                        int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
+
+
+
+                        var data3 = new ActivityLog_Class
+                        {
+                            Event_ID = cnt4.ToString(),
+                            Module = "Inventory Archive Module",
+                            Action = "Product-ID: " + data.ID + "   Item Restored",
+                            Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                            User = Form1.username,
+                            Accountlvl = Form1.levelac,
+
+                        };
+
+
+
+                        FirebaseResponse response6 = client.Set("ActivityLog/" + data3.Event_ID, data3);
+
+
+
+                        var obj4 = new Counter_class
+                        {
+                            cnt = data3.Event_ID
+
+                        };
+
+                        SetResponse response7 = client.Set("ActivityLogCounter/node", obj4);
+
+
+
+                        gettransactioncount();
+                        filterlabeltxt.Text = "";
+                        DataViewAll();
+
+
+                    }
+
+                    //view
+                    if (e.ColumnIndex == Inventory_Datagrid.Columns[10].Index)
                     {
-                        cnt = exist.ToString()
-                    };
+                        columnindex = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+                        FirebaseResponse resp1 = client.Get("InventoryArchive/" + columnindex);
+                        Product_class obj1 = resp1.ResultAs<Product_class>();
 
 
-                    SetResponse response2 = client.Set("inventoryCounterExisting/node", obj2);
-
-
-
-                    //get archive counter
-                    FirebaseResponse resp = client.Get("InventoryArchiveCounter/node");
-                    Counter_class get = resp.ResultAs<Counter_class>();
-
-                    //update archive counter
-                    var obj = new Counter_class
-                    {
-                        cnt = (Convert.ToInt32(get.cnt) - 1).ToString(),
-                    };
-
-                    SetResponse response4 = client.Set("InventoryArchiveCounter/node", obj);
+                        ID = obj1.ID;
+                        Product_Name = obj1.Product_Name;
+                        Unit = obj1.Unit;
+                        Brand = obj1.Brand;
+                        Description = obj1.Description;
+                        Category = obj1.Category;
+                        Price = obj1.Price;
+                        Items_Sold = obj1.Items_Sold;
+                        Low = obj1.Low;
+                        High = obj1.High;
 
 
 
-                    //delete from current table
-
-                    FirebaseResponse response5 = client.Delete("InventoryArchive/" + columnindex);
+                        InventoryArchiveView c = new InventoryArchiveView();
+                        c.Show();
+                        Form1.status = "false";
 
 
 
 
-
-                    //INVENTORY ARCHIVE RESTORE EVENT
-
-                    FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
-                    Counter_class get4 = resp4.ResultAs<Counter_class>();
-                    int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
+                    }
 
 
-
-                    var data3 = new ActivityLog_Class
-                    {
-                        Event_ID = cnt4.ToString(),
-                        Module = "Inventory Archive Module",
-                        Action = "Product-ID: " + data.ID + "   Item Restored",
-                        Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
-                        User = Form1.username,
-                        Accountlvl = Form1.levelac,
-
-                    };
-
-
-
-                    FirebaseResponse response6 = client.Set("ActivityLog/" + data3.Event_ID, data3);
-
-
-
-                    var obj4 = new Counter_class
-                    {
-                        cnt = data3.Event_ID
-
-                    };
-
-                    SetResponse response7 = client.Set("ActivityLogCounter/node", obj4);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    gettransactioncount();
-                    filterlabeltxt.Text = "";
-                    DataViewAll();
-
-
-                }
-
-                //view
-                if (e.ColumnIndex == Inventory_Datagrid.Columns[10].Index)
-                {
-                    columnindex = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
-
-                    FirebaseResponse resp1 = client.Get("InventoryArchive/" + columnindex);
-                    Product_class obj1 = resp1.ResultAs<Product_class>();
-
-
-                    ID = obj1.ID;
-                    Product_Name = obj1.Product_Name;
-                    Unit = obj1.Unit;
-                    Brand = obj1.Brand;
-                    Description = obj1.Description;
-                    Category = obj1.Category;
-                    Price = obj1.Price;
-                    Items_Sold = obj1.Items_Sold;
-                    Low = obj1.Low;
-                    High = obj1.High;
-
-
-
-                    InventoryArchiveView c = new InventoryArchiveView();
-                    c.Show();
-              
 
 
 
                 }
+                catch
+                {
 
-
-
-
-
+                }
             }
-            catch
+            else
             {
-
+                MessageBox.Show("The Module is still loading or a window is currently open.");
             }
+            
 
 
 
@@ -656,7 +679,15 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -705,7 +736,15 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -754,7 +793,15 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -785,7 +832,15 @@ namespace NCR_SYSTEM_1
          
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -834,7 +889,15 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -883,7 +946,15 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -914,7 +985,15 @@ namespace NCR_SYSTEM_1
           
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -945,7 +1024,15 @@ namespace NCR_SYSTEM_1
            
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -976,7 +1063,15 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -1025,6 +1120,100 @@ namespace NCR_SYSTEM_1
             if (e.KeyCode == Keys.Delete)
             {
                 e.SuppressKeyPress = true;
+            }
+        }
+
+        private void searchtxt_Enter(object sender, EventArgs e)
+        {
+            searchtxt.Text = "";
+        }
+
+        private void searchtxt_Leave(object sender, EventArgs e)
+        {
+            if (searchtxt.Text == "")
+            {
+                searchtxt.Text = "Type here to filter Inventory Archive Content";
+            }
+            else
+            {
+
+            }
+        }
+
+        private void bunifuImageButton3_Click(object sender, EventArgs e)
+        {
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    SupplierManagementArchive_module a = new SupplierManagementArchive_module();
+                    this.Hide();
+                    a.Show();
+
+                    Form1.loadingtime = 9000;
+                    Form1.status = "false";
+                    Loading_popup b = new Loading_popup();
+                    b.Show();
+                }
+                else
+                {
+
+                }
+
+
+            }
+
+            else
+            {
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
+            }
+        }
+
+        private void bunifuImageButton11_Click(object sender, EventArgs e)
+        {
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    Utility_settings_module a = new Utility_settings_module();
+                    this.Hide();
+                    a.Show();
+
+                    Form1.loadingtime = 9000;
+                    Form1.status = "false";
+                    Loading_popup b = new Loading_popup();
+                    b.Show();
+                }
+                else
+                {
+
+                }
+
+
+            }
+
+            else
+            {
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
     }

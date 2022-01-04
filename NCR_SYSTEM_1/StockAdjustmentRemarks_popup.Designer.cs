@@ -82,6 +82,7 @@
             // remarktxt
             // 
             this.remarktxt.BorderColor = System.Drawing.Color.SeaGreen;
+            this.remarktxt.Enabled = false;
             this.remarktxt.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.remarktxt.Location = new System.Drawing.Point(35, 110);
             this.remarktxt.Multiline = true;
