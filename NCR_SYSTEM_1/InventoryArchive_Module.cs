@@ -492,111 +492,120 @@ namespace NCR_SYSTEM_1
                 {
                     if (e.ColumnIndex == Inventory_Datagrid.Columns[11].Index)
                     {
-                        columnindex = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
-
-
-
-                        FirebaseResponse resp1 = client.Get("InventoryArchive/" + columnindex);
-                        Product_class obj1 = resp1.ResultAs<Product_class>();
-
-                        var data = new Product_class
                         {
-                            ID = obj1.ID,
-                            Product_Name = obj1.Product_Name,
-                            Unit = obj1.Unit,
-                            Brand = obj1.Brand,
-                            Description = obj1.Description,
-                            Category = obj1.Category,
-                            Price = obj1.Price,
-                            Items_Sold = obj1.Items_Sold,
-                            Stock = "0",
-
-                            Low = obj1.Low,
-                            High = obj1.High,
-
-
-                        };
-
-                        FirebaseResponse response = client.Set("Inventory/" + data.ID, data);
-                        Product_class result = response.ResultAs<Product_class>();
+                            columnindex = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
 
 
 
-                        FirebaseResponse resp3 = client.Get("inventoryCounterExisting/node");
-                        Counter_class gett = resp3.ResultAs<Counter_class>();
-                        int exist = (Convert.ToInt32(gett.cnt) + 1);
-                        var obj2 = new Counter_class
+                            FirebaseResponse resp1 = client.Get("InventoryArchive/" + columnindex);
+                            Product_class obj1 = resp1.ResultAs<Product_class>();
+
+                            var data = new Product_class
+                            {
+                                ID = obj1.ID,
+                                Product_Name = obj1.Product_Name,
+                                Unit = obj1.Unit,
+                                Brand = obj1.Brand,
+                                Description = obj1.Description,
+                                Category = obj1.Category,
+                                Price = obj1.Price,
+                                Items_Sold = obj1.Items_Sold,
+                                Stock = "0",
+
+                                Low = obj1.Low,
+                                High = obj1.High,
+
+
+                            };
+
+                            FirebaseResponse response = client.Set("Inventory/" + data.ID, data);
+                            Product_class result = response.ResultAs<Product_class>();
+
+
+
+
+                            FirebaseResponse resp3 = client.Get("inventoryCounterExisting/node");
+                            Counter_class gett = resp3.ResultAs<Counter_class>();
+                            int exist = (Convert.ToInt32(gett.cnt) + 1);
+                            var obj2 = new Counter_class
+                            {
+                                cnt = exist.ToString()
+                            };
+
+
+                            SetResponse response2 = client.Set("inventoryCounterExisting/node", obj2);
+
+
+
+                            //get archive counter
+                            FirebaseResponse resp = client.Get("InventoryArchiveCounter/node");
+                            Counter_class get = resp.ResultAs<Counter_class>();
+
+                            //update archive counter
+                            var obj = new Counter_class
+                            {
+                                cnt = (Convert.ToInt32(get.cnt) - 1).ToString(),
+                            };
+
+                            SetResponse response4 = client.Set("InventoryArchiveCounter/node", obj);
+
+
+
+                            //delete from current table
+
+                            FirebaseResponse response5 = client.Delete("InventoryArchive/" + columnindex);
+
+
+
+
+
+                            //INVENTORY ARCHIVE RESTORE EVENT
+
+                            FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
+                            Counter_class get4 = resp4.ResultAs<Counter_class>();
+                            int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
+
+
+
+                            var data3 = new ActivityLog_Class
+                            {
+                                Event_ID = cnt4.ToString(),
+                                Module = "Inventory Archive Module",
+                                Action = "Product-ID: " + data.ID + "   Item Restored",
+                                Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                                User = Form1.username,
+                                Accountlvl = Form1.levelac,
+
+                            };
+
+
+
+                            FirebaseResponse response6 = client.Set("ActivityLog/" + data3.Event_ID, data3);
+
+
+
+                            var obj4 = new Counter_class
+                            {
+                                cnt = data3.Event_ID
+
+                            };
+
+                            SetResponse response7 = client.Set("ActivityLogCounter/node", obj4);
+
+
+
+                            gettransactioncount();
+                            filterlabeltxt.Text = "";
+                            DataViewAll();
+                        }
+                        else
                         {
-                            cnt = exist.ToString()
-                        };
 
-
-                        SetResponse response2 = client.Set("inventoryCounterExisting/node", obj2);
-
-
-
-                        //get archive counter
-                        FirebaseResponse resp = client.Get("InventoryArchiveCounter/node");
-                        Counter_class get = resp.ResultAs<Counter_class>();
-
-                        //update archive counter
-                        var obj = new Counter_class
-                        {
-                            cnt = (Convert.ToInt32(get.cnt) - 1).ToString(),
-                        };
-
-                        SetResponse response4 = client.Set("InventoryArchiveCounter/node", obj);
-
-
-
-                        //delete from current table
-
-                        FirebaseResponse response5 = client.Delete("InventoryArchive/" + columnindex);
-
-
-
-
-
-                        //INVENTORY ARCHIVE RESTORE EVENT
-
-                        FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
-                        Counter_class get4 = resp4.ResultAs<Counter_class>();
-                        int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
-
-
-
-                        var data3 = new ActivityLog_Class
-                        {
-                            Event_ID = cnt4.ToString(),
-                            Module = "Inventory Archive Module",
-                            Action = "Product-ID: " + data.ID + "   Item Restored",
-                            Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
-                            User = Form1.username,
-                            Accountlvl = Form1.levelac,
-
-                        };
-
-
-
-                        FirebaseResponse response6 = client.Set("ActivityLog/" + data3.Event_ID, data3);
-
-
-
-                        var obj4 = new Counter_class
-                        {
-                            cnt = data3.Event_ID
-
-                        };
-
-                        SetResponse response7 = client.Set("ActivityLogCounter/node", obj4);
-
-
-
-                        gettransactioncount();
-                        filterlabeltxt.Text = "";
-                        DataViewAll();
+                        }
+                        
 
 
                     }
