@@ -178,7 +178,7 @@
             // 
             this.bunifuImageButton10.BackColor = System.Drawing.Color.SeaGreen;
             this.bunifuImageButton10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bunifuImageButton10.Image = global::NCR_SYSTEM_1.Properties.Resources.stock_purchasing_record;
+            this.bunifuImageButton10.Image = global::NCR_SYSTEM_1.Properties.Resources.Group_272;
             this.bunifuImageButton10.ImageActive = null;
             this.bunifuImageButton10.Location = new System.Drawing.Point(55, 531);
             this.bunifuImageButton10.Name = "bunifuImageButton10";

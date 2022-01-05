@@ -859,6 +859,9 @@
     <None Include="Resources\fade stock adjustment.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Group 2711.png" />
+    <None Include="Resources\Group 272.png" />
+    <None Include="Resources\Group 271.png" />
     <None Include="Resources\Group 269.png" />
     <None Include="Resources\supplier archive.png" />
     <None Include="Resources\fade stock replenishment.png" />

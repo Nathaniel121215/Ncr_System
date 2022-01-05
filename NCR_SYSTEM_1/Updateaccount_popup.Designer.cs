@@ -137,6 +137,7 @@
             this.lnametxt.Size = new System.Drawing.Size(281, 36);
             this.lnametxt.TabIndex = 239;
             this.lnametxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.lnametxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lnametxt_KeyPress);
             // 
             // label6
             // 
@@ -191,6 +192,7 @@
             this.fnametxt.Size = new System.Drawing.Size(281, 36);
             this.fnametxt.TabIndex = 235;
             this.fnametxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.fnametxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.fnametxt_KeyPress);
             // 
             // label2
             // 

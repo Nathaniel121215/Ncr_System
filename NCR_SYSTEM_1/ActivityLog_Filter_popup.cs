@@ -91,5 +91,19 @@ namespace NCR_SYSTEM_1
         {
 
         }
+
+        private void usertxt_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+
+        }
+
+        private void usertxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+                base.OnKeyPress(e);
+            }
+        }
     }
 }

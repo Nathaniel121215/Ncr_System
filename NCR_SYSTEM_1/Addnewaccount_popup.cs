@@ -149,12 +149,20 @@ namespace NCR_SYSTEM_1
 
         private void fnametxt_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+                base.OnKeyPress(e);
+            }
         }
 
         private void lnametxt_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+                base.OnKeyPress(e);
+            }
         }
 
         private void namemetro(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox)

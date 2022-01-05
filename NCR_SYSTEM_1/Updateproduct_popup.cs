@@ -266,8 +266,16 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Form1.status = "true";
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -373,8 +381,16 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton2_Click_1(object sender, EventArgs e)
         {
-            this.Hide();
-            Form1.status = "true";
+            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+            {
+                this.Hide();
+                Form1.status = "true";
+            }
+            else
+            {
+
+            }
         }
 
         private void pprice_MouseEnter(object sender, EventArgs e)

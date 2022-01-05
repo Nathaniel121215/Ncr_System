@@ -1788,7 +1788,7 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                MessageBox.Show("The tab is currently already open.");
+                MessageBox.Show("The Module is still loading or a window is currently open.");
             }
         }
 

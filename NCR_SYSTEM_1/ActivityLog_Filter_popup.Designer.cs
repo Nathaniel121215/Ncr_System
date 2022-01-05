@@ -194,6 +194,8 @@
             this.usertxt.TabIndex = 368;
             this.usertxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.usertxt.OnValueChanged += new System.EventHandler(this.usertxt_OnValueChanged);
+            this.usertxt.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.usertxt_HelpRequested);
+            this.usertxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.usertxt_KeyPress);
             // 
             // panel6
             // 
