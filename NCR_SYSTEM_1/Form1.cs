@@ -47,174 +47,180 @@ namespace NCR_SYSTEM_1
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
 
-           
 
 
-            //Testing
-            int i = 0;
-            FirebaseResponse resp = client.Get("AccountCounter/node");
-            Counter_class obj = resp.ResultAs<Counter_class>();
-            int cnt = Convert.ToInt32(obj.cnt);
-
-
-            while (i <= cnt)
+            try
             {
-                if (i == cnt)
+                //Testing
+                int i = 0;
+                FirebaseResponse resp = client.Get("AccountCounter/node");
+                Counter_class obj = resp.ResultAs<Counter_class>();
+                int cnt = Convert.ToInt32(obj.cnt);
+
+
+                while (i <= cnt)
                 {
-                    
-                  
-                    panel3.Visible = true;
-                    errormessage.Visible = true;
-                    panel2.Visible = true;
-                    bunifuCustomLabel1.Select();
-                   
-
-                    usertxt.LineIdleColor = Color.Red;
-                    passtxt.LineIdleColor = Color.Red;
-
-                    break;
-                }
-
-                i++;
-                try
-                {
-                    //normal account
-                    FirebaseResponse resp1 = client.Get("Accounts/" + i);
-                    User_class obj2 = resp1.ResultAs<User_class>();
-
-
-                    //Perma account
-                    FirebaseResponse resp2 = client.Get("PermanentAccount/" + 1);
-                    User_class obj3 = resp2.ResultAs<User_class>();
-
-
-                    if (usertxt.Text == obj2.Username)
+                    if (i == cnt)
                     {
-                        if (passtxt.Text == obj2.Password)
+
+
+                        panel3.Visible = true;
+                        errormessage.Visible = true;
+                        panel2.Visible = true;
+                        bunifuCustomLabel1.Select();
+
+
+                        usertxt.LineIdleColor = Color.Red;
+                        passtxt.LineIdleColor = Color.Red;
+
+                        break;
+                    }
+
+                    i++;
+                    try
+                    {
+                        //normal account
+                        FirebaseResponse resp1 = client.Get("Accounts/" + i);
+                        User_class obj2 = resp1.ResultAs<User_class>();
+
+
+                        //Perma account
+                        FirebaseResponse resp2 = client.Get("PermanentAccount/" + 1);
+                        User_class obj3 = resp2.ResultAs<User_class>();
+
+
+                        if (usertxt.Text == obj2.Username)
                         {
-
-                            inventoryac = obj2.Inventoryaccess;
-                            posac = obj2.Posaccess;
-                            supplierac = obj2.Supplieraccess;
-                            recordsac = obj2.Recordaccess;
-
-                            levelac = obj2.Account_Level;
-
-
-                            MessageBox.Show("Logged in successfully");
-                            username = obj2.Firstname + " " + obj2.Lastname;
-                            userid = obj2.User_ID;
-
-
-                            //LOGIN LOG
-
-                            FirebaseResponse resp7 = client.Get("UserLoginLogCounter/node");
-                            Counter_class get7 = resp7.ResultAs<Counter_class>();
-                            int cnt7 = (Convert.ToInt32(get7.cnt) + 1);
-
-
-
-                            var data7 = new LoginLog_Class
+                            if (passtxt.Text == obj2.Password)
                             {
-                                Event_ID = cnt7.ToString(),
-                                Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
-                                Timein = DateTime.Now.ToString("hh:mm tt"),
-                                Timeout = "None",
-                                User = Form1.username,
-                                Accountlvl = Form1.levelac,
 
-                            };
+                                inventoryac = obj2.Inventoryaccess;
+                                posac = obj2.Posaccess;
+                                supplierac = obj2.Supplieraccess;
+                                recordsac = obj2.Recordaccess;
 
+                                levelac = obj2.Account_Level;
 
 
-                            FirebaseResponse response7 = client.Set("UserLoginLog/" + data7.Event_ID, data7);
+                                MessageBox.Show("Logged in successfully");
+                                username = obj2.Firstname + " " + obj2.Lastname;
+                                userid = obj2.User_ID;
+
+
+                                //LOGIN LOG
+
+                                FirebaseResponse resp7 = client.Get("UserLoginLogCounter/node");
+                                Counter_class get7 = resp7.ResultAs<Counter_class>();
+                                int cnt7 = (Convert.ToInt32(get7.cnt) + 1);
 
 
 
-                            var obj7 = new Counter_class
+                                var data7 = new LoginLog_Class
+                                {
+                                    Event_ID = cnt7.ToString(),
+                                    Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                                    Timein = DateTime.Now.ToString("hh:mm tt"),
+                                    Timeout = "None",
+                                    User = Form1.username,
+                                    Accountlvl = Form1.levelac,
+
+                                };
+
+
+
+                                FirebaseResponse response7 = client.Set("UserLoginLog/" + data7.Event_ID, data7);
+
+
+
+                                var obj7 = new Counter_class
+                                {
+                                    cnt = data7.Event_ID
+
+                                };
+
+                                SetResponse response8 = client.Set("UserLoginLogCounter/node", obj7);
+
+
+
+
+
+                                Dashboard_Module a = new Dashboard_Module();
+                                this.Hide();
+                                a.Show();
+
+                                loadingtime = 5000;
+                                status = "false";
+                                session = data7.Event_ID;
+                                Loading_popup b = new Loading_popup();
+                                b.Show();
+
+
+                                break;
+
+
+
+                            }
+
+                            else
                             {
-                                cnt = data7.Event_ID
-
-                            };
-
-                            SetResponse response8 = client.Set("UserLoginLogCounter/node", obj7);
 
 
 
-
-
-                            Dashboard_Module a = new Dashboard_Module();
-                            this.Hide();
-                            a.Show();
-
-                            loadingtime = 5000;
-                            status = "false";
-                            session = data7.Event_ID;
-                            Loading_popup b = new Loading_popup();
-                            b.Show();
-                            
-
-                            break;
-
-
-                       
+                            }
                         }
+                        else if (usertxt.Text == obj3.Username)
+                        {
+                            if (passtxt.Text == obj3.Password)
+                            {
 
+                                inventoryac = obj3.Inventoryaccess;
+                                posac = obj3.Posaccess;
+                                supplierac = obj3.Supplieraccess;
+                                recordsac = obj3.Recordaccess;
+
+                                levelac = obj3.Account_Level;
+
+
+                                MessageBox.Show("Logged in successfully");
+                                username = obj3.Firstname + " " + obj3.Lastname;
+
+                                Dashboard_Module a = new Dashboard_Module();
+                                this.Hide();
+                                a.Show();
+
+                                loadingtime = 5000;
+                                status = "false";
+                                Loading_popup b = new Loading_popup();
+                                b.Show();
+
+                                break;
+
+                            }
+
+                            else
+                            {
+
+
+
+                            }
+                        }
                         else
                         {
-                           
-                            
-                           
+
                         }
+
+
                     }
-                    else if(usertxt.Text == obj3.Username )
+
+                    catch
                     {
-                        if (passtxt.Text == obj3.Password)
-                        {
 
-                            inventoryac = obj3.Inventoryaccess;
-                            posac = obj3.Posaccess;
-                            supplierac = obj3.Supplieraccess;
-                            recordsac = obj3.Recordaccess;
-
-                            levelac = obj3.Account_Level;
-
-
-                            MessageBox.Show("Logged in successfully");
-                            username = obj3.Firstname + " " + obj3.Lastname;
-
-                              Dashboard_Module a = new Dashboard_Module();
-                            this.Hide();
-                            a.Show();
-
-                            loadingtime = 5000;
-                            status = "false";
-                            Loading_popup b = new Loading_popup();
-                            b.Show();
-                            
-                            break;
-
-                        }
-
-                        else
-                        {
-
-
-                        
-                        }
                     }
-                    else
-                    {
-                    
-                    }
-
-
                 }
-
-                catch
-                {
-
-                }
+            }
+            catch
+            {
+                MessageBox.Show("Check your internet connection and try again.");
             }
             
         }

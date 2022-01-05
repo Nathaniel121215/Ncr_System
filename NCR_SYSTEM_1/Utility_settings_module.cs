@@ -172,7 +172,7 @@ namespace NCR_SYSTEM_1
 
         public async void bunifuFlatButton3_Click(object sender, EventArgs e)
         {
-            if(Form1.status=="true" & bunifuMetroTextbox2.Text == "RESETDATABASENOW")
+            if(Form1.status=="true" && bunifuMetroTextbox2.Text == "RESETDATABASENOW")
             {
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
@@ -396,6 +396,7 @@ namespace NCR_SYSTEM_1
 
 
                     MessageBox.Show("DATABASE RESET DONE");
+                    Application.Exit();
 
                 }
                 else
@@ -406,7 +407,17 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                MessageBox.Show("The Module is still loading or a window is currently open.");
+                if (Form1.status == "false")
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
+                if (bunifuMetroTextbox2.Text != "RESETDATABASENOW")
+                {
+                    MessageBox.Show("Wrong input detected.");
+                }
+                
+               
             }
            
 
