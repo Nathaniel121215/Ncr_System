@@ -1337,7 +1337,7 @@ namespace NCR_SYSTEM_1
         {
             if (searchtxt.Text == "")
             {
-                searchtxt.Text = "Type here to filter Inventory Content";
+                searchtxt.Text = "Type here to filter Account management Content";
             }
             else
             {

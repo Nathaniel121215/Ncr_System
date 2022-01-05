@@ -37,7 +37,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            if (starttxt.Value.ToString() != "" && endtxt.Value.ToString() != "" && suppliertxt.Text != "")
+            if (starttxt.Value.ToString() != "" && endtxt.Value.ToString() != "")
             {
                 startdate = starttxt.Value.ToString("MM/dd/yyyy");
                 enddate = endtxt.Value.ToString("MM/dd/yyyy");

@@ -165,7 +165,7 @@ namespace NCR_SYSTEM_1
             supid.Text = data.Supplier_ID;
 
             namemetro(supname);
-            namemetro(supaddress);
+            addressmetro(supaddress);
             namemetro(supnumber);
         }
 
@@ -208,6 +208,24 @@ namespace NCR_SYSTEM_1
                 {
                     var txt = (TextBox)ctl;
                     txt.MaxLength = 30;
+
+                }
+
+            }
+
+        }
+
+        private void addressmetro(Bunifu.Framework.UI.BunifuMetroTextbox metroTextbox)
+
+        {
+            foreach (var ctl in metroTextbox.Controls)
+            {
+
+                if (ctl.GetType() == typeof(TextBox))
+
+                {
+                    var txt = (TextBox)ctl;
+                    txt.MaxLength = 45;
 
                 }
 

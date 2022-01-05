@@ -465,7 +465,7 @@
             this.todaysales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
             this.todaysales.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.todaysales.ForeColor = System.Drawing.Color.White;
-            this.todaysales.Location = new System.Drawing.Point(532, 225);
+            this.todaysales.Location = new System.Drawing.Point(528, 225);
             this.todaysales.Name = "todaysales";
             this.todaysales.Size = new System.Drawing.Size(49, 37);
             this.todaysales.TabIndex = 226;

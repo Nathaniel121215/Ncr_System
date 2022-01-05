@@ -165,8 +165,16 @@ namespace NCR_SYSTEM_1
            
             decimal n = Convert.ToDecimal(pprice.Text);
             pprice.Text = n.ToString(fmt);
+            if (pprice.Text==".00")
+            {
+                pprice.Text = "0.00";
+            }
+            else
+            {
 
-            if (pname.Text!="" && pprice.Text != "" && pbrand.Text != "" && pdescription.Text != "" && pcategory.Text != "" && punit.Text != "" && pprice.Text != "0.00")
+            }
+
+            if (pname.Text!="" && pprice.Text != "" && pbrand.Text != "" && pdescription.Text != "" && pcategory.Text != "" && punit.Text != "" && pprice.Text != "0.00" && pprice.Text != ".00")
             {
                 
 

@@ -48,7 +48,7 @@ namespace NCR_SYSTEM_1
 
         private void Finalize_Button_Click(object sender, EventArgs e)
         {
-            if(deductedstocktxt.Text!="0" && reasontxt.Text !="" && Convert.ToInt32(deductedstocktxt.Text) > Convert.ToInt32(currentstocktxt.Text))
+            if(deductedstocktxt.Text!="0" && reasontxt.Text !="" && Convert.ToInt32(deductedstocktxt.Text) < Convert.ToInt32(currentstocktxt.Text))
             {
                 int minus = Convert.ToInt32(deductedstocktxt.Text);
                 decimal price = Convert.ToDecimal(StockAdjustment_Module.price);
@@ -170,7 +170,7 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                MessageBox.Show("Fill up all necessary Fields.");
+                MessageBox.Show("Fill up all necessary field correctly.");
 
             }
             
