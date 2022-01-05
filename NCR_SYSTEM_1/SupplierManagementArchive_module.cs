@@ -74,6 +74,17 @@ namespace NCR_SYSTEM_1
 
             Dataviewall();
 
+            //accountlvldisplay
+
+            if (Form1.levelac == "Admin")
+            {
+                accountinfolvl.Text = "Login as Administrator";
+            }
+            else
+            {
+                accountinfolvl.Text = "Login as Employee";
+            }
+
         }
 
         public async void Dataviewall()
