@@ -103,6 +103,17 @@ namespace NCR_SYSTEM_1
             AccountLvl.Image = Properties.Resources.loading;
 
             Dataviewall();
+
+            //accountlvldisplay
+
+            if (Form1.levelac == "Admin")
+            {
+                accountinfolvl.Text = "Login as Administrator";
+            }
+            else
+            {
+                accountinfolvl.Text = "Login as Employee";
+            }
         }
 
         public  async void Dataviewall()
@@ -121,6 +132,14 @@ namespace NCR_SYSTEM_1
             column8.Width = 90;
             DataGridViewColumn column9 = Account_Datagrid.Columns[9];
             column9.Width = 90;
+
+            DataGridViewColumn column6 = Account_Datagrid.Columns[6];
+            column6.Width = 200;
+
+            DataGridViewColumn column7 = Account_Datagrid.Columns[7];
+            column7.Width = 230;
+
+            Account_Datagrid.Columns[11].DefaultCellStyle.Padding = new Padding(0, 0, 50, 0);
 
             foreach (DataGridViewColumn column in Account_Datagrid.Columns)
             {
@@ -225,163 +244,170 @@ namespace NCR_SYSTEM_1
 
         private void Account_Datagrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //restore
-            string columnindex="";
-
-            try
+            if (Form1.status=="true")
             {
-                if (e.ColumnIndex == Account_Datagrid.Columns[10].Index)
+                //restore
+                string columnindex = "";
+
+                try
                 {
-                    columnindex = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
-
-                    FirebaseResponse resp1 = client.Get("AccountArchive/" + columnindex);
-                    User_class obj1 = resp1.ResultAs<User_class>();
-
-                    var data = new User_class
+                    if (e.ColumnIndex == Account_Datagrid.Columns[10].Index)
                     {
-                        User_ID = obj1.User_ID,
-                        Username = obj1.Username,
-                        Password = obj1.Password,
-                        Firstname = obj1.Firstname,
-                        Lastname = obj1.Lastname,
-                        Account_Level = obj1.Account_Level,
-                        Date_Added = obj1.Date_Added,
-                        Inventoryaccess = obj1.Inventoryaccess,
-                        Posaccess = obj1.Posaccess,
-                        Recordaccess = obj1.Recordaccess,
-                        Supplieraccess = obj1.Supplieraccess,
+                        if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
-
-                    };
-
-                    FirebaseResponse response = client.Set("Accounts/" + data.User_ID, data);
-                    User_class result = response.ResultAs<User_class>();
-
-
-                    //existing employee
-
-                    if(data.Account_Level== "Employee")
-                    {
-                        FirebaseResponse resp3 = client.Get("employeeCounterExisting/node");
-                        Counter_class gett = resp3.ResultAs<Counter_class>();
-                        int exist = (Convert.ToInt32(gett.cnt) + 1);
-                        var obj2 = new Counter_class
                         {
-                            cnt = exist.ToString()
-                        };
+                            columnindex = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+                            FirebaseResponse resp1 = client.Get("AccountArchive/" + columnindex);
+                            User_class obj1 = resp1.ResultAs<User_class>();
+
+                            var data = new User_class
+                            {
+                                User_ID = obj1.User_ID,
+                                Username = obj1.Username,
+                                Password = obj1.Password,
+                                Firstname = obj1.Firstname,
+                                Lastname = obj1.Lastname,
+                                Account_Level = obj1.Account_Level,
+                                Date_Added = obj1.Date_Added,
+                                Inventoryaccess = obj1.Inventoryaccess,
+                                Posaccess = obj1.Posaccess,
+                                Recordaccess = obj1.Recordaccess,
+                                Supplieraccess = obj1.Supplieraccess,
 
 
-                        SetResponse response2 = client.Set("employeeCounterExisting/node", obj2);
+                            };
+
+                            FirebaseResponse response = client.Set("Accounts/" + data.User_ID, data);
+                            User_class result = response.ResultAs<User_class>();
+
+
+                            //existing employee
+
+                            if (data.Account_Level == "Employee")
+                            {
+                                FirebaseResponse resp3 = client.Get("employeeCounterExisting/node");
+                                Counter_class gett = resp3.ResultAs<Counter_class>();
+                                int exist = (Convert.ToInt32(gett.cnt) + 1);
+                                var obj2 = new Counter_class
+                                {
+                                    cnt = exist.ToString()
+                                };
+
+
+                                SetResponse response2 = client.Set("employeeCounterExisting/node", obj2);
+                            }
+
+
+
+
+                            //get archive counter
+                            FirebaseResponse resp = client.Get("AccountArchiveCounter/node");
+                            Counter_class get = resp.ResultAs<Counter_class>();
+
+                            //update archive counter
+                            var obj = new Counter_class
+                            {
+                                cnt = (Convert.ToInt32(get.cnt) - 1).ToString(),
+                            };
+
+                            SetResponse response4 = client.Set("AccountArchiveCounter/node", obj);
+
+
+
+                            //delete from current table
+
+                            FirebaseResponse response5 = client.Delete("AccountArchive/" + columnindex);
+
+
+
+
+                            //ACCOUNT ARCHIVE RESTORE EVENT
+
+                            FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
+                            Counter_class get4 = resp4.ResultAs<Counter_class>();
+                            int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
+
+
+
+                            var data3 = new ActivityLog_Class
+                            {
+                                Event_ID = cnt4.ToString(),
+                                Module = "Account Archive Module",
+                                Action = "Account-ID: " + data.User_ID + "   Account Restored",
+                                Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                                User = Form1.username,
+                                Accountlvl = Form1.levelac,
+
+                            };
+
+
+
+                            FirebaseResponse response6 = client.Set("ActivityLog/" + data3.Event_ID, data3);
+
+
+
+                            var obj4 = new Counter_class
+                            {
+                                cnt = data3.Event_ID
+
+                            };
+
+                            SetResponse response7 = client.Set("ActivityLogCounter/node", obj4);
+
+                            Dataviewall();
+                        
                     }
-                 
+                        else
+                        {
 
+                        }
+                    }
 
+                    //view
 
-                    //get archive counter
-                    FirebaseResponse resp = client.Get("AccountArchiveCounter/node");
-                    Counter_class get = resp.ResultAs<Counter_class>();
-
-                    //update archive counter
-                    var obj = new Counter_class
+                    if (e.ColumnIndex == Account_Datagrid.Columns[9].Index)
                     {
-                        cnt = (Convert.ToInt32(get.cnt) - 1).ToString(),
-                    };
 
-                    SetResponse response4 = client.Set("AccountArchiveCounter/node", obj);
+                        columnindex = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-
-
-                    //delete from current table
-
-                    FirebaseResponse response5 = client.Delete("AccountArchive/" + columnindex);
+                        FirebaseResponse resp1 = client.Get("AccountArchive/" + columnindex);
+                        User_class obj1 = resp1.ResultAs<User_class>();
 
 
 
-
-                    //ACCOUNT ARCHIVE RESTORE EVENT
-
-                    FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
-                    Counter_class get4 = resp4.ResultAs<Counter_class>();
-                    int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
-
-
-
-                    var data3 = new ActivityLog_Class
-                    {
-                        Event_ID = cnt4.ToString(),
-                        Module = "Account Archive Module",
-                        Action = "Account-ID: " + data.User_ID + "   Account Restored",
-                        Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
-                        User = Form1.username,
-                        Accountlvl = Form1.levelac,
-
-                    };
+                        User_ID = obj1.User_ID;
+                        Username = obj1.Username;
+                        Password = obj1.Password;
+                        Firstname = obj1.Firstname;
+                        Lastname = obj1.Lastname;
+                        Account_Level = obj1.Account_Level;
 
 
 
-                    FirebaseResponse response6 = client.Set("ActivityLog/" + data3.Event_ID, data3);
 
+                        AccountArchiveView_popup c = new AccountArchiveView_popup();
+                        c.Show();
+                        Form1.status = "false";
 
-
-                    var obj4 = new Counter_class
-                    {
-                        cnt = data3.Event_ID
-
-                    };
-
-                    SetResponse response7 = client.Set("ActivityLogCounter/node", obj4);
+                    }
 
 
 
 
 
-
-
-
-
-
-
-
-                    Dataviewall();
                 }
-
-                //view
-
-                if (e.ColumnIndex == Account_Datagrid.Columns[9].Index)
+                catch
                 {
 
-                    columnindex = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
-
-                    FirebaseResponse resp1 = client.Get("AccountArchive/" + columnindex);
-                    User_class obj1 = resp1.ResultAs<User_class>();
-
-
-
-                    User_ID = obj1.User_ID;
-                    Username = obj1.Username;
-                    Password = obj1.Password;
-                    Firstname = obj1.Firstname;
-                    Lastname = obj1.Lastname;
-                    Account_Level = obj1.Account_Level;
-          
-                   
-
-
-                    AccountArchiveView_popup c = new AccountArchiveView_popup();
-                    c.Show();
-
-
                 }
-
-
-
-
-
             }
-            catch
+            else
             {
-
+                MessageBox.Show("The Module is still loading or a window is currently open.");
             }
+
+           
         }
 
         private void searchtxt_KeyUp(object sender, KeyEventArgs e)
@@ -445,48 +471,56 @@ namespace NCR_SYSTEM_1
 
         private void searchbutton_Click(object sender, EventArgs e)
         {
-            DataView dv = new DataView(dt);
-            dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
+            if (searchtxt.Text != "" & Form1.status == "true")
+            {
+                DataView dv = new DataView(dt);
+                dv.RowFilter = "[" + combofilter.selectedValue + "]" + "LIKE '%" + searchtxt.Text + "%'";
 
-            Account_Datagrid.DataSource = null;
-            Account_Datagrid.Rows.Clear();
-            Account_Datagrid.Columns.Clear();
-            Account_Datagrid.DataSource = dv;
-
-
-
-            DataGridViewImageColumn View = new DataGridViewImageColumn();
-            Account_Datagrid.Columns.Add(View);
-            View.HeaderText = "";
-            View.Name = "";
-            View.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            View.Image = Properties.Resources.View_Icon;
-
-            DataGridViewImageColumn Restore = new DataGridViewImageColumn();
-            Account_Datagrid.Columns.Add(Restore);
-            Restore.HeaderText = "";
-            Restore.Name = "";
-            Restore.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Restore.Image = Properties.Resources.Restore_Icon;
+                Account_Datagrid.DataSource = null;
+                Account_Datagrid.Rows.Clear();
+                Account_Datagrid.Columns.Clear();
+                Account_Datagrid.DataSource = dv;
 
 
 
-            ///////////////////////// Level /////////////////////////
+                DataGridViewImageColumn View = new DataGridViewImageColumn();
+                Account_Datagrid.Columns.Add(View);
+                View.HeaderText = "";
+                View.Name = "";
+                View.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                View.Image = Properties.Resources.View_Icon;
+
+                DataGridViewImageColumn Restore = new DataGridViewImageColumn();
+                Account_Datagrid.Columns.Add(Restore);
+                Restore.HeaderText = "";
+                Restore.Name = "";
+                Restore.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                Restore.Image = Properties.Resources.Restore_Icon;
 
 
-            DataGridViewImageColumn AccountLvl = new DataGridViewImageColumn();
-            Account_Datagrid.Columns.Add(AccountLvl);
-            AccountLvl.HeaderText = "Account Level";
-            AccountLvl.Name = "Account Level";
-            AccountLvl.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            AccountLvl.Image = Properties.Resources.loading;
+
+                ///////////////////////// Level /////////////////////////
 
 
-            gettransactioncount();
+                DataGridViewImageColumn AccountLvl = new DataGridViewImageColumn();
+                Account_Datagrid.Columns.Add(AccountLvl);
+                AccountLvl.HeaderText = "Account Level";
+                AccountLvl.Name = "Account Level";
+                AccountLvl.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                AccountLvl.Image = Properties.Resources.loading;
 
-            filterlabeltxt.Text = "";
 
-            searchupdate();
+                gettransactioncount();
+
+                filterlabeltxt.Text = "";
+
+                searchupdate();
+            }
+            else
+            {
+
+            }
+                
 
 
         }
@@ -507,6 +541,14 @@ namespace NCR_SYSTEM_1
             column8.Width = 90;
             DataGridViewColumn column9 = Account_Datagrid.Columns[9];
             column9.Width = 90;
+
+            DataGridViewColumn column6 = Account_Datagrid.Columns[6];
+            column6.Width = 200;
+
+            DataGridViewColumn column7 = Account_Datagrid.Columns[7];
+            column7.Width = 230;
+
+            Account_Datagrid.Columns[11].DefaultCellStyle.Padding = new Padding(0, 0, 50, 0);
 
             foreach (DataGridViewColumn column in Account_Datagrid.Columns)
             {
@@ -615,16 +657,16 @@ namespace NCR_SYSTEM_1
             
 
 
-            if (checker.Equals("allow"))
+            if (Form1.status=="true")
             {
                 AccountArchive_Filter_popup c = new AccountArchive_Filter_popup();
                 c.Show();
 
-                checker = "dontallow";
+                Form1.status = "false";
             }
             else
             {
-                MessageBox.Show("The tab is currently already open.");
+                MessageBox.Show("The Module is still loading or a window is currently open.");
             }
         }
 
@@ -655,7 +697,15 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
 
         }
@@ -687,7 +737,15 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -736,7 +794,15 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -785,7 +851,15 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -816,7 +890,15 @@ namespace NCR_SYSTEM_1
             
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -865,7 +947,15 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -914,7 +1004,15 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -945,7 +1043,15 @@ namespace NCR_SYSTEM_1
             
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -976,7 +1082,15 @@ namespace NCR_SYSTEM_1
            
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -1007,7 +1121,15 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -1078,7 +1200,15 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
+
             }
         }
 
@@ -1087,6 +1217,61 @@ namespace NCR_SYSTEM_1
             if (e.KeyCode == Keys.Delete)
             {
                 e.SuppressKeyPress = true;
+            }
+        }
+
+        private void searchtxt_Enter(object sender, EventArgs e)
+        {
+            searchtxt.Text = "";
+        }
+
+        private void searchtxt_Leave(object sender, EventArgs e)
+        {
+            if (searchtxt.Text == "")
+            {
+                searchtxt.Text = "Type here to filter Account Archive Content";
+            }
+            else
+            {
+
+            }
+        }
+
+        private void bunifuImageButton11_Click(object sender, EventArgs e)
+        {
+            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            {
+
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    Utility_settings_module a = new Utility_settings_module();
+                    this.Hide();
+                    a.Show();
+
+                    Form1.loadingtime = 9000;
+                    Form1.status = "false";
+                    Loading_popup b = new Loading_popup();
+                    b.Show();
+                }
+                else
+                {
+
+                }
+
+
+            }
+
+            else
+            {
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading or a window is currently open.");
+                }
             }
         }
     }
