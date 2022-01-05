@@ -165,7 +165,32 @@ namespace NCR_SYSTEM_1
 
                         if(Form1.userid == data.User_ID)
                         {
-                            Application.Exit();
+
+                            //TIMEOUT LOG
+
+                            try
+                            {
+
+                                var data10 = new Timeout_Class
+                                {
+                                    Event_ID = Form1.session,
+                                    Timeout = DateTime.Now.ToString("hh:mm tt"),
+                                };
+
+                                FirebaseResponse response10 = client.Update("UserLoginLog/" + data10.Event_ID, data10);
+
+
+                            }
+
+                            catch (Exception b)
+                            {
+                                MessageBox.Show(b.ToString());
+                            }
+
+
+                            Form1 a = new Form1();
+                            this.Hide();
+                            a.Show();
                         }
                         else
                         {
@@ -173,6 +198,9 @@ namespace NCR_SYSTEM_1
                             Accountmanagement_Module._instance.dataview();
                             Form1.status = "true";
                         }
+
+
+
 
                     }
 
