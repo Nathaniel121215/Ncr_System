@@ -1201,6 +1201,8 @@ namespace NCR_SYSTEM_1
             SupplierReportExtraction_popup a = new SupplierReportExtraction_popup();
             a.Show();
 
+            Supplier_Datagrid.Columns[6].Visible = false;
+
         }
 
         private void bunifuFlatButton3_Click(object sender, EventArgs e)

@@ -562,9 +562,9 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(655, 232);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 15);
+            this.label4.Size = new System.Drawing.Size(36, 15);
             this.label4.TabIndex = 315;
-            this.label4.Text = "Total Daily Sales:";
+            this.label4.Text = "Total:";
             // 
             // TransactionCounttxt
             // 
