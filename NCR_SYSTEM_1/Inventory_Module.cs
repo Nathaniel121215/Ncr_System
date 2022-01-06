@@ -394,118 +394,126 @@ namespace NCR_SYSTEM_1
                     //Archive
                     if (e.ColumnIndex == Inventory_Datagrid.Columns[13].Index)
                     {
-
-                        if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+                        int stocks = Convert.ToInt32(Inventory_Datagrid.Rows[e.RowIndex].Cells[8].Value);
+                        if (stocks==0)
                         {
-                            columnindex = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
-
-
-                            //new archive code
-
-                            var data = new InventoryArchive_Class
                             {
-                                ID = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString(),
-                                Product_Name = Inventory_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString(),
-                                Unit = Inventory_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString(),
-                                Brand = Inventory_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString(),
-                                Description = Inventory_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString(),
-                                Category = Inventory_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString(),
-                                Price = Inventory_Datagrid.Rows[e.RowIndex].Cells[6].Value.ToString(),
-                                Items_Sold = Inventory_Datagrid.Rows[e.RowIndex].Cells[7].Value.ToString(),
-                                Stock = Inventory_Datagrid.Rows[e.RowIndex].Cells[8].Value.ToString(),
-                                Low = Inventory_Datagrid.Rows[e.RowIndex].Cells[9].Value.ToString(),
-                                High = Inventory_Datagrid.Rows[e.RowIndex].Cells[10].Value.ToString(),
-
-                                Date_Archived = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
-                                User = Form1.username,
-
-                            };
+                                columnindex = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
 
-                            //add to archive 
-                            FirebaseResponse response3 = client.Set("InventoryArchive/" + data.ID, data);
-                            Product_class result = response3.ResultAs<Product_class>();
 
-                            //get archive counter
-                            FirebaseResponse resp = client.Get("InventoryArchiveCounter/node");
-                            Counter_class get = resp.ResultAs<Counter_class>();
+                                //new archive code
 
-                            //update archive counter
-                            var obj = new Counter_class
+                                var data = new InventoryArchive_Class
+                                {
+                                    ID = Inventory_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString(),
+                                    Product_Name = Inventory_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                                    Unit = Inventory_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString(),
+                                    Brand = Inventory_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                                    Description = Inventory_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString(),
+                                    Category = Inventory_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString(),
+                                    Price = Inventory_Datagrid.Rows[e.RowIndex].Cells[6].Value.ToString(),
+                                    Items_Sold = Inventory_Datagrid.Rows[e.RowIndex].Cells[7].Value.ToString(),
+                                    Stock = Inventory_Datagrid.Rows[e.RowIndex].Cells[8].Value.ToString(),
+                                    Low = Inventory_Datagrid.Rows[e.RowIndex].Cells[9].Value.ToString(),
+                                    High = Inventory_Datagrid.Rows[e.RowIndex].Cells[10].Value.ToString(),
+
+                                    Date_Archived = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                                    User = Form1.username,
+
+                                };
+
+
+                                //add to archive 
+                                FirebaseResponse response3 = client.Set("InventoryArchive/" + data.ID, data);
+                                Product_class result = response3.ResultAs<Product_class>();
+
+                                //get archive counter
+                                FirebaseResponse resp = client.Get("InventoryArchiveCounter/node");
+                                Counter_class get = resp.ResultAs<Counter_class>();
+
+                                //update archive counter
+                                var obj = new Counter_class
+                                {
+                                    cnt = (Convert.ToInt32(get.cnt) + 1).ToString(),
+                                };
+
+                                SetResponse response4 = client.Set("InventoryArchiveCounter/node", obj);
+
+
+
+                                //delete from current table
+
+                                FirebaseResponse response = client.Delete("Inventory/" + columnindex);
+
+
+
+
+                                //Minus existing
+                                FirebaseResponse resp3 = client.Get("inventoryCounterExisting/node");
+                                Counter_class gett = resp3.ResultAs<Counter_class>();
+                                int exist = (Convert.ToInt32(gett.cnt) - 1);
+
+                                var obj2 = new Counter_class
+                                {
+                                    cnt = exist.ToString()
+                                };
+                                SetResponse response2 = client.Set("inventoryCounterExisting/node", obj2);
+
+
+
+                                //Activity Log ARCHIVING PRODUCT EVENT
+
+
+                                FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
+                                Counter_class get4 = resp4.ResultAs<Counter_class>();
+                                int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
+
+
+
+                                var data2 = new ActivityLog_Class
+                                {
+                                    Event_ID = cnt4.ToString(),
+                                    Module = "Inventory Management Module",
+                                    Action = "Product-ID: " + data.ID + "   Moved to Archive Module",
+                                    Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                                    User = Form1.username,
+                                    Accountlvl = Form1.levelac,
+
+                                };
+
+
+
+                                FirebaseResponse response5 = client.Set("ActivityLog/" + data2.Event_ID, data2);
+
+
+
+                                var obj4 = new Counter_class
+                                {
+                                    cnt = data2.Event_ID
+
+                                };
+
+                                SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
+
+
+
+                                DataViewAll();
+                            }
+
+                            else
+
                             {
-                                cnt = (Convert.ToInt32(get.cnt) + 1).ToString(),
-                            };
-
-                            SetResponse response4 = client.Set("InventoryArchiveCounter/node", obj);
-
-
-
-                            //delete from current table
-
-                            FirebaseResponse response = client.Delete("Inventory/" + columnindex);
-
-
-
-
-                            //Minus existing
-                            FirebaseResponse resp3 = client.Get("inventoryCounterExisting/node");
-                            Counter_class gett = resp3.ResultAs<Counter_class>();
-                            int exist = (Convert.ToInt32(gett.cnt) - 1);
-
-                            var obj2 = new Counter_class
-                            {
-                                cnt = exist.ToString()
-                            };
-                            SetResponse response2 = client.Set("inventoryCounterExisting/node", obj2);
-
-
-
-                            //Activity Log ARCHIVING PRODUCT EVENT
-
-
-                            FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
-                            Counter_class get4 = resp4.ResultAs<Counter_class>();
-                            int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
-
-
-
-                            var data2 = new ActivityLog_Class
-                            {
-                                Event_ID = cnt4.ToString(),
-                                Module = "Inventory Management Module",
-                                Action = "Product-ID: " + data.ID + "   Moved to Archive Module",
-                                Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
-                                User = Form1.username,
-                                Accountlvl = Form1.levelac,
-
-                            };
-
-
-
-                            FirebaseResponse response5 = client.Set("ActivityLog/" + data2.Event_ID, data2);
-
-
-
-                            var obj4 = new Counter_class
-                            {
-                                cnt = data2.Event_ID
-
-                            };
-
-                            SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
-
-
-
-                            DataViewAll();
+                                //do something if NO
+                            }
                         }
-
                         else
-
                         {
-                            //do something if NO
+                            MessageBox.Show("The item select still have stock.");
                         }
+                        
 
                     }
 
