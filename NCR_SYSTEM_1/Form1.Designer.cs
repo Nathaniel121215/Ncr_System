@@ -157,11 +157,11 @@
             this.bunifuCustomLabel1.AutoSize = true;
             this.bunifuCustomLabel1.Font = new System.Drawing.Font("Helvetica Neue", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(769, 67);
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(771, 67);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-            this.bunifuCustomLabel1.Size = new System.Drawing.Size(92, 25);
+            this.bunifuCustomLabel1.Size = new System.Drawing.Size(78, 25);
             this.bunifuCustomLabel1.TabIndex = 14;
-            this.bunifuCustomLabel1.Text = "SIGN IN";
+            this.bunifuCustomLabel1.Text = "LOGIN";
             // 
             // usertxt
             // 

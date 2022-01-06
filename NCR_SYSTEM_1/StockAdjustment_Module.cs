@@ -166,31 +166,38 @@ namespace NCR_SYSTEM_1
 
                 try
                 {
-
-
-                    //update
-                    if (e.ColumnIndex == StockAdjustment_Datagrid.Columns[7].Index)
+                    if(StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[6].Value.ToString() =="0")
                     {
-                        columnindex = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        //update
+                        if (e.ColumnIndex == StockAdjustment_Datagrid.Columns[7].Index)
+                        {
+                            columnindex = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
 
-                        StockAdjustment_Datagrid.Rows[e.RowIndex].Selected = true;
+                            StockAdjustment_Datagrid.Rows[e.RowIndex].Selected = true;
 
-                        id = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
-                        name = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString();
-                        brand = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString();
-                        description = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString();
-                        category = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString();
-                        price = Convert.ToDecimal(StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[5].Value);
-                        stock = Convert.ToInt32(StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[6].Value);
+                            id = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                            name = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString();
+                            brand = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString();
+                            description = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString();
+                            category = StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString();
+                            price = Convert.ToDecimal(StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[5].Value);
+                            stock = Convert.ToInt32(StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[6].Value);
 
 
 
-                        Deductstock_popup c = new Deductstock_popup();
-                        c.Show();
-                        Form1.status = "false";
+                            Deductstock_popup c = new Deductstock_popup();
+                            c.Show();
+                            Form1.status = "false";
 
+                        }
                     }
+                    else
+                    {
+                        MessageBox.Show("Selected Item do not have any stock.");
+                    }
+
+                  
                 }
 
                 catch
