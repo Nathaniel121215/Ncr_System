@@ -125,7 +125,7 @@ namespace NCR_SYSTEM_1
                         var data3 = new ActivityLog_Class
                         {
                             Event_ID = cnt4.ToString(),
-                            Module = "Stock Adjustment",
+                            Module = "Stock Adjustment Module",
                             Action = "Product-ID: " + StockAdjustment_Module.id + "   Stock Adjusted by " + minus,
                             Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
                             User = Form1.username,

@@ -401,7 +401,16 @@ namespace NCR_SYSTEM_1
             week.Text = total.ToString();
 
 
+            if(Form1.levelac=="Employee")
+            {
+                week.Text = "Hidden";
+                month.Text = "Hidden";
+                year.Text = "Hidden";
+            }
+            else
+            {
 
+            }
 
 
         }

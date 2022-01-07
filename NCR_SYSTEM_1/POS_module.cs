@@ -1589,6 +1589,12 @@ namespace NCR_SYSTEM_1
 
                 DataViewAll();
             }
+
+            if (searchtxt.Text != "")
+            {
+                supressor = 1;
+
+            }
         }
 
         private void bunifuImageButton17_Click(object sender, EventArgs e)

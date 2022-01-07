@@ -233,7 +233,7 @@ namespace NCR_SYSTEM_1
                                 Supplier_Name = Supplier_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString(),
                                 Supplier_Address = Supplier_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString(),
                                 Supplier_Number = Supplier_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString(),
-                                Last_Transaction = Supplier_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString(),
+                                Supplier_LastTransaction = Supplier_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString(),
                                 Supplier_DateAdded = Supplier_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString(),
 
                                 Date_Archive = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),

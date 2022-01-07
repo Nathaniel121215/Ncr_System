@@ -12,7 +12,7 @@ namespace NCR_SYSTEM_1
         public string Supplier_Name { get; set; }
         public string Supplier_Address { get; set; }
         public string Supplier_Number { get; set; }
-        public string Last_Transaction { get; set; }
+        public string Supplier_LastTransaction { get; set; }
         public string Supplier_DateAdded { get; set; }
 
 

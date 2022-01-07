@@ -166,7 +166,7 @@ namespace NCR_SYSTEM_1
 
                 try
                 {
-                    if(StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[6].Value.ToString() =="0")
+                    if(StockAdjustment_Datagrid.Rows[e.RowIndex].Cells[6].Value.ToString() !="0")
                     {
                         //update
                         if (e.ColumnIndex == StockAdjustment_Datagrid.Columns[7].Index)

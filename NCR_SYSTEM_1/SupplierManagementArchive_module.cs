@@ -89,17 +89,6 @@ namespace NCR_SYSTEM_1
 
         public async void Dataviewall()
         {
-            DataGridViewColumn column0 = Supplier_Datagrid.Columns[0];
-            column0.Width = 70;
-            DataGridViewColumn column1 = Supplier_Datagrid.Columns[1];
-            column1.Width = 165;
-            DataGridViewColumn column2 = Supplier_Datagrid.Columns[2];
-            column2.Width = 210;
-            DataGridViewColumn column7 = Supplier_Datagrid.Columns[7];
-            column7.Width = 200;
-
-            Supplier_Datagrid.Columns[8].Visible = false;
-            Supplier_Datagrid.Columns[5].Visible = false;
 
             foreach (DataGridViewColumn column in Supplier_Datagrid.Columns)
             {
@@ -107,7 +96,24 @@ namespace NCR_SYSTEM_1
             }
 
 
+            DataGridViewColumn column0 = Supplier_Datagrid.Columns[0];
+            column0.Width = 80;
+
+            DataGridViewColumn column1 = Supplier_Datagrid.Columns[1];
+            column1.Width = 165;
+
+            DataGridViewColumn column2 = Supplier_Datagrid.Columns[2];
+            column2.Width = 210;
+
+            DataGridViewColumn column7 = Supplier_Datagrid.Columns[7];
+            column7.Width = 200;
+
+            Supplier_Datagrid.Columns[8].Visible = false;
+
+            Supplier_Datagrid.Columns[5].Visible = false;
+
             dt.Rows.Clear();
+
             int i = 0;
 
             FirebaseResponse resp = await client.GetTaskAsync("SupplierCounter/node");
@@ -132,7 +138,7 @@ namespace NCR_SYSTEM_1
                     r["Supplier Name"] = user.Supplier_Name;
                     r["Supplier Address"] = user.Supplier_Address;
                     r["Supplier Number"] = user.Supplier_Number;
-                    r["Last Transaction"] = user.Last_Transaction;
+                    r["Last Transaction"] = user.Supplier_LastTransaction;
                     r["Date Added"] = user.Supplier_DateAdded;
 
 
@@ -197,7 +203,7 @@ namespace NCR_SYSTEM_1
                                 Supplier_Name = obj1.Supplier_Name,
                                 Supplier_Address = obj1.Supplier_Address,
                                 Supplier_Number = obj1.Supplier_Number,
-                                Last_Transaction = obj1.Last_Transaction,
+                                Supplier_LastTransaction = obj1.Supplier_LastTransaction,
                                 Supplier_DateAdded = obj1.Supplier_DateAdded,
 
 

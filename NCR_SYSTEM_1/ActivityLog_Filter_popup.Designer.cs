@@ -292,10 +292,11 @@
             "Account Archive Module",
             "Supplier Archive Module",
             "Sales Record Module",
-            "Stock Replenishment Record",
+            "Stock Replenishment Record Module",
             "Stock Adjustment Record Module",
             "Utility Settings Module",
-            "Account Management Module"});
+            "Account Management Module",
+            "Stock Adjustment Module"});
             this.moduletxt.Location = new System.Drawing.Point(36, 299);
             this.moduletxt.Name = "moduletxt";
             this.moduletxt.Size = new System.Drawing.Size(281, 25);
