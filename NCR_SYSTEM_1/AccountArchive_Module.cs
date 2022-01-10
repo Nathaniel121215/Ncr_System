@@ -208,16 +208,20 @@ namespace NCR_SYSTEM_1
                 try
                 {
 
-                    StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.Group_179, NCR_SYSTEM_1.Properties.Resources.Group_181 };
+                    StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.adminlvl, NCR_SYSTEM_1.Properties.Resources.managerlvl, NCR_SYSTEM_1.Properties.Resources.cashierlvl };
 
 
                     if (row.Cells[5].Value.Equals("Admin")) //Authorize Records
                     {
+                        row.Cells[11].Value = StatusImgs[0];
+                    }
+                    if (row.Cells[5].Value.Equals("Manager")) //Authorize Records
+                    {
                         row.Cells[11].Value = StatusImgs[1];
                     }
-                    else
+                    if (row.Cells[5].Value.Equals("Cashier")) //Authorize Records
                     {
-                        row.Cells[11].Value = StatusImgs[0];
+                        row.Cells[11].Value = StatusImgs[2];
                     }
 
 
@@ -270,10 +274,7 @@ namespace NCR_SYSTEM_1
                                 Lastname = obj1.Lastname,
                                 Account_Level = obj1.Account_Level,
                                 Date_Added = obj1.Date_Added,
-                                Inventoryaccess = obj1.Inventoryaccess,
-                                Posaccess = obj1.Posaccess,
-                                Recordaccess = obj1.Recordaccess,
-                                Supplieraccess = obj1.Supplieraccess,
+                             
 
 
                             };
@@ -284,7 +285,7 @@ namespace NCR_SYSTEM_1
 
                             //existing employee
 
-                            if (data.Account_Level == "Employee")
+                            if (data.Account_Level == "Cashier" || data.Account_Level == "Manager")
                             {
                                 FirebaseResponse resp3 = client.Get("employeeCounterExisting/node");
                                 Counter_class gett = resp3.ResultAs<Counter_class>();

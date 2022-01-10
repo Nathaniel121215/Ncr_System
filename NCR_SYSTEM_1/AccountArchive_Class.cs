@@ -15,10 +15,7 @@ namespace NCR_SYSTEM_1
         public string Lastname { get; set; }
         public string Account_Level { get; set; }
         public string Date_Added { get; set; }
-        public string Inventoryaccess { get; set; }
-        public string Posaccess { get; set; }
-        public string Recordaccess { get; set; }
-        public string Supplieraccess { get; set; }
+
 
         public string Date_Archive { get; set; }
         public string User { get; set; }

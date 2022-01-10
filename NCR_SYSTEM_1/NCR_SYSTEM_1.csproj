@@ -135,12 +135,6 @@
     <Compile Include="Addcategory_popup.Designer.cs">
       <DependentUpon>Addcategory_popup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Addnewaccountuseraccess_popup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Addnewaccountuseraccess_popup.Designer.cs">
-      <DependentUpon>Addnewaccountuseraccess_popup.cs</DependentUpon>
-    </Compile>
     <Compile Include="Addnewaccount_popup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,6 +253,12 @@
     <Compile Include="LoginTest.Designer.cs">
       <DependentUpon>LoginTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewAccountManagement_Module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewAccountManagement_Module.Designer.cs">
+      <DependentUpon>NewAccountManagement_Module.cs</DependentUpon>
+    </Compile>
     <Compile Include="Preloader.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -358,12 +358,6 @@
       <DependentUpon>testarea.cs</DependentUpon>
     </Compile>
     <Compile Include="Timeout_Class.cs" />
-    <Compile Include="Updateaccountuseraccess.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Updateaccountuseraccess.Designer.cs">
-      <DependentUpon>Updateaccountuseraccess.cs</DependentUpon>
-    </Compile>
     <Compile Include="Inventory_Module.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -539,9 +533,6 @@
     <EmbeddedResource Include="Addcategory_popup.resx">
       <DependentUpon>Addcategory_popup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Addnewaccountuseraccess_popup.resx">
-      <DependentUpon>Addnewaccountuseraccess_popup.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Addnewaccount_popup.resx">
       <DependentUpon>Addnewaccount_popup.cs</DependentUpon>
     </EmbeddedResource>
@@ -599,6 +590,9 @@
     <EmbeddedResource Include="LoginTest.resx">
       <DependentUpon>LoginTest.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewAccountManagement_Module.resx">
+      <DependentUpon>NewAccountManagement_Module.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Preloader.resx">
       <DependentUpon>Preloader.cs</DependentUpon>
     </EmbeddedResource>
@@ -646,9 +640,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="testarea.resx">
       <DependentUpon>testarea.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Updateaccountuseraccess.resx">
-      <DependentUpon>Updateaccountuseraccess.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory_Module.resx">
       <DependentUpon>Inventory_Module.cs</DependentUpon>
@@ -859,6 +850,8 @@
     <None Include="Resources\fade stock adjustment.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\managerlvl.png" />
+    <None Include="Resources\cashierlvl.png" />
     <None Include="Resources\Group 2711.png" />
     <None Include="Resources\Group 272.png" />
     <None Include="Resources\Group 271.png" />
@@ -928,6 +921,7 @@
     <None Include="Resources\account archive.png" />
     <None Include="Resources\activity logs.png" />
     <None Include="Resources\activitylog.png" />
+    <None Include="Resources\adminlvl.png" />
     <Content Include="Resources\Bitmap1.bmp" />
     <None Include="Resources\new out of stock.png" />
     <None Include="Resources\new low on stock.png" />

@@ -143,6 +143,16 @@ namespace NCR_SYSTEM_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap adminlvl {
+            get {
+                object obj = ResourceManager.GetObject("adminlvl", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap archive {
             get {
                 object obj = ResourceManager.GetObject("archive", resourceCulture);
@@ -196,6 +206,16 @@ namespace NCR_SYSTEM_1.Properties {
         internal static System.Drawing.Bitmap cart_Icon {
             get {
                 object obj = ResourceManager.GetObject("cart Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cashierlvl {
+            get {
+                object obj = ResourceManager.GetObject("cashierlvl", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -826,6 +846,16 @@ namespace NCR_SYSTEM_1.Properties {
         internal static System.Drawing.Bitmap low {
             get {
                 object obj = ResourceManager.GetObject("low", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap managerlvl {
+            get {
+                object obj = ResourceManager.GetObject("managerlvl", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

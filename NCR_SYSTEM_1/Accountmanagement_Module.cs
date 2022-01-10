@@ -17,7 +17,7 @@ namespace NCR_SYSTEM_1
 {
     public partial class Accountmanagement_Module : Form
     {
-        public static string checker = "";
+
 
         private Image[] StatusImgs;
 
@@ -31,10 +31,6 @@ namespace NCR_SYSTEM_1
         public static string Account_Level = "";
         public static string Date_Added = "";
 
-        public static string inventory = "";
-        public static string Pos = "";
-        public static string Supplier = "";
-        public static string Records = "";
 
 
 
@@ -58,6 +54,8 @@ namespace NCR_SYSTEM_1
 
         private void Accountmanagement_Module_Load(object sender, EventArgs e)
         {
+            
+
             datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
             datedisplay.Select();
             this.Account_Datagrid.AllowUserToAddRows = false;
@@ -72,15 +70,6 @@ namespace NCR_SYSTEM_1
             dt.Columns.Add("Lastname");
             dt.Columns.Add("Account Level");
             dt.Columns.Add("Date Added");
-
-            ////access////
-            
-            dt.Columns.Add("Inventory");
-            dt.Columns.Add("Pos");
-            dt.Columns.Add("Supplier");
-            dt.Columns.Add("Records");
-
-
 
             Account_Datagrid.DataSource = dt;
 
@@ -101,42 +90,9 @@ namespace NCR_SYSTEM_1
             Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
             Archive.Image = Properties.Resources.Archive_Icon;
 
-            ///////////////////////// access/////////////////////////
-           
-            DataGridViewImageColumn Inventory = new DataGridViewImageColumn();
-            Account_Datagrid.Columns.Add(Inventory);
-            Inventory.HeaderText = "Inventory Module";
-            Inventory.Name = "Inventory";
-            Inventory.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Inventory.Image = Properties.Resources.loading;
-
-
-            DataGridViewImageColumn PoS = new DataGridViewImageColumn();
-            Account_Datagrid.Columns.Add(PoS);
-            PoS.HeaderText = "PoS Module";
-            PoS.Name = "PoS";
-            PoS.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            PoS.Image = Properties.Resources.loading;
-
-
-            DataGridViewImageColumn Supplier = new DataGridViewImageColumn();
-            Account_Datagrid.Columns.Add(Supplier);
-            Supplier.HeaderText = "Supplier Module";
-            Supplier.Name = "Supplier";
-            Supplier.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Supplier.Image = Properties.Resources.loading;
-
-
-
-            DataGridViewImageColumn Records = new DataGridViewImageColumn();
-            Account_Datagrid.Columns.Add(Records);
-            Records.HeaderText = "Record Module";
-            Records.Name = "Records";
-            Records.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            Records.Image = Properties.Resources.loading;
-
+         
             ///////////////////////// Level /////////////////////////
-          
+
 
             DataGridViewImageColumn AccountLvl = new DataGridViewImageColumn();
             Account_Datagrid.Columns.Add(AccountLvl);
@@ -148,41 +104,40 @@ namespace NCR_SYSTEM_1
 
             dataview();
 
-            //accountlvldisplay
+            try
+            {
+                //accountlvldisplay
 
-            if (Form1.levelac == "Admin")
-            {
-                accountinfolvl.Text = "Login as Administrator";
+                if (Form1.levelac == "Admin")
+                {
+                    accountinfolvl.Text = "Login as Administrator";
+                }
+                else
+                {
+                    accountinfolvl.Text = "Login as Employee";
+                }
             }
-            else
+            catch
             {
-                accountinfolvl.Text = "Login as Employee";
+
             }
+          
         }
 
         public async void dataview()
         {
+           
             //visual
 
             Account_Datagrid.Columns[5].Visible = false;
-            Account_Datagrid.Columns[6].Visible = false;
+            Account_Datagrid.Columns[9].DisplayIndex = 5;
 
-            Account_Datagrid.Columns[7].Visible = false;
-            Account_Datagrid.Columns[8].Visible = false;
-            Account_Datagrid.Columns[9].Visible = false;
-            Account_Datagrid.Columns[10].Visible = false;
+            DataGridViewColumn column7 = Account_Datagrid.Columns[7];
+            column7.Width = 70;
+            DataGridViewColumn column8 = Account_Datagrid.Columns[8];
+            column8.Width = 70;
 
-
-            Account_Datagrid.Columns[17].DisplayIndex = 5;
-            Account_Datagrid.Columns[13].DisplayIndex = 7;
-            Account_Datagrid.Columns[14].DisplayIndex = 8;
-            Account_Datagrid.Columns[15].DisplayIndex = 9;
-            Account_Datagrid.Columns[16].DisplayIndex = 10;
-
-            DataGridViewColumn column11 = Account_Datagrid.Columns[11];
-            column11.Width = 80;
-            DataGridViewColumn column12 = Account_Datagrid.Columns[12];
-            column12.Width = 80;
+            Account_Datagrid.Columns[9].DefaultCellStyle.Padding = new Padding(0, 0, 80, 0);
 
             foreach (DataGridViewColumn column in Account_Datagrid.Columns)
             {
@@ -218,12 +173,6 @@ namespace NCR_SYSTEM_1
                     r["Account Level"] = user.Account_Level;
                     r["Date Added"] = user.Date_Added;
 
-                    ////accesss////
-
-                    r["Inventory"] = user.Inventoryaccess;
-                    r["Pos"] = user.Posaccess;
-                    r["Supplier"] = user.Supplieraccess;
-                    r["Records"] = user.Recordaccess;
 
 
                     dt.Rows.Add(r);
@@ -241,7 +190,7 @@ namespace NCR_SYSTEM_1
 
             try
             {
-                
+
 
                 foreach (DataGridViewRow row in Account_Datagrid.Rows)
                 {
@@ -250,74 +199,36 @@ namespace NCR_SYSTEM_1
                     {
 
 
-                        StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.Group_175, NCR_SYSTEM_1.Properties.Resources.Group_177, NCR_SYSTEM_1.Properties.Resources.Group_179, NCR_SYSTEM_1.Properties.Resources.Group_181 };
+                        StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.adminlvl, NCR_SYSTEM_1.Properties.Resources.managerlvl, NCR_SYSTEM_1.Properties.Resources.cashierlvl };
 
 
 
 
 
-                        if (row.Cells[7].Value.Equals("Authorized")) //Authorize inventory
+                        if (row.Cells[5].Value.Equals("Admin")) //Authorize inventory
                         {
-                            row.Cells[13].Value = StatusImgs[0];
+                            row.Cells[9].Value = StatusImgs[0];
                         }
-                        else
+   
+
+                        if (row.Cells[5].Value.Equals("Manager")) //Authorize PoS
                         {
-                            row.Cells[13].Value = StatusImgs[1];
+                            row.Cells[9].Value = StatusImgs[1];
                         }
+ 
 
-                        if (row.Cells[8].Value.Equals("Authorized")) //Authorize PoS
+                        if (row.Cells[5].Value.Equals("Cashier")) //Authorize Supplier
                         {
-                            row.Cells[14].Value = StatusImgs[0];
+                            row.Cells[9].Value = StatusImgs[2];
                         }
-                        else
-                        {
-                            row.Cells[14].Value = StatusImgs[1];
-                        }
-
-                        if (row.Cells[9].Value.Equals("Authorized")) //Authorize Supplier
-                        {
-                            row.Cells[15].Value = StatusImgs[0];
-                        }
-                        else
-                        {
-                            row.Cells[15].Value = StatusImgs[1];
-                        }
-
-
-                        if (row.Cells[10].Value.Equals("Authorized")) //Authorize Records
-                        {
-                            row.Cells[16].Value = StatusImgs[0];
-                        }
-                        else
-                        {
-                            row.Cells[16].Value = StatusImgs[1];
-                        }
-
-                        ////////////////////Level ///////////////
-
-
-
-                        if (row.Cells[5].Value.Equals("Admin")) //Authorize Records
-                        {
-                            row.Cells[17].Value = StatusImgs[3];
-                        }
-                        else
-                        {
-                            row.Cells[17].Value = StatusImgs[2];
-                        }
-
-
-
-
-
-
-
+          
+                
                     }
                     catch
                     {
 
                     }
-                    
+
                 }
             }
             catch
@@ -325,7 +236,7 @@ namespace NCR_SYSTEM_1
 
             }
 
-            checker = "allow";
+
 
         }
 
@@ -338,7 +249,7 @@ namespace NCR_SYSTEM_1
                 try
                 {
                     //delete
-                    if (e.ColumnIndex == Account_Datagrid.Columns[12].Index)
+                    if (e.ColumnIndex == Account_Datagrid.Columns[8].Index)
                     {
                         if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
@@ -360,10 +271,7 @@ namespace NCR_SYSTEM_1
                                 Lastname = Account_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString(),
                                 Account_Level = Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString(),
                                 Date_Added = Account_Datagrid.Rows[e.RowIndex].Cells[6].Value.ToString(),
-                                Inventoryaccess = Account_Datagrid.Rows[e.RowIndex].Cells[7].Value.ToString(),
-                                Posaccess = Account_Datagrid.Rows[e.RowIndex].Cells[8].Value.ToString(),
-                                Supplieraccess = Account_Datagrid.Rows[e.RowIndex].Cells[9].Value.ToString(),
-                                Recordaccess = Account_Datagrid.Rows[e.RowIndex].Cells[10].Value.ToString(),
+                          
 
                                 Date_Archive = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
                                 User = Form1.username,
@@ -393,7 +301,7 @@ namespace NCR_SYSTEM_1
 
                             FirebaseResponse response = client.Delete("Accounts/" + columnindex);
 
-                            if (Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString().Equals("Employee"))
+                            if (Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString().Equals("Cashier") || Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString().Equals("Manager"))
                             {
                                 //existing employee
                                 FirebaseResponse resp2 = client.Get("employeeCounterExisting/node");
@@ -461,7 +369,7 @@ namespace NCR_SYSTEM_1
 
 
                     //update
-                    if (e.ColumnIndex == Account_Datagrid.Columns[11].Index)
+                    if (e.ColumnIndex == Account_Datagrid.Columns[7].Index)
                     {
                         columnindex = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
@@ -476,10 +384,7 @@ namespace NCR_SYSTEM_1
                         Account_Level = Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString();
                         Date_Added = Account_Datagrid.Rows[e.RowIndex].Cells[6].Value.ToString();
 
-                        inventory = Account_Datagrid.Rows[e.RowIndex].Cells[7].Value.ToString();
-                        Pos = Account_Datagrid.Rows[e.RowIndex].Cells[8].Value.ToString();
-                        Supplier = Account_Datagrid.Rows[e.RowIndex].Cells[9].Value.ToString();
-                        Records = Account_Datagrid.Rows[e.RowIndex].Cells[10].Value.ToString();
+  
 
 
 
@@ -1301,35 +1206,10 @@ namespace NCR_SYSTEM_1
         {
            
         }
-        private void copyAlltoClipboard()
-        {
-            Account_Datagrid.SelectAll();
-            DataObject dataObj = Account_Datagrid.GetClipboardContent();
-            if (dataObj != null)
-            Clipboard.SetDataObject(dataObj);
-        }
-
+  
         private void bunifuFlatButton3_Click(object sender, EventArgs e)
         {
-            if(Form1.status=="true")
-            {
-                copyAlltoClipboard();
-                Microsoft.Office.Interop.Excel.Application xlexcel;
-                Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
-                Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
-                object misValue = System.Reflection.Missing.Value;
-                xlexcel = new Excel.Application();
-                xlexcel.Visible = true;
-                xlWorkBook = xlexcel.Workbooks.Add(misValue);
-                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-                Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[1, 1];
-                CR.Select();
-                xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
-            }
-            else
-            {
-                MessageBox.Show("The Module is still loading or a window is currently open.");
-            }
+     
             
         }
 

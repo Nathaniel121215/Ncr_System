@@ -283,8 +283,8 @@
             this.leveltxt.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.leveltxt.FormattingEnabled = true;
             this.leveltxt.Items.AddRange(new object[] {
-            "Admin",
-            "Employee"});
+            "Manager",
+            "Cashier"});
             this.leveltxt.Location = new System.Drawing.Point(36, 548);
             this.leveltxt.Name = "leveltxt";
             this.leveltxt.Size = new System.Drawing.Size(281, 25);

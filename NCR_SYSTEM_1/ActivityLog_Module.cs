@@ -174,16 +174,21 @@ namespace NCR_SYSTEM_1
                         {
 
 
-                            StatusImgs = new Image[] {NCR_SYSTEM_1.Properties.Resources.Group_179, NCR_SYSTEM_1.Properties.Resources.Group_181 };
+                            StatusImgs = new Image[] {NCR_SYSTEM_1.Properties.Resources.adminlvl, NCR_SYSTEM_1.Properties.Resources.managerlvl, NCR_SYSTEM_1.Properties.Resources.cashierlvl };
 
                             if (row.Cells[5].Value.Equals("Admin")) //Authorize Records
                             {
-                                row.Cells[7].Value = StatusImgs[1];
-                            }
-                            else
-                            {
                                 row.Cells[7].Value = StatusImgs[0];
                             }
+                            if (row.Cells[5].Value.Equals("Manager")) //Authorize Records
+                            {
+                                row.Cells[7].Value = StatusImgs[1];
+                            }
+                            if (row.Cells[5].Value.Equals("Cashier")) //Authorize Records
+                            {
+                                row.Cells[7].Value = StatusImgs[2];
+                            }
+
 
 
 

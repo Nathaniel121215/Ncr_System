@@ -233,10 +233,7 @@ namespace NCR_SYSTEM_1
                         Account_Level = "Admin",
                         Date_Added = DateTime.Now.ToString("MM/dd/yyyy"),
 
-                        Inventoryaccess = "Authorized",
-                        Posaccess = "Authorized",
-                        Recordaccess = "Authorized",
-                        Supplieraccess = "Authorized",
+                      
 
 
 

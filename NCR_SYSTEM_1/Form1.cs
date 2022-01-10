@@ -94,68 +94,179 @@ namespace NCR_SYSTEM_1
                             if (passtxt.Text == obj2.Password)
                             {
 
-                                inventoryac = obj2.Inventoryaccess;
-                                posac = obj2.Posaccess;
-                                supplierac = obj2.Supplieraccess;
-                                recordsac = obj2.Recordaccess;
-
                                 levelac = obj2.Account_Level;
 
-
-                                MessageBox.Show("Logged in successfully");
-                                username = obj2.Firstname + " " + obj2.Lastname;
-                                userid = obj2.User_ID;
-
-
-                                //LOGIN LOG
-
-                                FirebaseResponse resp7 = client.Get("UserLoginLogCounter/node");
-                                Counter_class get7 = resp7.ResultAs<Counter_class>();
-                                int cnt7 = (Convert.ToInt32(get7.cnt) + 1);
-
-
-
-                                var data7 = new LoginLog_Class
+                                if(levelac.Equals("Cashier"))
                                 {
-                                    Event_ID = cnt7.ToString(),
-                                    Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
-                                    Timein = DateTime.Now.ToString("hh:mm tt"),
-                                    Timeout = "None",
-                                    User = Form1.username,
-                                    Accountlvl = Form1.levelac,
-
-                                };
+                                    MessageBox.Show("Logged in successfully");
+                                    username = obj2.Firstname + " " + obj2.Lastname;
+                                    userid = obj2.User_ID;
 
 
+                                    //LOGIN LOG
 
-                                FirebaseResponse response7 = client.Set("UserLoginLog/" + data7.Event_ID, data7);
+                                    FirebaseResponse resp77 = client.Get("UserLoginLogCounter/node");
+                                    Counter_class get77 = resp77.ResultAs<Counter_class>();
+                                    int cnt77 = (Convert.ToInt32(get77.cnt) + 1);
 
 
 
-                                var obj7 = new Counter_class
+                                    var data77 = new LoginLog_Class
+                                    {
+                                        Event_ID = cnt77.ToString(),
+                                        Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                                        Timein = DateTime.Now.ToString("hh:mm tt"),
+                                        Timeout = "None",
+                                        User = Form1.username,
+                                        Accountlvl = Form1.levelac,
+
+                                    };
+
+
+
+                                    FirebaseResponse response77 = client.Set("UserLoginLog/" + data77.Event_ID, data77);
+
+
+
+                                    var obj77 = new Counter_class
+                                    {
+                                        cnt = data77.Event_ID
+
+                                    };
+
+                                    SetResponse response88 = client.Set("UserLoginLogCounter/node", obj77);
+
+
+
+
+
+                                    POS_module ab = new POS_module();
+                                    this.Hide();
+                                    ab.Show();
+
+                                    loadingtime = 5000;
+                                    status = "false";
+                                    session = data77.Event_ID;
+                                    Loading_popup bb = new Loading_popup();
+                                    bb.Show();
+
+
+                                    break;
+                                }
+                                
+                                if(levelac.Equals("Admin") || levelac.Equals("Manager"))
                                 {
-                                    cnt = data7.Event_ID
-
-                                };
-
-                                SetResponse response8 = client.Set("UserLoginLogCounter/node", obj7);
+                                    MessageBox.Show("Logged in successfully");
+                                    username = obj2.Firstname + " " + obj2.Lastname;
+                                    userid = obj2.User_ID;
 
 
+                                    //LOGIN LOG
+
+                                    FirebaseResponse resp7 = client.Get("UserLoginLogCounter/node");
+                                    Counter_class get7 = resp7.ResultAs<Counter_class>();
+                                    int cnt7 = (Convert.ToInt32(get7.cnt) + 1);
 
 
 
-                                Dashboard_Module a = new Dashboard_Module();
-                                this.Hide();
-                                a.Show();
+                                    var data7 = new LoginLog_Class
+                                    {
+                                        Event_ID = cnt7.ToString(),
+                                        Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                                        Timein = DateTime.Now.ToString("hh:mm tt"),
+                                        Timeout = "None",
+                                        User = Form1.username,
+                                        Accountlvl = Form1.levelac,
 
-                                loadingtime = 5000;
-                                status = "false";
-                                session = data7.Event_ID;
-                                Loading_popup b = new Loading_popup();
-                                b.Show();
+                                    };
 
 
-                                break;
+
+                                    FirebaseResponse response7 = client.Set("UserLoginLog/" + data7.Event_ID, data7);
+
+
+
+                                    var obj7 = new Counter_class
+                                    {
+                                        cnt = data7.Event_ID
+
+                                    };
+
+                                    SetResponse response8 = client.Set("UserLoginLogCounter/node", obj7);
+
+
+
+
+
+                                    Dashboard_Module a = new Dashboard_Module();
+                                    this.Hide();
+                                    a.Show();
+
+                                    loadingtime = 5000;
+                                    status = "false";
+                                    session = data7.Event_ID;
+                                    Loading_popup b = new Loading_popup();
+                                    b.Show();
+
+
+                                    break;
+                                }
+
+
+                                //MessageBox.Show("Logged in successfully");
+                                //username = obj2.Firstname + " " + obj2.Lastname;
+                                //userid = obj2.User_ID;
+
+
+                                ////LOGIN LOG
+
+                                //FirebaseResponse resp7 = client.Get("UserLoginLogCounter/node");
+                                //Counter_class get7 = resp7.ResultAs<Counter_class>();
+                                //int cnt7 = (Convert.ToInt32(get7.cnt) + 1);
+
+
+
+                                //var data7 = new LoginLog_Class
+                                //{
+                                //    Event_ID = cnt7.ToString(),
+                                //    Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                                //    Timein = DateTime.Now.ToString("hh:mm tt"),
+                                //    Timeout = "None",
+                                //    User = Form1.username,
+                                //    Accountlvl = Form1.levelac,
+
+                                //};
+
+
+
+                                //FirebaseResponse response7 = client.Set("UserLoginLog/" + data7.Event_ID, data7);
+
+
+
+                                //var obj7 = new Counter_class
+                                //{
+                                //    cnt = data7.Event_ID
+
+                                //};
+
+                                //SetResponse response8 = client.Set("UserLoginLogCounter/node", obj7);
+
+
+
+
+
+                                //Dashboard_Module a = new Dashboard_Module();
+                                //this.Hide();
+                                //a.Show();
+
+                                //loadingtime = 5000;
+                                //status = "false";
+                                //session = data7.Event_ID;
+                                //Loading_popup b = new Loading_popup();
+                                //b.Show();
+
+
+                                //break;
 
 
 
@@ -173,10 +284,7 @@ namespace NCR_SYSTEM_1
                             if (passtxt.Text == obj3.Password)
                             {
 
-                                inventoryac = obj3.Inventoryaccess;
-                                posac = obj3.Posaccess;
-                                supplierac = obj3.Supplieraccess;
-                                recordsac = obj3.Recordaccess;
+                             
 
                                 levelac = obj3.Account_Level;
 
@@ -343,6 +451,18 @@ namespace NCR_SYSTEM_1
             testarea a = new testarea();
             this.Hide();
             a.Show();
+        }
+
+        private void bunifuFlatButton2_Click(object sender, EventArgs e)
+        {
+            Accountmanagement_Module a = new Accountmanagement_Module();
+            this.Hide();
+            a.Show();
+
+            Form1.status = "true";
+
+           
+
         }
     }
 }
