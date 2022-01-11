@@ -28,12 +28,13 @@ namespace NCR_SYSTEM_1
         bool a = true;
         public static string userid;
         public static string username;
-        public static string inventoryac;
-        public static string posac;
-        public static string supplierac;
-        public static string recordsac;
+        public static string password;
         public static string levelac;
 
+        public static string posac;
+        public static string recordsac;
+        public static string inventoryac;
+        public static string supplierac;
 
         public static int loadingtime = 5000;
         public static string status;
@@ -99,9 +100,13 @@ namespace NCR_SYSTEM_1
                                 if(levelac.Equals("Cashier"))
                                 {
                                     MessageBox.Show("Logged in successfully");
+
                                     username = obj2.Firstname + " " + obj2.Lastname;
+                                    password = obj2.Password;
                                     userid = obj2.User_ID;
 
+
+                                  
 
                                     //LOGIN LOG
 
@@ -158,6 +163,7 @@ namespace NCR_SYSTEM_1
                                 {
                                     MessageBox.Show("Logged in successfully");
                                     username = obj2.Firstname + " " + obj2.Lastname;
+                                    password = obj2.Password;
                                     userid = obj2.User_ID;
 
 
@@ -207,6 +213,17 @@ namespace NCR_SYSTEM_1
                                     session = data7.Event_ID;
                                     Loading_popup b = new Loading_popup();
                                     b.Show();
+
+
+                                    if (password == "Password")
+                                    {
+                                        ChangePassword_popup c = new ChangePassword_popup();
+                                        c.Show();
+                                    }
+                                    else
+                                    {
+
+                                    }
 
 
                                     break;

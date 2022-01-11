@@ -30,10 +30,12 @@ namespace NCR_SYSTEM_1
             BasePath = "https://fir-test-6c417-default-rtdb.firebaseio.com/"
         };
 
+        public static Dashboard_Module _instance;
 
         public Dashboard_Module()
         {
             InitializeComponent();
+            _instance = this;
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
@@ -99,13 +101,17 @@ namespace NCR_SYSTEM_1
 
             //accountlvldisplay
 
-            if(Form1.levelac=="Admin")
+            if (Form1.levelac == "Admin")
             {
                 accountinfolvl.Text = "Login as Administrator";
             }
+            else if (Form1.levelac == "Manager")
+            {
+                accountinfolvl.Text = "Login as Manager";
+            }
             else
             {
-                accountinfolvl.Text = "Login as Employee";
+                accountinfolvl.Text = "Login as Cashier";
             }
         
 
@@ -712,7 +718,7 @@ namespace NCR_SYSTEM_1
         private void bunifuImageButton18_Click(object sender, EventArgs e)
         {
             
-                if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+                if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
                 {
 
                     if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -734,7 +740,7 @@ namespace NCR_SYSTEM_1
                 
                    
                 }
-                else if (Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized") && Form1.status == "true")
+                else if (Form1.levelac.Equals("Cashier") && Form1.status == "true")
                 {
                         if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
@@ -773,7 +779,7 @@ namespace NCR_SYSTEM_1
         {
 
 
-            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -792,28 +798,8 @@ namespace NCR_SYSTEM_1
                 {
 
                 }
-
-
             }
-            else if (Form1.levelac.Equals("Employee") && Form1.inventoryac.Equals("Authorized") && Form1.status == "true")
-            {
-                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
-                {
-                    Inventory_Module a = new Inventory_Module();
-                    this.Hide();
-                    a.Show();
-
-                    Form1.loadingtime = 9000;
-                    Form1.status = "false";
-                    Loading_popup b = new Loading_popup();
-                    b.Show();
-                }
-                else
-                {
-
-                }
-            }
+         
             else
             {
                 if(Form1.status=="true")
@@ -832,7 +818,7 @@ namespace NCR_SYSTEM_1
         private void bunifuImageButton16_Click(object sender, EventArgs e)
         {
 
-            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            if (Form1.status == "true" && Form1.levelac.Equals("Admin"))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -872,7 +858,7 @@ namespace NCR_SYSTEM_1
         {
 
 
-            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -894,35 +880,24 @@ namespace NCR_SYSTEM_1
 
 
             }
-            else if (Form1.levelac.Equals("Employee") && Form1.supplierac.Equals("Authorized") && Form1.status == "true")
-            {
-                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
-                {
-                    Suppliermanagement_module a = new Suppliermanagement_module();
-                    this.Hide();
-                    a.Show();
-
-                    Form1.loadingtime = 9000;
-                    Form1.status = "false";
-                    Loading_popup b = new Loading_popup();
-                    b.Show();
-                }
-                else
-                {
-
-                }
-            }
+           
             else
             {
-                //MessageBox.Show("Your account do not have access on this Module.");
+                if (Form1.status == "true")
+                {
+                    MessageBox.Show("Your Account do not have access in this module.");
+                }
+                else
+                {
+                    MessageBox.Show("The Module is still loading.");
+                }
             }
         }
 
         private void bunifuImageButton6_Click(object sender, EventArgs e)
         {
 
-            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -944,25 +919,7 @@ namespace NCR_SYSTEM_1
 
 
             }
-            else if (Form1.levelac.Equals("Employee") && Form1.recordsac.Equals("Authorized") && Form1.status == "true")
-            {
-                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
-                {
-                    Salesrecord_module a = new Salesrecord_module();
-                    this.Hide();
-                    a.Show();
-
-                    Form1.loadingtime = 9000;
-                    Form1.status = "false";
-                    Loading_popup b = new Loading_popup();
-                    b.Show();
-                }
-                else
-                {
-
-                }
-            }
+           
             else
             {
                 if (Form1.status == "true")
@@ -1065,7 +1022,7 @@ namespace NCR_SYSTEM_1
         {
 
 
-            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -1104,7 +1061,7 @@ namespace NCR_SYSTEM_1
         private void bunifuImageButton7_Click(object sender, EventArgs e)
         {
 
-            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -1149,7 +1106,7 @@ namespace NCR_SYSTEM_1
         {
           
 
-            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -1205,6 +1162,11 @@ namespace NCR_SYSTEM_1
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void close()
+        {
+            this.Hide();
         }
     }
 }

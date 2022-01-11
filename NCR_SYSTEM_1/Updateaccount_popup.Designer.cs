@@ -51,6 +51,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,13 +157,14 @@
             this.passtxt.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
             this.passtxt.BorderThickness = 1;
             this.passtxt.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.passtxt.Enabled = false;
             this.passtxt.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.passtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.passtxt.isPassword = false;
+            this.passtxt.isPassword = true;
             this.passtxt.Location = new System.Drawing.Point(36, 301);
             this.passtxt.Margin = new System.Windows.Forms.Padding(4);
             this.passtxt.Name = "passtxt";
-            this.passtxt.Size = new System.Drawing.Size(281, 36);
+            this.passtxt.Size = new System.Drawing.Size(199, 36);
             this.passtxt.TabIndex = 237;
             this.passtxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
@@ -359,12 +361,23 @@
             this.bunifuFlatButton2.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuFlatButton2.Click += new System.EventHandler(this.bunifuFlatButton2_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(242, 301);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 36);
+            this.button1.TabIndex = 309;
+            this.button1.Text = "Reset";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Updateaccount_popup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(357, 659);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.bunifuFlatButton2);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
@@ -421,5 +434,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton2;
+        private System.Windows.Forms.Button button1;
     }
 }

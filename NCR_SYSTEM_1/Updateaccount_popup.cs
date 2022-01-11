@@ -69,146 +69,118 @@ namespace NCR_SYSTEM_1
         {
             if (usertxt.Text != "" && passtxt.Text != "" && fnametxt.Text != "" && lnametxt.Text != "" && leveltxt.Text != "")
             {
-                id = idtxt.Text;
-                user = usertxt.Text;
-                pass = passtxt.Text;
-                firstname = fnametxt.Text;
-                lastname = lnametxt.Text;
-                accountlvl = leveltxt.Text;
-                dateadded = Accountmanagement_Module.Date_Added;
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
-
-                var data = new User_class
                 {
-
-                    User_ID = Updateaccount_popup.id,
-                    Username = Updateaccount_popup.user,
-                    Password = Updateaccount_popup.pass,
-                    Firstname = Updateaccount_popup.firstname,
-                    Lastname = Updateaccount_popup.lastname,
-                    Account_Level = Updateaccount_popup.accountlvl,
-                    Date_Added = Updateaccount_popup.dateadded,
-
+                    id = idtxt.Text;
+                    user = usertxt.Text;
+                    pass = passtxt.Text;
+                    firstname = fnametxt.Text;
+                    lastname = lnametxt.Text;
+                    accountlvl = leveltxt.Text;
+                    dateadded = Accountmanagement_Module.Date_Added;
 
 
-
-                };
-
-                FirebaseResponse response = client.Update("Accounts/" + data.User_ID, data);
-                User_class result = response.ResultAs<User_class>();
-
-                ////deduct employee count
-                //if (Updateaccount_popup.levelcheck.Equals("Employee") || Updateaccount_popup.accountlvl.Equals("Admin"))
-                //{
-                //    FirebaseResponse resp2 = client.Get("employeeCounterExisting/node");
-                //    Counter_class get2 = resp2.ResultAs<Counter_class>();
-                //    string employee = (Convert.ToInt32(get2.cnt) - 1).ToString();
-                //    var obj2 = new Counter_class
-                //    {
-                //        cnt = employee
-                //    };
-
-                //    SetResponse response2 = client.Set("employeeCounterExisting/node", obj2);
-
-
-                //}
-                ////Add employee count
-                //if (Updateaccount_popup.levelcheck.Equals("Admin") || Updateaccount_popup.accountlvl.Equals("Employee"))
-                //{
-                //    FirebaseResponse resp2 = client.Get("employeeCounterExisting/node");
-                //    Counter_class get2 = resp2.ResultAs<Counter_class>();
-                //    string employee = (Convert.ToInt32(get2.cnt) + 1).ToString();
-                //    var obj2 = new Counter_class
-                //    {
-                //        cnt = employee
-                //    };
-
-                //    SetResponse response2 = client.Set("employeeCounterExisting/node", obj2);
-
-
-                //}
-
-
-                ////Activity Log UPDATING ACCOUNT EVENT
-
-
-                //FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
-                //Counter_class get4 = resp4.ResultAs<Counter_class>();
-                //int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
-
-
-
-                //var data2 = new ActivityLog_Class
-                //{
-                //    Event_ID = cnt4.ToString(),
-                //    Module = "Account Management Module",
-                //    Action = "Account-ID: " + data.User_ID + "   Account Details Updated",
-                //    Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
-                //    User = Form1.username,
-                //    Accountlvl = Form1.levelac,
-
-                //};
-
-
-
-                //FirebaseResponse response5 = client.Set("ActivityLog/" + data2.Event_ID, data2);
-
-
-
-                //var obj4 = new Counter_class
-                //{
-                //    cnt = data2.Event_ID
-
-                //};
-
-                //SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
-
-
-
-
-                if (Form1.userid == data.User_ID)
-                {
-
-                    //TIMEOUT LOG
-
-                    try
+                    var data = new User_class
                     {
 
-                        var data10 = new Timeout_Class
+                        User_ID = Updateaccount_popup.id,
+                        Username = Updateaccount_popup.user,
+                        Password = Updateaccount_popup.pass,
+                        Firstname = Updateaccount_popup.firstname,
+                        Lastname = Updateaccount_popup.lastname,
+                        Account_Level = Updateaccount_popup.accountlvl,
+                        Date_Added = Updateaccount_popup.dateadded,
+
+
+
+
+                    };
+
+                    FirebaseResponse response = client.Update("Accounts/" + data.User_ID, data);
+                    User_class result = response.ResultAs<User_class>();
+
+
+
+
+                    //Activity Log UPDATING ACCOUNT EVENT
+
+
+                    FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
+                    Counter_class get4 = resp4.ResultAs<Counter_class>();
+                    int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
+
+
+
+                    var data2 = new ActivityLog_Class
+                    {
+                        Event_ID = cnt4.ToString(),
+                        Module = "Account Management Module",
+                        Action = "Account-ID: " + data.User_ID + "   Account Details Updated",
+                        Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                        User = Form1.username,
+                        Accountlvl = Form1.levelac,
+
+                    };
+
+
+
+                    FirebaseResponse response5 = client.Set("ActivityLog/" + data2.Event_ID, data2);
+
+
+
+                    var obj4 = new Counter_class
+                    {
+                        cnt = data2.Event_ID
+
+                    };
+
+                    SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
+
+
+
+
+                    if (Form1.userid == data.User_ID)
+                    {
+
+                        //TIMEOUT LOG
+
+                        try
                         {
-                            Event_ID = Form1.session,
-                            Timeout = DateTime.Now.ToString("hh:mm tt"),
-                        };
 
-                        FirebaseResponse response10 = client.Update("UserLoginLog/" + data10.Event_ID, data10);
+                            var data10 = new Timeout_Class
+                            {
+                                Event_ID = Form1.session,
+                                Timeout = DateTime.Now.ToString("hh:mm tt"),
+                            };
+
+                            FirebaseResponse response10 = client.Update("UserLoginLog/" + data10.Event_ID, data10);
 
 
+                        }
+
+                        catch (Exception b)
+                        {
+                            MessageBox.Show(b.ToString());
+                        }
+
+
+                        Form1 a = new Form1();
+                        this.Hide();
+                        a.Show();
                     }
-
-                    catch (Exception b)
+                    else
                     {
-                        MessageBox.Show(b.ToString());
+                        this.Hide();
+                        Accountmanagement_Module._instance.dataview();
+                        Form1.status = "true";
                     }
-
-
-                    Form1 a = new Form1();
-                    this.Hide();
-                    a.Show();
                 }
                 else
                 {
-                    this.Hide();
-                    Accountmanagement_Module._instance.dataview();
-                    Form1.status = "true";
+
                 }
-
-
-
-
-
-
-
-
+                    
             }
             else
             {
@@ -282,6 +254,159 @@ namespace NCR_SYSTEM_1
             {
                 e.Handled = true;
                 base.OnKeyPress(e);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (usertxt.Text != "" && passtxt.Text != "" && fnametxt.Text != "" && lnametxt.Text != "" && leveltxt.Text != "")
+            {
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    id = idtxt.Text;
+                    user = usertxt.Text;
+                    pass = passtxt.Text;
+                    firstname = fnametxt.Text;
+                    lastname = lnametxt.Text;
+                    accountlvl = leveltxt.Text;
+                    dateadded = Accountmanagement_Module.Date_Added;
+
+
+                    var data = new User_class
+                    {
+
+                        User_ID = Updateaccount_popup.id,
+                        Username = Updateaccount_popup.user,
+                        Password = "Password",
+                        Firstname = Updateaccount_popup.firstname,
+                        Lastname = Updateaccount_popup.lastname,
+                        Account_Level = Updateaccount_popup.accountlvl,
+                        Date_Added = Updateaccount_popup.dateadded,
+
+
+
+
+                    };
+
+                    FirebaseResponse response = client.Update("Accounts/" + data.User_ID, data);
+                    User_class result = response.ResultAs<User_class>();
+
+                    ////deduct employee count
+                    //if (Updateaccount_popup.levelcheck.Equals("Employee") || Updateaccount_popup.accountlvl.Equals("Admin"))
+                    //{
+                    //    FirebaseResponse resp2 = client.Get("employeeCounterExisting/node");
+                    //    Counter_class get2 = resp2.ResultAs<Counter_class>();
+                    //    string employee = (Convert.ToInt32(get2.cnt) - 1).ToString();
+                    //    var obj2 = new Counter_class
+                    //    {
+                    //        cnt = employee
+                    //    };
+
+                    //    SetResponse response2 = client.Set("employeeCounterExisting/node", obj2);
+
+
+                    //}
+                    ////Add employee count
+                    //if (Updateaccount_popup.levelcheck.Equals("Admin") || Updateaccount_popup.accountlvl.Equals("Employee"))
+                    //{
+                    //    FirebaseResponse resp2 = client.Get("employeeCounterExisting/node");
+                    //    Counter_class get2 = resp2.ResultAs<Counter_class>();
+                    //    string employee = (Convert.ToInt32(get2.cnt) + 1).ToString();
+                    //    var obj2 = new Counter_class
+                    //    {
+                    //        cnt = employee
+                    //    };
+
+                    //    SetResponse response2 = client.Set("employeeCounterExisting/node", obj2);
+
+
+                    //}
+
+
+                    //Activity Log UPDATING ACCOUNT EVENT
+
+
+                    FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
+                    Counter_class get4 = resp4.ResultAs<Counter_class>();
+                    int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
+
+
+
+                    var data2 = new ActivityLog_Class
+                    {
+                        Event_ID = cnt4.ToString(),
+                        Module = "Account Management Module",
+                        Action = "Account-ID: " + data.User_ID + "   Account Password Reset",
+                        Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                        User = Form1.username,
+                        Accountlvl = Form1.levelac,
+
+                    };
+
+
+
+                    FirebaseResponse response5 = client.Set("ActivityLog/" + data2.Event_ID, data2);
+
+
+
+                    var obj4 = new Counter_class
+                    {
+                        cnt = data2.Event_ID
+
+                    };
+
+                    SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
+
+
+
+
+                    if (Form1.userid == data.User_ID)
+                    {
+
+                        //TIMEOUT LOG
+
+                        try
+                        {
+
+                            var data10 = new Timeout_Class
+                            {
+                                Event_ID = Form1.session,
+                                Timeout = DateTime.Now.ToString("hh:mm tt"),
+                            };
+
+                            FirebaseResponse response10 = client.Update("UserLoginLog/" + data10.Event_ID, data10);
+
+
+                        }
+
+                        catch (Exception b)
+                        {
+                            MessageBox.Show(b.ToString());
+                        }
+
+
+                        Form1 a = new Form1();
+                        this.Hide();
+                        a.Show();
+                    }
+                    else
+                    {
+                        this.Hide();
+                        Accountmanagement_Module._instance.dataview();
+                        Form1.status = "true";
+                    }
+                }
+                else
+                {
+
+                }
+                  
+
+            }
+            else
+            {
+                MessageBox.Show("Fill up all necessary fields.");
             }
         }
     }

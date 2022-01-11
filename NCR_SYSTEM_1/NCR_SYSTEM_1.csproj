@@ -172,6 +172,12 @@
       <DependentUpon>Addunit_popup.cs</DependentUpon>
     </Compile>
     <Compile Include="Category_Class.cs" />
+    <Compile Include="ChangePassword_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePassword_popup.Designer.cs">
+      <DependentUpon>ChangePassword_popup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Confirmcustomerreceipt_module.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -553,6 +559,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Addunit_popup.resx">
       <DependentUpon>Addunit_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePassword_popup.resx">
+      <DependentUpon>ChangePassword_popup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Confirmcustomerreceipt_module.resx">
       <DependentUpon>Confirmcustomerreceipt_module.cs</DependentUpon>

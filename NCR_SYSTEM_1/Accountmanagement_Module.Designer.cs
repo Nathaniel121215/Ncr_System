@@ -197,6 +197,7 @@
             this.Account_Datagrid.Size = new System.Drawing.Size(1479, 767);
             this.Account_Datagrid.TabIndex = 175;
             this.Account_Datagrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Account_Datagrid_CellContentClick);
+            this.Account_Datagrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.Account_Datagrid_CellFormatting);
             this.Account_Datagrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Account_Datagrid_KeyDown);
             // 
             // bunifuFlatButton2

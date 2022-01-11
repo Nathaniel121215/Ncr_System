@@ -90,107 +90,108 @@ namespace NCR_SYSTEM_1
         {
             if(usertxt.Text!="" && passtxt.Text != "" && fnametxt.Text != "" && lnametxt.Text != "" && leveltxt.Text != "")
             {
-                String date = DateTime.Now.ToString("MM/dd/yyyy");
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
-                id = idtxt.Text;
-                user = usertxt.Text;
-                pass = passtxt.Text;
-                firstname = fnametxt.Text;
-                lastname = lnametxt.Text;
-                accountlvl = leveltxt.Text;
-                dateadded = date;
-
-                FirebaseResponse resp = client.Get("AccountCounter/node");
-                Counter_class get = resp.ResultAs<Counter_class>();
-
-                var data = new User_class
                 {
-                    User_ID = (Convert.ToInt32(get.cnt) + 1).ToString(),
-                    Username = Addnewaccount_popup.user,
-                    Password = Addnewaccount_popup.pass,
-                    Firstname = Addnewaccount_popup.firstname,
-                    Lastname = Addnewaccount_popup.lastname,
-                    Account_Level = Addnewaccount_popup.accountlvl,
-                    Date_Added = Addnewaccount_popup.dateadded,
+                    String date = DateTime.Now.ToString("MM/dd/yyyy");
 
+                    id = idtxt.Text;
+                    user = usertxt.Text;
+                    pass = passtxt.Text;
+                    firstname = fnametxt.Text;
+                    lastname = lnametxt.Text;
+                    accountlvl = leveltxt.Text;
+                    dateadded = date;
 
+                    FirebaseResponse resp = client.Get("AccountCounter/node");
+                    Counter_class get = resp.ResultAs<Counter_class>();
 
-
-
-                };
-
-                SetResponse response = client.Set("Accounts/" + data.User_ID, data);
-                User_class result = response.ResultAs<User_class>();
-
-                var obj = new Counter_class
-                {
-                    cnt = data.User_ID
-                };
-
-                SetResponse response1 = client.Set("AccountCounter/node", obj);
-
-                if (Addnewaccount_popup.accountlvl.Equals("Cashier") || Addnewaccount_popup.accountlvl.Equals("Manager"))
-                {
-
-
-                    //add existing employee
-                    FirebaseResponse resp2 = client.Get("employeeCounterExisting/node");
-                    Counter_class get2 = resp2.ResultAs<Counter_class>();
-                    string employee = (Convert.ToInt32(get2.cnt) + 1).ToString();
-                    var obj2 = new Counter_class
+                    var data = new User_class
                     {
-                        cnt = employee
+                        User_ID = (Convert.ToInt32(get.cnt) + 1).ToString(),
+                        Username = Addnewaccount_popup.user,
+                        Password = Addnewaccount_popup.pass,
+                        Firstname = Addnewaccount_popup.firstname,
+                        Lastname = Addnewaccount_popup.lastname,
+                        Account_Level = Addnewaccount_popup.accountlvl,
+                        Date_Added = Addnewaccount_popup.dateadded,
+
+
+
+
+
                     };
 
-                    SetResponse response2 = client.Set("employeeCounterExisting/node", obj2);
+                    SetResponse response = client.Set("Accounts/" + data.User_ID, data);
+                    User_class result = response.ResultAs<User_class>();
+
+                    var obj = new Counter_class
+                    {
+                        cnt = data.User_ID
+                    };
+
+                    SetResponse response1 = client.Set("AccountCounter/node", obj);
+
+                    if (Addnewaccount_popup.accountlvl.Equals("Cashier") || Addnewaccount_popup.accountlvl.Equals("Manager"))
+                    {
+
+
+                        //add existing employee
+                        FirebaseResponse resp2 = client.Get("employeeCounterExisting/node");
+                        Counter_class get2 = resp2.ResultAs<Counter_class>();
+                        string employee = (Convert.ToInt32(get2.cnt) + 1).ToString();
+                        var obj2 = new Counter_class
+                        {
+                            cnt = employee
+                        };
+
+                        SetResponse response2 = client.Set("employeeCounterExisting/node", obj2);
+                    }
+
+                    //Activity Log ADDING ACCOUNT EVENT
+
+
+                    FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
+                    Counter_class get4 = resp4.ResultAs<Counter_class>();
+                    int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
+
+
+
+                    var data2 = new ActivityLog_Class
+                    {
+                        Event_ID = cnt4.ToString(),
+                        Module = "Account Management Module",
+                        Action = "Account-ID: " + data.User_ID + "   New Account Added",
+                        Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                        User = Form1.username,
+                        Accountlvl = Form1.levelac,
+
+                    };
+
+
+
+                    FirebaseResponse response5 = client.Set("ActivityLog/" + data2.Event_ID, data2);
+
+
+
+                    var obj4 = new Counter_class
+                    {
+                        cnt = data2.Event_ID
+
+                    };
+
+                    SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
+
+
+                    this.Hide();
+                    Accountmanagement_Module._instance.dataview();
+                    Form1.status = "true";
                 }
+                else
+                {
 
-
-
-
-
-
-
-
-
-                ////Activity Log ADDING ACCOUNT EVENT
-
-
-                //FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
-                //Counter_class get4 = resp4.ResultAs<Counter_class>();
-                //int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
-
-
-
-                //var data2 = new ActivityLog_Class
-                //{
-                //    Event_ID = cnt4.ToString(),
-                //    Module = "Account Management Module",
-                //    Action = "Account-ID: " + data.User_ID + "   New Account Added",
-                //    Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
-                //    User = Form1.username,
-                //    Accountlvl = Form1.levelac,
-
-                //};
-
-
-
-                //FirebaseResponse response5 = client.Set("ActivityLog/" + data2.Event_ID, data2);
-
-
-
-                //var obj4 = new Counter_class
-                //{
-                //    cnt = data2.Event_ID
-
-                //};
-
-                //SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
-
-
-                this.Hide();
-                Accountmanagement_Module._instance.dataview();
-                Form1.status = "true";
+                }
+                    
 
             }
             else

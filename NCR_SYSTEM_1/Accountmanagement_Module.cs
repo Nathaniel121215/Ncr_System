@@ -251,120 +251,128 @@ namespace NCR_SYSTEM_1
                     //delete
                     if (e.ColumnIndex == Account_Datagrid.Columns[8].Index)
                     {
-                        if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+                        if(Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString() != "Admin")
                         {
+                            if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
-                            columnindex = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
-
-                            //new archive code
-
-
-
-                            var data = new AccountArchive_Class
                             {
 
-                                User_ID = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString(),
-                                Username = Account_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString(),
-                                Password = Account_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString(),
-                                Firstname = Account_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString(),
-                                Lastname = Account_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString(),
-                                Account_Level = Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString(),
-                                Date_Added = Account_Datagrid.Rows[e.RowIndex].Cells[6].Value.ToString(),
-                          
+                                columnindex = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-                                Date_Archive = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
-                                User = Form1.username,
-
-                            };
-
-
-                            //add to archive 
-                            FirebaseResponse response3 = client.Set("AccountArchive/" + data.User_ID, data);
-                            Product_class result = response3.ResultAs<Product_class>();
-
-                            //get archive counter
-                            FirebaseResponse resp = client.Get("AccountArchiveCounter/node");
-                            Counter_class get = resp.ResultAs<Counter_class>();
-
-                            //update archive counter
-                            var obj = new Counter_class
-                            {
-                                cnt = (Convert.ToInt32(get.cnt) + 1).ToString(),
-                            };
-
-                            SetResponse response4 = client.Set("AccountArchiveCounter/node", obj);
+                                //new archive code
 
 
 
-                            //delete from current table
-
-                            FirebaseResponse response = client.Delete("Accounts/" + columnindex);
-
-                            if (Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString().Equals("Cashier") || Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString().Equals("Manager"))
-                            {
-                                //existing employee
-                                FirebaseResponse resp2 = client.Get("employeeCounterExisting/node");
-                                Counter_class get2 = resp2.ResultAs<Counter_class>();
-                                string employee = (Convert.ToInt32(get2.cnt) - 1).ToString();
-                                var obj2 = new Counter_class
+                                var data = new AccountArchive_Class
                                 {
-                                    cnt = employee
+
+                                    User_ID = Account_Datagrid.Rows[e.RowIndex].Cells[0].Value.ToString(),
+                                    Username = Account_Datagrid.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                                    Password = Account_Datagrid.Rows[e.RowIndex].Cells[2].Value.ToString(),
+                                    Firstname = Account_Datagrid.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                                    Lastname = Account_Datagrid.Rows[e.RowIndex].Cells[4].Value.ToString(),
+                                    Account_Level = Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString(),
+                                    Date_Added = Account_Datagrid.Rows[e.RowIndex].Cells[6].Value.ToString(),
+
+
+                                    Date_Archive = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                                    User = Form1.username,
+
                                 };
 
-                                SetResponse response2 = client.Set("employeeCounterExisting/node", obj2);
+
+                                //add to archive 
+                                FirebaseResponse response3 = client.Set("AccountArchive/" + data.User_ID, data);
+                                Product_class result = response3.ResultAs<Product_class>();
+
+                                //get archive counter
+                                FirebaseResponse resp = client.Get("AccountArchiveCounter/node");
+                                Counter_class get = resp.ResultAs<Counter_class>();
+
+                                //update archive counter
+                                var obj = new Counter_class
+                                {
+                                    cnt = (Convert.ToInt32(get.cnt) + 1).ToString(),
+                                };
+
+                                SetResponse response4 = client.Set("AccountArchiveCounter/node", obj);
+
+
+
+                                //delete from current table
+
+                                FirebaseResponse response = client.Delete("Accounts/" + columnindex);
+
+                                if (Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString().Equals("Cashier") || Account_Datagrid.Rows[e.RowIndex].Cells[5].Value.ToString().Equals("Manager"))
+                                {
+                                    //existing employee
+                                    FirebaseResponse resp2 = client.Get("employeeCounterExisting/node");
+                                    Counter_class get2 = resp2.ResultAs<Counter_class>();
+                                    string employee = (Convert.ToInt32(get2.cnt) - 1).ToString();
+                                    var obj2 = new Counter_class
+                                    {
+                                        cnt = employee
+                                    };
+
+                                    SetResponse response2 = client.Set("employeeCounterExisting/node", obj2);
+                                }
+
+
+
+
+                                //Activity Log ARCHIVING ACCOUNT EVENT
+
+
+                                FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
+                                Counter_class get4 = resp4.ResultAs<Counter_class>();
+                                int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
+
+
+
+                                var data2 = new ActivityLog_Class
+                                {
+                                    Event_ID = cnt4.ToString(),
+                                    Module = "Account Management Module",
+                                    Action = "Account-ID: " + data.User_ID + "   Moved to Archive Module",
+                                    Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                                    User = Form1.username,
+                                    Accountlvl = Form1.levelac,
+
+                                };
+
+
+
+                                FirebaseResponse response5 = client.Set("ActivityLog/" + data2.Event_ID, data2);
+
+
+
+                                var obj4 = new Counter_class
+                                {
+                                    cnt = data2.Event_ID
+
+                                };
+
+                                SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
+
+
+
+
+                                if (Form1.userid == data.User_ID)
+                                {
+                                    Application.Exit();
+                                }
+                                else
+                                {
+                                    dataview();
+                                }
+
                             }
-
-
-
-
-                            //Activity Log ARCHIVING ACCOUNT EVENT
-
-
-                            FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
-                            Counter_class get4 = resp4.ResultAs<Counter_class>();
-                            int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
-
-
-
-                            var data2 = new ActivityLog_Class
-                            {
-                                Event_ID = cnt4.ToString(),
-                                Module = "Account Management Module",
-                                Action = "Account-ID: " + data.User_ID + "   Moved to Archive Module",
-                                Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
-                                User = Form1.username,
-                                Accountlvl = Form1.levelac,
-
-                            };
-
-
-
-                            FirebaseResponse response5 = client.Set("ActivityLog/" + data2.Event_ID, data2);
-
-
-
-                            var obj4 = new Counter_class
-                            {
-                                cnt = data2.Event_ID
-
-                            };
-
-                            SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
-
-
-                            
-
-                            if (Form1.userid == data.User_ID)
-                            {
-                                Application.Exit();
-                            }
-                            else
-                            {
-                                dataview();
-                            }
-
                         }
+                        else
+                        {
+                            MessageBox.Show("Admin Level Account cannot be archived.");
+                        }
+                        
                     }
 
 
@@ -490,39 +498,6 @@ namespace NCR_SYSTEM_1
                 Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
                 Archive.Image = Properties.Resources.Archive_Icon;
 
-                ///////////////////////// access/////////////////////////
-
-                DataGridViewImageColumn Inventory = new DataGridViewImageColumn();
-                Account_Datagrid.Columns.Add(Inventory);
-                Inventory.HeaderText = "Inventory Module";
-                Inventory.Name = "Inventory";
-                Inventory.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                Inventory.Image = Properties.Resources.loading;
-
-
-                DataGridViewImageColumn PoS = new DataGridViewImageColumn();
-                Account_Datagrid.Columns.Add(PoS);
-                PoS.HeaderText = "PoS Module";
-                PoS.Name = "PoS";
-                PoS.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                PoS.Image = Properties.Resources.loading;
-
-
-                DataGridViewImageColumn Supplier = new DataGridViewImageColumn();
-                Account_Datagrid.Columns.Add(Supplier);
-                Supplier.HeaderText = "Supplier Module";
-                Supplier.Name = "Supplier";
-                Supplier.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                Supplier.Image = Properties.Resources.loading;
-
-
-
-                DataGridViewImageColumn Records = new DataGridViewImageColumn();
-                Account_Datagrid.Columns.Add(Records);
-                Records.HeaderText = "Record Module";
-                Records.Name = "Records";
-                Records.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                Records.Image = Properties.Resources.loading;
 
                 ///////////////////////// Level /////////////////////////
 
@@ -575,40 +550,6 @@ namespace NCR_SYSTEM_1
                 Archive.ImageLayout = DataGridViewImageCellLayout.Zoom;
                 Archive.Image = Properties.Resources.Archive_Icon;
 
-
-                ///////////////////////// access/////////////////////////
-
-                DataGridViewImageColumn Inventory = new DataGridViewImageColumn();
-                Account_Datagrid.Columns.Add(Inventory);
-                Inventory.HeaderText = "Inventory Module";
-                Inventory.Name = "Inventory";
-                Inventory.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                Inventory.Image = Properties.Resources.loading;
-
-
-                DataGridViewImageColumn PoS = new DataGridViewImageColumn();
-                Account_Datagrid.Columns.Add(PoS);
-                PoS.HeaderText = "PoS Module";
-                PoS.Name = "PoS";
-                PoS.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                PoS.Image = Properties.Resources.loading;
-
-
-                DataGridViewImageColumn Supplier = new DataGridViewImageColumn();
-                Account_Datagrid.Columns.Add(Supplier);
-                Supplier.HeaderText = "Supplier Module";
-                Supplier.Name = "Supplier";
-                Supplier.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                Supplier.Image = Properties.Resources.loading;
-
-
-
-                DataGridViewImageColumn Records = new DataGridViewImageColumn();
-                Account_Datagrid.Columns.Add(Records);
-                Records.HeaderText = "Record Module";
-                Records.Name = "Records";
-                Records.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                Records.Image = Properties.Resources.loading;
 
                 ///////////////////////// Level /////////////////////////
 
@@ -902,24 +843,14 @@ namespace NCR_SYSTEM_1
             //visual
 
             Account_Datagrid.Columns[5].Visible = false;
-            Account_Datagrid.Columns[6].Visible = false;
+            Account_Datagrid.Columns[9].DisplayIndex = 5;
 
-            Account_Datagrid.Columns[7].Visible = false;
-            Account_Datagrid.Columns[8].Visible = false;
-            Account_Datagrid.Columns[9].Visible = false;
-            Account_Datagrid.Columns[10].Visible = false;
+            DataGridViewColumn column7 = Account_Datagrid.Columns[7];
+            column7.Width = 70;
+            DataGridViewColumn column8 = Account_Datagrid.Columns[8];
+            column8.Width = 70;
 
-
-            Account_Datagrid.Columns[17].DisplayIndex = 5;
-            Account_Datagrid.Columns[13].DisplayIndex = 7;
-            Account_Datagrid.Columns[14].DisplayIndex = 8;
-            Account_Datagrid.Columns[15].DisplayIndex = 9;
-            Account_Datagrid.Columns[16].DisplayIndex = 10;
-
-            DataGridViewColumn column11 = Account_Datagrid.Columns[11];
-            column11.Width = 80;
-            DataGridViewColumn column12 = Account_Datagrid.Columns[12];
-            column12.Width = 80;
+            Account_Datagrid.Columns[9].DefaultCellStyle.Padding = new Padding(0, 0, 80, 0);
 
             foreach (DataGridViewColumn column in Account_Datagrid.Columns)
             {
@@ -938,63 +869,28 @@ namespace NCR_SYSTEM_1
                     {
 
 
-                        StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.Group_175, NCR_SYSTEM_1.Properties.Resources.Group_177, NCR_SYSTEM_1.Properties.Resources.Group_179, NCR_SYSTEM_1.Properties.Resources.Group_181 };
+                        StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.adminlvl, NCR_SYSTEM_1.Properties.Resources.managerlvl, NCR_SYSTEM_1.Properties.Resources.cashierlvl };
 
 
 
 
 
-                        if (row.Cells[7].Value.Equals("Authorized")) //Authorize inventory
+                        if (row.Cells[5].Value.Equals("Admin")) //Authorize inventory
                         {
-                            row.Cells[13].Value = StatusImgs[0];
-                        }
-                        else
-                        {
-                            row.Cells[13].Value = StatusImgs[1];
-                        }
-
-                        if (row.Cells[8].Value.Equals("Authorized")) //Authorize PoS
-                        {
-                            row.Cells[14].Value = StatusImgs[0];
-                        }
-                        else
-                        {
-                            row.Cells[14].Value = StatusImgs[1];
-                        }
-
-                        if (row.Cells[9].Value.Equals("Authorized")) //Authorize Supplier
-                        {
-                            row.Cells[15].Value = StatusImgs[0];
-                        }
-                        else
-                        {
-                            row.Cells[15].Value = StatusImgs[1];
+                            row.Cells[9].Value = StatusImgs[0];
                         }
 
 
-                        if (row.Cells[10].Value.Equals("Authorized")) //Authorize Records
+                        if (row.Cells[5].Value.Equals("Manager")) //Authorize PoS
                         {
-                            row.Cells[16].Value = StatusImgs[0];
-                        }
-                        else
-                        {
-                            row.Cells[16].Value = StatusImgs[1];
-                        }
-
-                        ////////////////////Level ///////////////
-
-
-
-                        if (row.Cells[5].Value.Equals("Admin")) //Authorize Records
-                        {
-                            row.Cells[17].Value = StatusImgs[3];
-                        }
-                        else
-                        {
-                            row.Cells[17].Value = StatusImgs[2];
+                            row.Cells[9].Value = StatusImgs[1];
                         }
 
 
+                        if (row.Cells[5].Value.Equals("Cashier")) //Authorize Supplier
+                        {
+                            row.Cells[9].Value = StatusImgs[2];
+                        }
 
 
                     }
@@ -1273,6 +1169,14 @@ namespace NCR_SYSTEM_1
             if (e.KeyCode == Keys.Delete)
             {
                 e.SuppressKeyPress = true;
+            }
+        }
+
+        private void Account_Datagrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 2 && e.Value != null)
+            {
+                e.Value = new String('*', e.Value.ToString().Length);
             }
         }
     }
