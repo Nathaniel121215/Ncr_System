@@ -430,6 +430,7 @@
             this.label2.Size = new System.Drawing.Size(304, 40);
             this.label2.TabIndex = 259;
             this.label2.Text = "Point of Sales Module";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel3
             // 

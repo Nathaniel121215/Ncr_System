@@ -63,6 +63,18 @@ namespace NCR_SYSTEM_1
             namemetro(fnametxt);
             namemetro(lnametxt);
 
+            if(Accountmanagement_Module.Account_Level.ToString() == "Admin")
+            {
+                leveltxt.Items.Add("Admin");
+                leveltxt.Text = "Admin";
+                leveltxt.Enabled = false;
+
+            }
+            else
+            {
+
+            }
+
         }
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)

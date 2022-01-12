@@ -65,9 +65,6 @@
             this.transactyp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.transactyp.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.transactyp.FormattingEnabled = true;
-            this.transactyp.Items.AddRange(new object[] {
-            "On-site",
-            "Delivery"});
             this.transactyp.Location = new System.Drawing.Point(36, 457);
             this.transactyp.Name = "transactyp";
             this.transactyp.Size = new System.Drawing.Size(310, 25);
@@ -173,9 +170,9 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(33, 494);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 15);
+            this.label3.Size = new System.Drawing.Size(112, 15);
             this.label3.TabIndex = 339;
-            this.label3.Text = "Remarks:";
+            this.label3.Text = "Remarks: (Optional)";
             // 
             // label2
             // 
@@ -229,9 +226,9 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(33, 110);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(109, 15);
+            this.label5.Size = new System.Drawing.Size(112, 15);
             this.label5.TabIndex = 334;
-            this.label5.Text = "Reference Number:";
+            this.label5.Text = "Reference Number: ";
             // 
             // refnumbe
             // 
@@ -272,9 +269,9 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(33, 268);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 15);
+            this.label4.Size = new System.Drawing.Size(153, 15);
             this.label4.TabIndex = 347;
-            this.label4.Text = "Customer Name:";
+            this.label4.Text = "Customer Name: (Optional)";
             // 
             // customernam
             // 
@@ -299,9 +296,9 @@
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(33, 347);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(106, 15);
+            this.label7.Size = new System.Drawing.Size(282, 15);
             this.label7.TabIndex = 349;
-            this.label7.Text = "Customer Address:";
+            this.label7.Text = "Customer Address: (Optional in On-site Transaction)";
             // 
             // customeraddres
             // 

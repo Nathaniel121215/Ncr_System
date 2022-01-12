@@ -42,6 +42,8 @@ namespace NCR_SYSTEM_1
         public static int limit;
         public static int goal;
 
+        public static int rowindexx;
+
         //cart
         string id = "";
         string productname = "";
@@ -82,6 +84,7 @@ namespace NCR_SYSTEM_1
             fee = 0;
             subtotal = 0;
             total = 0;
+            rowindexx = 0;
 
             datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
             datedisplay.Select();
@@ -158,10 +161,15 @@ namespace NCR_SYSTEM_1
             {
                 accountinfolvl.Text = "Login as Administrator";
             }
+            else if (Form1.levelac == "Manager")
+            {
+                accountinfolvl.Text = "Login as Manager";
+            }
             else
             {
-                accountinfolvl.Text = "Login as Employee";
+                accountinfolvl.Text = "Login as Cashier";
             }
+
 
         }
 
@@ -1222,20 +1230,38 @@ namespace NCR_SYSTEM_1
         {
             if (Form1.status == "true")
             {
-                Cart_Datagridview.Rows.Clear();
-                clear();
+                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                {
+                    if(Form1.levelac=="Cashier")
+                    {
+                        Form1.status = "false";
+                        Confirmation_popup b = new Confirmation_popup();
+                        b.Show();
+                    }
+                    else
+                    {
+                        Cart_Datagridview.Rows.Clear();
+                        clear();
 
 
-                FreeGoalsuppresor = 1;
-                freeitembtn.Enabled = false;
-                freeitembtn.Visible = false;
-                free = true;
+                        FreeGoalsuppresor = 1;
+                        freeitembtn.Enabled = false;
+                        freeitembtn.Visible = false;
+                        free = true;
 
-                payment = 0;
-                change = 0;
-                fee = 0;
-                subtotal = 0;
-                total = 0;
+                        payment = 0;
+                        change = 0;
+                        fee = 0;
+                        subtotal = 0;
+                        total = 0;
+                    }
+                }
+                else
+                {
+
+                }
+                
             }
             else
             {
@@ -1252,77 +1278,100 @@ namespace NCR_SYSTEM_1
                 //remove
                 if (e.ColumnIndex == Cart_Datagridview.Columns[7].Index)
                 {
-                    this.Cart_Datagridview.Rows.RemoveAt(e.RowIndex);
+                    if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
-                    try
                     {
-                        subtotal = 0;
-
-
-                        for (int i = 0; i < Cart_Datagridview.Rows.Count; i++)
+                        if (Form1.levelac == "Cashier")
                         {
-                            subtotal += Convert.ToDecimal(Cart_Datagridview.Rows[i].Cells[5].Value);
+                            Form1.status = "false";
+                            Confirmation_popup b = new Confirmation_popup();
+                            b.Show();
+
+                            rowindexx = e.RowIndex;
 
                         }
-
-                        Sum.Text = subtotal.ToString(fmt) + " PHP";
-
-                        if (Sum.Text == ".00 PHP")
+                        else
                         {
-                            Sum.Text = "0.00" + " PHP";
-                        }
+                            this.Cart_Datagridview.Rows.RemoveAt(e.RowIndex);
 
-                        compute();
-
-
-
-                        // line total
-                        try
-                        {
-                            subtotal = 0;
-
-
-                            for (int i = 0; i < Cart_Datagridview.Rows.Count; i++)
+                            try
                             {
-                                subtotal += Convert.ToDecimal(Cart_Datagridview.Rows[i].Cells[5].Value);
+                                subtotal = 0;
+
+
+                                for (int i = 0; i < Cart_Datagridview.Rows.Count; i++)
+                                {
+                                    subtotal += Convert.ToDecimal(Cart_Datagridview.Rows[i].Cells[5].Value);
+
+                                }
+
+                                Sum.Text = subtotal.ToString(fmt) + " PHP";
+
+                                if (Sum.Text == ".00 PHP")
+                                {
+                                    Sum.Text = "0.00" + " PHP";
+                                }
+
+                                compute();
+
+
+
+                                // line total
+                                try
+                                {
+                                    subtotal = 0;
+
+
+                                    for (int i = 0; i < Cart_Datagridview.Rows.Count; i++)
+                                    {
+                                        subtotal += Convert.ToDecimal(Cart_Datagridview.Rows[i].Cells[5].Value);
+
+                                    }
+
+                                    Sum.Text = subtotal.ToString(fmt) + " PHP";
+
+                                    if (Sum.Text == ".00 PHP")
+                                    {
+                                        Sum.Text = "0.00" + " PHP";
+                                    }
+
+                                }
+
+                                catch
+                                {
+
+                                }
+
+                                //TESTING GOAL
+
+                                if (subtotal >= goal && FreeGoalsuppresor == 1 && free == true)
+                                {
+
+                                    freeitembtn.Enabled = true;
+                                    freeitembtn.Visible = true;
+                                }
+                                if (subtotal < goal /*&& FreeGoalsuppresor == 0*/)
+                                {
+                                    FreeGoalsuppresor = 1;
+                                    freeitembtn.Enabled = false;
+                                    freeitembtn.Visible = false;
+                                }
 
                             }
 
-                            Sum.Text = subtotal.ToString(fmt) + " PHP";
-
-                            if (Sum.Text == ".00 PHP")
+                            catch
                             {
-                                Sum.Text = "0.00" + " PHP";
+
                             }
 
                         }
-
-                        catch
-                        {
-
-                        }
-
-                        //TESTING GOAL
-
-                        if (subtotal >= goal && FreeGoalsuppresor == 1 && free == true)
-                        {
-
-                            freeitembtn.Enabled = true;
-                            freeitembtn.Visible = true;
-                        }
-                        if (subtotal < goal /*&& FreeGoalsuppresor == 0*/)
-                        {
-                            FreeGoalsuppresor = 1;
-                            freeitembtn.Enabled = false;
-                            freeitembtn.Visible = false;
-                        }
-
                     }
-
-                    catch
+                    else
                     {
 
                     }
+                      
+
                 }
             }
             else
@@ -1330,6 +1379,82 @@ namespace NCR_SYSTEM_1
                 MessageBox.Show("The Module is still loading or a window is currently open.");
             }
            
+
+        }
+
+        public void removewithconfirmation()
+        {
+            this.Cart_Datagridview.Rows.RemoveAt(rowindexx);
+
+            try
+            {
+                subtotal = 0;
+
+
+                for (int i = 0; i < Cart_Datagridview.Rows.Count; i++)
+                {
+                    subtotal += Convert.ToDecimal(Cart_Datagridview.Rows[i].Cells[5].Value);
+
+                }
+
+                Sum.Text = subtotal.ToString(fmt) + " PHP";
+
+                if (Sum.Text == ".00 PHP")
+                {
+                    Sum.Text = "0.00" + " PHP";
+                }
+
+                compute();
+
+
+
+                // line total
+                try
+                {
+                    subtotal = 0;
+
+
+                    for (int i = 0; i < Cart_Datagridview.Rows.Count; i++)
+                    {
+                        subtotal += Convert.ToDecimal(Cart_Datagridview.Rows[i].Cells[5].Value);
+
+                    }
+
+                    Sum.Text = subtotal.ToString(fmt) + " PHP";
+
+                    if (Sum.Text == ".00 PHP")
+                    {
+                        Sum.Text = "0.00" + " PHP";
+                    }
+
+                }
+
+                catch
+                {
+
+                }
+
+                //TESTING GOAL
+
+                if (subtotal >= goal && FreeGoalsuppresor == 1 && free == true)
+                {
+
+                    freeitembtn.Enabled = true;
+                    freeitembtn.Visible = true;
+                }
+                if (subtotal < goal /*&& FreeGoalsuppresor == 0*/)
+                {
+                    FreeGoalsuppresor = 1;
+                    freeitembtn.Enabled = false;
+                    freeitembtn.Visible = false;
+                }
+
+            }
+
+            catch
+            {
+
+            }
 
         }
 
@@ -1599,7 +1724,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton17_Click(object sender, EventArgs e)
         {
-            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -1621,25 +1746,7 @@ namespace NCR_SYSTEM_1
 
 
             }
-            else if (Form1.levelac.Equals("Employee") && Form1.inventoryac.Equals("Authorized") && Form1.status == "true")
-            {
-                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
-                {
-                    Inventory_Module a = new Inventory_Module();
-                    this.Hide();
-                    a.Show();
-
-                    Form1.loadingtime = 9000;
-                    Form1.status = "false";
-                    Loading_popup b = new Loading_popup();
-                    b.Show();
-                }
-                else
-                {
-
-                }
-            }
+           
             else
             {
                 if (Form1.status == "true")
@@ -1655,7 +1762,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton18_Click(object sender, EventArgs e)
         {
-            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -1677,7 +1784,7 @@ namespace NCR_SYSTEM_1
 
 
             }
-            else if (Form1.levelac.Equals("Employee") && Form1.posac.Equals("Authorized") && Form1.status == "true")
+            else if (Form1.levelac.Equals("Cashier") && Form1.status == "true")
             {
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
@@ -1749,7 +1856,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton5_Click(object sender, EventArgs e)
         {
-            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -1771,25 +1878,7 @@ namespace NCR_SYSTEM_1
 
 
             }
-            else if (Form1.levelac.Equals("Employee") && Form1.supplierac.Equals("Authorized") && Form1.status == "true")
-            {
-                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
-                {
-                    Suppliermanagement_module a = new Suppliermanagement_module();
-                    this.Hide();
-                    a.Show();
-
-                    Form1.loadingtime = 9000;
-                    Form1.status = "false";
-                    Loading_popup b = new Loading_popup();
-                    b.Show();
-                }
-                else
-                {
-
-                }
-            }
+        
             else
             {
                 if (Form1.status == "true")
@@ -1805,7 +1894,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton6_Click(object sender, EventArgs e)
         {
-            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -1827,25 +1916,7 @@ namespace NCR_SYSTEM_1
 
 
             }
-            else if (Form1.levelac.Equals("Employee") && Form1.recordsac.Equals("Authorized") && Form1.status == "true")
-            {
-                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
-                {
-                    Salesrecord_module a = new Salesrecord_module();
-                    this.Hide();
-                    a.Show();
-
-                    Form1.loadingtime = 9000;
-                    Form1.status = "false";
-                    Loading_popup b = new Loading_popup();
-                    b.Show();
-                }
-                else
-                {
-
-                }
-            }
+            
             else
             {
                 if (Form1.status == "true")
@@ -1861,7 +1932,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton7_Click(object sender, EventArgs e)
         {
-            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -1899,7 +1970,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton8_Click(object sender, EventArgs e)
         {
-            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -2073,7 +2144,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -2134,6 +2205,16 @@ namespace NCR_SYSTEM_1
             {
                 e.SuppressKeyPress = true;
             }
+        }
+
+        public void close()
+        {
+            this.Hide();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

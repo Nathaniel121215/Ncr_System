@@ -68,6 +68,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.combofilter = new Bunifu.Framework.UI.BunifuDropdown();
+            this.bunifuImageButton17 = new Bunifu.Framework.UI.BunifuImageButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton10)).BeginInit();
@@ -87,6 +88,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Inventory_Datagrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton17)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -97,6 +99,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this.bunifuImageButton17);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.bunifuImageButton16);
             this.panel1.Controls.Add(this.bunifuImageButton10);
@@ -151,7 +154,7 @@
             this.bunifuImageButton10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.bunifuImageButton10.Image = global::NCR_SYSTEM_1.Properties.Resources.fadeutilitysettings;
             this.bunifuImageButton10.ImageActive = null;
-            this.bunifuImageButton10.Location = new System.Drawing.Point(24, 845);
+            this.bunifuImageButton10.Location = new System.Drawing.Point(24, 898);
             this.bunifuImageButton10.Name = "bunifuImageButton10";
             this.bunifuImageButton10.Size = new System.Drawing.Size(258, 53);
             this.bunifuImageButton10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -166,7 +169,7 @@
             this.bunifuImageButton8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.bunifuImageButton8.Image = global::NCR_SYSTEM_1.Properties.Resources.fade_archive_data;
             this.bunifuImageButton8.ImageActive = null;
-            this.bunifuImageButton8.Location = new System.Drawing.Point(24, 795);
+            this.bunifuImageButton8.Location = new System.Drawing.Point(24, 848);
             this.bunifuImageButton8.Name = "bunifuImageButton8";
             this.bunifuImageButton8.Size = new System.Drawing.Size(258, 53);
             this.bunifuImageButton8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -181,7 +184,7 @@
             this.bunifuImageButton7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.bunifuImageButton7.Image = global::NCR_SYSTEM_1.Properties.Resources.fade_activity_logs;
             this.bunifuImageButton7.ImageActive = null;
-            this.bunifuImageButton7.Location = new System.Drawing.Point(24, 746);
+            this.bunifuImageButton7.Location = new System.Drawing.Point(24, 799);
             this.bunifuImageButton7.Name = "bunifuImageButton7";
             this.bunifuImageButton7.Size = new System.Drawing.Size(258, 53);
             this.bunifuImageButton7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -211,7 +214,7 @@
             this.bunifuImageButton6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.bunifuImageButton6.Image = global::NCR_SYSTEM_1.Properties.Resources.fade_record;
             this.bunifuImageButton6.ImageActive = null;
-            this.bunifuImageButton6.Location = new System.Drawing.Point(24, 696);
+            this.bunifuImageButton6.Location = new System.Drawing.Point(24, 749);
             this.bunifuImageButton6.Name = "bunifuImageButton6";
             this.bunifuImageButton6.Size = new System.Drawing.Size(258, 53);
             this.bunifuImageButton6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -241,7 +244,7 @@
             this.bunifuImageButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.bunifuImageButton5.Image = global::NCR_SYSTEM_1.Properties.Resources.fade_supplier_management;
             this.bunifuImageButton5.ImageActive = null;
-            this.bunifuImageButton5.Location = new System.Drawing.Point(24, 646);
+            this.bunifuImageButton5.Location = new System.Drawing.Point(24, 699);
             this.bunifuImageButton5.Name = "bunifuImageButton5";
             this.bunifuImageButton5.Size = new System.Drawing.Size(258, 53);
             this.bunifuImageButton5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -271,7 +274,7 @@
             this.bunifuImageButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.bunifuImageButton2.Image = global::NCR_SYSTEM_1.Properties.Resources.fadelogout;
             this.bunifuImageButton2.ImageActive = null;
-            this.bunifuImageButton2.Location = new System.Drawing.Point(24, 897);
+            this.bunifuImageButton2.Location = new System.Drawing.Point(24, 950);
             this.bunifuImageButton2.Name = "bunifuImageButton2";
             this.bunifuImageButton2.Size = new System.Drawing.Size(258, 53);
             this.bunifuImageButton2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -286,7 +289,7 @@
             this.bunifuImageButton9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.bunifuImageButton9.Image = global::NCR_SYSTEM_1.Properties.Resources.Group_157;
             this.bunifuImageButton9.ImageActive = null;
-            this.bunifuImageButton9.Location = new System.Drawing.Point(24, 597);
+            this.bunifuImageButton9.Location = new System.Drawing.Point(24, 650);
             this.bunifuImageButton9.Name = "bunifuImageButton9";
             this.bunifuImageButton9.Size = new System.Drawing.Size(258, 53);
             this.bunifuImageButton9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -815,6 +818,20 @@
             this.combofilter.Size = new System.Drawing.Size(148, 40);
             this.combofilter.TabIndex = 279;
             // 
+            // bunifuImageButton17
+            // 
+            this.bunifuImageButton17.BackColor = System.Drawing.Color.SeaGreen;
+            this.bunifuImageButton17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.bunifuImageButton17.Image = global::NCR_SYSTEM_1.Properties.Resources.fadeaddcategory;
+            this.bunifuImageButton17.ImageActive = null;
+            this.bunifuImageButton17.Location = new System.Drawing.Point(54, 598);
+            this.bunifuImageButton17.Name = "bunifuImageButton17";
+            this.bunifuImageButton17.Size = new System.Drawing.Size(258, 53);
+            this.bunifuImageButton17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.bunifuImageButton17.TabIndex = 49;
+            this.bunifuImageButton17.TabStop = false;
+            this.bunifuImageButton17.Zoom = 10;
+            // 
             // Inventory_Module
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -864,6 +881,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Inventory_Datagrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton17)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -907,5 +925,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton2;
         private System.Windows.Forms.Label label8;
         private Bunifu.Framework.UI.BunifuDropdown combofilter;
+        private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton17;
     }
 }

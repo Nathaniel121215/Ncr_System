@@ -74,14 +74,14 @@ namespace NCR_SYSTEM_1
 
 
             usertxt.Text = obj2.Username;
-            passtxt1.Text = obj2.Password;
-            passtxt2.Text = obj2.Password;
+            passtxt1.Text = "Password";
+            passtxt2.Text = "Password";
 
         }
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            if (usertxt.Text != "" && passtxt1.Text != "" && passtxt2.Text != "" && passtxt1.Text == passtxt2.Text)
+            if (usertxt.Text != "" && passtxt1.Text != "" && passtxt2.Text != "" && passtxt1.Text == passtxt2.Text && passtxt1.Text !="Password" && passtxt2.Text != "Password")
             {
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
@@ -171,12 +171,22 @@ namespace NCR_SYSTEM_1
                             MessageBox.Show(b.ToString());
                         }
 
+                        if (Form1.levelac == "Admin" || Form1.levelac == "Manager")
+                        {
+                            Dashboard_Module._instance.close();
+                        }
+                        else
+                        {
+                            POS_module._instance.close();
+                        }
+
 
                         Form1 a = new Form1();
                         this.Hide();
                         a.Show();
 
-                        Dashboard_Module._instance.close();
+                       
+                        
 
                     }
                     else
@@ -193,10 +203,54 @@ namespace NCR_SYSTEM_1
             }
                 else
                 {
-                MessageBox.Show("Fill up all necessary fields.");
+                MessageBox.Show("Fill up all necessary fields correctly.");
             }
             
                    
+        }
+
+        private void passtxt1_Enter(object sender, EventArgs e)
+        {
+            if (passtxt1.Text == "Password")
+            {
+                passtxt1.Text = "";
+
+                passtxt1.ForeColor = Color.Black;
+
+            }
+        }
+
+        private void passtxt1_Leave(object sender, EventArgs e)
+        {
+            if (passtxt1.Text == "")
+            {
+                passtxt1.Text = "Password";
+                passtxt1.ForeColor = Color.Gray;
+
+
+            }
+        }
+
+        private void passtxt2_Enter(object sender, EventArgs e)
+        {
+            if (passtxt2.Text == "Password")
+            {
+                passtxt2.Text = "";
+
+                passtxt2.ForeColor = Color.Black;
+
+            }
+        }
+
+        private void passtxt2_Leave(object sender, EventArgs e)
+        {
+            if (passtxt2.Text == "")
+            {
+                passtxt2.Text = "Password";
+                passtxt2.ForeColor = Color.Gray;
+
+
+            }
         }
     }
 }

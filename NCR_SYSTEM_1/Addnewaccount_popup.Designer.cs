@@ -235,7 +235,7 @@
             this.passtxt.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.passtxt.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.passtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.passtxt.isPassword = false;
+            this.passtxt.isPassword = true;
             this.passtxt.Location = new System.Drawing.Point(36, 304);
             this.passtxt.Margin = new System.Windows.Forms.Padding(4);
             this.passtxt.Name = "passtxt";

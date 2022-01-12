@@ -57,13 +57,160 @@ namespace NCR_SYSTEM_1
             refnumbe.Text = referencenumber.ToString();
             transacdat.Text = date1.ToString();
 
+            if(POS_module.fee.ToString() =="0.00" || POS_module.fee.ToString() == ".00")
+            {
+                transactyp.Items.Add("On-site");
+                transactyp.Text = "On-site";
+            }
+            else
+            {
+                transactyp.Items.Add("Delivery");
+                transactyp.Text = "Delivery";
+            }
+
 
         }
 
         private void Finalize_Button_Click(object sender, EventArgs e)
         {
-            if(customernam.Text!="" && customeraddres.Text!="" && transactyp.Text !="")
+            if(transactyp.Text == "On-site")
             {
+                if(customernam.Text=="")
+                {
+                    customernam.Text = "None";
+                }
+                if (customeraddres.Text == "")
+                {
+                    customeraddres.Text = "None";
+                }
+                if (remark.Text == "")
+                {
+                    remark.Text = "None";
+                }
+
+                temfee = POS_module.fee.ToString(fmt);
+
+
+                    if (temfee.Equals(".00"))
+                    {
+                        temfee = "0.00";
+                    }
+
+
+                    refferencenum = refnumbe.Text;
+                    date = transacdat.Text;
+                    customername = customernam.Text;
+                    remarks = remark.Text;
+                    trasactiontype = transactyp.Text;
+                    customeraddress = customeraddres.Text;
+
+
+
+                    if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
+                    {
+                        MessageBox.Show("Recorded successfully");
+
+
+                        //GET restock counter
+                        FirebaseResponse resp = client.Get("SalesCount/node");
+                        Counter_class get = resp.ResultAs<Counter_class>();
+
+                        var data = new Purchase_Class
+                        {
+                            Purchase_ID = (Convert.ToInt32(get.cnt) + 1).ToString(),
+
+                            Reference_Number = refferencenum,
+                            Date_Of_Transaction = date,
+                            Customer_Name = customername,
+                            Items = POS_module.details2,
+                            Order_Total = POS_module.total.ToString(),
+                            Sub_Total = POS_module.subtotal.ToString(),
+                            Fee = temfee,
+                            Change = POS_module.change.ToString(),
+                            Amount_Tendered = POS_module.payment.ToString(fmt),
+                            Assisted_By = Form1.username,
+                            Remark = remarks,
+                            Transaction_Type = trasactiontype,
+                            Customer_Address = customeraddress,
+
+
+                        };
+
+                        //ADD new restocklog
+                        SetResponse response = client.Set("CompanySales/" + data.Purchase_ID, data);
+                        Stock_class result = response.ResultAs<Stock_class>();
+
+                        //update counter
+                        var obj = new Counter_class
+                        {
+                            cnt = data.Purchase_ID
+                        };
+
+                        SetResponse response1 = client.Set("SalesCount/node", obj);
+
+
+
+
+
+                        //POS PURCHASE EVENT
+
+                        FirebaseResponse resp4 = client.Get("ActivityLogCounter/node");
+                        Counter_class get4 = resp4.ResultAs<Counter_class>();
+                        int cnt4 = (Convert.ToInt32(get4.cnt) + 1);
+
+
+
+                        var data3 = new ActivityLog_Class
+                        {
+                            Event_ID = cnt4.ToString(),
+                            Module = "Point of Sales Module",
+                            Action = "Purchase-ID: " + data.Purchase_ID + "   Item Purchased",
+                            Date = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"),
+                            User = Form1.username,
+                            Accountlvl = Form1.levelac,
+
+                        };
+
+
+
+                        FirebaseResponse response5 = client.Set("ActivityLog/" + data3.Event_ID, data3);
+
+
+
+                        var obj4 = new Counter_class
+                        {
+                            cnt = data3.Event_ID
+
+                        };
+
+                        SetResponse response6 = client.Set("ActivityLogCounter/node", obj4);
+
+
+                        this.Hide();
+                        POS_module._instance.minusstock();
+
+
+                    }
+
+                    else
+                    {
+
+                    }
+                }
+           if(transactyp.Text=="Delivery" && customeraddres.Text!="")
+            {
+
+                if (customernam.Text == "")
+                {
+                    customernam.Text = "None";
+                }
+                if (remark.Text == "")
+                {
+                    remark.Text = "None";
+                }
+
+
                 temfee = POS_module.fee.ToString(fmt);
 
 
@@ -125,7 +272,7 @@ namespace NCR_SYSTEM_1
 
                     SetResponse response1 = client.Set("SalesCount/node", obj);
 
-                  
+
 
 
 
@@ -165,22 +312,26 @@ namespace NCR_SYSTEM_1
 
                     this.Hide();
                     POS_module._instance.minusstock();
-               
+
 
                 }
 
                 else
                 {
-
+                    
                 }
             }
-            else
+           else
             {
                 MessageBox.Show("Fill up all necessary fields.");
             }
+              
+
+            
+            
            
 
-            }
+        }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
