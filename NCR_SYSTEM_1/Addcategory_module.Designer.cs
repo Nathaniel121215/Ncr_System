@@ -273,7 +273,7 @@
             // 
             this.bunifuImageButton17.BackColor = System.Drawing.Color.SeaGreen;
             this.bunifuImageButton17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bunifuImageButton17.Image = global::NCR_SYSTEM_1.Properties.Resources.fadeaddcategory;
+            this.bunifuImageButton17.Image = global::NCR_SYSTEM_1.Properties.Resources.fadeaddbrand;
             this.bunifuImageButton17.ImageActive = null;
             this.bunifuImageButton17.Location = new System.Drawing.Point(54, 597);
             this.bunifuImageButton17.Name = "bunifuImageButton17";

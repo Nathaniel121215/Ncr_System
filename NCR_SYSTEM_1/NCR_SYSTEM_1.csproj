@@ -896,6 +896,7 @@
     <None Include="Resources\fade stock adjustment.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\fadeaddbrand.png" />
     <None Include="Resources\managerlvl.png" />
     <None Include="Resources\cashierlvl.png" />
     <None Include="Resources\Group 2711.png" />
@@ -968,6 +969,7 @@
     <None Include="Resources\activity logs.png" />
     <None Include="Resources\activitylog.png" />
     <None Include="Resources\adminlvl.png" />
+    <None Include="Resources\addbrand.png" />
     <Content Include="Resources\Bitmap1.bmp" />
     <None Include="Resources\new out of stock.png" />
     <None Include="Resources\new low on stock.png" />

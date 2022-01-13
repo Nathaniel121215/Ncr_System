@@ -99,7 +99,7 @@
             this.Finalize_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(89)))), ((int)(((byte)(204)))));
             this.Finalize_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Finalize_Button.BorderRadius = 0;
-            this.Finalize_Button.ButtonText = "Finalize";
+            this.Finalize_Button.ButtonText = "Confirm";
             this.Finalize_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Finalize_Button.DisabledColor = System.Drawing.Color.Gray;
             this.Finalize_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -124,7 +124,7 @@
             this.Finalize_Button.selected = false;
             this.Finalize_Button.Size = new System.Drawing.Size(154, 35);
             this.Finalize_Button.TabIndex = 324;
-            this.Finalize_Button.Text = "Finalize";
+            this.Finalize_Button.Text = "Confirm";
             this.Finalize_Button.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Finalize_Button.Textcolor = System.Drawing.Color.White;
             this.Finalize_Button.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

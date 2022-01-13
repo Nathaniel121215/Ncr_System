@@ -143,6 +143,16 @@ namespace NCR_SYSTEM_1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap addbrand {
+            get {
+                object obj = ResourceManager.GetObject("addbrand", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap adminlvl {
             get {
                 object obj = ResourceManager.GetObject("adminlvl", resourceCulture);
@@ -396,6 +406,16 @@ namespace NCR_SYSTEM_1.Properties {
         internal static System.Drawing.Bitmap fadeactivitylog {
             get {
                 object obj = ResourceManager.GetObject("fadeactivitylog", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fadeaddbrand {
+            get {
+                object obj = ResourceManager.GetObject("fadeaddbrand", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
