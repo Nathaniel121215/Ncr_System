@@ -40,6 +40,7 @@
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.usertxt = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
             this.panel3.SuspendLayout();
@@ -56,6 +57,7 @@
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BackgroundImage = global::NCR_SYSTEM_1.Properties.Resources.blue_login;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.bunifuImageButton2);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
@@ -225,6 +227,16 @@
             this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuFlatButton1.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(792, 411);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,6 +273,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

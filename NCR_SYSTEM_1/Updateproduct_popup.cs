@@ -119,6 +119,45 @@ namespace NCR_SYSTEM_1
             }
 
 
+            //////ADDING BRAND COMBOBOX CONTENT
+            try
+            {
+                FirebaseResponse resp3 = client.Get("BrandCounter/node");
+                Counter_class obj = resp3.ResultAs<Counter_class>();
+                int cnt = Convert.ToInt32(obj.cnt);
+
+                List<string> brand = new List<string>();
+                for (int runs = 0; runs <= cnt; runs++)
+                {
+                    try
+                    {
+                        FirebaseResponse resp1 = client.Get("Brand/" + runs);
+                        Brand_Class obj2 = resp1.ResultAs<Brand_Class>();
+
+                        brand.Add(obj2.Brand_Name);
+                    }
+                    catch
+                    {
+
+                    }
+
+                }
+
+
+
+                for (int i = 0; i <= cnt; i++)
+                {
+
+                    pbrand.Items.Add(brand[i].ToString());
+
+
+                }
+            }
+            catch
+            {
+            }
+
+
 
 
 
@@ -142,7 +181,7 @@ namespace NCR_SYSTEM_1
             punit.Text = Inventory_Module.unit;
 
             namemetro(pname);
-            brandmetro(pbrand);
+       
 
 
         }
@@ -288,6 +327,49 @@ namespace NCR_SYSTEM_1
         {
             Addunit_popup a = new Addunit_popup();
             a.Show();
+        }
+
+        public void refreshbrand()
+        {
+            pbrand.Items.Clear();
+
+            try
+            {
+                FirebaseResponse resp3 = client.Get("BrandCounter/node");
+                Counter_class obj = resp3.ResultAs<Counter_class>();
+                int cnt = Convert.ToInt32(obj.cnt);
+
+                List<string> brand = new List<string>();
+                for (int runs = 0; runs <= cnt; runs++)
+                {
+                    try
+                    {
+                        FirebaseResponse resp1 = client.Get("Brand/" + runs);
+                        Brand_Class obj2 = resp1.ResultAs<Brand_Class>();
+
+                        brand.Add(obj2.Brand_Name);
+                    }
+                    catch
+                    {
+
+                    }
+
+                }
+
+
+
+                for (int i = 0; i <= cnt; i++)
+                {
+
+                    pbrand.Items.Add(brand[i].ToString());
+
+
+                }
+            }
+            catch
+            {
+            }
+
         }
 
 
@@ -479,6 +561,11 @@ namespace NCR_SYSTEM_1
 
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Addbrand_pop a = new Addbrand_pop();
+            a.Show();
+        }
     }
 }
 

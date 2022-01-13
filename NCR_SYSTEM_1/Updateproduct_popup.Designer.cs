@@ -38,7 +38,6 @@
             this.pdescription = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.pbrand = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.label4 = new System.Windows.Forms.Label();
             this.pprice = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,6 +54,8 @@
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.pbrand = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -170,24 +171,6 @@
             this.label5.Size = new System.Drawing.Size(86, 15);
             this.label5.TabIndex = 173;
             this.label5.Text = "Product Brand:";
-            // 
-            // pbrand
-            // 
-            this.pbrand.BorderColorFocused = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.pbrand.BorderColorIdle = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pbrand.BorderColorMouseHover = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
-            this.pbrand.BorderThickness = 1;
-            this.pbrand.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.pbrand.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.pbrand.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pbrand.isPassword = false;
-            this.pbrand.Location = new System.Drawing.Point(338, 226);
-            this.pbrand.Margin = new System.Windows.Forms.Padding(4);
-            this.pbrand.Name = "pbrand";
-            this.pbrand.Size = new System.Drawing.Size(281, 36);
-            this.pbrand.TabIndex = 172;
-            this.pbrand.Text = "Example Brand";
-            this.pbrand.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // label4
             // 
@@ -404,12 +387,34 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(588, 239);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(32, 25);
+            this.button3.TabIndex = 306;
+            this.button3.Text = "...";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // pbrand
+            // 
+            this.pbrand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.pbrand.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.pbrand.FormattingEnabled = true;
+            this.pbrand.Location = new System.Drawing.Point(338, 237);
+            this.pbrand.Name = "pbrand";
+            this.pbrand.Size = new System.Drawing.Size(244, 25);
+            this.pbrand.TabIndex = 305;
+            // 
             // Updateproduct_popup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(658, 505);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.pbrand);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bunifuFlatButton2);
@@ -426,7 +431,6 @@
             this.Controls.Add(this.pdescription);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.pbrand);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pprice);
             this.Controls.Add(this.label3);
@@ -457,7 +461,6 @@
         private WindowsFormsControlLibrary1.BunifuCustomTextbox pdescription;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private Bunifu.Framework.UI.BunifuMetroTextbox pbrand;
         private System.Windows.Forms.Label label4;
         private Bunifu.Framework.UI.BunifuMetroTextbox pprice;
         private System.Windows.Forms.Label label3;
@@ -474,5 +477,7 @@
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox pbrand;
     }
 }

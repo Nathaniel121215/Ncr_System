@@ -123,6 +123,18 @@
     <Compile Include="ActivityLog_Module.Designer.cs">
       <DependentUpon>ActivityLog_Module.cs</DependentUpon>
     </Compile>
+    <Compile Include="Addbrand_module.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Addbrand_module.Designer.cs">
+      <DependentUpon>Addbrand_module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Addbrand_pop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Addbrand_pop.Designer.cs">
+      <DependentUpon>Addbrand_pop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Addcategory_module.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +183,7 @@
     <Compile Include="Addunit_popup.Designer.cs">
       <DependentUpon>Addunit_popup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Brand_Class.cs" />
     <Compile Include="Category_Class.cs" />
     <Compile Include="ChangePassword_popup.cs">
       <SubType>Form</SubType>
@@ -196,12 +209,6 @@
     <Compile Include="Confirmreceipt_Module.Designer.cs">
       <DependentUpon>Confirmreceipt_Module.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConfirmReset_popup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ConfirmReset_popup.Designer.cs">
-      <DependentUpon>ConfirmReset_popup.cs</DependentUpon>
-    </Compile>
     <Compile Include="Counter_class.cs" />
     <Compile Include="Customertransactionreceipt_popup.cs">
       <SubType>Form</SubType>
@@ -214,6 +221,12 @@
     </Compile>
     <Compile Include="Deductstock_popup.Designer.cs">
       <DependentUpon>Deductstock_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeliveryConfirmation_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeliveryConfirmation_popup.Designer.cs">
+      <DependentUpon>DeliveryConfirmation_popup.cs</DependentUpon>
     </Compile>
     <Compile Include="Finalizestock_popup.cs">
       <SubType>Form</SubType>
@@ -472,6 +485,12 @@
     <Compile Include="Updateaccount_popup.Designer.cs">
       <DependentUpon>Updateaccount_popup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Updatebrand_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Updatebrand_popup.Designer.cs">
+      <DependentUpon>Updatebrand_popup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Updatecategory_popup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -539,6 +558,12 @@
     <EmbeddedResource Include="ActivityLog_Module.resx">
       <DependentUpon>ActivityLog_Module.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Addbrand_module.resx">
+      <DependentUpon>Addbrand_module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Addbrand_pop.resx">
+      <DependentUpon>Addbrand_pop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Addcategory_module.resx">
       <DependentUpon>Addcategory_module.cs</DependentUpon>
     </EmbeddedResource>
@@ -578,14 +603,14 @@
     <EmbeddedResource Include="Confirmreceipt_Module.resx">
       <DependentUpon>Confirmreceipt_Module.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ConfirmReset_popup.resx">
-      <DependentUpon>ConfirmReset_popup.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Customertransactionreceipt_popup.resx">
       <DependentUpon>Customertransactionreceipt_popup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Deductstock_popup.resx">
       <DependentUpon>Deductstock_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeliveryConfirmation_popup.resx">
+      <DependentUpon>DeliveryConfirmation_popup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Finalizestock_popup.resx">
       <DependentUpon>Finalizestock_popup.cs</DependentUpon>
@@ -708,6 +733,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Updateaccount_popup.resx">
       <DependentUpon>Updateaccount_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Updatebrand_popup.resx">
+      <DependentUpon>Updatebrand_popup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Updatecategory_popup.resx">
       <DependentUpon>Updatecategory_popup.cs</DependentUpon>

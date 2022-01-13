@@ -437,5 +437,12 @@ namespace NCR_SYSTEM_1
            
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            DeliveryConfirmation_popup b = new DeliveryConfirmation_popup();
+            b.Show();
+        }
     }
 }

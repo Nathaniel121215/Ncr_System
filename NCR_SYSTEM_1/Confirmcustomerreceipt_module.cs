@@ -320,36 +320,60 @@ namespace NCR_SYSTEM_1
             if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
             {
-                this.Hide();
-                Form1.status = "true";
 
-                POS_module.payment = 0;
-                POS_module.change = 0;
-                POS_module.fee = 0;
-                POS_module.subtotal = 0;
-                POS_module.total = 0;
+                if (Processcustomerorder_popup.trasactiontype == "Delivery")
+                {
+                    this.Hide();
+                    DeliveryConfirmation_popup b = new DeliveryConfirmation_popup();
+                    b.Show();
+                }
+                else
+                {
+                    this.Hide();
+                    Form1.status = "true";
+
+                    POS_module.payment = 0;
+                    POS_module.change = 0;
+                    POS_module.fee = 0;
+                    POS_module.subtotal = 0;
+                    POS_module.total = 0;
+                }
+
             }
             else
             {
 
             }
 
-           
+
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
+            
+
             if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
             {
-                this.Hide();
-                Form1.status = "true";
 
-                POS_module.payment = 0;
-                POS_module.change = 0;
-                POS_module.fee = 0;
-                POS_module.subtotal = 0;
-                POS_module.total = 0;
+                if (Processcustomerorder_popup.trasactiontype == "Delivery")
+                {
+                    this.Hide();
+                    DeliveryConfirmation_popup b = new DeliveryConfirmation_popup();
+                    b.Show();
+                }
+                else
+                {
+                    this.Hide();
+                    Form1.status = "true";
+
+                    POS_module.payment = 0;
+                    POS_module.change = 0;
+                    POS_module.fee = 0;
+                    POS_module.subtotal = 0;
+                    POS_module.total = 0;
+                }
+                
             }
             else
             {

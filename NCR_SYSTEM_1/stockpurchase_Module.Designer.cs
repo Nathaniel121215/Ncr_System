@@ -42,6 +42,7 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.bunifuImageButton17 = new Bunifu.Framework.UI.BunifuImageButton();
             this.label8 = new System.Windows.Forms.Label();
             this.bunifuImageButton16 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton10 = new Bunifu.Framework.UI.BunifuImageButton();
@@ -82,8 +83,8 @@
             this.accountinfolvl = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.combofilter = new Bunifu.Framework.UI.BunifuDropdown();
-            this.bunifuImageButton17 = new Bunifu.Framework.UI.BunifuImageButton();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton8)).BeginInit();
@@ -106,7 +107,6 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Inventory_Datagridview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton17)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -234,6 +234,21 @@
             this.panel1.Size = new System.Drawing.Size(335, 1085);
             this.panel1.TabIndex = 236;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // bunifuImageButton17
+            // 
+            this.bunifuImageButton17.BackColor = System.Drawing.Color.SeaGreen;
+            this.bunifuImageButton17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.bunifuImageButton17.Image = global::NCR_SYSTEM_1.Properties.Resources.fadeaddcategory;
+            this.bunifuImageButton17.ImageActive = null;
+            this.bunifuImageButton17.Location = new System.Drawing.Point(54, 597);
+            this.bunifuImageButton17.Name = "bunifuImageButton17";
+            this.bunifuImageButton17.Size = new System.Drawing.Size(258, 53);
+            this.bunifuImageButton17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.bunifuImageButton17.TabIndex = 49;
+            this.bunifuImageButton17.TabStop = false;
+            this.bunifuImageButton17.Zoom = 10;
+            this.bunifuImageButton17.Click += new System.EventHandler(this.bunifuImageButton17_Click);
             // 
             // label8
             // 
@@ -918,20 +933,6 @@
             this.combofilter.Size = new System.Drawing.Size(148, 40);
             this.combofilter.TabIndex = 278;
             // 
-            // bunifuImageButton17
-            // 
-            this.bunifuImageButton17.BackColor = System.Drawing.Color.SeaGreen;
-            this.bunifuImageButton17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bunifuImageButton17.Image = global::NCR_SYSTEM_1.Properties.Resources.fadeaddcategory;
-            this.bunifuImageButton17.ImageActive = null;
-            this.bunifuImageButton17.Location = new System.Drawing.Point(54, 597);
-            this.bunifuImageButton17.Name = "bunifuImageButton17";
-            this.bunifuImageButton17.Size = new System.Drawing.Size(258, 53);
-            this.bunifuImageButton17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.bunifuImageButton17.TabIndex = 49;
-            this.bunifuImageButton17.TabStop = false;
-            this.bunifuImageButton17.Zoom = 10;
-            // 
             // stockpurchase_Module
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -956,6 +957,7 @@
             this.Load += new System.EventHandler(this.Test_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton8)).EndInit();
@@ -979,7 +981,6 @@
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Inventory_Datagridview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton17)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -198,7 +198,9 @@ namespace NCR_SYSTEM_1
 
                     }
                 }
-           if(transactyp.Text=="Delivery" && customeraddres.Text!="")
+
+
+            if (transactyp.Text == "Delivery" && customeraddres.Text != "")
             {
 
                 if (customernam.Text == "")
@@ -318,12 +320,20 @@ namespace NCR_SYSTEM_1
 
                 else
                 {
-                    
+
                 }
             }
-           else
+            else
             {
-                MessageBox.Show("Fill up all necessary fields.");
+                if (transactyp.Text == "On-site")
+                {
+
+                }
+                else
+                {
+                    MessageBox.Show("Fill up all necessary fields.");
+                }
+                    
             }
               
 
