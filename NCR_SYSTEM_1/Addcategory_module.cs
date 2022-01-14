@@ -947,7 +947,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton10_Click(object sender, EventArgs e)
         {
-            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
+            if (Form1.status == "true" && (Form1.levelac.Equals("Admin")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)

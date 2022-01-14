@@ -107,10 +107,15 @@ namespace NCR_SYSTEM_1
             {
                 accountinfolvl.Text = "Login as Administrator";
             }
+            else if (Form1.levelac == "Manager")
+            {
+                accountinfolvl.Text = "Login as Manager";
+            }
             else
             {
-                accountinfolvl.Text = "Login as Employee";
+                accountinfolvl.Text = "Login as Cashier";
             }
+
 
 
         }
