@@ -13,6 +13,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Image = System.Drawing.Image;
+
 namespace NCR_SYSTEM_1
 {
     public partial class Inventory_Module : Form
@@ -34,6 +39,7 @@ namespace NCR_SYSTEM_1
         public static decimal price = 0;
 
         DataTable dt = new DataTable();
+        DataTable printer = new DataTable();
 
         IFirebaseConfig config = new FirebaseConfig
         {
@@ -47,7 +53,7 @@ namespace NCR_SYSTEM_1
 
         public Inventory_Module()
         {
-           
+
             InitializeComponent();
             _instance = this;
         }
@@ -76,7 +82,7 @@ namespace NCR_SYSTEM_1
 
 
             }
-            
+
             else
             {
                 if (Form1.status == "true")
@@ -130,7 +136,7 @@ namespace NCR_SYSTEM_1
 
         private void Inventory_Module_Load(object sender, EventArgs e)
         {
-            
+
             datedisplay.Text = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
             datedisplay.Select();
 
@@ -150,9 +156,19 @@ namespace NCR_SYSTEM_1
             dt.Columns.Add("High");
             dt.Columns.Add("String Indicator");
 
-            Inventory_Datagrid.DataSource = dt;
+            printer.Columns.Add("Product ID");
+            printer.Columns.Add("Prdct Name");
+            printer.Columns.Add("Unit");
+            printer.Columns.Add("Brand");
+            printer.Columns.Add("Category");
+            printer.Columns.Add("Price");
+            printer.Columns.Add("Items Sold");
+            printer.Columns.Add("Stock");
 
-            
+            Inventory_Datagrid.DataSource = dt;
+            printtable.DataSource = printer;
+
+
 
             DataGridViewImageColumn update = new DataGridViewImageColumn();
             Inventory_Datagrid.Columns.Add(update);
@@ -178,9 +194,10 @@ namespace NCR_SYSTEM_1
             Indicator.Image = Properties.Resources.loading;
 
 
-          
+
 
             DataViewAll();
+            loadprinterdata();
 
 
             //accountlvldisplay
@@ -258,7 +275,7 @@ namespace NCR_SYSTEM_1
                 i++;
                 try
                 {
-               
+
                     FirebaseResponse resp1 = await client.GetTaskAsync("Inventory/" + i);
                     Product_class obj1 = resp1.ResultAs<Product_class>();
 
@@ -274,13 +291,13 @@ namespace NCR_SYSTEM_1
                     r["Stock"] = obj1.Stock;
                     r["Low"] = obj1.Low;
                     r["High"] = obj1.High;
-                   
-         
+
+
 
 
                     dt.Rows.Add(r);
 
-                 
+
 
                 }
 
@@ -290,7 +307,7 @@ namespace NCR_SYSTEM_1
                 }
             }
 
-         
+
 
 
 
@@ -298,7 +315,7 @@ namespace NCR_SYSTEM_1
             try
             {
 
-               
+
 
 
 
@@ -307,25 +324,25 @@ namespace NCR_SYSTEM_1
 
                     try
                     {
-                      
+
 
                         StatusImgs = new Image[] { NCR_SYSTEM_1.Properties.Resources.new_low_on_stock, NCR_SYSTEM_1.Properties.Resources.new_in_stock, NCR_SYSTEM_1.Properties.Resources.new_high_on_stock, NCR_SYSTEM_1.Properties.Resources.new_out_of_stock };
 
-                     
 
 
 
-                        if (Convert.ToInt32(row.Cells[8].Value) <= Convert.ToInt32(row.Cells[9].Value) && Convert.ToInt32(row.Cells[8].Value) !=0) //Low on stock
+
+                        if (Convert.ToInt32(row.Cells[8].Value) <= Convert.ToInt32(row.Cells[9].Value) && Convert.ToInt32(row.Cells[8].Value) != 0) //Low on stock
                         {
 
-                      
+
 
                             row.Cells[14].Value = StatusImgs[0];
                             row.Cells[11].Value = "low on stock";
 
-                      
+
                         }
-                       
+
                         if (Convert.ToInt32(row.Cells[8].Value) > Convert.ToInt32(row.Cells[9].Value) && Convert.ToInt32(row.Cells[8].Value) < Convert.ToInt32(row.Cells[10].Value))
                         {
                             row.Cells[14].Value = StatusImgs[1];
@@ -365,12 +382,55 @@ namespace NCR_SYSTEM_1
 
         }
 
- 
+        public async void loadprinterdata()
+        {
+            printer.Rows.Clear();
 
+            int i = 0;
+            FirebaseResponse resp = await client.GetTaskAsync("Counter2/node");
+            Counter_class obj = resp.ResultAs<Counter_class>();
+            int cnt = Convert.ToInt32(obj.cnt);
+
+            while (true)
+            {
+                if (i == cnt)
+                {
+                    break;
+                }
+
+                i++;
+                try
+                {
+
+                    FirebaseResponse resp1 = await client.GetTaskAsync("Inventory/" + i);
+                    Product_class obj1 = resp1.ResultAs<Product_class>();
+
+                    DataRow r = printer.NewRow();
+                    r["Product ID"] = obj1.ID;
+                    r["Prdct Name"] = obj1.Product_Name;
+                    r["Unit"] = obj1.Unit;
+                    r["Brand"] = obj1.Brand;
+                    r["Category"] = obj1.Category;
+                    r["Price"] = obj1.Price;
+                    r["Items Sold"] = obj1.Items_Sold;
+                    r["Stock"] = obj1.Stock;
+
+                    printer.Rows.Add(r);
+
+
+
+                }
+
+                catch
+                {
+
+                }
+            }
+        }
 
         private void Inventory_Datagrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(Form1.status=="true")
+            if (Form1.status == "true")
             {
                 string columnindex = "";
 
@@ -382,7 +442,7 @@ namespace NCR_SYSTEM_1
                     if (e.ColumnIndex == Inventory_Datagrid.Columns[13].Index)
                     {
                         int stocks = Convert.ToInt32(Inventory_Datagrid.Rows[e.RowIndex].Cells[8].Value);
-                        if (stocks==0)
+                        if (stocks == 0)
                         {
                             if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
@@ -500,7 +560,7 @@ namespace NCR_SYSTEM_1
                         {
                             MessageBox.Show("The item select still have stock.");
                         }
-                        
+
 
                     }
 
@@ -541,7 +601,7 @@ namespace NCR_SYSTEM_1
             {
                 MessageBox.Show("The Module is still loading or a window is currently open.");
             }
-            
+
         }
 
         private void bunifuImageButton12_Click(object sender, EventArgs e)
@@ -569,7 +629,7 @@ namespace NCR_SYSTEM_1
 
 
             }
-          
+
             else
             {
                 if (Form1.status == "true")
@@ -679,7 +739,7 @@ namespace NCR_SYSTEM_1
 
 
             }
-          
+
             else
             {
                 if (Form1.status == "true")
@@ -722,7 +782,7 @@ namespace NCR_SYSTEM_1
 
 
             }
-            
+
             else
             {
                 if (Form1.status == "true")
@@ -781,7 +841,7 @@ namespace NCR_SYSTEM_1
             if (searchtxt.Text != "")
             {
                 supressor = 1;
-                
+
             }
         }
 
@@ -831,7 +891,7 @@ namespace NCR_SYSTEM_1
             }
 
 
-            
+
 
         }
 
@@ -989,7 +1049,7 @@ namespace NCR_SYSTEM_1
 
 
             }
-            
+
             else
             {
                 if (Form1.status == "true")
@@ -1027,7 +1087,7 @@ namespace NCR_SYSTEM_1
 
 
             }
-            
+
             else
             {
                 if (Form1.status == "true")
@@ -1066,7 +1126,7 @@ namespace NCR_SYSTEM_1
 
 
             }
-        
+
             else
             {
                 if (Form1.status == "true")
@@ -1120,7 +1180,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuFlatButton5_Click(object sender, EventArgs e)
         {
-            if(Form1.status=="true")
+            if (Form1.status == "true")
             {
                 //instock button
 
@@ -1169,14 +1229,14 @@ namespace NCR_SYSTEM_1
             {
                 MessageBox.Show("Module is still loading.");
             }
-           
+
 
 
         }
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            if(Form1.status=="true")
+            if (Form1.status == "true")
             {
                 //view all
 
@@ -1221,8 +1281,8 @@ namespace NCR_SYSTEM_1
             {
                 MessageBox.Show("Module is still loading.");
             }
-            
-           
+
+
         }
 
         private void outofstock_Click(object sender, EventArgs e)
@@ -1278,12 +1338,12 @@ namespace NCR_SYSTEM_1
                 MessageBox.Show("Module is still loading.");
             }
 
-            
+
         }
 
-    
 
-     
+
+
 
         private void lowonstock_Click(object sender, EventArgs e)
         {
@@ -1338,7 +1398,7 @@ namespace NCR_SYSTEM_1
                 MessageBox.Show("Module is still loading.");
             }
 
-            
+
         }
 
         private void highonstock_Click(object sender, EventArgs e)
@@ -1395,7 +1455,7 @@ namespace NCR_SYSTEM_1
             }
 
 
-            
+
         }
 
         private void Inventory_Datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1427,7 +1487,7 @@ namespace NCR_SYSTEM_1
 
 
             }
-          
+
             else
             {
                 if (Form1.status == "true")
@@ -1465,7 +1525,7 @@ namespace NCR_SYSTEM_1
 
 
             }
-           
+
             else
             {
                 if (Form1.status == "true")
@@ -1503,7 +1563,7 @@ namespace NCR_SYSTEM_1
 
 
             }
-           
+
             else
             {
                 if (Form1.status == "true")
@@ -1541,7 +1601,7 @@ namespace NCR_SYSTEM_1
 
 
             }
-          
+
             else
             {
                 if (Form1.status == "true")
@@ -1643,12 +1703,12 @@ namespace NCR_SYSTEM_1
             {
                 MessageBox.Show("The Module is still loading or a window is currently open.");
             }
-            
+
         }
 
         private void bunifuFlatButton2_Click_1(object sender, EventArgs e)
         {
-            if (Form1.status=="true")
+            if (Form1.status == "true")
             {
                 Addnewproduct_popup a = new Addnewproduct_popup();
                 a.Show();
@@ -1722,6 +1782,66 @@ namespace NCR_SYSTEM_1
                     MessageBox.Show("The Module is still loading or a window is currently open.");
                 }
             }
+        }
+
+        private void pdfprint_Click(object sender, EventArgs e)
+        {
+            Document doc = new Document(new iTextSharp.text.Rectangle(288f, 144f), 10, 10, 10, 10);
+            doc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
+            string header = "NCR Gravel and Sand Enterprises";
+            var _pdf_table = new PdfPTable(2);
+            PdfPCell hc = new PdfPCell();
+
+
+            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(("My print.pdf"), FileMode.Create));
+            doc.Open();
+            Paragraph space1 = new Paragraph("\n");
+
+            BaseFont bfTimes = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, false);
+
+            iTextSharp.text.Font times = new iTextSharp.text.Font(bfTimes, 20, 1, BaseColor.BLACK);
+
+            Paragraph prgheading = new Paragraph();
+            prgheading.Alignment = Element.ALIGN_CENTER;
+            prgheading.Add(new Chunk(header, times));
+            doc.Add(space1);
+            doc.Add(prgheading);
+            doc.Add(space1);
+
+            _pdf_table = new PdfPTable(printtable.Columns.Count);
+
+            for (int j = 0; j < printtable.Columns.Count; j++)
+            {
+                _pdf_table.AddCell(new Phrase(printtable.Columns[j].HeaderText));
+            }
+
+            _pdf_table.HeaderRows = 1;
+
+            for (int i = 0; i < printtable.Rows.Count; i++)
+            {
+
+                for (int k = 0; k < printtable.Columns.Count; k++)
+                {
+
+                    if (printtable[k, i].Value != null)
+                    {
+
+                        _pdf_table.AddCell(new Phrase(printtable[k, i].Value.ToString()));
+                    }
+
+                }
+
+            }
+            doc.Add(_pdf_table);
+
+            doc.Close();
+            //change to your directory
+            System.Diagnostics.Process.Start(@"My print.pdf");
+        }
+
+        private void printtable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -46,6 +46,7 @@ namespace NCR_SYSTEM_1
 
 
                 Supplierrecord_module._instance.filter();
+                Supplierrecord_module._instance.printfilter();
                 Form1.status = "true";
                 this.Hide();
             }

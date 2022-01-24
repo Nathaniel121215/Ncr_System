@@ -10,6 +10,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+
 
 namespace NCR_SYSTEM_1
 {
@@ -29,6 +33,7 @@ namespace NCR_SYSTEM_1
 
 
         DataTable dt = new DataTable();
+        DataTable printer = new DataTable();
 
         IFirebaseConfig config = new FirebaseConfig
         {
@@ -76,11 +81,16 @@ namespace NCR_SYSTEM_1
             dt.Columns.Add("Supplier Number");
             dt.Columns.Add("Last Transaction");
             dt.Columns.Add("Date Added");
- 
 
-
+            printer.Columns.Add("Supplier ID");
+            printer.Columns.Add("Supplier Name");
+            printer.Columns.Add("Supplier Address");
+            printer.Columns.Add("Supplier Number");
+            printer.Columns.Add("Last Transaction");
+            printer.Columns.Add("Date Added");
 
             Supplier_Datagrid.DataSource = dt;
+            printtable.DataSource = printer;
 
 
             DataGridViewImageColumn update = new DataGridViewImageColumn();
@@ -100,6 +110,7 @@ namespace NCR_SYSTEM_1
 
 
             dataview();
+            printdata();
 
             //accountlvldisplay
 
@@ -203,6 +214,55 @@ namespace NCR_SYSTEM_1
             }
 
             checker = "allow";
+        }
+
+        public async void printdata()
+        {
+            printer.Rows.Clear();
+            int i = 0;
+            FirebaseResponse resp = await client.GetTaskAsync("SupplierCounter/node");
+            Counter_class obj = resp.ResultAs<Counter_class>();
+            int cnt = Convert.ToInt32(obj.cnt);
+
+            while (true)
+            {
+                if (i == cnt)
+                {
+                    break;
+                }
+
+                i++;
+                try
+                {
+                    FirebaseResponse resp1 = await client.GetTaskAsync("Supplier/" + i);
+                    Supplier_Class user = resp1.ResultAs<Supplier_Class>();
+
+
+                    DataRow r = printer.NewRow();
+
+                    r["Supplier ID"] = user.Supplier_ID;
+                    r["Supplier Name"] = user.Supplier_Name;
+                    r["Supplier Address"] = user.Supplier_Address;
+                    r["Supplier Number"] = user.Supplier_Number;
+                    r["Last Transaction"] = user.Supplier_LastTransaction;
+
+                    if (user.Supplier_LastTransaction == null)
+                    {
+                        r["Last Transaction"] = "None";
+                    }
+                    r["Date Added"] = user.Supplier_DateAdded;
+
+
+
+
+                    printer.Rows.Add(r);
+                }
+
+                catch
+                {
+
+                }
+            }
         }
 
         private void Supplier_Datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -913,6 +973,61 @@ namespace NCR_SYSTEM_1
                     MessageBox.Show("The Module is still loading.");
                 }
             }
+        }
+
+        private void pdfprint_Click(object sender, EventArgs e)
+        {
+            Document doc = new Document(new iTextSharp.text.Rectangle(288f, 144f), 10, 10, 10, 10);
+            doc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
+            string header = "NCR Gravel and Sand Enterprises";
+            var _pdf_table = new PdfPTable(2);
+            PdfPCell hc = new PdfPCell();
+
+
+            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(("My print.pdf"), FileMode.Create));
+            doc.Open();
+            Paragraph space1 = new Paragraph("\n");
+
+            BaseFont bfTimes = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, false);
+
+            iTextSharp.text.Font times = new iTextSharp.text.Font(bfTimes, 20, 1, BaseColor.BLACK);
+
+            Paragraph prgheading = new Paragraph();
+            prgheading.Alignment = Element.ALIGN_CENTER;
+            prgheading.Add(new Chunk(header, times));
+            doc.Add(space1);
+            doc.Add(prgheading);
+            doc.Add(space1);
+
+            _pdf_table = new PdfPTable(printtable.Columns.Count);
+
+            for (int j = 0; j < printtable.Columns.Count; j++)
+            {
+                _pdf_table.AddCell(new Phrase(printtable.Columns[j].HeaderText));
+            }
+
+            _pdf_table.HeaderRows = 1;
+
+            for (int i = 0; i < printtable.Rows.Count; i++)
+            {
+
+                for (int k = 0; k < printtable.Columns.Count; k++)
+                {
+
+                    if (printtable[k, i].Value != null)
+                    {
+
+                        _pdf_table.AddCell(new Phrase(printtable[k, i].Value.ToString()));
+                    }
+
+                }
+
+            }
+            doc.Add(_pdf_table);
+
+            doc.Close();
+            //change to your directory
+            System.Diagnostics.Process.Start(@"My print.pdf");
         }
     }
 }

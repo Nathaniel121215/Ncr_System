@@ -72,8 +72,20 @@ namespace NCR_SYSTEM_1
                                     {
                                         this.Hide();
                                         Form1.status = "true";
-                                        POS_module._instance.removewithconfirmation();
-                                        break;
+
+                                        if(POS_module.clear2checker=="true")
+                                        {
+                                            POS_module._instance.clear2();
+                                            POS_module.clear2checker = "false";
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            POS_module._instance.removewithconfirmation();
+                                            break;
+                                        }
+
+                                       
 
                                     }
                                     else

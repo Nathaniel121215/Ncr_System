@@ -67,6 +67,7 @@ namespace NCR_SYSTEM_1
 
 
                 SupplierManagementArchive_module._instance.filter();
+                SupplierManagementArchive_module._instance.printfilter();
                 this.Hide();
                 Form1.status = "true";
             }

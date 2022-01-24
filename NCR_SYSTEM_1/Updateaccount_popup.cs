@@ -178,6 +178,7 @@ namespace NCR_SYSTEM_1
 
 
                         Form1 a = new Form1();
+                        Accountmanagement_Module._instance.close();
                         this.Hide();
                         a.Show();
                     }
@@ -399,6 +400,7 @@ namespace NCR_SYSTEM_1
 
 
                         Form1 a = new Form1();
+                        Accountmanagement_Module._instance.close();
                         this.Hide();
                         a.Show();
                     }

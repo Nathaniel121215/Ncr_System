@@ -66,6 +66,7 @@ namespace NCR_SYSTEM_1
 
                 UserLoginLog_Module.checker = "allow";
                 UserLoginLog_Module._instance.filter();
+                UserLoginLog_Module._instance.printfilter();
                 this.Hide();
                 Form1.status = "true";
             }

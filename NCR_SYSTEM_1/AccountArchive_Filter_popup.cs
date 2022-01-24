@@ -59,6 +59,7 @@ namespace NCR_SYSTEM_1
 
                 Form1.status = "true";
                 AccountArchive_Module._instance.filter();
+                AccountArchive_Module._instance.printfilter();
                 this.Hide();
 
             }

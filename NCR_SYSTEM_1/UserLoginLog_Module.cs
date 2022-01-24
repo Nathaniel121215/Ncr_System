@@ -11,6 +11,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Image = System.Drawing.Image;
 
 namespace NCR_SYSTEM_1
 {
@@ -34,6 +38,8 @@ namespace NCR_SYSTEM_1
         };
 
         DataTable dt = new DataTable();
+
+        DataTable printer = new DataTable();
 
         int supressor = 1;
 
@@ -61,8 +67,16 @@ namespace NCR_SYSTEM_1
             dt.Columns.Add("Account Level");
 
 
+            printer.Columns.Add("Event ID");
+            printer.Columns.Add("Date");
+            printer.Columns.Add("Time in");
+            printer.Columns.Add("Time out");
+            printer.Columns.Add("User");
+            printer.Columns.Add("Account Level");
+
 
             UserLoginLog_Datagrid.DataSource = dt;
+            printtable.DataSource = printer;
 
 
             DataGridViewImageColumn AccountLvl = new DataGridViewImageColumn();
@@ -77,6 +91,7 @@ namespace NCR_SYSTEM_1
 
 
             dataview();
+            printdata();
 
             //accountlvldisplay
 
@@ -91,6 +106,92 @@ namespace NCR_SYSTEM_1
             else
             {
                 accountinfolvl.Text = "Login as Cashier";
+            }
+
+        }
+
+        public async void printdata()
+        {
+            printer.Rows.Clear();
+
+            int i = 0;
+            FirebaseResponse resp = await client.GetTaskAsync("UserLoginLogCounter/node");
+            Counter_class obj = resp.ResultAs<Counter_class>();
+            int cnt = Convert.ToInt32(obj.cnt);
+
+            while (true)
+            {
+                if (i == cnt)
+                {
+                    break;
+                }
+
+                i++;
+                try
+                {
+                    FirebaseResponse resp1 = await client.GetTaskAsync("UserLoginLog/" + i);
+                    LoginLog_Class act = resp1.ResultAs<LoginLog_Class>();
+
+                    DataRow r = printer.NewRow();
+
+                    DateTime date = Convert.ToDateTime(act.Date);
+
+
+
+
+                    r["Event ID"] = act.Event_ID;
+                    r["Date"] = date.ToString("MM/dd/yyyy");
+                    r["Time in"] = act.Timein;
+                    r["Time out"] = act.Timeout;
+                    r["User"] = act.User;
+                    r["Account Level"] = act.Accountlvl;
+
+
+                    printer.Rows.Add(r);
+
+
+                }
+
+                catch
+                {
+
+                }
+            }
+        }
+
+        public void printfilter()
+        {
+
+            DataView dv = new DataView(printer);
+            string date1 = UserLoginLogFilter_popup.startdate;
+            string date2 = UserLoginLogFilter_popup.enddate;
+            string user = UserLoginLogFilter_popup.user;
+
+            if (InventoryArchive_Filter_popup.user == "")
+            {
+
+                dv.RowFilter = "[Date]  >='" + date1 + "'AND [Date] <='" + date2 + "'";
+
+                printtable.DataSource = null;
+                printtable.Rows.Clear();
+                printtable.Columns.Clear();
+                printtable.DataSource = dv;
+
+
+
+            }
+
+
+            else
+            {
+                dv.RowFilter = "[Date]  >='" + date1 + "'AND [Date] <='" + date2 + "'" + " AND [User] LIKE '%" + user + "%'";
+
+                printtable.DataSource = null;
+                printtable.Rows.Clear();
+                printtable.Columns.Clear();
+                printtable.DataSource = dv;
+
+
             }
 
         }
@@ -973,6 +1074,61 @@ namespace NCR_SYSTEM_1
             {
                 e.SuppressKeyPress = true;
             }
+        }
+
+        private void pdfprint_Click(object sender, EventArgs e)
+        {
+            Document doc = new Document(new iTextSharp.text.Rectangle(288f, 144f), 10, 10, 10, 10);
+            doc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
+            string header = "NCR Gravel and Sand Enterprises";
+            var _pdf_table = new PdfPTable(2);
+            PdfPCell hc = new PdfPCell();
+
+
+            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(("My print.pdf"), FileMode.Create));
+            doc.Open();
+            Paragraph space1 = new Paragraph("\n");
+
+            BaseFont bfTimes = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, false);
+
+            iTextSharp.text.Font times = new iTextSharp.text.Font(bfTimes, 20, 1, BaseColor.BLACK);
+
+            Paragraph prgheading = new Paragraph();
+            prgheading.Alignment = Element.ALIGN_CENTER;
+            prgheading.Add(new Chunk(header, times));
+            doc.Add(space1);
+            doc.Add(prgheading);
+            doc.Add(space1);
+
+            _pdf_table = new PdfPTable(printtable.Columns.Count);
+
+            for (int j = 0; j < printtable.Columns.Count; j++)
+            {
+                _pdf_table.AddCell(new Phrase(printtable.Columns[j].HeaderText));
+            }
+
+            _pdf_table.HeaderRows = 1;
+
+            for (int i = 0; i < printtable.Rows.Count; i++)
+            {
+
+                for (int k = 0; k < printtable.Columns.Count; k++)
+                {
+
+                    if (printtable[k, i].Value != null)
+                    {
+
+                        _pdf_table.AddCell(new Phrase(printtable[k, i].Value.ToString()));
+                    }
+
+                }
+
+            }
+            doc.Add(_pdf_table);
+
+            doc.Close();
+            //change to your directory
+            System.Diagnostics.Process.Start(@"My print.pdf");
         }
     }
 }

@@ -41,6 +41,7 @@ namespace NCR_SYSTEM_1
 
 
                 ActivityLog_Module._instance.filter();
+                ActivityLog_Module._instance.printfilter();
                 ActivityLog_Module.checker = "allow";
                 this.Hide();
                 Form1.status = "true";

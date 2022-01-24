@@ -10,6 +10,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Image = System.Drawing.Image;
+using System.IO;
 
 namespace NCR_SYSTEM_1
 {
@@ -31,6 +35,7 @@ namespace NCR_SYSTEM_1
         private Image[] StatusImgs;
 
         DataTable dt = new DataTable();
+        DataTable printer = new DataTable();
 
         IFirebaseConfig config = new FirebaseConfig
         {
@@ -70,10 +75,17 @@ namespace NCR_SYSTEM_1
 
             dt.Columns.Add("Date Archived Searcher");
 
-
-
+            printer.Columns.Add("User ID");
+            printer.Columns.Add("Username");
+            printer.Columns.Add("Password");
+            printer.Columns.Add("Firstname");
+            printer.Columns.Add("Lastname");
+            printer.Columns.Add("Account Level");
+            printer.Columns.Add("User");
+            printer.Columns.Add("Date Archived");
 
             Account_Datagrid.DataSource = dt;
+            printtable.DataSource = printer;
 
 
             DataGridViewImageColumn View = new DataGridViewImageColumn();
@@ -103,6 +115,7 @@ namespace NCR_SYSTEM_1
             AccountLvl.Image = Properties.Resources.loading;
 
             Dataviewall();
+            printdata();
 
             //accountlvldisplay
 
@@ -119,6 +132,91 @@ namespace NCR_SYSTEM_1
                 accountinfolvl.Text = "Login as Cashier";
             }
 
+        }
+
+        public async void printdata()
+        {
+            printer.Rows.Clear();
+            int i = 0;
+
+            FirebaseResponse resp = await client.GetTaskAsync("AccountCounter/node");
+            Counter_class obj = resp.ResultAs<Counter_class>();
+            int cnt = Convert.ToInt32(obj.cnt);
+
+            while (true)
+            {
+                if (i == cnt)
+                {
+                    break;
+                }
+
+                i++;
+                try
+                {
+                    FirebaseResponse resp1 = await client.GetTaskAsync("AccountArchive/" + i);
+                    AccountArchive_Class user = resp1.ResultAs<AccountArchive_Class>();
+
+                    DataRow r = printer.NewRow();
+                    r["User ID"] = user.User_ID;
+                    r["Username"] = user.Username;
+                    r["Password"] = user.Password;
+                    r["Firstname"] = user.Firstname;
+                    r["Lastname"] = user.Lastname;
+                    r["Account Level"] = user.Account_Level;
+
+                    r["User"] = user.User;
+
+                    DateTime date = Convert.ToDateTime(user.Date_Archive);
+
+
+
+
+                    r["Date Archived"] = date.ToString("MM/dd/yyyy");
+
+
+
+                    printer.Rows.Add(r);
+                }
+
+                catch
+                {
+
+                }
+            }
+        }
+
+        public void printfilter()
+        {
+            DataView dv = new DataView(printer);
+            string date1 = AccountArchive_Filter_popup.startdate;
+            string date2 = AccountArchive_Filter_popup.enddate;
+            string user = AccountArchive_Filter_popup.user;
+
+            if (InventoryArchive_Filter_popup.user == "")
+            {
+
+                dv.RowFilter = "[Date Archived]  >='" + date1 + "'AND [Date Archived] <='" + date2 + "'";
+
+                printtable.DataSource = null;
+                printtable.Rows.Clear();
+                printtable.Columns.Clear();
+                printtable.DataSource = dv;
+
+
+            }
+
+
+            else
+            {
+                dv.RowFilter = "[Date Archived]  >='" + date1 + "'AND [Date Archived] <='" + date2 + "'" + " AND [User] LIKE '%" + user + "%'";
+
+                printtable.DataSource = null;
+                printtable.Rows.Clear();
+                printtable.Columns.Clear();
+                printtable.DataSource = dv;
+
+
+            }
         }
 
         public  async void Dataviewall()
@@ -1229,6 +1327,61 @@ namespace NCR_SYSTEM_1
                     MessageBox.Show("The Module is still loading or a window is currently open.");
                 }
             }
+        }
+
+        private void printpdf_Click(object sender, EventArgs e)
+        {
+            Document doc = new Document(new iTextSharp.text.Rectangle(288f, 144f), 10, 10, 10, 10);
+            doc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
+            string header = "NCR Gravel and Sand Enterprises";
+            var _pdf_table = new PdfPTable(2);
+            PdfPCell hc = new PdfPCell();
+
+
+            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(("My print.pdf"), FileMode.Create));
+            doc.Open();
+            Paragraph space1 = new Paragraph("\n");
+
+            BaseFont bfTimes = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, false);
+
+            iTextSharp.text.Font times = new iTextSharp.text.Font(bfTimes, 20, 1, BaseColor.BLACK);
+
+            Paragraph prgheading = new Paragraph();
+            prgheading.Alignment = Element.ALIGN_CENTER;
+            prgheading.Add(new Chunk(header, times));
+            doc.Add(space1);
+            doc.Add(prgheading);
+            doc.Add(space1);
+
+            _pdf_table = new PdfPTable(printtable.Columns.Count);
+
+            for (int j = 0; j < printtable.Columns.Count; j++)
+            {
+                _pdf_table.AddCell(new Phrase(printtable.Columns[j].HeaderText));
+            }
+
+            _pdf_table.HeaderRows = 1;
+
+            for (int i = 0; i < printtable.Rows.Count; i++)
+            {
+
+                for (int k = 0; k < printtable.Columns.Count; k++)
+                {
+
+                    if (printtable[k, i].Value != null)
+                    {
+
+                        _pdf_table.AddCell(new Phrase(printtable[k, i].Value.ToString()));
+                    }
+
+                }
+
+            }
+            doc.Add(_pdf_table);
+
+            doc.Close();
+            //change to your directory
+            System.Diagnostics.Process.Start(@"My print.pdf");
         }
     }
 }

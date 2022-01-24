@@ -243,6 +243,7 @@ namespace NCR_SYSTEM_1
                     };
 
                     SetResponse response40 = client.Set("Accounts/" + data.User_ID, data);
+
                     User_class result = response40.ResultAs<User_class>();
 
                     var obj50 = new Counter_class
@@ -406,6 +407,33 @@ namespace NCR_SYSTEM_1
                     };
 
                     SetResponse response77 = client.Set("BrandCounter/node", obj67);
+
+
+
+
+                    //add free item
+
+
+
+                    var data222 = new Product_class
+                    {
+                        ID = "1212",
+                        Product_Name = "1212",
+                        Unit = "1212",
+                        Brand = "1212",
+                        Description = "1212",
+                        Category = "1212",
+                        Price = "1212",
+                        Items_Sold = "1212",
+                        Stock = "1212",
+                        Low = "1212",
+                        High = "1212",
+                    };
+
+                    SetResponse response402 = client.Set("Inventory/" + data222.ID, data222);
+
+
+
 
 
 

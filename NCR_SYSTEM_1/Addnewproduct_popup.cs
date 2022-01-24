@@ -243,9 +243,7 @@ namespace NCR_SYSTEM_1
         }
         public void save()
         {
-            if (MessageBox.Show("Please confirm before proceed" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
-            {
+            
                 try
                 {
 
@@ -331,6 +329,7 @@ namespace NCR_SYSTEM_1
 
                     this.Hide();
                     Inventory_Module._instance.DataViewAll();
+                    Inventory_Module._instance.loadprinterdata();
 
                 }
 
@@ -338,13 +337,8 @@ namespace NCR_SYSTEM_1
                 {
                     MessageBox.Show(b.ToString());
                 }
-            }
-
-            else
-
-            {
-                //do something if NO
-            }
+            
+           
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)

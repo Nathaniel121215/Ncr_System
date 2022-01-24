@@ -11,6 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace NCR_SYSTEM_1
 {
@@ -52,6 +55,7 @@ namespace NCR_SYSTEM_1
         IFirebaseClient client;
 
         DataTable dt = new DataTable();
+        DataTable printer = new DataTable();
 
         public static Supplierrecord_module _instance;
 
@@ -88,8 +92,15 @@ namespace NCR_SYSTEM_1
 
             dt.Columns.Add("Transaction Date Searcher");
 
+            printer.Columns.Add("Restock ID");
+            printer.Columns.Add("Reference Number");
+            printer.Columns.Add("Supplier Name");
+            printer.Columns.Add("Transaction Payment");
+            printer.Columns.Add("Assisted By");
+            printer.Columns.Add("Transaction Date");
 
             Supplier_Datagrid.DataSource = dt;
+            printtable.DataSource = printer;
 
             //DataGridViewButtonColumn View = new DataGridViewButtonColumn();
             //Supplier_Datagrid.Columns.Add(View);
@@ -123,6 +134,7 @@ namespace NCR_SYSTEM_1
 
 
             DataViewAll();
+            printdata();
 
             //accountlvldisplay
 
@@ -227,6 +239,104 @@ namespace NCR_SYSTEM_1
             gettransactioncount();
             getsales();
             checker = "allow";
+        }
+
+        public async void printdata()
+        {
+            printer.Rows.Clear();
+
+            int i = 0;
+            FirebaseResponse resp = await client.GetTaskAsync("ReStockCounter/node");
+            Counter_class obj = resp.ResultAs<Counter_class>();
+            int cnt = Convert.ToInt32(obj.cnt);
+
+            while (true)
+            {
+                if (i == cnt)
+                {
+                    break;
+                }
+
+                i++;
+                try
+                {
+
+                    FirebaseResponse resp1 = await client.GetTaskAsync("ReStockLog/" + i);
+                    Stock_class obj1 = resp1.ResultAs<Stock_class>();
+
+                    DataRow r = printer.NewRow();
+                    r["Restock ID"] = obj1.Restock_ID;
+                    r["Reference Number"] = obj1.Reference_Number;
+                    r["Supplier Name"] = obj1.Supplier_Name;
+                    r["Transaction Payment"] = obj1.Order_Total;
+                    r["Assisted By"] = obj1.Assisted_By;
+
+                    DateTime date = Convert.ToDateTime(obj1.Date_Of_Transaction);
+
+
+
+                    r["Transaction Date"] = date.ToString("MM/dd/yyyy");
+
+
+                    printer.Rows.Add(r);
+                }
+
+                catch
+                {
+
+                }
+            }
+        }
+        public void printfilter()
+        {
+            DataView dv = new DataView(printer);
+            string date1 = Supplierrecord_Filter_popup.startdate;
+            string date2 = Supplierrecord_Filter_popup.enddate;
+            string assist = Supplierrecord_Filter_popup.assistedby;
+            string supplier = Supplierrecord_Filter_popup.supplier;
+
+            if (Supplierrecord_Filter_popup.supplier == "" && Supplierrecord_Filter_popup.assistedby == "")
+            {
+
+                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "'";
+
+                printtable.DataSource = null;
+                printtable.Rows.Clear();
+                printtable.Columns.Clear();
+                printtable.DataSource = dv;
+
+            }
+            else if (Supplierrecord_Filter_popup.supplier == "" && Supplierrecord_Filter_popup.assistedby != "")
+            {
+
+                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "' " + " AND [Assisted By] LIKE '%" + assist + "%'";
+
+
+                printtable.DataSource = null;
+                printtable.Rows.Clear();
+                printtable.Columns.Clear();
+                printtable.DataSource = dv;
+            }
+            else if (Supplierrecord_Filter_popup.supplier != "" && Supplierrecord_Filter_popup.assistedby == "")
+            {
+                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "' " + " AND [Supplier Name] LIKE '%" + supplier + "%'";
+
+                printtable.DataSource = null;
+                printtable.Rows.Clear();
+                printtable.Columns.Clear();
+                printtable.DataSource = dv;
+            }
+            else
+            {
+
+                dv.RowFilter = "[Transaction Date]  >='" + date1 + "'AND [Transaction Date] <='" + date2 + "' " + " AND [Supplier Name] LIKE '%" + supplier + "%'" + " AND [Assisted By] LIKE '%" + assist + "%'";
+
+                printtable.DataSource = null;
+                printtable.Rows.Clear();
+                printtable.Columns.Clear();
+                printtable.DataSource = dv;
+            }
+
         }
 
         private void Supplier_Datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1194,6 +1304,116 @@ namespace NCR_SYSTEM_1
             {
                 e.SuppressKeyPress = true;
             }
+        }
+
+        private void pdfprint_Click(object sender, EventArgs e)
+        {
+            Document doc = new Document(new iTextSharp.text.Rectangle(288f, 144f), 10, 10, 10, 10);
+            doc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
+            string header = "NCR Gravel and Sand Enterprises";
+            var _pdf_table = new PdfPTable(2);
+            PdfPCell hc = new PdfPCell();
+
+
+            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(("My print.pdf"), FileMode.Create));
+            doc.Open();
+            Paragraph space1 = new Paragraph("\n");
+
+            BaseFont bfTimes = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, false);
+
+            iTextSharp.text.Font times = new iTextSharp.text.Font(bfTimes, 20, 1, BaseColor.BLACK);
+
+            Paragraph prgheading = new Paragraph();
+            prgheading.Alignment = Element.ALIGN_CENTER;
+            prgheading.Add(new Chunk(header, times));
+            doc.Add(space1);
+            doc.Add(prgheading);
+            doc.Add(space1);
+
+            _pdf_table = new PdfPTable(printtable.Columns.Count);
+
+            for (int j = 0; j < printtable.Columns.Count; j++)
+            {
+                _pdf_table.AddCell(new Phrase(printtable.Columns[j].HeaderText));
+            }
+
+            _pdf_table.HeaderRows = 1;
+
+            for (int i = 0; i < printtable.Rows.Count; i++)
+            {
+
+                for (int k = 0; k < printtable.Columns.Count; k++)
+                {
+
+                    if (printtable[k, i].Value != null)
+                    {
+
+                        _pdf_table.AddCell(new Phrase(printtable[k, i].Value.ToString()));
+                    }
+
+                }
+
+            }
+            doc.Add(_pdf_table);
+
+            doc.Close();
+            //change to your directory
+            System.Diagnostics.Process.Start(@"My print.pdf");
+        }
+
+        private void pdfprint_Click_1(object sender, EventArgs e)
+        {
+            Document doc = new Document(new iTextSharp.text.Rectangle(288f, 144f), 10, 10, 10, 10);
+            doc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
+            string header = "NCR Gravel and Sand Enterprises";
+            var _pdf_table = new PdfPTable(2);
+            PdfPCell hc = new PdfPCell();
+
+
+            PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(("My print.pdf"), FileMode.Create));
+            doc.Open();
+            Paragraph space1 = new Paragraph("\n");
+
+            BaseFont bfTimes = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, false);
+
+            iTextSharp.text.Font times = new iTextSharp.text.Font(bfTimes, 20, 1, BaseColor.BLACK);
+
+            Paragraph prgheading = new Paragraph();
+            prgheading.Alignment = Element.ALIGN_CENTER;
+            prgheading.Add(new Chunk(header, times));
+            doc.Add(space1);
+            doc.Add(prgheading);
+            doc.Add(space1);
+
+            _pdf_table = new PdfPTable(printtable.Columns.Count);
+
+            for (int j = 0; j < printtable.Columns.Count; j++)
+            {
+                _pdf_table.AddCell(new Phrase(printtable.Columns[j].HeaderText));
+            }
+
+            _pdf_table.HeaderRows = 1;
+
+            for (int i = 0; i < printtable.Rows.Count; i++)
+            {
+
+                for (int k = 0; k < printtable.Columns.Count; k++)
+                {
+
+                    if (printtable[k, i].Value != null)
+                    {
+
+                        _pdf_table.AddCell(new Phrase(printtable[k, i].Value.ToString()));
+                    }
+
+                }
+
+            }
+            doc.Add(_pdf_table);
+
+            doc.Close();
+            //change to your directory
+            System.Diagnostics.Process.Start(@"My print.pdf");
         }
     }
 }

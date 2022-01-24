@@ -34,6 +34,7 @@ namespace NCR_SYSTEM_1
 
 
                 InventoryArchive_Module._instance.filter();
+                InventoryArchive_Module._instance.printfilter();
                 Form1.status = "true";
                 this.Hide();
             }

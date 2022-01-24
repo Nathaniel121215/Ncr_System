@@ -15,6 +15,7 @@ namespace NCR_SYSTEM_1
 {
     public partial class POS_module : Form
     {
+        public static string clear2checker = "false";
         string approve = "false";
         int supressor = 1;
 
@@ -1012,6 +1013,7 @@ namespace NCR_SYSTEM_1
 
                 }
 
+                compute();
                 if (approve == "true" && Cart_Datagridview.RowCount != 0 && payment != 0 && total != 0 && payment >= total)
                 {
 
@@ -1164,10 +1166,11 @@ namespace NCR_SYSTEM_1
                     if (Convert.ToDouble(Cart_Datagridview.Rows[rowindexC[z]].Cells[4].Value) == 0.00)
                     {
                         int stock = Convert.ToInt32(Inventory_Datagridview.Rows[rowindexI[z]].Cells[8].Value) - Convert.ToInt32(Cart_Datagridview.Rows[rowindexC[z]].Cells[2].Value);
-                        var datas = new SDU2
+                        var datas = new SDU
                         {
                             ID = Inventory_Datagridview.Rows[rowindexI[z]].Cells[0].Value.ToString(),
                             Stock = stock.ToString(),
+                            Items_Sold = "0",
                         };
 
 
@@ -1226,41 +1229,68 @@ namespace NCR_SYSTEM_1
             FinalTotal.Text = "0.00 PHP";
         }
 
+        public void clear2()
+        {
+            Cart_Datagridview.Rows.Clear();
+            clear();
+
+
+            FreeGoalsuppresor = 1;
+            freeitembtn.Enabled = false;
+            freeitembtn.Visible = false;
+            free = true;
+
+            payment = 0;
+            change = 0;
+            fee = 0;
+            subtotal = 0;
+            total = 0;
+        }
+
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
             if (Form1.status == "true")
             {
-                if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+                if(Cart_Datagridview.RowCount!=0)
                 {
-                    if(Form1.levelac=="Cashier")
+                    if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+
                     {
-                        Form1.status = "false";
-                        Confirmation_popup b = new Confirmation_popup();
-                        b.Show();
+                        if (Form1.levelac == "Cashier")
+                        {
+                            Form1.status = "false";
+                            Confirmation_popup b = new Confirmation_popup();
+                            b.Show();
+                            clear2checker = "true";
+                        }
+                        else
+                        {
+                            Cart_Datagridview.Rows.Clear();
+                            clear();
+
+
+                            FreeGoalsuppresor = 1;
+                            freeitembtn.Enabled = false;
+                            freeitembtn.Visible = false;
+                            free = true;
+
+                            payment = 0;
+                            change = 0;
+                            fee = 0;
+                            subtotal = 0;
+                            total = 0;
+                        }
                     }
                     else
                     {
-                        Cart_Datagridview.Rows.Clear();
-                        clear();
 
-
-                        FreeGoalsuppresor = 1;
-                        freeitembtn.Enabled = false;
-                        freeitembtn.Visible = false;
-                        free = true;
-
-                        payment = 0;
-                        change = 0;
-                        fee = 0;
-                        subtotal = 0;
-                        total = 0;
                     }
                 }
                 else
                 {
-
+                    MessageBox.Show("Cart is currently empty.");
                 }
+                
                 
             }
             else
@@ -1482,7 +1512,7 @@ namespace NCR_SYSTEM_1
         private void bunifuImageButton19_Click(object sender, EventArgs e)
         {
 
-            if (Form1.status == "true")
+            if (Form1.status == "true" && Cart_Datagridview.RowCount==0 && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -1507,10 +1537,14 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                if (Form1.status == "true")
+                if (Cart_Datagridview.RowCount != 0)
+                {
+                    MessageBox.Show("Cart is not cleared.");
+                }
+                else if (Form1.status == "true")
                 {
                     MessageBox.Show("Your Account do not have access in this module.");
-                }
+                }         
                 else
                 {
                     MessageBox.Show("The Module is still loading or a window is currently open.");
@@ -1537,7 +1571,7 @@ namespace NCR_SYSTEM_1
                 Add.HeaderText = "";
                 Add.Name = "";
                 Add.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                Add.Image = Properties.Resources.Add_Icon;
+                Add.Image = Properties.Resources.Add_Icon_2;
 
 
                 DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
@@ -1681,7 +1715,7 @@ namespace NCR_SYSTEM_1
         private void freeitembtn_Click_1(object sender, EventArgs e)
         {
             FreeGoalsuppresor = 0;
-            MessageBox.Show("Select 1 free Item that is not greather than " + limit + " PHP");
+            MessageBox.Show("Select 1 free Item that is not greater than " + limit + " PHP");
         }
 
         private void searchtxt_KeyUp(object sender, KeyEventArgs e)
@@ -1701,7 +1735,7 @@ namespace NCR_SYSTEM_1
                 Add.HeaderText = "";
                 Add.Name = "";
                 Add.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                Add.Image = Properties.Resources.Add_Icon;
+                Add.Image = Properties.Resources.Add_Icon_2;
 
 
                 DataGridViewImageColumn Indicator = new DataGridViewImageColumn();
@@ -1724,7 +1758,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton17_Click(object sender, EventArgs e)
         {
-            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
+            if (Form1.status == "true" && Cart_Datagridview.RowCount == 0 && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -1749,7 +1783,11 @@ namespace NCR_SYSTEM_1
            
             else
             {
-                if (Form1.status == "true")
+                if (Cart_Datagridview.RowCount != 0)
+                {
+                    MessageBox.Show("Cart is not cleared.");
+                }
+                else if (Form1.status == "true")
                 {
                     MessageBox.Show("Your Account do not have access in this module.");
                 }
@@ -1762,7 +1800,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton18_Click(object sender, EventArgs e)
         {
-            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
+            if (Form1.status == "true" && Cart_Datagridview.RowCount == 0 && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -1784,7 +1822,7 @@ namespace NCR_SYSTEM_1
 
 
             }
-            else if (Form1.levelac.Equals("Cashier") && Form1.status == "true")
+            else if (Form1.levelac.Equals("Cashier") && Cart_Datagridview.RowCount == 0 && Form1.status == "true")
             {
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
@@ -1805,7 +1843,11 @@ namespace NCR_SYSTEM_1
             }
             else
             {
-                if (Form1.status == "true")
+                if (Cart_Datagridview.RowCount != 0)
+                {
+                    MessageBox.Show("Cart is not cleared.");
+                }
+                else if (Form1.status == "true")
                 {
                     MessageBox.Show("Your Account do not have access in this module.");
                 }
@@ -1818,7 +1860,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton16_Click(object sender, EventArgs e)
         {
-            if (Form1.levelac.Equals("Admin") && Form1.status == "true")
+            if (Form1.levelac.Equals("Admin") && Cart_Datagridview.RowCount == 0 && Form1.status == "true")
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -1843,7 +1885,11 @@ namespace NCR_SYSTEM_1
            
             else
             {
-                if (Form1.status == "true")
+                if (Cart_Datagridview.RowCount != 0)
+                {
+                    MessageBox.Show("Cart is not cleared.");
+                }
+                else if (Form1.status == "true")
                 {
                     MessageBox.Show("Your Account do not have access in this module.");
                 }
@@ -1856,7 +1902,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton5_Click(object sender, EventArgs e)
         {
-            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
+            if (Form1.status == "true" && Cart_Datagridview.RowCount == 0 && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -1881,7 +1927,11 @@ namespace NCR_SYSTEM_1
         
             else
             {
-                if (Form1.status == "true")
+                if (Cart_Datagridview.RowCount != 0)
+                {
+                    MessageBox.Show("Cart is not cleared.");
+                }
+                else if (Form1.status == "true")
                 {
                     MessageBox.Show("Your Account do not have access in this module.");
                 }
@@ -1894,7 +1944,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton6_Click(object sender, EventArgs e)
         {
-            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
+            if (Form1.status == "true" && Cart_Datagridview.RowCount == 0 && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -1919,7 +1969,11 @@ namespace NCR_SYSTEM_1
             
             else
             {
-                if (Form1.status == "true")
+                if (Cart_Datagridview.RowCount != 0)
+                {
+                    MessageBox.Show("Cart is not cleared.");
+                }
+                else if (Form1.status == "true")
                 {
                     MessageBox.Show("Your Account do not have access in this module.");
                 }
@@ -1932,7 +1986,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton7_Click(object sender, EventArgs e)
         {
-            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
+            if (Form1.status == "true" && Cart_Datagridview.RowCount == 0 && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -1957,7 +2011,11 @@ namespace NCR_SYSTEM_1
           
             else
             {
-                if (Form1.status == "true")
+                if (Cart_Datagridview.RowCount != 0)
+                {
+                    MessageBox.Show("Cart is not cleared.");
+                }
+                else if (Form1.status == "true")
                 {
                     MessageBox.Show("Your Account do not have access in this module.");
                 }
@@ -1970,7 +2028,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton8_Click(object sender, EventArgs e)
         {
-            if (Form1.status == "true" && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
+            if (Form1.status == "true" && Cart_Datagridview.RowCount == 0 && (Form1.levelac.Equals("Admin") || Form1.levelac.Equals("Manager")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -1995,7 +2053,11 @@ namespace NCR_SYSTEM_1
            
             else
             {
-                if (Form1.status == "true")
+                if (Cart_Datagridview.RowCount != 0)
+                {
+                    MessageBox.Show("Cart is not cleared.");
+                }
+                else if (Form1.status == "true")
                 {
                     MessageBox.Show("Your Account do not have access in this module.");
                 }
@@ -2008,42 +2070,50 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton9_Click(object sender, EventArgs e)
         {
-            if (Form1.status == "true" && MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-
+            if(Cart_Datagridview.RowCount == 0)
             {
-                //TIMEOUT LOG
+                if (Form1.status == "true" && MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
 
-                try
                 {
+                    //TIMEOUT LOG
 
-
-
-
-                    var data10 = new Timeout_Class
+                    try
                     {
-                        Event_ID = Form1.session,
-                        Timeout = DateTime.Now.ToString("hh:mm tt"),
-                    };
-
-                    FirebaseResponse response10 = client.Update("UserLoginLog/" + data10.Event_ID, data10);
 
 
+
+
+                        var data10 = new Timeout_Class
+                        {
+                            Event_ID = Form1.session,
+                            Timeout = DateTime.Now.ToString("hh:mm tt"),
+                        };
+
+                        FirebaseResponse response10 = client.Update("UserLoginLog/" + data10.Event_ID, data10);
+
+
+                    }
+
+                    catch (Exception b)
+                    {
+                        MessageBox.Show(b.ToString());
+                    }
+
+
+                    Form1 a = new Form1();
+                    this.Hide();
+                    a.Show();
                 }
-
-                catch (Exception b)
+                else
                 {
-                    MessageBox.Show(b.ToString());
+
                 }
-
-
-                Form1 a = new Form1();
-                this.Hide();
-                a.Show();
             }
             else
             {
-
+                MessageBox.Show("Cart is not cleared.");
             }
+            
         }
 
         private void Fee_Enter(object sender, EventArgs e)
@@ -2144,7 +2214,7 @@ namespace NCR_SYSTEM_1
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
         {
-            if (Form1.status == "true" && (Form1.levelac.Equals("Admin")))
+            if (Form1.status == "true"  && Cart_Datagridview.RowCount == 0 && (Form1.levelac.Equals("Admin")))
             {
 
                 if (MessageBox.Show("Please confirm before proceeding" + "\n" + "Do you want to Continue ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -2169,7 +2239,11 @@ namespace NCR_SYSTEM_1
 
             else
             {
-                if (Form1.status == "true")
+                if (Cart_Datagridview.RowCount != 0)
+                {
+                    MessageBox.Show("Cart is not cleared.");
+                }
+                else if (Form1.status == "true")
                 {
                     MessageBox.Show("Your Account do not have access in this module.");
                 }

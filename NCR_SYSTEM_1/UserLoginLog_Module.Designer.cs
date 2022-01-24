@@ -32,6 +32,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.datedisplay = new System.Windows.Forms.Label();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -64,6 +67,8 @@
             this.bunifuImageButton9 = new Bunifu.Framework.UI.BunifuImageButton();
             this.accountinfolvl = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.printtable = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.pdfprint = new Bunifu.Framework.UI.BunifuFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.UserLoginLog_Datagrid)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton11)).BeginInit();
@@ -80,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printtable)).BeginInit();
             this.SuspendLayout();
             // 
             // datedisplay
@@ -618,12 +624,93 @@
             this.pictureBox3.TabIndex = 380;
             this.pictureBox3.TabStop = false;
             // 
+            // printtable
+            // 
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.printtable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.printtable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.printtable.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.printtable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.printtable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.printtable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.printtable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.printtable.ColumnHeadersHeight = 40;
+            this.printtable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.printtable.DefaultCellStyle = dataGridViewCellStyle6;
+            this.printtable.DoubleBuffered = true;
+            this.printtable.EnableHeadersVisualStyles = false;
+            this.printtable.GridColor = System.Drawing.Color.Black;
+            this.printtable.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.printtable.HeaderForeColor = System.Drawing.Color.Black;
+            this.printtable.Location = new System.Drawing.Point(1730, 11);
+            this.printtable.Name = "printtable";
+            this.printtable.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.printtable.RowHeadersWidth = 40;
+            this.printtable.RowTemplate.Height = 35;
+            this.printtable.RowTemplate.ReadOnly = true;
+            this.printtable.Size = new System.Drawing.Size(33, 19);
+            this.printtable.TabIndex = 382;
+            this.printtable.Visible = false;
+            // 
+            // pdfprint
+            // 
+            this.pdfprint.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.pdfprint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.pdfprint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pdfprint.BorderRadius = 0;
+            this.pdfprint.ButtonText = "Print";
+            this.pdfprint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pdfprint.DisabledColor = System.Drawing.Color.Gray;
+            this.pdfprint.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pdfprint.Iconcolor = System.Drawing.Color.Transparent;
+            this.pdfprint.Iconimage = null;
+            this.pdfprint.Iconimage_right = null;
+            this.pdfprint.Iconimage_right_Selected = null;
+            this.pdfprint.Iconimage_Selected = null;
+            this.pdfprint.IconMarginLeft = 0;
+            this.pdfprint.IconMarginRight = 0;
+            this.pdfprint.IconRightVisible = true;
+            this.pdfprint.IconRightZoom = 0D;
+            this.pdfprint.IconVisible = true;
+            this.pdfprint.IconZoom = 90D;
+            this.pdfprint.IsTab = false;
+            this.pdfprint.Location = new System.Drawing.Point(1423, 178);
+            this.pdfprint.Margin = new System.Windows.Forms.Padding(4);
+            this.pdfprint.Name = "pdfprint";
+            this.pdfprint.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.pdfprint.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.pdfprint.OnHoverTextColor = System.Drawing.Color.White;
+            this.pdfprint.selected = false;
+            this.pdfprint.Size = new System.Drawing.Size(142, 40);
+            this.pdfprint.TabIndex = 381;
+            this.pdfprint.Text = "Print";
+            this.pdfprint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pdfprint.Textcolor = System.Drawing.Color.White;
+            this.pdfprint.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pdfprint.Click += new System.EventHandler(this.pdfprint_Click);
+            // 
             // UserLoginLog_Module
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.printtable);
+            this.Controls.Add(this.pdfprint);
             this.Controls.Add(this.accountinfolvl);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.panel1);
@@ -662,6 +749,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printtable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -700,5 +788,7 @@
         private System.Windows.Forms.Label accountinfolvl;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label8;
+        protected internal Bunifu.Framework.UI.BunifuCustomDataGrid printtable;
+        private Bunifu.Framework.UI.BunifuFlatButton pdfprint;
     }
 }

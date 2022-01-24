@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -45,6 +48,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Account_Datagrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             this.bunifuImageButton11 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton12 = new Bunifu.Framework.UI.BunifuImageButton();
             this.bunifuImageButton3 = new Bunifu.Framework.UI.BunifuImageButton();
@@ -63,7 +67,8 @@
             this.datedisplay = new System.Windows.Forms.Label();
             this.accountinfolvl = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.printtable = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.printpdf = new Bunifu.Framework.UI.BunifuFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.Account_Datagrid)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton11)).BeginInit();
@@ -81,6 +86,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printtable)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -264,31 +270,31 @@
             // 
             // Account_Datagrid
             // 
-            dataGridViewCellStyle28.BackColor = System.Drawing.Color.White;
-            this.Account_Datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.Account_Datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.Account_Datagrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Account_Datagrid.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.Account_Datagrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Account_Datagrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.Account_Datagrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Account_Datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Account_Datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.Account_Datagrid.ColumnHeadersHeight = 40;
             this.Account_Datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Account_Datagrid.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Account_Datagrid.DefaultCellStyle = dataGridViewCellStyle6;
             this.Account_Datagrid.DoubleBuffered = true;
             this.Account_Datagrid.EnableHeadersVisualStyles = false;
             this.Account_Datagrid.GridColor = System.Drawing.Color.Black;
@@ -327,6 +333,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(335, 1085);
             this.panel1.TabIndex = 337;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(46, 54);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(232, 19);
+            this.label8.TabIndex = 359;
+            this.label8.Text = "NCR TRANSACTION SYSTEM";
             // 
             // bunifuImageButton11
             // 
@@ -589,16 +606,83 @@
             this.pictureBox3.TabIndex = 360;
             this.pictureBox3.TabStop = false;
             // 
-            // label8
+            // printtable
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(46, 54);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(232, 19);
-            this.label8.TabIndex = 359;
-            this.label8.Text = "NCR TRANSACTION SYSTEM";
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.printtable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.printtable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.printtable.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.printtable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.printtable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.printtable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.printtable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.printtable.ColumnHeadersHeight = 40;
+            this.printtable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.printtable.DefaultCellStyle = dataGridViewCellStyle3;
+            this.printtable.DoubleBuffered = true;
+            this.printtable.EnableHeadersVisualStyles = false;
+            this.printtable.GridColor = System.Drawing.Color.Black;
+            this.printtable.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.printtable.HeaderForeColor = System.Drawing.Color.Black;
+            this.printtable.Location = new System.Drawing.Point(1893, 12);
+            this.printtable.Name = "printtable";
+            this.printtable.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.printtable.RowHeadersWidth = 40;
+            this.printtable.RowTemplate.Height = 35;
+            this.printtable.RowTemplate.ReadOnly = true;
+            this.printtable.Size = new System.Drawing.Size(15, 19);
+            this.printtable.TabIndex = 387;
+            // 
+            // printpdf
+            // 
+            this.printpdf.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.printpdf.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.printpdf.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.printpdf.BorderRadius = 0;
+            this.printpdf.ButtonText = "Print";
+            this.printpdf.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.printpdf.DisabledColor = System.Drawing.Color.Gray;
+            this.printpdf.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.printpdf.Iconcolor = System.Drawing.Color.Transparent;
+            this.printpdf.Iconimage = null;
+            this.printpdf.Iconimage_right = null;
+            this.printpdf.Iconimage_right_Selected = null;
+            this.printpdf.Iconimage_Selected = null;
+            this.printpdf.IconMarginLeft = 0;
+            this.printpdf.IconMarginRight = 0;
+            this.printpdf.IconRightVisible = true;
+            this.printpdf.IconRightZoom = 0D;
+            this.printpdf.IconVisible = true;
+            this.printpdf.IconZoom = 90D;
+            this.printpdf.IsTab = false;
+            this.printpdf.Location = new System.Drawing.Point(1574, 179);
+            this.printpdf.Margin = new System.Windows.Forms.Padding(4);
+            this.printpdf.Name = "printpdf";
+            this.printpdf.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(129)))), ((int)(((byte)(255)))));
+            this.printpdf.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(95)))), ((int)(((byte)(190)))));
+            this.printpdf.OnHoverTextColor = System.Drawing.Color.White;
+            this.printpdf.selected = false;
+            this.printpdf.Size = new System.Drawing.Size(142, 40);
+            this.printpdf.TabIndex = 386;
+            this.printpdf.Text = "Print";
+            this.printpdf.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.printpdf.Textcolor = System.Drawing.Color.White;
+            this.printpdf.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.printpdf.Click += new System.EventHandler(this.printpdf_Click);
             // 
             // AccountArchive_Module
             // 
@@ -606,6 +690,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.printtable);
+            this.Controls.Add(this.printpdf);
             this.Controls.Add(this.accountinfolvl);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.datedisplay);
@@ -644,6 +730,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.printtable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -683,5 +770,7 @@
         private System.Windows.Forms.Label accountinfolvl;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label8;
+        protected internal Bunifu.Framework.UI.BunifuCustomDataGrid printtable;
+        private Bunifu.Framework.UI.BunifuFlatButton printpdf;
     }
 }

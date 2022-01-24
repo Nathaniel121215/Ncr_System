@@ -242,6 +242,7 @@ namespace NCR_SYSTEM_1
 
                     this.Hide();
                     Inventory_Module._instance.DataViewAll();
+                    Inventory_Module._instance.loadprinterdata();
 
                 }
 

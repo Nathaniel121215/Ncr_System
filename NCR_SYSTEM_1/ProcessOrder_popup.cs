@@ -120,6 +120,10 @@ namespace NCR_SYSTEM_1
                 {
                     temfee = "0.00";
                 }
+                if(remarks.Text=="")
+                {
+                    remarks.Text = "None";
+                }
 
 
 
